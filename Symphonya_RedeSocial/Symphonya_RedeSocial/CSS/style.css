@@ -398,7 +398,7 @@ span#logo h1 {
 }
 .srch button{
 cursor: pointer;
-    background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+    background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
     width: 80px;
     height:66px;
     display: block;
@@ -457,7 +457,7 @@ cursor: pointer;
 	position: absolute;
 	top: 9px;
     right: 9px;
-	background:url('../images/search2.png') no-repeat -0px -0px;
+	background:url('../Imagens/search2.png') no-repeat -0px -0px;
 	height: 25px;
 	width: 25px;
 	cursor:pointer;
@@ -960,7 +960,7 @@ ul.dropdown-menu.two.drp-mnu li a i {
 	width:20px;
 	height:20px;
 	display:block;
-	background:url(../images/up-down.png) no-repeat -8px -24px;
+	background:url(../Imagens/up-down.png) no-repeat -8px -24px;
 	margin-top:13px;
 	float:right;
 }
@@ -1548,7 +1548,7 @@ text.highcharts-title {
     width: 185px;
     height: 185px;
     margin: -95px auto 0;
-    background: url(../images/clockface.png) no-repeat;
+    background: url(../Imagens/clockface.png) no-repeat;
     list-style: none;
 }
 
@@ -1561,18 +1561,18 @@ text.highcharts-title {
 }
 
 #sec {
-    background: url(../images/sechand.png);
+    background: url(../Imagens/sechand.png);
     z-index: 3;
     overflow: hidden;
 }
 
 #min {
-    background: url(../images/minhand.png);
+    background: url(../Imagens/minhand.png);
     z-index: 2;
 }
 
 #hour {
-    background: url(../images/hourhand.png);
+    background: url(../Imagens/hourhand.png);
     z-index: 1;
 }
 .area-charts {
@@ -2848,12 +2848,12 @@ a.read.fourth:hover{
 		outline: none;
 		font-weight: 400;
 		border: 1px solid #ddd;
-		background: url("../images/icons.png") no-repeat 14px 17px;
+		background: url("../Imagens/icons.png") no-repeat 14px 17px;
 		margin: 0.3em 0;
 		font-family: 'Roboto', sans-serif;
 	  }
 	.login input[type="password"]{
-	   background: url("../images/icons.png") no-repeat 13px -33px ;
+	   background: url("../Imagens/icons.png") no-repeat 13px -33px ;
 
 	  }
 	.submit {
@@ -2919,7 +2919,7 @@ a.read.fourth:hover{
 	  transition-property: color;
 	  -webkit-transition-duration: 0.3s;
 	  transition-duration: 0.3s;
-	  background: url("../images/fb.png") no-repeat 20px 9px #3b5998;
+	  background: url("../Imagens/fb.png") no-repeat 20px 9px #3b5998;
 	  width:100%;
 	      font-family: 'Roboto', sans-serif;
 	  padding:0.7em 1em;
@@ -2974,7 +2974,7 @@ a.read.fourth:hover{
 	  font-size: 1em;
 	  color: #fff;
 	      font-family: 'Roboto', sans-serif;
-	  background:url("../images/tw.png") no-repeat 20px 13px  #1ab2e8;
+	  background:url("../Imagens/tw.png") no-repeat 20px 13px  #1ab2e8;
 
 	}
 	a.hvr-sweep-to-left:before {
@@ -3079,7 +3079,7 @@ a.read.fourth:hover{
 }
 .checkbox11 input + i:after {
 	content: '';
-	background: url("../images/tick1.png") no-repeat 1px 2px;
+	background: url("../Imagens/tick1.png") no-repeat 1px 2px;
 	top: -1px;
 	left: -1px;
 	width: 15px;
@@ -3720,7 +3720,7 @@ h4.title3{
 }
 .single-bottom ul li input[type="checkbox"]:checked+label span:first-child:before {
     content: "";
-    background: url(../images/tick1.png)no-repeat;
+    background: url(../Imagens/tick1.png)no-repeat;
     position: absolute;
     left: 1px;
     top: 2px;
@@ -4281,7 +4281,7 @@ Third button
 
 .a_demo_four::before {
 	background-color:#078792;
-	background-image:url(../images/right_arrow.png);
+	background-image:url(../Imagens/right_arrow.png);
 	background-repeat:no-repeat;
 	background-position:center center;
 	content:"";
@@ -5603,7 +5603,7 @@ footer  p a:hover ,.footer p a:hover{
 		float: none;
 	}
 	a.hvr-sweep-to-right {
-		background: url("../images/fb.png") no-repeat 15px 8px #3b5998;
+		background: url("../Imagens/fb.png") no-repeat 15px 8px #3b5998;
 		width: 100%;
 		padding: 0.7em 1em;
 		font-size: 1em;
@@ -5612,7 +5612,7 @@ footer  p a:hover ,.footer p a:hover{
 		width: 100%;
 		padding: 0.7em 1em;
 		font-size: 1em;
-		background: url("../images/tw.png") no-repeat 12px 13px #1ab2e8;
+		background: url("../Imagens/tw.png") no-repeat 12px 13px #1ab2e8;
 	}
 	.map iframe {
 		width: 100%;
@@ -5746,7 +5746,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -5906,7 +5906,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6036,7 +6036,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6136,7 +6136,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6148,7 +6148,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6250,7 +6250,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6262,7 +6262,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6408,7 +6408,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
 		width: 70px;
 		height: 63px;
 		display: block;
@@ -6626,7 +6626,7 @@ footer  p a:hover ,.footer p a:hover{
 		 }
 		 .page-container.sidebar-collapsed-back.srch button {
 			cursor: pointer;
-			background: url('../images/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
+			background: url('../Imagens/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
 			width: 70px;
 			height: 63px;
 			display: block;
@@ -6641,7 +6641,7 @@ footer  p a:hover ,.footer p a:hover{
 	  }
 	 .page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 63px;
 		display: block;
@@ -6769,11 +6769,11 @@ footer  p a:hover ,.footer p a:hover{
 		outline: none;
 		font-weight: 400;
 		border: 1px solid #ddd;
-		background: url("../images/icons.png") no-repeat 14px 13px;
+		background: url("../Imagens/icons.png") no-repeat 14px 13px;
 		margin: 0.3em 0;
 	}
 	.login input[type="password"] {
-		background: url("../images/icons.png") no-repeat 13px -36px;
+		background: url("../Imagens/icons.png") no-repeat 13px -36px;
 	}
 	.tabs nav.second {
 		display: flex;
@@ -6830,7 +6830,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
 		width: 80px;
 		height: 63px;
 		display: block;
@@ -6846,7 +6846,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-				background: url('../images/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
+				background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
 		width: 70px;
 		height: 60px;
 		display: block;
@@ -6880,7 +6880,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
 		width: 70px;
 		height: 60px;
 		display: block;
@@ -6956,7 +6956,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -6968,7 +6968,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -7234,7 +7234,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -7681,7 +7681,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -7851,7 +7851,7 @@ footer  p a:hover ,.footer p a:hover{
 		font-size: 2em;
 	}
 	.hvr-sweep-to-right {
-		background: url("../images/fb.png") no-repeat 7px 6px #3b5998;
+		background: url("../Imagens/fb.png") no-repeat 7px 6px #3b5998;
 		width: 100%;
 		padding: 0.7em 1em;
 		font-size: 0.9em;
@@ -7860,7 +7860,7 @@ footer  p a:hover ,.footer p a:hover{
 		width: 100%;
 		padding: 0.7em 1em;
 		font-size: 0.9em;
-		background: url("../images/tw.png") no-repeat 10px 11px #1ab2e8;
+		background: url("../Imagens/tw.png") no-repeat 10px 11px #1ab2e8;
 		    text-align: right;
 	}
 	.login input[type="submit"] {
@@ -7894,7 +7894,7 @@ footer  p a:hover ,.footer p a:hover{
 		font-size: 1.4em;
 	}
 	a.hvr-sweep-to-right {
-		background: url("../images/fb.png") no-repeat 3px 6px #3b5998;
+		background: url("../Imagens/fb.png") no-repeat 3px 6px #3b5998;
 		width: 100%;
 		padding: 0.7em 1em;
 		font-size: 0.9em;
@@ -8096,7 +8096,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../images/search.png') no-repeat 10px 17px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 10px 17px rgba(3, 182, 197, 0.68);
 		width: 48px;
 		height: 63px;
 		display: block;
