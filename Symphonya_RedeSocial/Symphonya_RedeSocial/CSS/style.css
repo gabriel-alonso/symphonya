@@ -2779,10 +2779,10 @@ ul#menu-comunicacao-sub {
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     border: 1px solid rgba(213, 213, 214, 0.85);
-    width: 30%;
+    width: 70%;
     padding: 2em 2em;
 	position: absolute;
-    left: 35%;
+    left: 15%;
     top: 13%;
 }
 .error-top h3{
@@ -2821,6 +2821,25 @@ a.read.fourth:hover{
 }
 /*--//404--*/
 /*--/sign-in--*/
+
+.login-esquerda{
+    width:48.5%;
+    float:left;
+    font-size: 20px;
+}
+.login h2{
+    color: #FC3158;
+}
+.Symphonya-destaque{
+    color: #FC3158;
+}
+.boasvindas-texto{
+    text-align:justify;
+}
+.login-direita{
+    width:48.5%;
+    float:right;
+}
 	.login input[type="text"],.login input[type="password"]{
 		width: 100%;
 		padding: 0.9em 1em 0.9em 4em;
@@ -2848,8 +2867,8 @@ a.read.fourth:hover{
 		outline: none;
 		padding: 10px 15px;
 		width: 100%;
-		border:2px solid #ea4c89;
-		background: #ea4c89;
+		border:2px solid #FC3158;
+		background: #FC3158;
 		margin: 0;
 		    font-family: 'Roboto', sans-serif;
 			    transition: 0.5s all;
@@ -2860,9 +2879,8 @@ a.read.fourth:hover{
 	}
 	.login input[type="submit"]:hover{
 	  background:none;
-	  border:2px solid #ea4c89;
-	  color: #ea4c89;
-
+	  border:2px solid #FC3158;
+	  color: #FC3158;
 	}
 	
 	.buttons {
@@ -5414,6 +5432,7 @@ button.btn.btn-default.close {
 .footer {
     text-align: center;
     margin: 18em 0 2em 0;
+    padding-top:13%;
 }
 .footer.sign {
     margin: 21em 0 2em 0;
