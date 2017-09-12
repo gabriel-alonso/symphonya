@@ -2764,26 +2764,28 @@ ul#menu-comunicacao-sub {
 }
 /*--/404--*/
 .error_page {
-       background: #00C6D7;
+    background: url("../Imagens/fundo_login.jpg") no-repeat;
     position: relative;
     padding: 11em 0;
-    width: 100%
+    width: 100%;
+    height: 100%;
 }
 .error-top {
-   text-align: center;
-   margin: 7em auto;
-       background: #fff;
+    text-align: center;
+    margin: 7em auto;
+    background: #fff;
     padding: 2em 2em;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
-    -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     border: 1px solid rgba(213, 213, 214, 0.85);
-    width: 70%;
+    width: 60%;
     padding: 2em 2em;
 	position: absolute;
-    left: 15%;
+    left: 19%;
     top: 13%;
+    right: 19%;
+    bottom: auto;
 }
 .error-top h3{
       font-size: 9em;
@@ -2875,7 +2877,6 @@ a.read.fourth:hover{
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
 	}
 	.login input[type="submit"]:hover{
 	  background:none;
@@ -3021,17 +3022,17 @@ a.read.fourth:hover{
 	.new p.sign{
 	  float:right;
 	}
-	.new p.sign a {
-		color: #00C6D7;
-	}
-	h2.inner-tittle.page {
-		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-		position: absolute;
-		top: -29%;
-		left: 27%;
-		font-size: 3em;
-		color: #fff;
-	}
+        .new p.sign a {
+            color: #FC3158;
+        }
+h2.inner-tittle.page {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: -29%;
+    left: 39%;
+    font-size: 3em;
+    color: #FC3158;
+}
 	p.sign.up {
     text-align: center;
     float: none;
@@ -3108,31 +3109,31 @@ h3.inner-tittle.t-inner {
     font-weight: 400;
     text-align: center;
     margin-bottom: 0.7em;
-    color: #333;
+    color: #FC3158;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 .sign-up input[type="submit"]{
 	float: right;
 	width:30%;
-		font-size:17px;
-		font-weight: 400;
-		color: #fff;
-		cursor: pointer;
-		outline: none;
-		    padding:6px 19px;
-		    border: 2px solid #00C6D7;
+	font-size:17px;
+	font-weight: 400;
+	color: #fff;
+	cursor: pointer;
+	outline: none;
+    padding:6px 19px;
+    border: 2px solid #00C6D7;
     background: #00C6D7;
-		margin: 0;
-		font-family: 'Roboto', sans-serif;
-		    transition: 0.5s all;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
 }
 .sign-up input[type="submit"]:hover{
     border: 2px solid #052963;
     background: #052963;
-	  color: #fff;
+	color: #fff;
 }
 .sign-up input[type="reset"]{
     font-size: 17px;
@@ -3149,9 +3150,7 @@ h3.inner-tittle.t-inner {
 	    transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-			
+    -o-transition: 0.5s all;		
 }
 .sign-up input[type="reset"]:hover{
  border: 2px solid #00C6D7;
@@ -5533,7 +5532,7 @@ footer  p a:hover ,.footer p a:hover{
 		top: -27px;
 	}
 	.error-top p {
-      font-size: 0.9em;
+      font-size: 1em;
 	}
 	.new p a, .new p.sign a, .new p.sign {
 		font-size: 0.9em;
@@ -5624,13 +5623,7 @@ footer  p a:hover ,.footer p a:hover{
 		top: 36%;
 	}
 	.error-top {
-		margin: 7em auto;
-		padding: 2em 2em;
-		width: 32%;
-		padding: 2em 2em;
-		position: absolute;
-		left: 35%;
-		top: 13%;
+		font-size: 0.9em;
 	}
 }
 @media (max-width:1280px){
@@ -5697,10 +5690,10 @@ footer  p a:hover ,.footer p a:hover{
 	.error-top {
 		margin: 7em auto;
 		padding: 2em 2em;
-		width: 34%;
+		width: 70%;
 		padding: 2em 2em;
 		position: absolute;
-		left: 33%;
+		left: 19%;
 		top: 13%;
 	}
 }
@@ -6846,7 +6839,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-				background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
+		background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
 		width: 70px;
 		height: 60px;
 		display: block;
@@ -7620,7 +7613,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.error-top {
 		margin: 3em auto;
-		width: 83%;
+		width: 60%;
 		padding: 2em 1em;
 		position: absolute;
 		left: 9%;

@@ -159,6 +159,8 @@
     <Content Include="Imagens\closew.gif" />
     <Content Include="Imagens\cross.png" />
     <Content Include="Imagens\fb.png" />
+    <Content Include="Imagens\fundo_cadastro.jpg" />
+    <Content Include="Imagens\fundo_login.jpg" />
     <Content Include="Imagens\hourhand.png" />
     <Content Include="Imagens\icons.png" />
     <Content Include="Imagens\in.jpg" />

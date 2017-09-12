@@ -81,22 +81,19 @@ img {
 
 /*--- end reset code ---*/
 body {
-	background:url(../Imagens/bg.jpg) no-repeat;
+	background:url(../Imagens/fundo_cadastro.jpg) no-repeat;
 	background-position:center;
 	background-attachment:fixed;
 	background-size:100% 100%;
-	-webkit-background-size:100% 100%;
-	-moz-background-size:100% 100%;
-	-o-background-size:100% 100%;
-	-ms-background-size:100% 100%;
 	font-family: 'Lato', sans-serif;
 }
-h1.w3layouts {
+.w3layouts {
     text-align: center;
     font-size: 3em;
-    color: #fff;
+    color: #FC3158;
     margin: 0.8em 0;
     padding: 0;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 .content-w3ls {
     width: 70%;
@@ -224,23 +221,23 @@ input.username,.checkin,.checkout {
     padding: 0.8em;
     font-size: 1em;
     cursor: pointer;
-    border: none;
-    background: #00C6D7;
+    border: 2px solid #FC3158;
+    background: #FC3158;
     outline: none;
     margin: 1.5em 0 0;
     font-weight: 400;
     text-transform: capitalize;
     width: 34%;
-    border: none;
-	font-family: 'Lato', sans-serif;
-	  transition: all 0.5s ease-in-out;
+    font-family: 'Lato', sans-serif;
+    transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
 }
 .submit input[type=submit]:hover {
-    background: #fff;
-    color: #000;
+    	  background: #fff;
+	  border:2px solid #FC3158;
+	  color: #FC3158;
 }
 input::-webkit-input-placeholder {
 color: #fff !important;
@@ -324,18 +321,14 @@ color: #fff !important;
 }
 /* //form */
 .content-w3ls .content2-agile {
-	background:url(../Imagens/11.png) no-repeat;
-	background-position:center;
-	background-size:cover;
-	-webkit-background-size:cover;
-	-moz-background-size:cover;
-	-o-background-size:cover;
-	-ms-background-size:cover;
-	min-height:640px;
+    background: url(../Imagens/11.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 640px;
 }
 p.copyright-agileits {
     font-size: 1em;
-    color: #fff;
+    color: #000;
     letter-spacing: 0.5px;
     text-align: center;
     padding: 2em;
