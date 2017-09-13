@@ -182,7 +182,10 @@ input.username,.checkin,.checkout {
 	margin-top: 1em;
 }
 .section_class_agileits.s2-w3ls,.agileits-left.s2-w3ls {
-    margin-left: 1em;
+   
+    margin: 1em 0 0.2em;
+width: 48.4%;
+float: left;
 }
 .section_class_agileits.s2-w3ls {
     margin-left: 1em;
