@@ -50,9 +50,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="clearfix"></div>
                         </ul>
                     </div>
-                    <form>
-                        <input type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
-                        <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+
+                    <!-- CASO O LOGIN FALHE-->
+                    @if (ViewBag.MsgErro != null)
+                    {
+                    <div class="alert alert-danger">
+                        <strong>Erro!</strong> Usuário e/ou Senha incorretos!
+                    </div>
+                    }
+                    <form method="post" action="~/Acesso/Login">
+                        <input type="text" class="text" value="E-Mail" id="email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
+                        <input type="password" value="senha" id="senha" name="senha" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
                         <div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
                         <div class="clearfix"></div>
 

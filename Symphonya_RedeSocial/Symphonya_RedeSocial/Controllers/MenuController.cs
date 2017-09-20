@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Symphonya_RedeSocial.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,14 @@ namespace Symphonya_RedeSocial.Controllers
         // GET: Menu
         public ActionResult Feed()
         {
+            if (Session["Usuario"] != null)
+            {
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Nome = User.Nome;
+                ViewBag.Imagem = User.Imagem_Perfil;
+                ViewBag.Sobrenome = User.Sobrenome;
+            }
             return View();
         }
 
