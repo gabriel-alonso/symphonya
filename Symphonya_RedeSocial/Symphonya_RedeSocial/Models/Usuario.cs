@@ -13,15 +13,17 @@ namespace Symphonya_RedeSocial.Models
         public Int32 ID { get; set; }
         public String Nome { get; set; }
         public String Sobrenome { get; set; }
-        public DateTime Nascimento { get; set; }
+        public int MesNascimento { get; set; }
         public Boolean Sexo { get; set; }
         public String Imagem_Perfil { get; set; }
         public String Email { get; set; }
         public String Senha { get; set; }
         public String Cidade { get; set; }
-        public String Estado { get; set; }
+        public Int32 Estado { get; set; }
         public int Avaliacao { get; set; }
         public Boolean Modo { get; set; }
+        public int DiaNascimento { get; set; }
+        public int AnoNascimento { get; set; }
 
         public Usuario() { }
 
@@ -42,13 +44,15 @@ namespace Symphonya_RedeSocial.Models
             this.ID = (Int32)Leitor["ID"];
             this.Nome = (String)Leitor["Nome"];
             this.Sobrenome = (String)Leitor["Sobrenome"];
-            this.Nascimento = (DateTime)Leitor["Nascimento"];
+            this.MesNascimento = (Int32)Leitor["MesNascimento"];
+            this.DiaNascimento = (Int32)Leitor["DiaNascimento"];
+            this.AnoNascimento = (Int32)Leitor["AnoNascimento"];
             this.Sexo = (Boolean)Leitor["Sexo"];
             this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
-            this.Estado = (String)Leitor["Estado"];
+            this.Estado = (Int32)Leitor["Estado"];
             this.Avaliacao = (Int32)Leitor["Avaliacao"];
             this.Modo = (Boolean)Leitor["Modo"];
 
@@ -75,15 +79,17 @@ namespace Symphonya_RedeSocial.Models
             this.ID = (Int32)Leitor["ID"];
             this.Nome = (String)Leitor["Nome"];
             this.Sobrenome = (String)Leitor["Sobrenome"];
-            this.Nascimento = (DateTime)Leitor["Nascimento"];
-            this.Sexo = (Boolean)Leitor["Sexo"];
-            this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
+            this.MesNascimento = (Int32)Leitor["MesNascimento"];
+            this.DiaNascimento = (Int32)Leitor["DiaNascimento"];
+            this.AnoNascimento = (Int32)Leitor["AnoNascimento"];
+            //this.Sexo = (Boolean)Leitor["Sexo"];
+            //this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
-            this.Estado = (String)Leitor["Estado"];
-            this.Avaliacao = (Int32)Leitor["Avaliacao"];
-            this.Modo = (Boolean)Leitor["Modo"];
+            this.Estado = (Int32)Leitor["Estado"];
+            //this.Avaliacao = (Int32)Leitor["Avaliacao"];
+            //this.Modo = (Boolean)Leitor["Modo"];
 
 
             Conexao.Close();
@@ -91,25 +97,26 @@ namespace Symphonya_RedeSocial.Models
         public Boolean NovoUser()
         {
 
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
             Conexao.Open();
+           
 
+            //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario (Nome, Sobrenome, Nascimento, Sexo, Imagem_Perfil, Email, Senha, Cidade, Estado, Avaliacao, Modo)"
-              + "VALUES (@Nome, @Sobrenome, @Nascimento, @Sexo, @Imagem_Perfil, @Email, @Senha, @Cidade, @Estado, @Avaliacao, @Modo);";
+            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado)"
+              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
-            Comando.Parameters.AddWithValue("@Nascimento", this.Nascimento);
-            Comando.Parameters.AddWithValue("@Sexo", this.Sexo);
-            Comando.Parameters.AddWithValue("@Imagem_Perfil", this.Imagem_Perfil); //ALTERAR PARA IMAGEM PADRAO
+            Comando.Parameters.AddWithValue("@DiaNascimento", this.DiaNascimento);
+            Comando.Parameters.AddWithValue("@MesNascimento", this.MesNascimento);
+            Comando.Parameters.AddWithValue("@AnoNascimento", this.AnoNascimento);
             Comando.Parameters.AddWithValue("@Email", this.Email);
             Comando.Parameters.AddWithValue("@Senha", this.Senha);
             Comando.Parameters.AddWithValue("@Cidade", this.Cidade);
             Comando.Parameters.AddWithValue("@Estado", this.Estado);
-            Comando.Parameters.AddWithValue("@Avaliacao", 0); //USUARIO COM NENHUMA AVALIACAO -> 0
-            Comando.Parameters.AddWithValue("@Modo", 0); //USUARIO ENTRA OFFLINE, OU SEJA, NAO FAZ STREAM -> 0
             
+
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();
@@ -151,7 +158,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
             Comando.Parameters.AddWithValue("@Senha", this.Senha);
-            Comando.Parameters.AddWithValue("@Nascimento", this.Nascimento);
+            Comando.Parameters.AddWithValue("@Nascimento", this.MesNascimento);
             Comando.Parameters.AddWithValue("@Bio", "Biografia");
             Comando.Parameters.AddWithValue("@ImagemPerfil", "tr4.jpg");
             Comando.Parameters.AddWithValue("@Adm", 0);
