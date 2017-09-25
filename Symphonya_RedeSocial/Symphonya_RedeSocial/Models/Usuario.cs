@@ -19,7 +19,7 @@ namespace Symphonya_RedeSocial.Models
         public String Email { get; set; }
         public String Senha { get; set; }
         public String Cidade { get; set; }
-        public String Estado { get; set; }
+        public Int32 Estado { get; set; }
         public int Avaliacao { get; set; }
         public Boolean Modo { get; set; }
 
@@ -48,7 +48,7 @@ namespace Symphonya_RedeSocial.Models
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
-            this.Estado = (String)Leitor["Estado"];
+            this.Estado = (Int32)Leitor["Estado"];
             this.Avaliacao = (Int32)Leitor["Avaliacao"];
             this.Modo = (Boolean)Leitor["Modo"];
 
@@ -81,7 +81,7 @@ namespace Symphonya_RedeSocial.Models
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
-            this.Estado = (String)Leitor["Estado"];
+            this.Estado = (Int32)Leitor["Estado"];
             this.Avaliacao = (Int32)Leitor["Avaliacao"];
             this.Modo = (Boolean)Leitor["Modo"];
 
