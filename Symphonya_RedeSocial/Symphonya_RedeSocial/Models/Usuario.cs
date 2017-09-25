@@ -87,9 +87,9 @@ namespace Symphonya_RedeSocial.Models
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
-            this.Estado = (Int32)Leitor["Estado"];
-            //this.Avaliacao = (Int32)Leitor["Avaliacao"];
-            //this.Modo = (Boolean)Leitor["Modo"];
+            this.Estado = (String)Leitor["Estado"];
+            this.Avaliacao = (Int32)Leitor["Avaliacao"];
+            this.Modo = (Boolean)Leitor["Modo"];
 
 
             Conexao.Close();
@@ -99,7 +99,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
             Conexao.Open();
-           
+
 
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
@@ -116,7 +116,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Cidade", this.Cidade);
             Comando.Parameters.AddWithValue("@Estado", this.Estado);
             
-
+            
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();

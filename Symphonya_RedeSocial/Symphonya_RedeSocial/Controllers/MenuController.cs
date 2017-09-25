@@ -20,6 +20,12 @@ namespace Symphonya_RedeSocial.Controllers
                 ViewBag.Imagem = User.Imagem_Perfil;
                 ViewBag.Sobrenome = User.Sobrenome;
             }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            //else
+            //{
+            //    Response.Redirect("/Acesso/Login");
+            //}
+
             return View();
         }
 

@@ -4,10 +4,36 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 */
+
+
+
+/*CORES UTLIZIDADAS
+
+--------------
+    ROSA
+    #FC3158
+
+    CINZA ESCURO
+    #A9A9A9
+    CINZA CLARO
+    #D3D3D3
+
+    BRANCO
+    #FFFFFF
+    -------
+
+
+    #DB7093
+    #FF69B4
+*/
+
+
+
+
+
 html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;
-  	overflow-x: hidden;
 	background:#FFFFFF;
 }
 body a{
@@ -23,8 +49,12 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
-    color: #002561;
+    color: #FC3158;
+    background: #FC3158;
 	text-decoration:none;
+}
+.logo a:focus, a:active, a:hover, a.dropdown-toggle{
+    color:#FFF;
 }
 a {
     background-color:none;
@@ -89,13 +119,13 @@ a:hover { transition: all 200ms ease-in-out; }
 }
 
 .page-container.sidebar-collapsed .sidebar-icon {
-   transform: rotate(90deg);
    transition: all 300ms ease-in-out;
    margin-right: 0.8em;
        margin-top: -8px;
-	   color: #fff;
-    background: #02BBCA;
-    border-radius: 0;
+	   color: transparent;
+    background: url('../Imagens/sympIcon.png') no-repeat -2px;
+    background-size: 41px;
+    border-radius: 20%;
 
 }
 
@@ -153,8 +183,8 @@ a:hover { transition: all 200ms ease-in-out; }
     top: 0;
     left: 0;
     bottom: 0;
-    background-color: #052963;
-    color: #aaabae;
+    background-color: #A9A9A9;
+    color: #DB7093;
     box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
 	-o-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
 	-webkit-box-shadow: 0px 0px 10px 0px rgb(58, 41, 31);
@@ -187,21 +217,21 @@ a:hover { transition: all 200ms ease-in-out; }
     position: relative;
     display: block;
     padding: 13px 20px;
-    color: #fff;
+    color: #FC3158;
     white-space: nowrap;
     z-index: 2;
-    background-color: #021F4E;
+    background-color: #FFF;
     font-size:0.9em;
     font-family: 'Roboto', sans-serif;
 	border:none;
-	    border-left: 4px solid #021F4E;
+	    border-left: 4px solid #FC3158;
 }
 
 #menu li a:hover {
   color: #ffffff;
-  background-color:#002561;
+  background-color: #FC3158;
   transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
-   border-left: 4px solid #00C6D7;
+   border-left: 4px solid #FFF;
 }
 
 #menu li.active > a {
@@ -259,14 +289,14 @@ background-color:#00C6D7!important;
 
 .sidebar-icon {
        margin-top: -2px;
-    border: 1px solid #00C6D7;
+    border: 1px solid #FC3158;
     text-align: right;
     line-height: 1;
     font-size: 19px;
     padding: 8px 10px;
     border-radius: 0px;
     color: #fff;
-    background: #02BBCA;
+    background: #FC3158;
     float: right;
 }
 ul#menu i {
@@ -304,7 +334,7 @@ li#menu-academico{
 span.name-caret {
     margin: 10px 0px 3px 0px;
     font-size: 1.4em;
-    color: #00C6D7;
+    color: #FC3158;
     display: block;
     text-align: center;
     font-weight: 400;
@@ -320,12 +350,12 @@ span.name-caret {
 .down{
 	padding: 26px 0 30px;
     text-align: center;
-      background: #fff;
+      background: #D3D3D3;
 }
 .dropdown-menu li a i{
     font-size: 14px;
     margin-right: 6%;	
-	    color: #879498;
+	    color: #FC3158;
 }
 .down p {
     font-size: 0.9em;
@@ -343,7 +373,7 @@ span.name-caret {
 }
 .down i {
     font-size: 1.2em;
-	color:#00C6D7;
+	color:#FC3158;
 	vertical-align: middle;
 }
 i.lnr.lnr-user {
@@ -359,8 +389,8 @@ a.tooltips {
 a.tooltips span {
      position: absolute;
     width: 65px;
-    color: #FFFFFF;
-    background: #09367D;
+    color: #FFF;
+    background: #FC3158;
     height:28px;
     line-height: 30px;
     text-align: center;
@@ -374,7 +404,7 @@ a.tooltips span:after {
   left: 50%;
   margin-left: -8px;
   width: 0; height: 0;
-  border-bottom: 8px solid #09367D;
+  border-bottom: 8px solid #FC3158;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
@@ -389,16 +419,20 @@ a:hover.tooltips span {
 /*--//down--*/
 /*--/top_header--*/
 span#logo h1 {
-         font-size: 2em;
-    color: #fff;
+         font-size: 1.8em;
+    color: #FC3158;
     margin: 0;
     text-decoration: none;
     text-transform: capitalize;
     font-weight: 300;
+       text-shadow: 1px 0px 0px #fff, 
+                 -1px 0px 0px #fff, 
+                 0px 1px 0px #fff, 
+                 0px -1px 0px #fff;
 }
 .srch button{
 cursor: pointer;
-    background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+    background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
     width: 80px;
     height:66px;
     display: block;
@@ -587,8 +621,8 @@ li#menu-mensagens-enviadas,li#menu-mensagens,li#menu-academico-avaliacoes,li#men
 	background:rgba(0, 0, 0, 0.02);
 }
 li.dropdown.note {
-    background: #00c6d7;
-    border-left: 1px solid rgba(1, 189, 206, 0.93);
+    background: #FC3158;
+    border-left: 2px solid #FFFFFF;
     display: inline-block;
     float: left;
 	    cursor: pointer;
@@ -598,7 +632,7 @@ li.dropdown.note a {
 	    display: block;
 }
 li.dropdown.note:hover {
-background:#14BFCE;
+border-left: 2px solid #FC3158;
 }
 ul.nofitications-dropdown {
     padding: 0;
@@ -611,16 +645,19 @@ li.dropdown.head-dpdn:nth-child(3) {
 	border:none;
 }
 .notification_header{
-	background-color:#FAFAFA;
+	background-color:#FC3158;
 	padding: 10px 15px;
 	border-bottom:1px solid rgba(0, 0, 0, 0.05);
 }
 li.dropdown.note i{
- font-size:1.2em;
- color:#fff;
+ font-size:1.4em;
+ color:#FFF;
+}
+li.dropdown.note:hover{
+    color:#FC3158;
 }
 .notification_header h3{	
-	    color:#37474f;
+	    color:#FFF;
     font-size: 12px;
     font-weight: 600;
     margin: 5px 0 0 0;
@@ -632,13 +669,12 @@ li.dropdown.note i{
     background-color: #f3f7f9;
 }
 .notification_bottom a {
-    color: #00C6D7;
-}
-.notification_bottom a {
-    color:#F44336;
+    color: #FC3158;
 }
 .notification_bottom a:hover {
-    color:#999;
+    color:#FC3158;
+    background: #f3f7f9;
+    text-decoration: underline;
 }
 .notification_bottom h3 a{	
 	color: #717171;
@@ -908,7 +944,7 @@ ul.dropdown-menu.two li a {
 }
 .notification_bottom a {
     padding: 6px 10px;
-    color: #00C6D7;
+    color: #FC3158;
 }
 ul.dropdown-menu.two.drp-mnu li a i {
     width: 24px;
@@ -1006,8 +1042,8 @@ span.text {
 span.badge {
     font-size: 11px;
     font-weight: bold;
-    color: #FFF;
-    background: #052963;
+    color: #FC3158;
+    background: #FFF;
     line-height: 17px;
     width: 20px;
     height: 20px;
@@ -1163,7 +1199,7 @@ ul.dropdown {
 
 
 .header-section {
-    background:#00c6d7;
+    background:#A9A9A9;
 	box-shadow: 2px 0 6px rgba(1, 70, 76, 0.68);
 	    -webkit-box-shadow: 2px 0 6px rgba(1, 70, 76, 0.68);
     -moz-box-shadow: 2px 0 6px rgba(1, 70, 76, 0.68);
@@ -5437,7 +5473,7 @@ button.btn.btn-default.close {
     margin: 21em 0 2em 0;
 }
 footer {
-    background:#00C6D7;
+    background: #A9A9A9;
     padding: 12px;
     width: 100%;
     border-top: 1px solid #00C6D7;
@@ -5458,14 +5494,15 @@ footer  p {
 	    margin-top: 1em;
 }
 .footer p a{
-	color:#00C6D7;
+	color:#FC3158;
 }
 
 footer  p a{
-	color:#002561;
+	color:#FC3158;
 }
 footer  p a:hover ,.footer p a:hover{
 	text-decoration:underline;
+    background: #A9A9A9;
 }
 /*---responsive-----*/
 @media (max-width:1600px){
@@ -5739,7 +5776,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -5899,7 +5936,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6029,7 +6066,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6129,7 +6166,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6243,7 +6280,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6255,7 +6292,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 26px 19px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 66px;
 		display: block;
@@ -6401,7 +6438,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 70px;
 		height: 63px;
 		display: block;
@@ -6619,7 +6656,7 @@ footer  p a:hover ,.footer p a:hover{
 		 }
 		 .page-container.sidebar-collapsed-back.srch button {
 			cursor: pointer;
-			background: url('../Imagens/search.png') no-repeat 19px 16px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 			width: 70px;
 			height: 63px;
 			display: block;
@@ -6634,7 +6671,7 @@ footer  p a:hover ,.footer p a:hover{
 	  }
 	 .page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 63px;
 		display: block;
@@ -6823,7 +6860,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 25px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 80px;
 		height: 63px;
 		display: block;
@@ -6839,7 +6876,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 70px;
 		height: 60px;
 		display: block;
@@ -6873,7 +6910,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 23px 12px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 70px;
 		height: 60px;
 		display: block;
@@ -6949,7 +6986,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -6961,7 +6998,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.page-container.sidebar-collapsed .left-content .srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -7227,7 +7264,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -7674,7 +7711,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 12px 15px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 56px;
 		height: 63px;
 		display: block;
@@ -8089,7 +8126,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.srch button {
 		cursor: pointer;
-		background: url('../Imagens/search.png') no-repeat 10px 17px rgba(3, 182, 197, 0.68);
+        background: url('../Imagens/search.png') no-repeat 26px 19px #FC3158;
 		width: 48px;
 		height: 63px;
 		display: block;
