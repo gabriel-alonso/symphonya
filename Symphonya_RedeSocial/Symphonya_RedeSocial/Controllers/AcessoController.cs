@@ -40,6 +40,26 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult Cadastro()
         {
+            if (Request.HttpMethod == "POST")
+            {
+
+                Usuario Us = new Usuario();
+
+               
+                Us.Nome = Request.Form["Nome"].ToString();
+                Us.Sobrenome = Request.Form["Sobrenome"].ToString();
+                Us.MesNascimento = Convert.ToInt32(Request.Form["MesNascimento"]);
+                Us.DiaNascimento = Convert.ToInt32(Request.Form["DiaNascimento"]);
+                Us.AnoNascimento = Convert.ToInt32(Request.Form["AnoNascimento"]);
+                Us.Email = Request.Form["Email"].ToString();
+                Us.Senha = Request.Form["Senha"].ToString();
+                Us.Cidade = Request.Form["Cidade"].ToString();
+                Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
+                //Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
+                Us.NovoUser();
+
+            }
+
             return View();
         }
 
