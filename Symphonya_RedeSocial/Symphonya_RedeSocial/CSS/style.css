@@ -50,8 +50,11 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     color: #FC3158;
-    background: #fff;
+    background: #FC3158;
 	text-decoration:none;
+}
+.logo a:focus, a:active, a:hover, a.dropdown-toggle{
+    color:#FFF;
 }
 a {
     background-color:none;
@@ -116,13 +119,13 @@ a:hover { transition: all 200ms ease-in-out; }
 }
 
 .page-container.sidebar-collapsed .sidebar-icon {
-   transform: rotate(90deg);
    transition: all 300ms ease-in-out;
    margin-right: 0.8em;
        margin-top: -8px;
-	   color: #fff;
-    background: #FC3158;
-    border-radius: 0;
+	   color: transparent;
+    background: url('../Imagens/sympIcon.png') no-repeat -2px;
+    background-size: 41px;
+    border-radius: 20%;
 
 }
 
@@ -386,8 +389,8 @@ a.tooltips {
 a.tooltips span {
      position: absolute;
     width: 65px;
-    color: #FFFFFF;
-    background: #09367D;
+    color: #FFF;
+    background: #FC3158;
     height:28px;
     line-height: 30px;
     text-align: center;
@@ -401,7 +404,7 @@ a.tooltips span:after {
   left: 50%;
   margin-left: -8px;
   width: 0; height: 0;
-  border-bottom: 8px solid #09367D;
+  border-bottom: 8px solid #FC3158;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
@@ -422,6 +425,10 @@ span#logo h1 {
     text-decoration: none;
     text-transform: capitalize;
     font-weight: 300;
+       text-shadow: 1px 0px 0px #fff, 
+                 -1px 0px 0px #fff, 
+                 0px 1px 0px #fff, 
+                 0px -1px 0px #fff;
 }
 .srch button{
 cursor: pointer;
@@ -614,8 +621,8 @@ li#menu-mensagens-enviadas,li#menu-mensagens,li#menu-academico-avaliacoes,li#men
 	background:rgba(0, 0, 0, 0.02);
 }
 li.dropdown.note {
-    background: #00c6d7;
-    border-left: 1px solid rgba(1, 189, 206, 0.93);
+    background: #FC3158;
+    border-left: 2px solid #FFFFFF;
     display: inline-block;
     float: left;
 	    cursor: pointer;
@@ -625,7 +632,7 @@ li.dropdown.note a {
 	    display: block;
 }
 li.dropdown.note:hover {
-background:#14BFCE;
+border-left: 2px solid #FC3158;
 }
 ul.nofitications-dropdown {
     padding: 0;
@@ -638,16 +645,19 @@ li.dropdown.head-dpdn:nth-child(3) {
 	border:none;
 }
 .notification_header{
-	background-color:#FAFAFA;
+	background-color:#FC3158;
 	padding: 10px 15px;
 	border-bottom:1px solid rgba(0, 0, 0, 0.05);
 }
 li.dropdown.note i{
- font-size:1.2em;
- color:#fff;
+ font-size:1.4em;
+ color:#FFF;
+}
+li.dropdown.note:hover{
+    color:#FC3158;
 }
 .notification_header h3{	
-	    color:#37474f;
+	    color:#FFF;
     font-size: 12px;
     font-weight: 600;
     margin: 5px 0 0 0;
@@ -659,13 +669,12 @@ li.dropdown.note i{
     background-color: #f3f7f9;
 }
 .notification_bottom a {
-    color: #00C6D7;
-}
-.notification_bottom a {
-    color:#F44336;
+    color: #FC3158;
 }
 .notification_bottom a:hover {
-    color:#999;
+    color:#FC3158;
+    background: #f3f7f9;
+    text-decoration: underline;
 }
 .notification_bottom h3 a{	
 	color: #717171;
@@ -935,7 +944,7 @@ ul.dropdown-menu.two li a {
 }
 .notification_bottom a {
     padding: 6px 10px;
-    color: #00C6D7;
+    color: #FC3158;
 }
 ul.dropdown-menu.two.drp-mnu li a i {
     width: 24px;
@@ -1033,8 +1042,8 @@ span.text {
 span.badge {
     font-size: 11px;
     font-weight: bold;
-    color: #FFF;
-    background: #052963;
+    color: #FC3158;
+    background: #FFF;
     line-height: 17px;
     width: 20px;
     height: 20px;
