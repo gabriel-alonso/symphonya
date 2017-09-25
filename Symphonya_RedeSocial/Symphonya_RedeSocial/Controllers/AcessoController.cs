@@ -45,7 +45,6 @@ namespace Symphonya_RedeSocial.Controllers
 
                 Usuario Us = new Usuario();
 
-               
                 Us.Nome = Request.Form["Nome"].ToString();
                 Us.Sobrenome = Request.Form["Sobrenome"].ToString();
                 Us.MesNascimento = Convert.ToInt32(Request.Form["MesNascimento"]);

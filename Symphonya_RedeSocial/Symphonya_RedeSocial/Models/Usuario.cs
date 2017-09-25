@@ -100,7 +100,6 @@ namespace Symphonya_RedeSocial.Models
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
             Conexao.Open();
 
-
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
