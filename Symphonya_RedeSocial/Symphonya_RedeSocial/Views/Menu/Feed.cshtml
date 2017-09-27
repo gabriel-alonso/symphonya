@@ -63,14 +63,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="srch"><button></button></div>
                         <script type="text/javascript">
 										 $('.main-search').hide();
-										$('button').click(function (){
-											$('.main-search').show();
-											$('.main-search text').focus();
+										 $('button').click(function () {
+										     $('.main-search').fadeIn("slow");
+										     $('.main-search text').focus();
+										     $('button').css("color", "#000");
 										}
 										);
-										$('.close').click(function(){
-											$('.main-search').hide();
-										});
+										     $('.close').click(function () {
+										         $('.main-search').hide();
+										     });
                         </script>
                         <!--/profile_details-->
                         <div class="profile_details_left">

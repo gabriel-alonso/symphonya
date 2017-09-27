@@ -443,16 +443,14 @@ cursor: pointer;
     left: 21%;
 }
 .main-search{
-       float: right;
-    background: #002561;
+    float: right;
+    background: #FC3158;
     width: 20%;
     height: 60px;
-    padding: 15px 15px 69px 17px;
-    border: 1px solid #C6CCD6;
+    padding: 15px 15px 51.4px 17px;
     position: absolute;
-    z-index:99999;
-        top: 75px;
-    left: 248px;
+    top: 3%;
+    left: 25.1%;
 }
 .main-search:after {
 	content: '';
@@ -470,7 +468,7 @@ cursor: pointer;
 .main-search input[type="text"],.main-search input[type="submit"]{
 	display:inline-block;
 	border:none;
-	color:#5d5d5d;
+	color:#FC3158;
 	outline:none;
 	width:inherit;
 	padding:inherit;
@@ -498,9 +496,12 @@ cursor: pointer;
 }
 .close{
     color: #333;
-        padding: 2px 3px 0px 0px;
     cursor: pointer;
     opacity: .9;
+    left:1%;
+    top:30%;
+    padding: 5px 5px 5px -8px;
+    position:absolute;
 }
 .close:hover {
     opacity: 0.8;
