@@ -82,8 +82,8 @@ namespace Symphonya_RedeSocial.Models
             this.MesNascimento = (Int32)Leitor["MesNascimento"];
             this.DiaNascimento = (Int32)Leitor["DiaNascimento"];
             this.AnoNascimento = (Int32)Leitor["AnoNascimento"];
-            //this.Sexo = (Boolean)Leitor["Sexo"];
-            //this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
+            this.Sexo = (Boolean)Leitor["Sexo"];
+            this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
@@ -103,8 +103,8 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado)"
-              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado);";
+            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Sexo, Modo, Avaliacao)"
+              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Sexo, @Modo, @Avaliacao);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
             Comando.Parameters.AddWithValue("@DiaNascimento", this.DiaNascimento);
@@ -114,8 +114,11 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Senha", this.Senha);
             Comando.Parameters.AddWithValue("@Cidade", this.Cidade);
             Comando.Parameters.AddWithValue("@Estado", this.Estado);
-            
-            
+            Comando.Parameters.AddWithValue("@Sexo", this.Sexo);
+            Comando.Parameters.AddWithValue("@Modo", 0);
+            Comando.Parameters.AddWithValue("@Avaliacao", 0);
+            Comando.Parameters.AddWithValue("@Imagem_Perfil", this.Imagem_Perfil);
+
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();

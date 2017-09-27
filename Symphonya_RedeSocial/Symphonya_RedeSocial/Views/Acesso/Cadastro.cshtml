@@ -217,12 +217,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
 
                                 <div class="agileits-left s2-w3ls" style="width: 59%;">
-                                    <input class="" value="male" name="Sexo" type="radio" style="float: left;" id="Sexo">
+                                    <input class="" value="true" name="Sexo" type="radio" style="float: left;" id="Sexo">
                                     <span class="">Masculino</span>
                                 </div>
 
                                 <div class="agileits-left s2-w3ls">
-                                    <input class="" value="female" name="Sexo" type="radio" style="float:left;" id="Sexo">
+                                    <input class="" value="false" name="Sexo" type="radio" style="float:left;" id="Sexo">
                                     <span class="">Feminino</span>
                                 </div>
 
@@ -279,11 +279,74 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <option value="28">TO</option>
                                     </select>
                                 </div>
-                                @*<div class="agileits-left s2-w3ls">
-              <button>Foto de Perfil</button>
-            </div>*@
                                 <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Senha" class="username" placeholder="Senha" required="" id="Senha">
+                                    <input id="files" type="file" value="Foto de Perfil" name="Imagem_Perfil">
+                                   </div>
+
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+                                <script src="https://gumroad.com/js/gumroad.js"></script>
+
+                                <script>
+
+      var file,
+          reader = new FileReader();
+
+      reader.onloadend = function(e) {
+        if (e.target.error != null) {
+          showError("File " + file.name + " could not be read.");
+          return;
+        } else {
+          google.script.run
+            .withSuccessHandler(showSuccess)
+            .uploadFileToGoogleDrive(e.target.result, file.name, $('input#name').val(), $('input#email').val());
+        }
+      };
+
+      function showSuccess(e) {
+        if (e === "OK") {
+          $('#forminner').hide();
+          $('#success').show();
+        } else {
+          showError(e);
+        }
+      }
+
+      function submitForm() {
+
+        var files = $('#files')[0].files;
+
+        if (files.length === 0) {
+          showError("Please select a file to upload");
+          return;
+        }
+
+        file = files[0];
+
+        if (file.size > 1024 * 1024 * 5) {
+          showError("The file size should be < 5 MB. Please <a href='http://www.labnol.org/internet/file-upload-google-forms/29170/' target='_blank'>upgrade to premium</a> for receiving larger files in Google Drive");
+          return;
+        }
+
+        showMessage("Uploading file..");
+
+        reader.readAsDataURL(file);
+
+      }
+
+      function showError(e) {
+        $('#progress').addClass('red-text').html(e);
+      }
+
+      function showMessage(e) {
+        $('#progress').removeClass('red-text').html(e);
+      }
+
+
+                                </script>
+
+                                <div class="agileits-left s2-w3ls">
+                                    <input type="password" name="Senha" class="username" placeholder="Senha" required="" id="Senha">
                                 </div>
 
 
