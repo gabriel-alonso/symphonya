@@ -103,8 +103,8 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado)"
-              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado);";
+            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Sexo, Modo, Avaliacao)"
+              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Sexo, @Modo, @Avaliacao);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
             Comando.Parameters.AddWithValue("@DiaNascimento", this.DiaNascimento);
@@ -114,8 +114,11 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Senha", this.Senha);
             Comando.Parameters.AddWithValue("@Cidade", this.Cidade);
             Comando.Parameters.AddWithValue("@Estado", this.Estado);
-            
-            
+            Comando.Parameters.AddWithValue("@Sexo", this.Sexo);
+            Comando.Parameters.AddWithValue("@Modo", 0);
+            Comando.Parameters.AddWithValue("@Avaliacao", 0);
+            Comando.Parameters.AddWithValue("@Imagem_Perfil", this.Imagem_Perfil);
+
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();
