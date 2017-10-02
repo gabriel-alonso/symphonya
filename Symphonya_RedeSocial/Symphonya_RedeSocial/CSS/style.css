@@ -3070,6 +3070,9 @@ a.read.fourth:hover{
         .new p.sign a {
             color: #FC3158;
         }
+        .new p.sign a:hover{
+            background: transparent;
+        }
 h2.inner-tittle.page {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     position: absolute;
@@ -3918,7 +3921,6 @@ button.btn.btn-default.tip {
     text-align: center;
     border-bottom: 1px solid #FC3158;
         padding: 43px 0 24px 0;
-    background: #A9A9A9;
 }
 .profile-widget img {
     border-radius:50%;
@@ -3929,7 +3931,7 @@ button.btn.btn-default.tip {
 }
 .profile-widget  h2{
     margin: 7px 0;
-    color: #fff;
+    color: #FC3158;
     font-size: 21px;
     font-weight: normal;
 }

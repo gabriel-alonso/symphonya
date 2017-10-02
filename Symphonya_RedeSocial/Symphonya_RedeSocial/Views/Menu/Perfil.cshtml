@@ -177,20 +177,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     }
                     else {
-                        <div class="profile-widget">
+                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
                         <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                        <h2>@ViewBag.User.Nome</h2><p>@ViewBag.User.Sobrenome</p>
+                        <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
                     </div>
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
-                                <h3 class="inner-tittle">Personal Information </h3>
+                                <h3 class="inner-tittle">Informações Pessoais </h3>
                                 <div class="main-grid3">
                                     <div class="p-20">
                                         <div class="about-info-p">
-                                            <strong>Full Name</strong>
+                                            <strong>Nome Completo</strong>
                                             <br>
-                                            <p class="text-muted">Jasmin Leo</p>
+                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
                                         </div>
                                         <div class="about-info-p">
                                             <strong>Mobile</strong>
@@ -198,18 +198,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <p class="text-muted">(123) 123 1234</p>
                                         </div>
                                         <div class="about-info-p">
-                                            <strong>Email</strong>
+                                            <strong>E-mail</strong>
                                             <br>
-                                            <p class="text-muted"><a href="mailto:info@example.com">mail@example.com</a></p>
+                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
                                         </div>
                                         <div class="about-info-p m-b-0">
-                                            <strong>Location</strong>
+                                            <strong>Local</strong>
                                             <br>
-                                            <p class="text-muted">London, UK</p>
+                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
                                         </div>
                                     </div>
                                 </div>
-                                <h3 class="inner-tittle">Biography </h3>
+                                <h3 class="inner-tittle">Biografia </h3>
                                 <div class="main-grid3 p-skill">
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                                     <p class="para">But also the leap into electronic typesetting, remaining essentially unchanged.</p>
