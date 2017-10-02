@@ -16,21 +16,30 @@ namespace Symphonya_RedeSocial.Controllers
             {
                 ViewBag.Logado = Session["Usuario"];
                 Usuario User = (Usuario)Session["Usuario"];
-                ViewBag.Nome = User.Nome;
-                ViewBag.Imagem = User.Imagem_Perfil;
-                ViewBag.Sobrenome = User.Sobrenome;
+                ViewBag.User = User;
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
-            //else
-            //{
-            //    Response.Redirect("/Acesso/Login");
-            //}
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
 
             return View();
         }
 
         public ActionResult Perfil()
         {
+            if (Session["Usuario"] != null)
+            {
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
             return View();
         }
     }

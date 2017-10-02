@@ -82,14 +82,14 @@ namespace Symphonya_RedeSocial.Models
             this.MesNascimento = (Int32)Leitor["MesNascimento"];
             this.DiaNascimento = (Int32)Leitor["DiaNascimento"];
             this.AnoNascimento = (Int32)Leitor["AnoNascimento"];
-            //this.Sexo = (Boolean)Leitor["Sexo"];
-            //this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
+            this.Sexo = (Boolean)Leitor["Sexo"];
+            this.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
             this.Email = (String)Leitor["Email"];
             this.Senha = (String)Leitor["Senha"];
             this.Cidade = (String)Leitor["Cidade"];
             this.Estado = (Int32)Leitor["Estado"];
-            //this.Avaliacao = (Int32)Leitor["Avaliacao"];
-            //this.Modo = (Boolean)Leitor["Modo"];
+            this.Avaliacao = (Int32)Leitor["Avaliacao"];
+            this.Modo = (Boolean)Leitor["Modo"];
 
 
             Conexao.Close();

@@ -67,7 +67,7 @@ namespace Symphonya_RedeSocial.Controllers
             Session.Abandon();
             Session.Clear();
 
-            Response.Redirect("/Acesso/Login", false);
+            Response.Redirect("/Acesso/Login");
         }
 
     }

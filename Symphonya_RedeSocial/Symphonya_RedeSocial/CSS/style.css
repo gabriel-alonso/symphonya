@@ -220,11 +220,11 @@ a:hover { transition: all 200ms ease-in-out; }
     color: #FC3158;
     white-space: nowrap;
     z-index: 2;
-    background-color: #FFF;
+    background-color: #fff;
     font-size:0.9em;
     font-family: 'Roboto', sans-serif;
-	border:none;
 	    border-left: 4px solid #FC3158;
+        border-right: 0.5px solid #000;
 }
 
 #menu li a:hover {
@@ -340,11 +340,20 @@ span.name-caret {
     font-weight: 400;
 }
 .down  a img {
-         border-radius: 50%;
-    -o-border-radius: 50%;
+    border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    border: 3px solid #002561;
+}
+.down a img:hover{
+    border: 3px solid #FC3158;
+    height:30.45%;
+    width:30.45%;
+}
+.down a{
+    background:transparent;
+}
+.down a:hover{
+    background:transparent;
 }
 
 .down{
@@ -449,7 +458,6 @@ cursor: pointer;
     height: 60px;
     padding: 15px 15px 51.4px 17px;
     position: absolute;
-    top: 3%;
     left: 25.1%;
 }
 .main-search:after {
@@ -3908,16 +3916,16 @@ button.btn.btn-default.tip {
 .profile-widget {
     margin: 0 auto;
     text-align: center;
-    border-bottom: 1px solid #00C6D7;
+    border-bottom: 1px solid #FC3158;
         padding: 43px 0 24px 0;
-    background: #00C6D7;
+    background: #A9A9A9;
 }
 .profile-widget img {
     border-radius:50%;
 	 -o-border-radius:50%;
 	  -webkit-border-radius:50%;
 	   -moz-border-radius:50%;
-	       border: 4px solid #119BA7;
+	       border: 4px solid #d92b4c;
 }
 .profile-widget  h2{
     margin: 7px 0;
@@ -5477,7 +5485,6 @@ footer {
     background: #A9A9A9;
     padding: 12px;
     width: 100%;
-    border-top: 1px solid #00C6D7;
     text-align:center;
     position: fixed;
     bottom: 0;
