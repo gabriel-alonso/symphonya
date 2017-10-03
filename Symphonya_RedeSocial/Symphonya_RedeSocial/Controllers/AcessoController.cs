@@ -40,6 +40,29 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult Cadastro()
         {
+            if (Request.HttpMethod == "POST")
+            {
+
+                Usuario Us = new Usuario();
+
+                Us.Nome = Request.Form["Nome"].ToString();
+                Us.Sobrenome = Request.Form["Sobrenome"].ToString();
+                Us.MesNascimento = Convert.ToInt32(Request.Form["MesNascimento"]);
+                Us.DiaNascimento = Convert.ToInt32(Request.Form["DiaNascimento"]);
+                Us.AnoNascimento = Convert.ToInt32(Request.Form["AnoNascimento"]);
+                Us.Email = Request.Form["Email"].ToString();
+                Us.Senha = FormsAuthentication.HashPasswordForStoringInConfigFile(Request.Form["Senha"], "SHA1");
+                Us.Cidade = Request.Form["Cidade"].ToString();
+                Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
+                Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
+                //Us.Imagem_Perfil = Convert.ToString(Request.Form["Imagem_Perfil"]);
+                //Us.Imagem_Capa = Convert.ToString(Request.Form["Imagem_Capa"]);
+                Us.NovoUser();
+
+                Response.Redirect("/Menu/Feed");
+
+            }
+
             return View();
         }
 
@@ -48,7 +71,7 @@ namespace Symphonya_RedeSocial.Controllers
             Session.Abandon();
             Session.Clear();
 
-            Response.Redirect("/Acesso/Login", false);
+            Response.Redirect("/Acesso/Login");
         }
 
     }

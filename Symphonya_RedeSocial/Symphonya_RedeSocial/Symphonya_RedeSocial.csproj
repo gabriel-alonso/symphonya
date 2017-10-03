@@ -159,10 +159,12 @@
     <Content Include="Imagens\closew.gif" />
     <Content Include="Imagens\cross.png" />
     <Content Include="Imagens\fb.png" />
+    <Content Include="Imagens\ImagensUsuario\fundoPerfil.jpg" />
     <Content Include="Imagens\fundo_cadastro.jpg" />
     <Content Include="Imagens\fundo_login.jpg" />
     <Content Include="Imagens\hourhand.png" />
     <Content Include="Imagens\icons.png" />
+    <Content Include="Imagens\ImagensUsuario\imagemPadrao.png" />
     <Content Include="Imagens\in.jpg" />
     <Content Include="Imagens\in1.jpg" />
     <Content Include="Imagens\in10.jpg" />
@@ -191,6 +193,7 @@
     <Content Include="Imagens\sechand.png" />
     <Content Include="Imagens\social.png" />
     <Content Include="Imagens\speed.png" />
+    <Content Include="Imagens\sympIcon.png" />
     <Content Include="Imagens\tick1.png" />
     <Content Include="Imagens\time.png" />
     <Content Include="Imagens\timer.png" />

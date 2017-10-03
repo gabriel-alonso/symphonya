@@ -200,7 +200,7 @@ h2.wthree {
     display: inline-block;
     font-size: 1em;
 }
-.agile_form input[type=text], .agile_form input[type=email] {
+.agile_form input[type=text], .agile_form input[type=email], .agile_form input[type=password] {
     padding: 0.8em 1em;
     color: #FC3158;
     font-size:1em;
@@ -228,7 +228,7 @@ h2.wthree {
     border-bottom: 1px solid rgb(165, 165, 165);
 }
 option{
-	background:#000;
+	background:#fff;
 }
 input.email{
     float: right;
