@@ -53,7 +53,8 @@ namespace Symphonya_RedeSocial.Controllers
                 Us.Email = Request.Form["Email"].ToString();
                 Us.Senha = FormsAuthentication.HashPasswordForStoringInConfigFile(Request.Form["Senha"], "SHA1");
                 Us.Cidade = Request.Form["Cidade"].ToString();
-                Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
+                Us.Estado = Request.Form["Estado"].ToString();
+                //Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
                 Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
                 //Us.Imagem_Perfil = Convert.ToString(Request.Form["Imagem_Perfil"]);
                 //Us.Imagem_Capa = Convert.ToString(Request.Form["Imagem_Capa"]);

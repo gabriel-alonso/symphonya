@@ -245,38 +245,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </select>
             </div>*@
                                 <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Cidade" class="username" placeholder="Cidade" required="" id="Cidade">
+                                    <input type="text" name="Cidade" class="username" placeholder="Cidade" required="" id="Cidade" onkeypress="return Onlychars(event)">
+                                    <script>
+
+                                        function Onlychars(e) {
+                                            var tecla = new Number();
+                                            if (window.event) {
+                                                tecla = e.keyCode;
+                                            }
+                                            else if (e.which) {
+                                                tecla = e.which;
+                                            }
+                                            else {
+                                                return true;
+                                            }
+                                            if ((tecla >= "48") && (tecla <= "57")) {
+                                                return false;
+                                            }
+                                        }
+                                    </script>
                                 </div>
+
                                 <div class="section_class_agileits">
                                     <select required id="Estado" name="Estado">
                                         <option value="">Estado</option>
-                                        <option value="2">AC</option>
-                                        <option value="3">AL</option>
-                                        <option value="4">AP</option>
-                                        <option value="5">AM</option>
-                                        <option value="6">BA</option>
-                                        <option value="7">CE</option>
-                                        <option value="8">DF</option>
-                                        <option value="9">ES</option>
-                                        <option value="10">GO</option>
-                                        <option value="11">MA</option>
-                                        <option value="12">MT</option>
-                                        <option value="13">MS</option>
-                                        <option value="14">MG</option>
-                                        <option value="15">PA</option>
-                                        <option value="16">PB</option>
-                                        <option value="17">PR</option>
-                                        <option value="18">PE</option>
-                                        <option value="19">PI</option>
-                                        <option value="20">RJ</option>
-                                        <option value="21">RN</option>
-                                        <option value="22">RS</option>
-                                        <option value="23">RO</option>
-                                        <option value="24">RR</option>
-                                        <option value="25">SC</option>
-                                        <option value="26">SP</option>
-                                        <option value="27">SE</option>
-                                        <option value="28">TO</option>
+                                        <option value="Acre">AC</option>
+                                        <option value="Alagoas">AL</option>
+                                        <option value="Amapa">AP</option>
+                                        <option value="Amazonas">AM</option>
+                                        <option value="Bahia">BA</option>
+                                        <option value="Ceara">CE</option>
+                                        <option value="Distrito Federal">DF</option>
+                                        <option value="Espirito Santo">ES</option>
+                                        <option value="Goias">GO</option>
+                                        <option value="Maranhao">MA</option>
+                                        <option value="Mato Grosso">MT</option>
+                                        <option value="Mato Grosso do Sul">MS</option>
+                                        <option value="Minas Gerais">MG</option>
+                                        <option value="Para">PA</option>
+                                        <option value="Paraiba">PB</option>
+                                        <option value="Parana">PR</option>
+                                        <option value="Pernambuco">PE</option>
+                                        <option value="Piaui">PI</option>
+                                        <option value="Rio de Janeiro">RJ</option>
+                                        <option value="Rio Grande do Norte">RN</option>
+                                        <option value="Rio Grande do Sul">RS</option>
+                                        <option value="Rondônia">RO</option>
+                                        <option value="Roraima">RR</option>
+                                        <option value="Santa Catarina">SC</option>
+                                        <option value="São Paulo">SP</option>
+                                        <option value="Sergipe">SE</option>
+                                        <option value="Tocantins">TO</option>
                                     </select>
                                 </div>
                                 <div class="agileits-left s2-w3ls">
