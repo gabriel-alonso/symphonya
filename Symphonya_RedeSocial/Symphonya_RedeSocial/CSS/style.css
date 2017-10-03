@@ -1848,10 +1848,13 @@ h3.sub-tittle.dyna {
 h4.timeline-title a {
     margin: 0;
     padding: 5px 0;
-    color:#333;
+    color:#FC3158;
+    background: none;
 }
 h4.timeline-title a:hover {
-    color: #00C6D7;
+    color: #FC3158;
+    text-decoration: underline;
+    background: none;
 }
 .timeline-body p {
     font-size: 0.9em;
@@ -1999,7 +2002,7 @@ h2.inner,h3.inner {
 h2.inner-tittle,h3.inner-tittle {
     font-size: 2em;
     font-weight: 400;
-    color: #333;
+    color: #FC3158;
     margin-bottom:0.7em;
     text-align: left;
 }
@@ -2028,11 +2031,13 @@ canvas#viewport {
     border-radius: 0;
 }
 ol.breadcrumb.m-b-0 li a {
-	color: #00c6d7;
+	color: #FC3158;
 
 }
 ol.breadcrumb.m-b-0 li a:hover {
-	    color: #052963;
+	    color: #FC3158;
+        background: none;
+        text-decoration: underline;
 }
 .breadcrumb>.active {
     color: #777;
@@ -3071,7 +3076,7 @@ a.read.fourth:hover{
             color: #FC3158;
         }
         .new p.sign a:hover{
-            background: transparent;
+            background: transparent;0
         }
 h2.inner-tittle.page {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
