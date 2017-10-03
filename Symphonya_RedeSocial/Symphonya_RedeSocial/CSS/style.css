@@ -1922,7 +1922,7 @@ h4.timeline-title a:hover {
 }
 
 .timeline-badge.info {
-  background-color: #5bc0de !important;
+  background-color: #FC3158 !important;
 }
 /*--//timeline--*/
 .candile-inner {
@@ -3994,14 +3994,18 @@ p.para {
     font-weight: 500;
 }
 i.fa.fa-picture-o {
-    color: #00C6D7;
+    color: #FC3158;
     margin-left: 10px;
 }
 .gmap-info p {
     line-height: 25px;
 }
 .gmap-info a {
-    color: #00C6D7;
+    color: #FC3158;
+}
+.gmap-info a{
+    text-decoration: underline;
+    background: none;
 }
 .skill1,.skill2 ,.skill3,.skill4{
 	    height: 100%;
@@ -7873,6 +7877,10 @@ footer  p a:hover ,.footer p a:hover{
 		padding: 5px 0;
 		font-size: 0.95em;
 	}
+    h3.timeline-subtitle a{
+        margin: 0;
+		font-size: 0.80em;
+    }
 	.main-grid3 p, .main-grid3 p a {
 		font-size: 0.7em;
 	}

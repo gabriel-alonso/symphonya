@@ -42,5 +42,10 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
+
+        public ActionResult Agenda()
+        {
+            return View();
+        }
     }
 }
