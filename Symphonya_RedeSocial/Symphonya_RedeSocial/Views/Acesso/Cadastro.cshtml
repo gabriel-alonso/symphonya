@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Music Class Registration Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEriCSSon, Motorola web design" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- fonts -->
     <link href="//fonts.googleapis.com/CSS?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -37,8 +38,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="login">
                 <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
                 
-                <div class="login-direita">
-                    
+                <div class="login-direita" style="\.graph-form\ \{\ padding: 2em 2em;background-color: #fff;box-shadow: 0 1px 1px rgba(0,0,0,.05);-o-box-shadow: 0 1px 1px rgba(0,0,0,.05);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);-moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);border: 1px solid #E7E7E8;">
+
                     <div class="content1-agile">
                         <div class="form_w3layouts">
                             <!-- CASO O CADASTRO FALHE-->
@@ -49,8 +50,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
                             }
                             <form action="~/Acesso/Cadastro" method="post" class="agile_form">
-                               
+
                                 <div class="agileits-left">
+                                    
                                     <input type="text" name="Nome" id="Nome" class="username" placeholder="Nome" required="">
                                 </div>
                                 <div class="agileits-left s2-w3ls">
@@ -232,18 +234,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
 
                                 @*<div class="agileits-left s2-w3ls">
-                <input type="number" name="name" class="username" placeholder="Telefone" required="">
-            </div>*@
+                            <input type="number" name="name" class="username" placeholder="Telefone" required="">
+                        </div>*@
 
                                 @*<div class="section_class_agileits">
-                <select required>
-                    <option value="1">Celular</option>
-                    <option value="2">Residencial</option>
-                    <option value="3">Trabalho</option>
+                            <select required>
+                                <option value="1">Celular</option>
+                                <option value="2">Residencial</option>
+                                <option value="3">Trabalho</option>
 
 
-                </select>
-            </div>*@
+                            </select>
+                        </div>*@
                                 <div class="agileits-left s2-w3ls">
                                     <input type="text" name="Cidade" class="username" placeholder="Cidade" required="" id="Cidade" onkeypress="return Onlychars(event)">
                                     <script>
@@ -298,90 +300,133 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <option value="Tocantins">TO</option>
                                     </select>
                                 </div>
-                                <div class="agileits-left s2-w3ls">
-                                    <input id="files" type="file" value="Foto de Perfil" name="Imagem_Perfil">
-                                   </div>
+                               
+                                    <div class="agileits-left s2-w3ls">
+                                        <h2 style="font-size: 15px;font-family: 'Roboto', sans-serif;">Imagem de Perfil*</h2>
+                                        <input id="files" type="file" value="Foto de Perfil" name="Imagem_Perfil">
+                                    </div>
 
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-                                <script src="https://gumroad.com/js/gumroad.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+                                    <script src="https://gumroad.com/js/gumroad.js"></script>
 
-                                <script>
+                                    <script>
+                                        var file,
+                                            reader = new FileReader();
 
-      var file,
-          reader = new FileReader();
+                                        reader.onloadend = function (e) {
+                                            if (e.target.error != null) {
+                                                showError("File " + file.name + " could not be read.");
+                                                return;
+                                            } else {
+                                                google.script.run
+                                                  .withSuccessHandler(showSuccess)
+                                                  .uploadFileToGoogleDrive(e.target.result, file.name, $('input#name').val(), $('input#email').val());
+                                            }
+                                        };
 
-      reader.onloadend = function(e) {
-        if (e.target.error != null) {
-          showError("File " + file.name + " could not be read.");
-          return;
-        } else {
-          google.script.run
-            .withSuccessHandler(showSuccess)
-            .uploadFileToGoogleDrive(e.target.result, file.name, $('input#name').val(), $('input#email').val());
-        }
-      };
+                                        function showSuccess(e) {
+                                            if (e === "OK") {
+                                                $('#forminner').hide();
+                                                $('#success').show();
+                                            } else {
+                                                showError(e);
+                                            }
+                                        }
 
-      function showSuccess(e) {
-        if (e === "OK") {
-          $('#forminner').hide();
-          $('#success').show();
-        } else {
-          showError(e);
-        }
-      }
+                                        function submitForm() {
 
-      function submitForm() {
+                                            var files = $('#files')[0].files;
 
-        var files = $('#files')[0].files;
+                                            if (files.length === 0) {
+                                                showError("Please select a file to upload");
+                                                return;
+                                            }
 
-        if (files.length === 0) {
-          showError("Please select a file to upload");
-          return;
-        }
+                                            file = files[0];
 
-        file = files[0];
+                                            if (file.size > 1024 * 1024 * 5) {
+                                                showError("The file size should be < 5 MB. Please <a href='http://www.labnol.org/internet/file-upload-google-forms/29170/' target='_blank'>upgrade to premium</a> for receiving larger files in Google Drive");
+                                                return;
+                                            }
 
-        if (file.size > 1024 * 1024 * 5) {
-          showError("The file size should be < 5 MB. Please <a href='http://www.labnol.org/internet/file-upload-google-forms/29170/' target='_blank'>upgrade to premium</a> for receiving larger files in Google Drive");
-          return;
-        }
+                                            showMessage("Uploading file..");
 
-        showMessage("Uploading file..");
+                                            reader.readAsDataURL(file);
 
-        reader.readAsDataURL(file);
+                                        }
 
-      }
+                                        function showError(e) {
+                                            $('#progress').addClass('red-text').html(e);
+                                        }
 
-      function showError(e) {
-        $('#progress').addClass('red-text').html(e);
-      }
-
-      function showMessage(e) {
-        $('#progress').removeClass('red-text').html(e);
-      }
-
-
-                                </script>
-
-                                <div class="agileits-left s2-w3ls">
-                                    <input type="password" name="Senha" class="username" placeholder="Senha" required="" id="Senha">
-                                </div>
+                                        function showMessage(e) {
+                                            $('#progress').removeClass('red-text').html(e);
+                                        }
 
 
-                                <div class="clear"></div>
-                                <div class="clear"></div>
+                                    </script>
 
-                                <div class="clear"></div>
-                                <div class="submit" style="text-align: center;">
+                                    <div class="agileits-left s2-w3ls">
+                                        <input type="password" name="Senha" class="username" placeholder="Senha" required="" id="Senha">
+                                        <span style="color: crimson;background-color: rgba(0, 0, 0, 0.15);padding: 2.9%;border-bottom: 1px solid rgb(165, 165, 165);">
+                                            <i id="showPassword" style="font-size:15px;cursor: pointer;float: inline-end;" class="fa"></i>
+                                            <script>
 
-                                    <input type="submit" onclick="myFunction()" value="Cadastrar">
-                                </div>
-                            </form>
-                                </div>
-                           
+                                                $(document).ready(function () {
+                                                    $('#showPassword').on('click', function () {
+
+                                                        var passwordField = $('#Senha');
+                                                        var passwordFieldType = passwordField.attr('type');
+                                                        if (passwordFieldType == 'password') {
+                                                            passwordField.attr('type', 'text');
+                                                            $(this).val('Ocultar');
+                                                        } else {
+                                                            passwordField.attr('type', 'password');
+                                                            $(this).val('Mostrar');
+                                                        }
+                                                    });
+                                                });
+
+
+                                            </script>
+                                        </span>
+                                       
+                                    </div>
+                                    <div class="agileits-left s2-w3ls">
+                                        <input type="password" name="confirm_password" class="username" placeholder="Confirmar Senha" required="" id="confirm_password">
+                                        <script>
+                                            var Senha = document.getElementById("Senha")
+                                                , confirm_password = document.getElementById("confirm_password");
+
+                                            function validatePassword() {
+                                                if (Senha.value != confirm_password.value) {
+                                                    confirm_password.setCustomValidity("Senhas diferentes!");
+                                                } else {
+                                                    confirm_password.setCustomValidity('');
+                                                }
+                                            }
+
+                                            Senha.onchange = validatePassword;
+                                            confirm_password.onkeyup = validatePassword;
+                                        </script>
+                                    </div>
+
+
+                                    <div class="clear"></div>
+                                    <div class="clear"></div>
+
+                                    <div class="clear"></div>
+                                    <div class="submit" style="text-align: center;">
+
+                                        <input type="submit" onclick="myFunction()" value="Cadastrar">
+                                    </div>
+                                <p class="fk-copy">Já possui uma conta? <a href="~/Acesso/Login">Iniciar sessão</a>.</p>
+</form>
                         </div>
+
                     </div>
+                </div>
 
                 </div>
             </div>
