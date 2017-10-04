@@ -2803,11 +2803,16 @@ form.com-mail {
 }
  input[type="submit"] {
     font-size: 0.9em;
-    background-color:#002561;
-    border: 1px solid #002561;
-    color: #fff;
+    background-color:#FC3158;
+    border: 1px solid #fff;
+    color: #FFFFFF;
     padding: 0.4em 1em;
     margin-top: 1em;
+}
+input[type="submit"]:hover {
+    background-color:#FFF;
+    border: 1px solid #FC3158;
+    color: #FC3158;
 }
 ul#menu-comunicacao-sub {
     z-index: 999999;
@@ -4499,7 +4504,7 @@ p.four {
     text-align: center;
 }
 .post-file i {
-    color: #777;
+    color: #fc3158;
 }
 /*--//toggle--*/
 /*--/switch--*/
@@ -4819,7 +4824,7 @@ button#toggle {
 .text-area textarea{
 	width: 100%;
     border: none;
-    color: #999;
+    color: #FC3158;
     font-size: 1em;
     outline: none;
     padding: 1em;
@@ -7640,12 +7645,17 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	input[type="submit"] {
 		font-size: 0.9em;
-		background-color: #002561;
-		border: 1px solid #002561;
+		background-color: #FC3158;
+		border: 1px solid #FFF;
 		color: #fff;
 		padding: 0.4em 0.3em;
 		margin-top: 1em;
 	}
+    input[type="submit"]:hover{
+        background-color: #FFF;
+        color: #FC3158;
+		border: 1px solid #FC3158;
+    }
 	canvas#line2 {
 		width: 187px!important;
 		height: 300px!important;

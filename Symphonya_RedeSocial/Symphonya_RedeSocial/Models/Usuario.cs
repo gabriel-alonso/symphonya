@@ -178,14 +178,14 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
         }
 
-        public static List<Usuario> ListarU()
+        public static List<Usuario> Listar(String pesquisa)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["KatiauBD"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT * FROM Usuario;";
+            Comando.CommandText = "SELECT * FROM Usuario WHERE Nome LIKE '"+@pesquisa+"%'";
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
@@ -194,22 +194,31 @@ namespace Symphonya_RedeSocial.Models
             {
                 Usuario U = new Usuario();
                 U.ID = (Int32)Leitor["ID"];
-                U.Nome = ((String)Leitor["NomeU"]);
-              //  U.Nick = Leitor["NickU"].ToString();
-                U.Sobrenome = (String)Leitor["SobrenomeU"];
-                U.Email = ((String)Leitor["EmailU"]);
-                U.Senha = (String)Leitor["SenhaU"];
-              //  U.Nascimento = (String)Leitor["NascimentoU"];
-             //   U.Bio = (String)Leitor["BioU"];
-                //U.ImagemPerfil = (String)Leitor["ImagemU"];
-               // U.Adm = (Boolean)Leitor["Administrador"];
-
+                U.Nome = ((String)Leitor["Nome"]);
+                U.Sobrenome = (String)Leitor["Sobrenome"];
+                U.MesNascimento = (Int32)Leitor["MesNascimento"];
+                U.DiaNascimento = (Int32)Leitor["DiaNascimento"];
+                U.AnoNascimento = (Int32)Leitor["AnoNascimento"];
+                U.Sexo = (Boolean)Leitor["Sexo"];
+                U.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
+                U.Imagem_Capa = (String)Leitor["Imagem_Capa"];
+                U.Email = (String)Leitor["Email"];
+                U.Senha = (String)Leitor["Senha"];
+                U.Cidade = (String)Leitor["Cidade"];
+                U.Estado = (String)Leitor["Estado"];
+                U.Avaliacao = (Int32)Leitor["Avaliacao"];
+                U.Modo = (Boolean)Leitor["Modo"];
 
                 Users.Add(U);
             }
 
-            Conexao.Close();
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
 
+            Conexao.Close();
             return Users;
         }
 

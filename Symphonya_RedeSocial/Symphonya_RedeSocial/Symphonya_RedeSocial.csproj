@@ -279,7 +279,7 @@
     <Content Include="Fonts\weathericons-regular-webfont.eot" />
     <Content Include="Fonts\weathericons-regular-webfont.ttf" />
     <Content Include="Fonts\weathericons-regular-webfont.woff" />
-    <Content Include="Views\Menu\Agenda.cshtml" />
+    <Content Include="Views\Menu\Pesquisar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -289,9 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="CSS\Calendario\" />
     <Folder Include="Fonts\Calendario\" />
-    <Folder Include="JS\Calendario\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <PropertyGroup>
