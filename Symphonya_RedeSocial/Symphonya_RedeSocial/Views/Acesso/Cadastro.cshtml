@@ -24,7 +24,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="~/CSS/styleCadastro.css" rel="stylesheet" type='text/CSS' media="all" />
     <!-- /CSS -->
     <!-- JavaScript -->
-    <script src="~/JavaScript/jquery-2.2.3.min.js"></script>
+    <script src="~/JS/jquery-2.2.3.min.js"></script>
+    <script src="~/JS/mascaras.js"></script>
+    
 </head>
 <body>
 
@@ -233,9 +235,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <input type="email" name="Email" class="username" id="Email" placeholder="Email" required="">
                                 </div>
 
-                                @*<div class="agileits-left s2-w3ls">
-                            <input type="number" name="name" class="username" placeholder="Telefone" required="">
-                        </div>*@
+                                <div class="agileits-left s2-w3ls">
+                                    <input type="text" name="Telefone" id="Telefone" class="username" placeholder="Telefone" required=""  onkeypress="return OnlyNumbers(event)" size="20" maxlength="14">
+                                    <script>
+
+                                        function OnlyNumbers(e) {
+                                            var tecla = new Number();
+                                            if (window.event) {
+                                                tecla = e.keyCode;
+                                            }
+                                            else if (e.which) {
+                                                tecla = e.which;
+                                            }
+                                            else {
+                                                return true;
+                                            }
+                                            if ((tecla >= "97") && (tecla <= "122")) {
+                                                return false;
+                                            }
+                                        }
+
+                                    </script>
+                                    </div>
+
 
                                 @*<div class="section_class_agileits">
                             <select required>
