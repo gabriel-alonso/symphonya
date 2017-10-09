@@ -236,7 +236,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 </div>
 
                                 <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Telefone" id="Telefone" class="username" placeholder="Telefone" required=""  onkeypress="return OnlyNumbers(event)" size="20" maxlength="14">
+                                    <input type="text" name="Telefone" id="Telefone" class="username" placeholder="Telefone" required="" onkeyup="formataTelefone(this, event)"  onkeypress="return OnlyNumbers(event)" size="20" maxlength="15">
                                     <script>
 
                                         function OnlyNumbers(e) {

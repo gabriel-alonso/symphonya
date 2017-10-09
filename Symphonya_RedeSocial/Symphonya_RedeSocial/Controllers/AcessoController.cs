@@ -58,6 +58,7 @@ namespace Symphonya_RedeSocial.Controllers
                 Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
                 //Us.Imagem_Perfil = Convert.ToString(Request.Form["Imagem_Perfil"]);
                 //Us.Imagem_Capa = Convert.ToString(Request.Form["Imagem_Capa"]);
+                Us.Telefone = Request.Form["Telefone"].ToString();
                 Us.NovoUser();
 
                 Response.Redirect("/Menu/Feed");

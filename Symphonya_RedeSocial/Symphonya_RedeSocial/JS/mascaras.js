@@ -1,20 +1,4 @@
-﻿//formataCEP – para campos CEP;
-//formataCNPJ – para campos CNPJ;
-
-//formataCPF – para campos CPF;
-//formataData – para campos data (dd/MM/yyyy);
-//formataMesAno – para campos que somente aceitam o mês e o ano juntos (MM/yyyy);
-//formataHora – para campos hora (HH:mm);
-//formataInteiro – para campos aonde só aceitam números inteiros;
-//formataDouble – para números flutuantes Ex: 3,14159265;
-//formataTelefone – para campos com só com telefone com DDD (00) 0000-0000;
-
-// exemplo de implementação:
-//<asp:TextBox ID="txtCPF" runat= "server" CssClass ="st-forminput-active" onkeyup = "formataCPF(this,event)" MaxLength="14" />  
-
-
-
-function formataMascara(campo, evt, formato) {
+﻿function formataMascara(campo, evt, formato) {
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
     if (!teclaValida(tecla))
@@ -61,8 +45,8 @@ function formataMascara(campo, evt, formato) {
 }
 
 // Formata o campo valor monetário
+//1.000.000,00
 function formataValor(campo, evt) {
-    //1.000.000,00
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -239,12 +223,12 @@ function filtraCampo(campo) {
     tam = vr.length;
     for (i = 0; i < tam; i++) {
         if (vr.substring(i, i + 1) != "/"
-                  && vr.substring(i, i + 1) != "-"
-                  && vr.substring(i, i + 1) != "."
-                  && vr.substring(i, i + 1) != "("
-                  && vr.substring(i, i + 1) != ")"
-                  && vr.substring(i, i + 1) != ":"
-                  && vr.substring(i, i + 1) != ",") {
+            && vr.substring(i, i + 1) != "-"
+            && vr.substring(i, i + 1) != "."
+            && vr.substring(i, i + 1) != "("
+            && vr.substring(i, i + 1) != ")"
+            && vr.substring(i, i + 1) != ":"
+            && vr.substring(i, i + 1) != ",") {
             s = s + vr.substring(i, i + 1);
         }
     }
@@ -260,15 +244,15 @@ function filtraNumeros(campo) {
     tam = vr.length;
     for (i = 0; i < tam; i++) {
         if (vr.substring(i, i + 1) == "0" ||
-                  vr.substring(i, i + 1) == "1" ||
-                  vr.substring(i, i + 1) == "2" ||
-                  vr.substring(i, i + 1) == "3" ||
-                  vr.substring(i, i + 1) == "4" ||
-                  vr.substring(i, i + 1) == "5" ||
-                  vr.substring(i, i + 1) == "6" ||
-                  vr.substring(i, i + 1) == "7" ||
-                  vr.substring(i, i + 1) == "8" ||
-                  vr.substring(i, i + 1) == "9") {
+            vr.substring(i, i + 1) == "1" ||
+            vr.substring(i, i + 1) == "2" ||
+            vr.substring(i, i + 1) == "3" ||
+            vr.substring(i, i + 1) == "4" ||
+            vr.substring(i, i + 1) == "5" ||
+            vr.substring(i, i + 1) == "6" ||
+            vr.substring(i, i + 1) == "7" ||
+            vr.substring(i, i + 1) == "8" ||
+            vr.substring(i, i + 1) == "9") {
             s = s + vr.substring(i, i + 1);
         }
     }
@@ -282,8 +266,8 @@ function filtraCaracteres(campo) {
     for (i = 0; i < tam; i++) {
         //Caracter
         if (vr.charCodeAt(i) != 32 && vr.charCodeAt(i) != 94 && (vr.charCodeAt(i) < 65 ||
-              (vr.charCodeAt(i) > 90 && vr.charCodeAt(i) < 96) ||
-                  vr.charCodeAt(i) > 122) && vr.charCodeAt(i) < 192) {
+        (vr.charCodeAt(i) > 90 && vr.charCodeAt(i) < 96) ||
+            vr.charCodeAt(i) > 122) && vr.charCodeAt(i) < 192) {
             vr = vr.replace(vr.substr(i, 1), "");
         }
     }
@@ -299,16 +283,16 @@ function filtraNumerosComVirgula(campo) {
     var complemento = 0; //flag paga contar o número de virgulas
     for (i = 0; i < tam; i++) {
         if ((vr.substring(i, i + 1) == "," && complemento == 0 && s != "") ||
-                  vr.substring(i, i + 1) == "0" ||
-                  vr.substring(i, i + 1) == "1" ||
-                  vr.substring(i, i + 1) == "2" ||
-                  vr.substring(i, i + 1) == "3" ||
-                  vr.substring(i, i + 1) == "4" ||
-                  vr.substring(i, i + 1) == "5" ||
-                  vr.substring(i, i + 1) == "6" ||
-                  vr.substring(i, i + 1) == "7" ||
-                  vr.substring(i, i + 1) == "8" ||
-                  vr.substring(i, i + 1) == "9") {
+            vr.substring(i, i + 1) == "0" ||
+            vr.substring(i, i + 1) == "1" ||
+            vr.substring(i, i + 1) == "2" ||
+            vr.substring(i, i + 1) == "3" ||
+            vr.substring(i, i + 1) == "4" ||
+            vr.substring(i, i + 1) == "5" ||
+            vr.substring(i, i + 1) == "6" ||
+            vr.substring(i, i + 1) == "7" ||
+            vr.substring(i, i + 1) == "8" ||
+            vr.substring(i, i + 1) == "9") {
             if (vr.substring(i, i + 1) == ",")
                 complemento = complemento + 1;
             s = s + vr.substring(i, i + 1);
@@ -317,8 +301,8 @@ function filtraNumerosComVirgula(campo) {
     return s;
 }
 
+//MM/yyyy
 function formataMesAno(campo, evt) {
-    //MM/yyyy
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -333,8 +317,8 @@ function formataMesAno(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+//99.999.999/9999-99
 function formataCNPJ(campo, evt) {
-    //99.999.999/9999-99
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -355,8 +339,8 @@ function formataCNPJ(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+//999.999.999-99
 function formataCPF(campo, evt) {
-    //999.999.999-99
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -374,8 +358,8 @@ function formataCPF(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+//18,53012
 function formataDouble(campo, evt) {
-    //18,53012
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -399,10 +383,10 @@ function formataTelefone(campo, evt) {
 
     if (tam == 1)
         campo.value = '(' + vr;
-    else if (tam >= 2 && tam < 6)
+    else if (tam >= 2 && tam < 7)
         campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2);
-    else if (tam >= 6)
-        campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 4) + '-' + vr.substr(6);
+    else if (tam >= 7)
+        campo.value = '(' + vr.substr(0, 2) + ') ' + vr.substr(2, 5) + '-' + vr.substr(7);
 
     //(
     //    if(xPos == 1 || xPos == 3 || xPos == 5 || xPos == 9)
@@ -410,8 +394,8 @@ function formataTelefone(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+//Nome com Inicial Maiuscula.
 function formataTexto(campo, evt, sMascara) {
-    //Nome com Inicial Maiuscula.
     evt = getEvent(evt);
     xPos = PosicaoCursor(campo);
     var tecla = getKeyCode(evt);
@@ -502,8 +486,8 @@ function formataCEP(campo, evt) {
     MovimentaCursor(campo, xPos);
 }
 
+//0000.0000.0000.0000
 function formataCartaoCredito(campo, evt) {
-    //0000.0000.0000.0000
     var xPos = PosicaoCursor(campo);
     evt = getEvent(evt);
     var tecla = getKeyCode(evt);
@@ -536,17 +520,17 @@ function teclaValida(tecla) {
     if (tecla == 8 //backspace
         //Esta evitando o post, quando são pressionadas estas teclas.
         //Foi comentado pois, se for utilizado o evento texchange, é necessario o post.
-           || tecla == 9 //TAB
-           || tecla == 27 //ESC
-           || tecla == 16 //Shif TAB
-           || tecla == 45 //insert
-           || tecla == 46 //delete
-           || tecla == 35 //home
-           || tecla == 36 //end
-           || tecla == 37 //esquerda
-           || tecla == 38 //cima
-           || tecla == 39 //direita
-           || tecla == 40)//baixo
+        || tecla == 9 //TAB
+        || tecla == 27 //ESC
+        || tecla == 16 //Shif TAB 
+        || tecla == 45 //insert
+        || tecla == 46 //delete
+        || tecla == 35 //home
+        || tecla == 36 //end
+        || tecla == 37 //esquerda
+        || tecla == 38 //cima
+        || tecla == 39 //direita
+        || tecla == 40)//baixo
         return false;
     else
         return true;
