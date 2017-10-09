@@ -218,12 +218,15 @@
     <Content Include="JS\jquery-2.2.3.min.js" />
     <Content Include="JS\jquery-ui.js" />
     <Content Include="JS\jquery.chocolat.js" />
+    <Content Include="JS\jquery.mask.js" />
+    <Content Include="JS\jquery.min.js" />
     <Content Include="JS\jquery.nicescroll.js" />
     <Content Include="JS\jquery.vmap.js" />
     <Content Include="JS\jquery.vmap.sampledata.js" />
     <Content Include="JS\jquery.vmap.world.js" />
     <Content Include="JS\light.js" />
     <Content Include="JS\map.js" />
+    <Content Include="JS\mascaras.js" />
     <Content Include="JS\modernizr.custom.04022.js" />
     <Content Include="JS\moment-2.2.1.js" />
     <Content Include="JS\protovis-d3.2.js" />
