@@ -214,8 +214,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <img src="~/Imagens/ImagensUsuario/@(U.Imagem_Perfil)" alt="" />
                             </td>
                             <td class="table-text">
-                                <h6><a href="/Menu/Perfil/@(U.ID)">@(U.Nome) @(U.Sobrenome)</a></h6>
-                                <p>Nullam quis risus eget urna mollis ornare vel eu leo</p>
+                                <h6><a href="/Menu/MostrarUsuario/@U.ID">@(U.Nome) @(U.Sobrenome)</a></h6>
+                                <p>@(U.Email)</p>
                             </td>
                             <td>
                                 <span class="fam">Usuário</span>
@@ -225,14 +225,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </td>
 
                             <td>
-                                <i class="fa fa-star-half-o icon-state-warning"></i>
+                                <i class="fa fa-heart"></i>
                             </td>
                         </tr>
                         }
                     </tbody>
                 </table>
                 }
-                else
+                @if (ViewBag.Bandas != null)
+                {
+                    <table class="table">
+                        <tbody>
+                            @foreach (var B in ViewBag.Bandas)
+                            {
+                                <tr class="table-row">
+                                    <td class="table-img">
+                                        <img src="" alt="" />
+                                    </td>
+                                    <td class="table-text">
+                                        <h6><a href="/Menu/Perfil/@B.ID">@(B.Nome)</a></h6>
+                                        <p>@(B.Descricao.Substring(0, Math.Min(B.Descricao.Length, 100)) + "...")</p>
+                                    </td>
+                                    <td>
+                                        <span class="fam">Banda</span>
+                                    </td>
+                                    <td class="march">
+                                        in 5 days
+                                    </td>
+
+                                    <td>
+                                        <i class="fa fa-heart"></i>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                @if(ViewBag.Usuarios == null && ViewBag.Bandas == null)
                 {
                     <h2>Não foi encontrado nenhum resultado!</h2>
                 }

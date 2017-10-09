@@ -41,11 +41,19 @@ namespace Symphonya_RedeSocial.Controllers
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null)
             {
-                //CRIA SESSÃO DO USUARIO
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
                 ViewBag.Logado = Session["Usuario"];
-                Usuario User = (Usuario)Session["Usuario"];
-                ViewBag.User = User;
 
+                if (TempData["Usuario"] == null)
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                }
+                else
+                {
+                    ViewBag.User = TempData["Usuario"];
+                }
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
@@ -78,6 +86,11 @@ namespace Symphonya_RedeSocial.Controllers
                     List<Usuario> Usuarios = Usuario.Listar(busca);
                     ViewBag.Usuarios = Usuarios;
                 }
+                if(Bandas.Listar(busca) != null)
+                {
+                    List<Bandas> Bands = Bandas.Listar(busca);
+                    ViewBag.Bandas = Bands;
+                }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
@@ -87,5 +100,21 @@ namespace Symphonya_RedeSocial.Controllers
 
             return View();
         }
+
+        public ActionResult MostrarUsuario(int id)
+        {
+            Usuario usuarios = new Usuario(id);
+            if (usuarios != null)
+            {
+                TempData["Usuario"] = usuarios;
+
+                return RedirectToAction("Perfil", "Menu");
+            }
+            else
+            {
+                return RedirectToAction("Pesuisar", "Menu");
+            }
+        }
+
     }
 }
