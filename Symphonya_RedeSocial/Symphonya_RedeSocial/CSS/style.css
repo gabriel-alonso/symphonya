@@ -53,6 +53,21 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
     background: #FC3158;
 	text-decoration:none;
 }
+.table a{
+    color: #FC3158;
+    background: transparent;
+	text-decoration:none;
+}
+.table a:focus, a:active, a:hover ,a.dropdown-toggle{
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    color: #FC3158;
+    background: #FC3158;
+	text-decoration:none;
+}
+
 .logo a:focus, a:active, a:hover, a.dropdown-toggle{
     color:#FFF;
 }
@@ -498,6 +513,15 @@ cursor: pointer;
 	top: 9px;
     right: 9px;
 	background:url('../Imagens/search2.png') no-repeat -0px -0px;
+	height: 25px;
+	width: 25px;
+	cursor:pointer;
+}
+.main-search input[type="submit"]:hover{
+    position: absolute;
+	top: 9px;
+    right: 9px;
+	background:url('../Imagens/search2Hover.png') no-repeat -0px -0px;
 	height: 25px;
 	width: 25px;
 	cursor:pointer;
@@ -1328,6 +1352,7 @@ margin-right:0;
 }
 h3.sub-tittle {
     margin-bottom: 0.5em;
+    color:#FC3158;
 }
 canvas#viewport {
     width:600px!important;
@@ -2304,7 +2329,7 @@ td.head {
     float: right;
 }
 .float-left {
-    float: left;
+    float: right;
 }
 .mail-toolbar {
     padding-bottom: 2em;
@@ -2473,7 +2498,10 @@ td.table-text p {
     color: #999;
 }
 td span.fam {
-    background: #00C6D7;
+    background: #FC3158;
+}
+table td i{
+    color:#FC3158;
 }
 span.mar{
  background: #052963;
@@ -3952,6 +3980,7 @@ button.btn.btn-default.tip {
     color: #FC3158;
     font-size: 21px;
     font-weight: normal;
+    padding-right: 5.4%;
 }
 .profile-widget p{
 	    font-size: 14px;

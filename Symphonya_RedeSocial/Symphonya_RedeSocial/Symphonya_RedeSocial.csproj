@@ -284,7 +284,7 @@
     <Content Include="Fonts\weathericons-regular-webfont.ttf" />
     <Content Include="Fonts\weathericons-regular-webfont.woff" />
     <Content Include="Views\Menu\Pesquisar.cshtml" />
-    <Content Include="Views\Menu\CadastroBanda.cshtml" />
+    <Content Include="Views\Menu\VerUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
