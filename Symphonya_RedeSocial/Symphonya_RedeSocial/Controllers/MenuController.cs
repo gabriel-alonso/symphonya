@@ -116,5 +116,23 @@ namespace Symphonya_RedeSocial.Controllers
             }
         }
 
+        public ActionResult CadastroBanda()
+        {
+
+            if (Request.HttpMethod == "POST")
+            {
+
+                Bandas ba = new Bandas();
+
+                ba.Nome = Request.Form["Nome"].ToString();
+                ba.Descricao = Request.Form["Descricao"].ToString();              
+                ba.NovaBanda();
+
+                Response.Redirect("/Menu/CadastroBanda");
+
+            }
+
+            return View();
+        }
     }
 }

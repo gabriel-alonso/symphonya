@@ -26,6 +26,7 @@ namespace Symphonya_RedeSocial.Models
         public int DiaNascimento { get; set; }
         public int AnoNascimento { get; set; }
         public String Telefone { get; set; }
+        public string Descricao { get; internal set; }
 
         public Usuario() { }
 

@@ -69,6 +69,26 @@ namespace Symphonya_RedeSocial.Models
 
             return Bands;
         }
+        public Boolean NovaBanda()
+        {
+
+            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            Conexao.Open();
+
+            //CRIACAO DO COMANDO SQL
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "INSERT INTO Bandas ( Nome , Descricao)"
+              + "VALUES ( @Nome , @Descricao);";
+            Comando.Parameters.AddWithValue("@Nome", this.Nome);
+            Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
+            
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
+        }
 
     }
 }

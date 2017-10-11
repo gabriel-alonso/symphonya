@@ -2818,8 +2818,16 @@ ul#menu-comunicacao-sub {
     z-index: 999999;
 }
 /*--/404--*/
+
 .error_page {
     background: url("../Imagens/fundo_login.jpg") no-repeat;
+    position: relative;
+    padding: 11em 0;
+    width: 100%;
+    height: 100%;
+}
+.error_page2 {
+   
     position: relative;
     padding: 11em 0;
     width: 100%;
@@ -2897,7 +2905,7 @@ a.read.fourth:hover{
     width:48.5%;
     float:right;
 }
-	.login input[type="text"],.login input[type="password"]{
+	.login input[type="text"],.login input[type="password"],.login input[type="email"]{
 		width: 100%;
 		padding: 0.9em 1em 0.9em 4em;
 		color: #777;
@@ -3163,7 +3171,7 @@ h2.inner-tittle.page {
 	opacity: 1;
 }
 h3.inner-tittle.t-inner {
-    font-size: 1.8em;
+    font-size: 3.8em;
     font-weight: 400;
     text-align: center;
     margin-bottom: 0.7em;

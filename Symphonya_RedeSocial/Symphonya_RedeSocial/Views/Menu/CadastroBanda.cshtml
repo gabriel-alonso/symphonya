@@ -1,0 +1,427 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Symphonya</title>
+    <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
+    <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/CSS/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/CSS/style.css" rel='stylesheet' type='text/css' />
+    <!-- Graph CSS -->
+    <link href="~/CSS/font-awesome.css" rel="stylesheet">
+    <!-- jQuery -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="~/CSS/icon-font.min.css" type='text/css' />
+    <!-- //lined-icons -->
+    <script src="~/JS/jquery-1.10.2.min.js"></script>
+    <script src="~/JS/amcharts.js"></script>
+    <script src="~/JS/serial.js"></script>
+    <script src="~/JS/light.js"></script>
+    <script src="~/JS/radar.js"></script>
+    <link href="~/CSS/barChart.css" rel='stylesheet' type='text/css' />
+    <link href="~/CSS/fabochart.css" rel='stylesheet' type='text/css' />
+    <!--clock init-->
+    <script src="~/JS/css3clock.js"></script>
+    <!--Easy Pie Chart-->
+    <!--skycons-icons-->
+    <script src="~/JS/skycons.js"></script>
+
+    <script src="~/JS/jquery.easydropdown.js"></script>
+
+    <!--//skycons-icons-->
+    <!-- CASO O CADASTRO FALHE-->
+    @if (ViewBag.MsgErro != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Erro!</strong> Campos incorretos!
+        </div>
+    }
+</head>
+<body>
+    <div class="page-container">
+        <!--/content-inner-->
+        <div class="left-content">
+            <div class="inner-content">
+                <!-- header-starts -->
+                <div class="header-section">
+                    <!--menu-right-->
+                    <div class="top_menu">
+                        <div class="main-search">
+                            <form method="post" action="~/Menu/Pesquisar">
+                                <input id="busca" name="busca" type="text" value="Buscar" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Buscar';}" class="text" />
+                                <input type="submit" value="">
+                            </form>
+                        </div>
+                        @*<script type="text/javascript">
+                                         $('.main-search').hide();
+                                         $('button').click(function () {
+                                             $('.main-search').fadein("slow");
+                                             $('.main-search text').focus();
+                                        }
+                                        );
+                                             $('.close').click(function () {
+                                                 $('.main-search').hide();
+                                             });
+                        </script>*@
+                        <!--/profile_details-->
+                        <div class="profile_details_left">
+                            <ul class="nofitications-dropdown">
+                                <li class="dropdown note dra-down">
+                                    <script type="text/javascript">
+
+                                        function DropDown(el) {
+                                            this.dd = el;
+                                            this.placeholder = this.dd.children('span');
+                                            this.opts = this.dd.find('ul.dropdown > li');
+                                            this.val = '';
+                                            this.index = -1;
+                                            this.initEvents();
+                                        }
+                                        DropDown.prototype = {
+                                            initEvents: function () {
+                                                var obj = this;
+
+                                                obj.dd.on('click', function (event) {
+                                                    $(this).toggleClass('active');
+                                                    return false;
+                                                });
+
+                                                obj.opts.on('click', function () {
+                                                    var opt = $(this);
+                                                    obj.val = opt.text();
+                                                    obj.index = opt.index();
+                                                    obj.placeholder.text(obj.val);
+                                                });
+                                            },
+                                            getValue: function () {
+                                                return this.val;
+                                            },
+                                            getIndex: function () {
+                                                return this.index;
+                                            }
+                                        }
+
+                                        $(function () {
+
+                                            var dd = new DropDown($('#dd'));
+
+                                            $(document).click(function () {
+                                                // all dropdowns
+                                                $('.wrapper-dropdown-3').removeClass('active');
+                                            });
+
+                                        });
+
+                                    </script>
+                                </li>
+                                <li class="dropdown note">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitch"></i> <span class="badge">3</span></a>
+
+
+                                    <ul class="dropdown-menu two first">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>Fique Antenado</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">Veja Tudo</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown note">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o"></i> <span class="badge">5</span></a>
+
+                                    <ul class="dropdown-menu two">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>Voce tem 5 Notificações</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">Veja Tudo</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!--//profile_details-->
+                    </div>
+                    <!--//menu-right-->
+                    <!--footer section start-->
+                    <footer>
+                        <p>© 2017 Symphonya . Todos os direitos reservados.</p>
+                    </footer>
+                    <!--footer section end-->
+                </div>
+            </div>
+
+            <!-- INICIO CADASTRO NOVA BANDA -->
+            <div class="error_page2">
+                <!--/register-top-->
+
+                <div class="error-top">
+
+                    <div class="login">
+                        <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
+
+                        <div class="login-direita" style="\.graph-form\ \{\ padding: 2em 2em;background-color: #fff;box-shadow: 0 1px 1px rgba(0,0,0,.05);-o-box-shadow: 0 1px 1px rgba(0,0,0,.05);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);-moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);border: 1px solid #E7E7E8;width:  100%;">
+
+                            <div class="content1-agile">
+                                <div class="form_w3layouts">
+                                    
+                                    <form action="~/Menu/CadastroBanda" method="post" class="agile_form">
+
+                                        <div class="agileits-left">
+
+                                            <input type="text" name="Nome" id="Nome" class="username" placeholder="Nome" required="">
+                                        </div>
+                                        <div class="agileits-left s2-w3ls">
+                                            <input name="Descricao" id="Descricao" class="username" placeholder="Descrição" required="" style="padding: 0.9em 3em 8.9em 4em;background: no-repeat;" type="text">
+                                        </div>
+                                        
+                                        @*<div class="section_class_agileits">
+                                                <select required>
+                                                   <option value="">Gênero</option>
+                                                   <option value="Axé">Axé</option>
+                                                   <option value="Black Music">Black Music</option>
+                                                    <option value="Blues">Blues</option>
+                                                    <option value="Bossa Nova">Bossa Nova</option>
+                                                    <option value="Chillout">Chillout</option>
+                                                    <option value="Classic Rock">Classic Rock</option>
+                                                    <option value="Clássico">Clássico</option>
+                                                    <option value="Country">Country</option>
+                                                    <option value="Dance">Dance</option>
+                                                    <option value="Disco">Disco</option>
+                                                    <option value="Electro Swing">Electro Swing</option>
+                                                    <option value="Eletrônica">Eletrônica</option>
+                                                    <option value="Emocore">Emocore</option>
+                                                    <option value="Fado">Fado</option>
+                                                    <option value="Folk">Folk</option>
+                                                    <option value="Forró">Forró</option>
+                                                    <option value="Funk">Funk</option>
+                                                    <option value="Funk Carioca">Funk Carioca</option>
+                                                    <option value="Gospel/Religioso">Gospel/Religioso</option>
+                                                    <option value="Gótico">Gótico</option>
+                                                    <option value="Grunge">Grunge</option>
+                                                    <option value="Hard Rock">Hard Rock</option>
+                                                    <option value="Hardcore">Hardcore</option>
+                                                    <option value="Heavy Metal">Heavy Metal</option>
+                                                    <option value="Hip Hop">Hip Hop</option>
+                                                    <option value="House">House</option>
+                                                    <option value="Indie">Indie</option>
+                                                    <option value="Industrial">Industrial</option>
+                                                    <option value="Infantil">Infantil</option>
+                                                    <option value="Instrumental">Instrumental</option>
+                                                    <option value="J-Pop/J-Rock">J-Pop/J-Rock</option>
+                                                    <option value="Jazz">Jazz</option>
+                                                    <option value="Jovem Guarda">Jovem Guarda</option>
+                                                    <option value="K-Pop/K-Rock">K-Pop/K-Rock</option>
+                                                    <option value="Kizomba">Kizomba</option>
+                                                    <option value="Metal">Metal</option>
+                                                    <option value="MPB">MPB</option>
+                                                    <option value="New Age">New Age</option>
+                                                    <option value="New Wave">New Wave</option>
+                                                    <option value="Pagode">Pagode</option>
+                                                    <option value="Piano Rock">Piano Rock</option>
+                                                    <option value="Pop">Pop</option>
+                                                    <option value="Pop-Punk">Pop-Punk</option>
+                                                    <option value="Pop-Rock">Pop-Rock</option>
+                                                    <option value="Pós-Punk">Pós-Punk</option>
+                                                    <option value="Post-Rock">Post-Rock</option>
+                                                    <option value="Power-Pop">Power-Pop</option>
+                                                    <option value="Progressivo">Progressivo</option>
+                                                    <option value="Punk Rock">Punk Rock</option>
+                                                    <option value="R&B">R&B</option>
+                                                    <option value="Rap">Rap</option>
+                                                    <option value="Reggae">Reggae</option>
+                                                    <option value="Reggaeton">Reggaeton</option>
+                                                    <option value="Regional">Regional</option>
+                                                    <option value="Rock">Rock</option>
+                                                    <option value="Rock Alternativo">Rock Alternativo</option>
+                                                    <option value="Rockabilly">Rockabilly</option>
+                                                    <option value="Romântico">Romântico</option>
+                                                    <option value="Samba">Samba</option>
+                                                    <option value="Samba Enredo">Samba Enredo</option>
+                                                    <option value="Sertanejo">Sertanejo</option>
+                                                    <option value="Soft Rock">Soft Rock</option>
+                                                    <option value="Soul">Soul</option>
+                                                    <option value="Tecnopop">Tecnopop</option>
+                                                    <option value="Trance">Trance</option>
+                                                    <option value="Trip-Hop">Trip-Hop</option>
+                                                    <option value="Tropical House">Tropical House</option>
+                                                    <option value="Velha Guarda">Velha Guarda</option>
+                                                </select>
+                                        </div>*@
+
+                                    </form>
+                                            </div>
+                                            <div class="submit" style="text-align: center;">
+
+                                                <input type="submit" onclick="myFunction()" value="Cadastrar">
+                                            </div>
+                                            
+                                
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+        
+                    <!-- FIM CADASTRO NOVA BANDA-->
+                    <!--//content-inner-->
+                    <!--/sidebar-menu-->
+                    <div class="sidebar-menu">
+                        <header class="logo">
+                            <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="index.html">
+                                <span id="logo"> <h1>Symphonya</h1></span>
+                                <!--<img id="logo" src="" alt="Logo"/>-->
+                            </a>
+                        </header>
+                        <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+                        <!--/down-->
+                        <div class="down">
+                            @if (ViewBag.Logado == null) { }
+                            else {
+                                <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
+                                <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
+                            }
+                            <p>System Administrator in Company</p>
+                            <ul>
+                                <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--//down-->
+                        <div class="menu">
+                            <ul id="menu">
+                                <li id="menu-academico">
+                                    <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                                    <ul id="menu-academico-sub">
+                                        <li id="menu-academico-boletim"><a href="widget.html">Agenda</a></li>
+                                        <li id="menu-academico-avaliacoes"><a href="calender.html">Horários</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="typography.html"><i class="fa fa-file"></i> <span>Arquivos</span></a></li>
+                                <li id="menu-academico">
+                                    <a href="#"><i class="fa fa-group"></i> <span>Bandas</span> <span class="fa fa-angle-right" style="padding-left: 53%;"></span></a>
+                                    <ul id="menu-academico-sub">
+                                        <li id="menu-academico-avaliacoes"><a href="login.html">Nova Banda</a></li>
+                                        <li id="menu-academico-boletim"><a href="register.html">Ver Bandas</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-academico">
+                                    <a href="#"><i class="fa fa-address-book"></i> <span>Seguidores</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-address-book-o"></i> <span>Seguindo</span></a>
+                                </li>
+                                @*<li id="menu-academico">
+                                    <a href="#"><i class="lnr lnr-layers"></i> <span>Componentes</span> <span class="fa fa-angle-right" style="padding-left: 32%;"></span></a>
+                                    <ul id="menu-academico-sub">
+                                        <li id="menu-academico-avaliacoes"><a href="grids.html">Grades</a></li>
+                                        <li id="menu-academico-boletim"><a href="media.html">Objetos de Mídia</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="chart.html"><i class="lnr lnr-chart-bars"></i> <span>Gráficos</span> <span class="fa fa-angle-right" style="padding-left: 52%;"></span></a>
+                                    <ul>
+                                        <li><a href="map.html"><i class="lnr lnr-map"></i> Mapas</a></li>
+                                        <li><a href="graph.html"><i class="lnr lnr-apartment"></i> Visualização Gráfica</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-comunicacao">
+                                    <a href="#"><i class="fa fa-smile-o"></i> <span>Mais</span><span class="fa fa-angle-double-right" style="padding-left: 64%;"></span></a>
+                                    <ul id="menu-comunicacao-sub">
+                                        <li id="menu-mensagens" style="width:120px">
+                                            <a href="project.html">Projeto/ s <i class="fa fa-angle-right" style="padding-left: 20%;"></i></a>
+                                            <ul id="menu-mensagens-sub">
+                                                <li id="menu-mensagens-enviadas" style="width:130px"><a href="ribbon.html">Ribbons</a></li>
+                                                <li id="menu-mensagens-recebidas" style="width:130px"><a href="blank.html">Blank</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <script>
+                var toggle = true;
+
+                $(".sidebar-icon").click(function () {
+                    if (toggle) {
+                        $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+                        $("#menu span").css({ "position": "absolute" });
+                    }
+                    else {
+                        $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+                        setTimeout(function () {
+                            $("#menu span").css({ "position": "relative" });
+                        }, 400);
+                    }
+
+                    toggle = !toggle;
+                });
+            </script>
+            <!--js -->
+            <link rel="stylesheet" href="~/CSS/vroom.css">
+            <script type="text/javascript" src="~/JS/vroom.js"></script>
+            <script type="text/javascript" src="~/JS/TweenLite.min.js"></script>
+            <script type="text/javascript" src="~/JS/CSSPlugin.min.js"></script>
+            <script src="~/JS/jquery.nicescroll.js"></script>
+            <script src="~/JS/scripts.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="~/JS/bootstrap.min.js"></script>
+</body>
+</html>
