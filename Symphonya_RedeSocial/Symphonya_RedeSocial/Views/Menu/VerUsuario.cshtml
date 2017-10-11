@@ -166,33 +166,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sub-heard-part">
                         <ol class="breadcrumb m-b-0">
                             <li><a href="~/Menu/Feed">Início</a></li>
-                            <li class="active">Perfil</li>
+                            <li class="active">Visualização de Usuário</li>
                         </ol>
                     </div>
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Perfil</h3>
-                    <div class="btn-editarperfil">
-                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i> <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li><a href="#">Work</a></li>
-                            <li><a href="#">Family</a></li>
-                            <li><a href="#">Social</a></li>
-
-                            <li><a href="#">Primary</a></li>
-                            <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Forums</a></li>
-                        </ul>
-                    </div>
                     @if (ViewBag.Logado == null)
                     {
 
                     }
-                    else {
-                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                        <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                        <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
-                    </div>
+                    @if (ViewBag.Visualizacao != null)
+                    {
+                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Capa);">
+                            <img src="~/Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Perfil" alt="" />
+                            <h2>@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</h2>
+                        </div>
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
@@ -202,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="about-info-p">
                                             <strong>Nome Completo</strong>
                                             <br>
-                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
+                                            <p class="text-muted">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
                                         </div>
                                         <div class="about-info-p">
                                             <strong>Mobile</strong>
@@ -212,12 +201,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="about-info-p">
                                             <strong>E-mail</strong>
                                             <br>
-                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
+                                            <p class="text-muted"><a href="@ViewBag.Visualizacao.Email">@ViewBag.Visualizacao.Email</a></p>
                                         </div>
                                         <div class="about-info-p m-b-0">
                                             <strong>Local</strong>
                                             <br>
-                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
+                                            <p class="text-muted">@ViewBag.Visualizacao.Cidade, @ViewBag.Visualizacao.Estado</p>
                                         </div>
                                     </div>
                                 </div>
@@ -263,7 +252,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                             <div class="timeline-panel">
                                                 <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
+                                                    <h4 class="timeline-title"><a>@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome - NOME MÚSICA</a></h4>
                                                 </div>
                                                 <div class="timeline-body">
                                                     <p class="time">5 Minutes ago</p>
@@ -304,8 +293,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
 
                     <!--//profile-inner-->
-                    <!--//profile--> }
-                    
+                    <!--//profile-->
+                    }
+                    else
+                    {
+                        Response.Redirect("/Menu/Pesquisar");
+                    }
                 </div>
                 <!--//outer-wp-->
                 <!--footer section start-->
@@ -427,3 +420,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/JS/bootstrap.min.js"></script>
 </body>
 </html>
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
