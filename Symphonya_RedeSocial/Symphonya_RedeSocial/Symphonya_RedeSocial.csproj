@@ -190,6 +190,7 @@
     <Content Include="Imagens\right_arrow.png" />
     <Content Include="Imagens\search.png" />
     <Content Include="Imagens\search2.png" />
+    <Content Include="Imagens\search2Hover.png" />
     <Content Include="Imagens\sechand.png" />
     <Content Include="Imagens\social.png" />
     <Content Include="Imagens\speed.png" />
@@ -253,6 +254,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bandas.cs" />
+    <Compile Include="Models\Seguidores.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -285,6 +287,8 @@
     <Content Include="Fonts\weathericons-regular-webfont.woff" />
     <Content Include="Views\Menu\Pesquisar.cshtml" />
     <Content Include="Views\Menu\VerUsuario.cshtml" />
+    <Content Include="Views\Menu\Livestream.cshtml" />
+    <Content Include="Views\Menu\Seguidores.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

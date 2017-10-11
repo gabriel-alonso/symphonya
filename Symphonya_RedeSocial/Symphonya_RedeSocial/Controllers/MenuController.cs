@@ -205,5 +205,65 @@ namespace Symphonya_RedeSocial.Controllers
             }
         }
 
+        public ActionResult Livestream()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+
+            return View();
+        }
+
+        public ActionResult Seguidores()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
+
+                List<Seguidores> seguidor = new List<Seguidores>();
+                Seguidores s = new Seguidores();
+
+                s.ListarSeguidores(User.ID);
+                seguidor.Add(s);
+
+                ViewBag.Seguidores = seguidor;
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+
+            return View();
+        }
+
     }
 }

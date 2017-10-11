@@ -171,141 +171,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <!--//sub-heard-part-->
                     <!--/profile-->
-                    <h3 class="sub-tittle pro">Perfil</h3>
-                    <div class="btn-editarperfil">
-                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i> <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li><a href="#">Work</a></li>
-                            <li><a href="#">Family</a></li>
-                            <li><a href="#">Social</a></li>
+                    <h3 class="sub-tittle pro">Livestream</h3>
+                                     
+                    <iframe class="frame-livestream"
+                            src="http://player.twitch.tv/?channel=Tecnosh&muted=true"
+                            height="720"
+                            width="1280"
+                            frameborder="0"
+                            scrolling="no"
+                            allowfullscreen="true">
 
-                            <li><a href="#">Primary</a></li>
-                            <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Forums</a></li>
-                        </ul>
-                    </div>
-                    @if (ViewBag.Logado == null)
-                    {
-
-                    }
-                    else {
-                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                        <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                        <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
-                    </div>
-                    <!--/profile-inner-->
-                        <div class="profile-section-inner">
-                            <div class="col-md-6 profile-info">
-                                <h3 class="inner-tittle">Informações Pessoais </h3>
-                                <div class="main-grid3">
-                                    <div class="p-20">
-                                        <div class="about-info-p">
-                                            <strong>Nome Completo</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>Mobile</strong>
-                                            <br>
-                                            <p class="text-muted">(123) 123 1234</p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>E-mail</strong>
-                                            <br>
-                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
-                                        </div>
-                                        <div class="about-info-p m-b-0">
-                                            <strong>Local</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class="inner-tittle">Biografia </h3>
-                                <div class="main-grid3 p-skill">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p class="para">But also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                                </div>
-                                <h3 class="inner-tittle two">Instrumentos </h3>
-                                <div class="main-grid3">
-                                    <div class="bar">
-                                        <p>UI/UX</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill1" style="width:100%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>HTML / CSS3 / SASS</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill2" style="width:90%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>Javascript</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill3" style="width:75%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>Wordpress</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill4" style="width:85%"> </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Músicas </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <!--/map-->
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Atividade Recente </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a href="profile.html">@ViewBag.User.Nome @ViewBag.User.Sobrenome</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                    <!--//profile-inner-->
-                    <!--//profile--> }
-                    
+                    </iframe>
                 </div>
                 <!--//outer-wp-->
                 <!--footer section start-->
@@ -365,7 +241,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <a href="~/Menu/Livestream"><i class="fa fa-twitch"></i> <span>Livestream</span></a>
                     </li>
-                   
                 </ul>
             </div>
         </div>
