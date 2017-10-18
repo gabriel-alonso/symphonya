@@ -126,11 +126,11 @@ namespace Symphonya_RedeSocial.Controllers
 
                         if (contentType.IndexOf("jpeg") > 0)
                         {
-                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "\\images\\img_users\\" + "imagemPerfil" + ID + ".jpg");
-                            //postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\img_users\" + "imagemPerfil" + ID + ".jpg");
+                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + "imagemPerfil" + ID + ".png");
+                            postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + "imagemPerfil" + ID + ".png");
                         }
-                        // else
-                        //  postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\" + Request.Form["Desc"] + ".txt");
+                        else
+                            ViewBag.Erro = "Erro ao enviar imagem, tente novamente!";
 
                     }
 
@@ -231,7 +231,7 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
-        public ActionResult Seguidores()
+        public ActionResult VerSeguidores()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null)
@@ -241,13 +241,15 @@ namespace Symphonya_RedeSocial.Controllers
                 Usuario User = (Usuario)Session["Usuario"];
                 ViewBag.User = User;
 
-                List<Seguidores> seguidor = new List<Seguidores>();
-                Seguidores s = new Seguidores();
-
-                s.ListarSeguidores(User.ID);
-                seguidor.Add(s);
-
-                ViewBag.Seguidores = seguidor;
+                if (Seguidores.ListarSeguidores(User.ID) != null)
+                {
+                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(User.ID);
+                    ViewBag.Seguidores = seguidores;
+                }
+                else
+                {
+                    ViewBag.Erro = "Não foram encontrados seguidores!";
+                }
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")

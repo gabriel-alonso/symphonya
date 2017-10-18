@@ -19,7 +19,7 @@ namespace Symphonya_RedeSocial.Models
 
         }
 
-        public List<Seguidores> ListarSeguidores(Int32 ID)
+        public static List<Seguidores> ListarSeguidores(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();

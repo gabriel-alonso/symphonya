@@ -175,8 +175,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     <table class="table">
                         <tbody>
-                            @foreach (var S in ViewBag.Seguidores)
+                            @if (ViewBag.Seguidores == null)
                             {
+                                <p>Você ainda não possui seguidores!</p>
+                            }
+                            else {
+                                foreach (var S in ViewBag.Seguidores)
+                                {
                                 <tr class="table-row">
                                     <td class="table-text">
                                         <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
@@ -186,9 +191,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <span class="fam">Usuário</span>
                                     </td>
                                     <td>
-                                        <i class="fa fa-heart"></i>
+                                        <img class="status">
                                     </td>
                                 </tr>
+                                }
                             }
                         </tbody>
                     </table>
