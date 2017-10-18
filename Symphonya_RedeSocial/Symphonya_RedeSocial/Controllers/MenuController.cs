@@ -73,6 +73,13 @@ namespace Symphonya_RedeSocial.Controllers
                 Usuario User = (Usuario)Session["Usuario"];
                 ViewBag.User = User;
 
+                //RETORNA OS USUARIOS, CASO HAJA RESULTADO
+                if (Genero.Listar() != null)
+                {
+                    List<Genero> generos = Genero.Listar();
+                    ViewBag.Generos = generos;
+                }
+
                 if (Request.HttpMethod == "POST")
                 {
                     Bandas ba = new Bandas();

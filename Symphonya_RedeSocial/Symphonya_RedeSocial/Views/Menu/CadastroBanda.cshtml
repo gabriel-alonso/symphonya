@@ -230,74 +230,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="section_class_agileits">
                                                 <select required>
                                                    <option value="">Gênero</option>
-                                                   <option value="Axé">Axé</option>
-                                                   <option value="Black Music">Black Music</option>
-                                                    <option value="Blues">Blues</option>
-                                                    <option value="Bossa Nova">Bossa Nova</option>
-                                                    <option value="Chillout">Chillout</option>
-                                                    <option value="Classic Rock">Classic Rock</option>
-                                                    <option value="Clássico">Clássico</option>
-                                                    <option value="Country">Country</option>
-                                                    <option value="Dance">Dance</option>
-                                                    <option value="Disco">Disco</option>
-                                                    <option value="Electro Swing">Electro Swing</option>
-                                                    <option value="Eletrônica">Eletrônica</option>
-                                                    <option value="Emocore">Emocore</option>
-                                                    <option value="Fado">Fado</option>
-                                                    <option value="Folk">Folk</option>
-                                                    <option value="Forró">Forró</option>
-                                                    <option value="Funk">Funk</option>
-                                                    <option value="Funk Carioca">Funk Carioca</option>
-                                                    <option value="Gospel/Religioso">Gospel/Religioso</option>
-                                                    <option value="Gótico">Gótico</option>
-                                                    <option value="Grunge">Grunge</option>
-                                                    <option value="Hard Rock">Hard Rock</option>
-                                                    <option value="Hardcore">Hardcore</option>
-                                                    <option value="Heavy Metal">Heavy Metal</option>
-                                                    <option value="Hip Hop">Hip Hop</option>
-                                                    <option value="House">House</option>
-                                                    <option value="Indie">Indie</option>
-                                                    <option value="Industrial">Industrial</option>
-                                                    <option value="Infantil">Infantil</option>
-                                                    <option value="Instrumental">Instrumental</option>
-                                                    <option value="J-Pop/J-Rock">J-Pop/J-Rock</option>
-                                                    <option value="Jazz">Jazz</option>
-                                                    <option value="Jovem Guarda">Jovem Guarda</option>
-                                                    <option value="K-Pop/K-Rock">K-Pop/K-Rock</option>
-                                                    <option value="Kizomba">Kizomba</option>
-                                                    <option value="Metal">Metal</option>
-                                                    <option value="MPB">MPB</option>
-                                                    <option value="New Age">New Age</option>
-                                                    <option value="New Wave">New Wave</option>
-                                                    <option value="Pagode">Pagode</option>
-                                                    <option value="Piano Rock">Piano Rock</option>
-                                                    <option value="Pop">Pop</option>
-                                                    <option value="Pop-Punk">Pop-Punk</option>
-                                                    <option value="Pop-Rock">Pop-Rock</option>
-                                                    <option value="Pós-Punk">Pós-Punk</option>
-                                                    <option value="Post-Rock">Post-Rock</option>
-                                                    <option value="Power-Pop">Power-Pop</option>
-                                                    <option value="Progressivo">Progressivo</option>
-                                                    <option value="Punk Rock">Punk Rock</option>
-                                                    <option value="R&B">R&B</option>
-                                                    <option value="Rap">Rap</option>
-                                                    <option value="Reggae">Reggae</option>
-                                                    <option value="Reggaeton">Reggaeton</option>
-                                                    <option value="Regional">Regional</option>
-                                                    <option value="Rock">Rock</option>
-                                                    <option value="Rock Alternativo">Rock Alternativo</option>
-                                                    <option value="Rockabilly">Rockabilly</option>
-                                                    <option value="Romântico">Romântico</option>
-                                                    <option value="Samba">Samba</option>
-                                                    <option value="Samba Enredo">Samba Enredo</option>
-                                                    <option value="Sertanejo">Sertanejo</option>
-                                                    <option value="Soft Rock">Soft Rock</option>
-                                                    <option value="Soul">Soul</option>
-                                                    <option value="Tecnopop">Tecnopop</option>
-                                                    <option value="Trance">Trance</option>
-                                                    <option value="Trip-Hop">Trip-Hop</option>
-                                                    <option value="Tropical House">Tropical House</option>
-                                                    <option value="Velha Guarda">Velha Guarda</option>
+                                                    @if (ViewBag.Generos == null)
+                                                    {
+                                                        <option value="">Erro!</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        foreach (var G in ViewBag.Generos)
+                                                        {
+                                                            <option value="@(G.ID)">@(G.Nome)</option>
+                                                        }
+                                                    }
+                                                   
+                                                   
                                                 </select>
                                         </div>
                                         <div class="submit" style="text-align: center;">
