@@ -291,8 +291,9 @@
     <Content Include="Views\Menu\Pesquisar.cshtml" />
     <Content Include="Views\Menu\VerUsuario.cshtml" />
     <Content Include="Views\Menu\Livestream.cshtml" />
-    <Content Include="Views\Menu\VerSeguidores.cshtml" />
+    <Content Include="Views\Menu\VerSeguidos.cshtml" />
     <Content Include="Views\Menu\CadastroBanda.cshtml" />
+    <Content Include="Views\Menu\VerSeguidores.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
