@@ -525,6 +525,11 @@ cursor: pointer;
 	height: 25px;
 	width: 25px;
 	cursor:pointer;
+    text-decoration:none;
+    border:none;
+}
+.frame-livestream{
+    left:100%;
 }
 .close{
     color: #333;
