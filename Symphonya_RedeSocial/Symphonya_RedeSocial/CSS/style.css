@@ -1359,6 +1359,10 @@ h3.sub-tittle {
     margin-bottom: 0.5em;
     color:#FC3158;
 }
+p.sub-tittle-desc{
+    color: #999;
+    font-family: sans-serif;
+}
 canvas#viewport {
     width:600px!important;
     height:550px!important;

@@ -172,7 +172,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Seguidores</h3>
-
+                    <p class="sub-tittle-desc">Veja quem segue você.</p>
                     <table class="table">
                         <tbody>
                             @if (ViewBag.Seguidores == null)
@@ -182,21 +182,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             else {
                                 foreach (var S in ViewBag.Seguidores)
                                 {
-                                <tr class="table-row">
-                                    <td class="table-text">
-                                        <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                        <p>@(S.Email)</p>
-                                    </td>
-                                    <td>
-                                        <span class="fam">Usuário</span>
-                                    </td>
-                                    <td>
-                                        <img class="status" src="~/Imagens/icone.png"
-                                             onmouseover="this.src='/Imagens/iconeHover.png'"
-                                             onmouseout="this.src = '/Imagens/icone.png'" />
-
-                                    </td>
-                                </tr>
+                                    <tr class="table-row">
+                                        <td class="table-text">
+                                            <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
+                                            <p>@(S.Email)</p>
+                                        </td>
+                                        <td>
+                                            <span class="fam">Usuário</span>
+                                        </td>
+                                        <td>
+                                            <img class="status" src="~/Imagens/icone.png" />
+                                        </td>
+                                    </tr>
                                 }
                             }
                         </tbody>
