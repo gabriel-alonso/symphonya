@@ -223,28 +223,95 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                             <input type="text" name="Nome" id="Nome" class="username" placeholder="Nome" required="">
                                         </div>
+                                        <div class="agileits-left" style="float: inline-start;width: 100%;">
+
+                                            <input name="Genero" id="Genero" class="username" placeholder="Genero" required="" style="width: 30%;float: left;" type="text">
+
+                                            <div class="section_class_agileits">
+                                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+                                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                                                <meta name="keywords" content="Searchable Option List Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+                                                <link href="~/CSS/styleGenero.css" rel="stylesheet" type="text/css" media="all" />
+                                                <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+                                                <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+                                                <script type="text/javascript" src="~/JS/jquery-2.1.4.min.js"></script>
+                                                <link rel="stylesheet" href="~/CSS/sol.css">
+                                                <script type="text/javascript" src="~/JS/sol.js"></script>
+
+                                                <div class="main">
+                                                    <div id="main-content" class="markdown-body">
+                                                        <select id="demonstration" name="character0" style="width: 250px" multiple="multiple" required>
+                                                            <option value="">Gênero</option>
+                                                            @if (ViewBag.Generos == null)
+                                                            {
+                                                                <option value="">Erro!</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                foreach (var G in ViewBag.Generos)
+                                                                {
+                                                                    <option value="@(G.ID)">@(G.Nome)</option>
+                                                                }
+                                                            }
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <script type="text/javascript">
+                                                $(function () {
+                                                    $('#demonstration').searchableOptionList({ maxHeight: '300px', showSelectAll: true });
+
+                                                    $('.basicSelect').searchableOptionList();
+
+
+                                                    $('#my-verylong-select').searchableOptionList({ maxHeight: '250px' });
+                                                    $('#my-multiselect-all').searchableOptionList({ showSelectAll: true });
+                                                    $('#null-allowed-select').searchableOptionList({ allowNullSelection: true });
+                                                    $('#default-texts').searchableOptionList({ showSelectAll: true });
+                                                    $('#custom-texts').searchableOptionList({
+                                                        showSelectAll: true,
+                                                        texts: {
+                                                            noItemsAvailable: 'Go on, nothing to see here',
+                                                            selectAll: 'none',
+                                                            selectNone: 'none',
+                                                            quickDelete: 'Kick',
+                                                            searchplaceholder: 'Giggity giggity...'
+                                                        }
+                                                    });
+
+                                                    $('#positionshowcase select:first').searchableOptionList({
+                                                        texts: {
+                                                            searchplaceholder: 'Not fixed'
+                                                        },
+                                                        events: {
+                                                            onScroll: function () { }
+                                                        }
+                                                    });
+                                                    $('#positionshowcase select:not(:first)').searchableOptionList({
+                                                        texts: {
+                                                            searchplaceholder: 'Fixed'
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+
+
+
+
+
+
+
+                                        </div>
+
                                         <div class="agileits-left s2-w3ls">
                                             <input name="Descricao" id="Descricao" class="username" placeholder="Descrição" required="" style="padding: 0.9em 3em 8.9em 4em;background: no-repeat;" type="text">
                                         </div>
                                         
-                                        <div class="section_class_agileits">
-                                                <select required>
-                                                   <option value="">Gênero</option>
-                                                    @if (ViewBag.Generos == null)
-                                                    {
-                                                        <option value="">Erro!</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        foreach (var G in ViewBag.Generos)
-                                                        {
-                                                            <option value="@(G.ID)">@(G.Nome)</option>
-                                                        }
-                                                    }
-                                                   
-                                                   
-                                                </select>
-                                        </div>
+                                     
                                         <div class="submit" style="text-align: center;">
 
                                             <input type="submit" onclick="myFunction()" value="Cadastrar">

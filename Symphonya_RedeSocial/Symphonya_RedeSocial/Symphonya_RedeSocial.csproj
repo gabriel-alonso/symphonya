@@ -129,8 +129,10 @@
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="CSS\jqvmap.css" />
     <Content Include="CSS\popuo-box.css" />
+    <Content Include="CSS\sol.css" />
     <Content Include="CSS\style.css" />
     <Content Include="CSS\styleCadastro.css" />
+    <Content Include="CSS\styleGenero.css" />
     <Content Include="CSS\vroom.css" />
     <Content Include="Fonts\digital-7-webfont.svg" />
     <Content Include="Fonts\digital-7_italic-webfont.svg" />
@@ -218,6 +220,7 @@
     <Content Include="JS\dygraph-combined.js" />
     <Content Include="JS\fabochart.js" />
     <Content Include="JS\jquery-1.10.2.min.js" />
+    <Content Include="JS\jquery-2.1.4.min.js" />
     <Content Include="JS\jquery-2.2.3.min.js" />
     <Content Include="JS\jquery-ui.js" />
     <Content Include="JS\jquery.chocolat.js" />
@@ -239,6 +242,8 @@
     <Content Include="JS\serial.js" />
     <Content Include="JS\site.js" />
     <Content Include="JS\skycons.js" />
+    <Content Include="JS\sol.js" />
+    <Content Include="JS\toc.js" />
     <Content Include="JS\TweenLite.min.js" />
     <Content Include="JS\underscore-min.js" />
     <Content Include="JS\vix.js" />
