@@ -210,7 +210,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div class="content1-agile">
                                 <div class="form_w3layouts">
-                                    
+                                    <!-- CASO O CADASTRO FALHE-->
+                                    @if (ViewBag.MsgErro != null)
+                                    {
+                                        <div class="alert alert-danger">
+                                            <strong>Erro!</strong> Campos incorretos!
+                                        </div>
+                                    }
                                     <form action="~/Menu/CadastroBanda" method="post" class="agile_form">
 
                                         <div class="agileits-left">
@@ -221,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <input name="Descricao" id="Descricao" class="username" placeholder="Descrição" required="" style="padding: 0.9em 3em 8.9em 4em;background: no-repeat;" type="text">
                                         </div>
                                         
-                                        @*<div class="section_class_agileits">
+                                        <div class="section_class_agileits">
                                                 <select required>
                                                    <option value="">Gênero</option>
                                                    <option value="Axé">Axé</option>
@@ -293,15 +299,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <option value="Tropical House">Tropical House</option>
                                                     <option value="Velha Guarda">Velha Guarda</option>
                                                 </select>
-                                        </div>*@
+                                        </div>
+                                        <div class="submit" style="text-align: center;">
+
+                                            <input type="submit" onclick="myFunction()" value="Cadastrar">
+                                        </div>
+
 
                                     </form>
                                             </div>
-                                            <div class="submit" style="text-align: center;">
-
-                                                <input type="submit" onclick="myFunction()" value="Cadastrar">
-                                            </div>
-                                            
                                 
                                 </div>
 
@@ -352,7 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li id="menu-academico">
                                     <a href="#"><i class="fa fa-group"></i> <span>Bandas</span> <span class="fa fa-angle-right" style="padding-left: 53%;"></span></a>
                                     <ul id="menu-academico-sub">
-                                        <li id="menu-academico-avaliacoes"><a href="login.html">Nova Banda</a></li>
+                                        <li id="menu-academico-avaliacoes"><a href="~/Menu/CadastroBanda">Nova Banda</a></li>
                                         <li id="menu-academico-boletim"><a href="register.html">Ver Bandas</a></li>
                                     </ul>
                                 </li>

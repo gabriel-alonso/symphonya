@@ -63,6 +63,34 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
+        public ActionResult CadastroBanda()
+        {
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
+
+                if (Request.HttpMethod == "POST")
+                {
+                    Bandas ba = new Bandas();
+                    ba.Nome = Request.Form["Nome"].ToString();
+                    ba.Descricao = Request.Form["Descricao"].ToString();
+                    ba.NovaBanda();
+                    Response.Redirect("/Menu/Feed");
+                }
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            
+            }
+            return View();
+        }
+
         public ActionResult VerUsuario()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
@@ -204,6 +232,5 @@ namespace Symphonya_RedeSocial.Controllers
                 return RedirectToAction("Pesquisar", "Menu");
             }
         }
-
     }
 }

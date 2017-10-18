@@ -253,6 +253,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bandas.cs" />
+    <Compile Include="Models\Seguidores.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -284,6 +285,10 @@
     <Content Include="Fonts\weathericons-regular-webfont.ttf" />
     <Content Include="Fonts\weathericons-regular-webfont.woff" />
     <Content Include="Views\Menu\Pesquisar.cshtml" />
+    <Content Include="Views\Menu\CadastroBanda.cshtml" />
+    <Content Include="Views\Menu\Livestream.cshtml" />
+    <Content Include="Views\Menu\Seguidores.cshtml" />
+    <Content Include="Views\Menu\VerUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
