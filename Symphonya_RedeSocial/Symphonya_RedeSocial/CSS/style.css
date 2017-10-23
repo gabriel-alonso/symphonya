@@ -2040,6 +2040,22 @@ h2.inner-tittle,h3.inner-tittle {
     margin-bottom:0.7em;
     text-align: left;
 }
+h3.inner-tittle-biografia{
+    font-size: 2em;
+    font-weight: 400;
+    color: #FC3158;
+    margin-bottom:0.7em;
+    text-align: left;
+    margin-left: 0.7em;
+}
+h3.inner-tittle-instrumentos{
+    font-size: 2em;
+    font-weight: 400;
+    color: #FC3158;
+    margin-bottom:0.7em;
+    margin-top: 0.6em;
+    text-align: left;
+}
 .graph{
        background: #fff;
     padding: 2em 2em;
@@ -4026,6 +4042,48 @@ button.btn.btn-default.tip {
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     border: 1px solid #E7E7E8;
 }
+.main-grid3-biografia{
+    background: #fff;
+    padding: 2em 2em;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border: 1px solid #E7E7E8;
+    margin-left: 1.1em;
+}
+.main-grid3-imagens{
+    background: #fff;
+    padding: 2em 2em;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border: 1px solid #E7E7E8;
+    margin-left: 1.1em;
+    margin-top: 0.5em;
+}
+.main-grid3-imagens input[type=file]{
+    background: transparent;
+    border-bottom: 2px solid #FC3158;
+}
+.main-grid3-imagens strong{
+     color: #FC3158;
+ }
+.EP-principais-info{
+    background: #fff;
+    padding: 2em 2em;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border: 1px solid #E7E7E8;
+}
+
+.EP-principais-info input{
+    background: #fff;
+}
+
 .bar p{ 
     color: #333;
     font-size: 16px;
