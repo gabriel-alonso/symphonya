@@ -53,7 +53,9 @@ label{
 .main {
     width: 27%;
     margin: 0px auto 0px auto;
-    min-height: 160px;
+    min-height: 10px;
+    float: left;
+    padding: 15px;
 }
 .main h1 {
     font-family: 'Poiret One', cursive;
@@ -90,7 +92,7 @@ p.footer a:hover{
     width: 100% !important;
 }
 #main-content{
-	margin:54px 0 0 0;
+	margin:0 0 0 0;
 }
 .sol-current-selection {
     background: #fff;
