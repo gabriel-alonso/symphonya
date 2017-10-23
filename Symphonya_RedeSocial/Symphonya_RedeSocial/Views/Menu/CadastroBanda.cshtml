@@ -34,6 +34,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/JS/radar.js"></script>
     <link href="~/CSS/barChart.css" rel='stylesheet' type='text/css' />
     <link href="~/CSS/fabochart.css" rel='stylesheet' type='text/css' />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Searchable Option List Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/CSS/styleGenero.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="~/JS/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="~/CSS/sol.css">
+    <script type="text/javascript" src="~/JS/sol.js"></script>
     <!--clock init-->
     <script src="~/JS/css3clock.js"></script>
     <!--Easy Pie Chart-->
@@ -52,6 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 </head>
 <body>
+
     <div class="page-container">
         <!--/content-inner-->
         <div class="left-content">
@@ -197,71 +209,57 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
 
-            <!-- INICIO CADASTRO NOVA BANDA -->
-            <div class="error_page2">
-                <!--/register-top-->
+                                                           <!--Cadastro Banda - INICIO-->
+            
+            <div class="graph-2 general" style="margin-top: 2%;">
+                <div class="sub-heard-part">
+                    <ol class="breadcrumb m-b-0">
+                        <li><a href="~/Menu/Feed">Início</a></li>
+                        <li class="active">Perfil</li>
+                    </ol>
+                </div>
+                <h3 class="inner-tittle two">Cadastrar Banda </h3>
+                <div class="grid-1">
+                    <div class="form-body">
+                        <form action="~/Menu/CadastroBanda" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label">Nome da Banda</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control1" id="Nome" name="Nome" placeholder="Nome" type="text">
+                                </div>
+                                
+                            </div>
+                       
+                            <div class="form-group">
+                                <label for="txtarea1" class="col-sm-2 control-label">Descrição</label>
+                                <div class="col-sm-8"><textarea name="Descricao" id="Descricao" placeholder="Descrição" cols="50" rows="4" class="form-control1"></textarea></div>
+                            </div>
 
-                <div class="error-top">
+                            <div class="form-group">
+                                <label for="txtarea1" class="col-sm-2 control-label">Genero</label>
+                                <div class="col-sm-8"><div class="div-generos"></div></div>                     
+                            </div>
+                          
+                            <div class="form-group">
+                                <div id="main-content" class="col-sm-8">
+                                    <select id="demonstration" name="demonstration" style="width: 250px" multiple="multiple" required>
 
-                    <div class="login">
-                        <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
+                                        @if (ViewBag.Generos == null)
+                                        {
+                                            <option value="">Erro!</option>
+                                        }
+                                        else
+                                        {
+                                            foreach (var G in ViewBag.Generos)
+                                            {
+                                                <option value="@(G.ID)">@(G.Nome)</option>
+                                            }
+                                        }
 
-                        <div class="login-direita" style="\.graph-form\ \{\ padding: 2em 2em;background-color: #fff;box-shadow: 0 1px 1px rgba(0,0,0,.05);-o-box-shadow: 0 1px 1px rgba(0,0,0,.05);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);-moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);width:  100%;">
-
-                            <div class="content1-agile">
-                                <div class="form_w3layouts">
-                                    <!-- CASO O CADASTRO FALHE-->
-                                    @if (ViewBag.MsgErro != null)
-                                    {
-                                        <div class="alert alert-danger">
-                                            <strong>Erro!</strong> Campos incorretos!
-                                        </div>
-                                    }
-                                    <form action="~/Menu/CadastroBanda" method="post" class="agile_form">
-
-                                        <div class="agileits-left">
-
-                                            <input type="text" name="Nome" id="Nome" class="username" placeholder="Nome" required="">
-                                        </div>
-                                        <div class="agileits-left" style="float: inline-start;width: 100%;">
-
-                                            <input name="Genero" id="Genero" class="username" placeholder="Genero" required="" style="width: 30%;float: left;" type="text">
-
-                                            <div class="section_class_agileits">
-                                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                                                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-                                                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                                                <meta name="keywords" content="Searchable Option List Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-                                                <link href="~/CSS/styleGenero.css" rel="stylesheet" type="text/css" media="all" />
-                                                <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-                                                <link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-                                                <script type="text/javascript" src="~/JS/jquery-2.1.4.min.js"></script>
-                                                <link rel="stylesheet" href="~/CSS/sol.css">
-                                                <script type="text/javascript" src="~/JS/sol.js"></script>
-
-                                                <div class="main">
-                                                    <div id="main-content" class="markdown-body">
-                                                        <select id="demonstration" name="character0" style="width: 250px" multiple="multiple" required>
-                                                           
-                                                            @if (ViewBag.Generos == null)
-                                                            {
-                                                                <option value="">Erro!</option>
-                                                            }
-                                                            else
-                                                            {
-                                                                foreach (var G in ViewBag.Generos)
-                                                                {
-                                                                    <option value="@(G.ID)">@(G.Nome)</option>
-                                                                }
-                                                            }
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                            <script type="text/javascript">
+                                    </select>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
                                                 $(function () {
                                                     $('#demonstration').searchableOptionList({ maxHeight: '300px', showSelectAll: true });
 
@@ -297,42 +295,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         }
                                                     });
                                                 });
-                                            </script>
+                            </script>
 
+                            <div class="submit" style="text-align: center;">
 
-
-
-
-
-
-                                        </div>
-
-                                        <div class="agileits-left s2-w3ls">
-                                            <input name="Descricao" id="Descricao" class="username" placeholder="Descrição" required="" style="padding: 0.9em 3em 8.9em 4em;background: no-repeat;" type="text">
-                                        </div>
-                                        
-                                     
-                                        <div class="submit" style="text-align: center;">
-
-                                            <input type="submit" onclick="myFunction()" value="Cadastrar">
-                                        </div>
-
-
-                                    </form>
-                                            </div>
-                                
-                                </div>
-
+                                <input type="submit" onclick="myFunction()" value="Cadastrar">
                             </div>
-                        </div>
 
+                           
+
+                        </form>
                     </div>
                 </div>
+            </dv>
 
+                                                   <!--Cadastro Banda- FIM->
 
-
-        
-                    <!-- FIM CADASTRO NOVA BANDA-->
                     <!--//content-inner-->
                     <!--/sidebar-menu-->
                     <div class="sidebar-menu">

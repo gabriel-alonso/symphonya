@@ -3355,7 +3355,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 
 @media (min-width:768px) {
     .form-horizontal .control-label {
-        padding-top: 7px;
+        
         margin-bottom: 0;
         text-align: right;
     }

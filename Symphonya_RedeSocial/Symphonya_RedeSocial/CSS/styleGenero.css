@@ -97,6 +97,8 @@ p.footer a:hover{
 .sol-current-selection {
     background: #fff;
     padding: 10px 10px;
+    width: 110%;
+text-align: center;
 }
 .sol-selected-display-item {
     border: 1px solid #ccc;
@@ -105,7 +107,25 @@ p.footer a:hover{
     margin-right: 5px;
     margin-bottom: 5px;
     padding: 5px 5px;
-    color: #fff;
+    color: black;
+}
+.div-generos{
+    border: 1px solid #ddd;
+padding: 5px 8px;
+color: #777;
+background: #fff;
+box-shadow: none !important;
+width: 100%;
+font-size: 0.85em;
+font-weight: 300;
+height: 40px;
+border-radius: 0;
+font-family: 'Roboto', sans-serif;
+-webkit-appearance: none;
+resize: none;
+outline: none;
+margin-bottom: 10px;
+
 }
 .sol-quick-delete {
     color: #fff;

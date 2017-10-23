@@ -57,6 +57,9 @@
     -moz-transition: border linear .2s, box-shadow linear .2s;
     -o-transition: border linear .2s, box-shadow linear .2s;
     transition: border linear .2s, box-shadow linear .2s;
+
+    margin-right: -15px;
+margin-left: 270px;
 }
 
 .sol-container.sol-active .sol-inner-container {
