@@ -299,6 +299,7 @@
     <Content Include="Views\Menu\VerSeguidos.cshtml" />
     <Content Include="Views\Menu\CadastroBanda.cshtml" />
     <Content Include="Views\Menu\VerSeguidores.cshtml" />
+    <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
