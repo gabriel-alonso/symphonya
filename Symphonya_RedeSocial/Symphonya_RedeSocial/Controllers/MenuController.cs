@@ -151,7 +151,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                     EditarUsuario = (Usuario)Session["Usuario"];
                     int ID = EditarUsuario.ID;
-
+     
                     foreach (string fileName in Request.Files)
                     {
                         HttpPostedFileBase postedFile = Request.Files[fileName];
@@ -185,7 +185,7 @@ namespace Symphonya_RedeSocial.Controllers
                 }
                 return View();
             }
-            Response.Redirect("~/Menu/Home", false);
+            Response.Redirect("~/Acesso/Login", false);
             return View();
 
         }

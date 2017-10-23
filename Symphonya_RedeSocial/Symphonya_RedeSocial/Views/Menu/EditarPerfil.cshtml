@@ -166,21 +166,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sub-heard-part">
                         <ol class="breadcrumb m-b-0">
                             <li><a href="~/Menu/Feed">Início</a></li>
-                            <li class="active">Visualização de Usuário</li>
+                            <li class="active">Perfil</li>
                         </ol>
                     </div>
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Perfil</h3>
+                    <div class="btn-editarperfil">
+                        <a href="~/Menu/EditarPerfil" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                    </div>
                     @if (ViewBag.Logado == null)
                     {
 
                     }
-                    @if (ViewBag.Visualizacao != null)
-                    {
-                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Capa);">
-                            <img src="~/Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Perfil" alt="" />
-                            <h3 class="titulo-verUser">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</h3>
+                    else {
+                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
+                            <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
+                            <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
                         </div>
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
@@ -191,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="about-info-p">
                                             <strong>Nome Completo</strong>
                                             <br>
-                                            <p class="text-muted">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
+                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
                                         </div>
                                         <div class="about-info-p">
                                             <strong>Mobile</strong>
@@ -201,12 +203,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="about-info-p">
                                             <strong>E-mail</strong>
                                             <br>
-                                            <p class="text-muted"><a href="@ViewBag.Visualizacao.Email">@ViewBag.Visualizacao.Email</a></p>
+                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
                                         </div>
                                         <div class="about-info-p m-b-0">
                                             <strong>Local</strong>
                                             <br>
-                                            <p class="text-muted">@ViewBag.Visualizacao.Cidade, @ViewBag.Visualizacao.Estado</p>
+                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
                                         </div>
                                     </div>
                                 </div>
@@ -252,7 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                             <div class="timeline-panel">
                                                 <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a>@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome - NOME MÚSICA</a></h4>
+                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
                                                 </div>
                                                 <div class="timeline-body">
                                                     <p class="time">5 Minutes ago</p>
@@ -293,12 +295,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
 
                     <!--//profile-inner-->
-                    <!--//profile-->
-                    }
-                    else
-                    {
-                        Response.Redirect("/Menu/Pesquisar");
-                    }
+                    <!--//profile--> }
+
                 </div>
                 <!--//outer-wp-->
                 <!--footer section start-->
@@ -350,7 +348,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </li>
                     <li id="menu-academico">
-                        <a href="#"><i class="fa fa-address-book"></i> <span>Seguidores</span></a>
+                        <a href="~/Menu/VerSeguidores"><i class="fa fa-address-book"></i> <span>Seguidores</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-address-book-o"></i> <span>Seguindo</span></a>
@@ -358,33 +356,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <a href="~/Menu/Livestream"><i class="fa fa-twitch"></i> <span>Livestream</span></a>
                     </li>
-                    @*<li id="menu-academico">
-                            <a href="#"><i class="lnr lnr-layers"></i> <span>Componentes</span> <span class="fa fa-angle-right" style="padding-left: 32%;"></span></a>
-                            <ul id="menu-academico-sub">
-                                <li id="menu-academico-avaliacoes"><a href="grids.html">Grades</a></li>
-                                <li id="menu-academico-boletim"><a href="media.html">Objetos de Mídia</a></li>
 
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="chart.html"><i class="lnr lnr-chart-bars"></i> <span>Gráficos</span> <span class="fa fa-angle-right" style="padding-left: 52%;"></span></a>
-                            <ul>
-                                <li><a href="map.html"><i class="lnr lnr-map"></i> Mapas</a></li>
-                                <li><a href="graph.html"><i class="lnr lnr-apartment"></i> Visualização Gráfica</a></li>
-                            </ul>
-                        </li>
-                        <li id="menu-comunicacao">
-                            <a href="#"><i class="fa fa-smile-o"></i> <span>Mais</span><span class="fa fa-angle-double-right" style="padding-left: 64%;"></span></a>
-                            <ul id="menu-comunicacao-sub">
-                                <li id="menu-mensagens" style="width:120px">
-                                    <a href="project.html">Projeto/ s <i class="fa fa-angle-right" style="padding-left: 20%;"></i></a>
-                                    <ul id="menu-mensagens-sub">
-                                        <li id="menu-mensagens-enviadas" style="width:130px"><a href="ribbon.html">Ribbons</a></li>
-                                        <li id="menu-mensagens-recebidas" style="width:130px"><a href="blank.html">Blank</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>*@
                 </ul>
             </div>
         </div>
@@ -423,9 +395,3 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/JS/bootstrap.min.js"></script>
 </body>
 </html>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->

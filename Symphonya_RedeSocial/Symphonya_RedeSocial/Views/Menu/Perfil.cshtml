@@ -172,17 +172,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Perfil</h3>
-                    <div class="btn-editarperfil">
-                        <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tags"></i> <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li><a href="#">Work</a></li>
-                            <li><a href="#">Family</a></li>
-                            <li><a href="#">Social</a></li>
-
-                            <li><a href="#">Primary</a></li>
-                            <li><a href="#">Promotions</a></li>
-                            <li><a href="#">Forums</a></li>
-                        </ul>
+                    <div href="~/Menu/EditarPerfil" class="btn-editarperfil">
+                        <a href="~/Menu/EditarPerfil" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o"></i> Editar</a>
                     </div>
                     @if (ViewBag.Logado == null)
                     {
@@ -329,7 +320,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="down">
                 @if (ViewBag.Logado == null) { }
                 else {
-                    <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
+                    <a><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
                 <p>System Administrator in Company</p>
