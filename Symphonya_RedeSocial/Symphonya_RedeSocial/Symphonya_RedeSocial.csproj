@@ -163,6 +163,22 @@
     <Content Include="Imagens\fb.png" />
     <Content Include="Imagens\icone.png" />
     <Content Include="Imagens\iconeHover.png" />
+    <Content Include="Imagens\IconesInstrumentos\BaixoIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\BanjoIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\BateriaIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\BerimbauIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\DJIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\FlautaIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\GuitarraIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\HarpaIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\MicrofoneIcon.jpg" />
+    <Content Include="Imagens\IconesInstrumentos\PianoIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\SaxofoneIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\TromboneIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\TrompeteIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\UkuleleIcon.png" />
+    <Content Include="Imagens\IconesInstrumentos\ViolaoIcon.jpg" />
+    <Content Include="Imagens\IconesInstrumentos\ViolinoIcon.png" />
     <Content Include="Imagens\ImagensUsuario\fundoPerfil.jpg" />
     <Content Include="Imagens\fundo_cadastro.jpg" />
     <Content Include="Imagens\fundo_login.jpg" />
@@ -300,6 +316,7 @@
     <Content Include="Views\Menu\CadastroBanda.cshtml" />
     <Content Include="Views\Menu\VerSeguidores.cshtml" />
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
+    <Content Include="Views\Menu\Agenda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -310,7 +327,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Fonts\Calendario\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

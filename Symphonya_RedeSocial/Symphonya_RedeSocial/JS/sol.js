@@ -263,7 +263,7 @@
                 .insertBefore(this.$originalElement);
 
             // add selected items display container
-            this.$showSelectionContainer = $('<div class="sol-current-selection"/>');
+            this.$showSelectionContainer = $('<div class="div-generos"/>');
             if (this.config.showSelectionBelowList) {
                 this.$showSelectionContainer.insertAfter(this.$innerContainer);
             } else {
