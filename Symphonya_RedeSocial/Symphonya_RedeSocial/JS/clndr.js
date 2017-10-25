@@ -42,11 +42,11 @@
     var clndrTemplate =
         "<div class='clndr-controls'>" +
             "<div class='clndr-control-button'>" +
-                "<span class='clndr-previous-button'>previous</span>" +
+                "<span class='clndr-previous-button'>Anterior</span>" +
             "</div>" +
             "<div class='month'><%= month %> <%= year %></div>" +
             "<div class='clndr-control-button rightalign'>" +
-                "<span class='clndr-next-button'>next</span>" +
+                "<span class='clndr-next-button'>Proximo</span>" +
             "</div>" +
         "</div>" +
         "<table class='clndr-table' border='0' cellspacing='0' cellpadding='0'>" +

@@ -35,7 +35,7 @@
 }
 
 .sol-container * {
-    margin: 0px 0px 15px 15px;
+    margin: 0px 0px -1px -1px;
     padding: 0;
 }
 
@@ -58,8 +58,9 @@
     -o-transition: border linear .2s, box-shadow linear .2s;
     transition: border linear .2s, box-shadow linear .2s;
 
-    margin-right: -15px;
-    margin-left: 15px;
+    margin-right: -1px;
+    margin-left: -1px;
+    margin-top: 15px;
 }
 
 .sol-container.sol-active .sol-inner-container {
