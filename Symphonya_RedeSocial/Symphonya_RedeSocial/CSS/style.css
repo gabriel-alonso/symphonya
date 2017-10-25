@@ -361,8 +361,8 @@ span.name-caret {
 }
 .down a img:hover{
     border: 3px solid #FC3158;
-    height:30.45%;
-    width:30.45%;
+    height:78.35%;
+    width:78.35%;
 }
 .down a{
     background:transparent;
@@ -2854,13 +2854,25 @@ form.com-mail {
     font-size: 0.9em;
     color: #6F6F6F;
 }
- input[type="submit"] {
+input[type="submit"] {
     font-size: 0.9em;
     background-color:#FC3158;
     border: 1px solid #fff;
     color: #FFFFFF;
     padding: 0.4em 1em;
     margin-top: 1em;
+}
+.BTNeditarPerfil{
+     padding-bottom:2%;
+}
+ .BTNeditarPerfil input[type="submit"]{
+font-size: 1.2em;
+background-color: #FC3158;
+border: 1px solid #fff;
+color: #FFFFFF;
+padding: 0.4em 1em;
+margin-top: 1em;
+margin-left:43%
 }
 input[type="submit"]:hover {
     background-color:#FFF;
@@ -4065,6 +4077,8 @@ button.btn.btn-default.tip {
 }
 .main-grid3-imagens input[type=file]{
     background: transparent;
+    color:#FC3158;
+    border:none;
     border-bottom: 2px solid #FC3158;
 }
 .main-grid3-imagens strong{

@@ -1,9 +1,11 @@
 ﻿using Symphonya_RedeSocial.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.HtmlControls;
 
 namespace Symphonya_RedeSocial.Controllers
 {
@@ -140,16 +142,43 @@ namespace Symphonya_RedeSocial.Controllers
 
                 if (Request.HttpMethod == "POST")
                 {
+
                     String NovoNome = Request.Form["NovoNome"];
                     String NovoSobrenome = Request.Form["NovoSobrenome"];
                     String NovoEmail = Request.Form["NovoEmail"];
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
-                    String NovoTelefone = Request.Form["NovoTelefone"];
-
+                    String NovoTelefone = Request.Form["NovoCelular"];
+                                        
                     Usuario EditarUsuario = new Usuario();
 
                     EditarUsuario = (Usuario)Session["Usuario"];
+
+                    if (NovoNome != "")
+                    {
+                        EditarUsuario.Nome = NovoNome;
+                    }
+                    if (NovoSobrenome != "")
+                    {
+                        EditarUsuario.Sobrenome = NovoSobrenome;
+                    }
+                    if (NovoEmail != "")
+                    {
+                        EditarUsuario.Email = NovoEmail;
+                    }
+                    if (NovaCidade != "")
+                    {
+                        EditarUsuario.Cidade = NovaCidade;
+                    }
+                    if (NovoEstado != "")
+                    {
+                        EditarUsuario.Estado = NovoEstado;
+                    }
+                    if (NovoTelefone != "")
+                    {
+                        EditarUsuario.Telefone = NovoTelefone;
+                    }
+
                     int ID = EditarUsuario.ID;
      
                     foreach (string fileName in Request.Files)
@@ -158,30 +187,46 @@ namespace Symphonya_RedeSocial.Controllers
                         int contentLength = postedFile.ContentLength;
                         string contentType = postedFile.ContentType;
                         string nome = postedFile.FileName;
+                        Imagem img = new Imagem();
 
-                        if (contentType.IndexOf("jpeg") > 0)
+                        if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
                         {
-                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + "imagemPerfil" + ID + ".png");
-                            postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + "imagemPerfil" + ID + ".png");
-                        }
-                        else
-                            ViewBag.Erro = "Erro ao enviar imagem, tente novamente!";
 
+                            if (contentType.IndexOf("jpeg") == 1 || contentType.IndexOf("png") == 1 || contentType.IndexOf("jpg") == 1)
+                            {
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
+                                string nomeArquivoUpload = "imagemCapa" + ID + ".png";
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+                                EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
+                            }
+
+                            else {
+
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 250, 250);
+                                string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+                                EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
+                            }
+
+                        }
                     }
 
-                    EditarUsuario.Imagem_Perfil = "imagemPerfil" + ID + ".jpg";
+                    //EditarUsuario.Imagem_Perfil = "imagemPerfil" + ID + ".png";
+                    //EditarUsuario.Imagem_Capa = "imagemCapa" + ID + ".png";
 
-                    //if (NovoPerfil.NovaBio())
-                    //{
-                    //    ViewBag.Mensagem = "Perfil alterado com sucesso!";
-                    //    ViewBag.BioU = Bio;
-                    //    ViewBag.ImagemU = NovoPerfil.ImagemPerfil;
-                    //    Response.Redirect("~/Perfil/Index", false);
-                    //}
-                    //else
-                    //{
-                    //    ViewBag.Mensagem = "Houve um erro ao alterar o Perfil. Verifique os dados e tente novamente.";
-                    //}
+                    if (EditarUsuario.Alterar())
+                    {
+                        ViewBag.Mensagem = "Perfil alterado com sucesso!";
+                        Session["Usuario"] = EditarUsuario;
+                        ViewBag.Usuario = (Usuario)Session["Usuario"];
+                        Response.Redirect("~/Menu/Perfil", false);
+                    }
+                    else
+                    {
+                        ViewBag.Mensagem = "Houve um erro ao alterar o Perfil. Verifique os dados e tente novamente.";
+                    }
                 }
                 return View();
             }
