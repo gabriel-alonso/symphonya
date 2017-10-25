@@ -49,6 +49,12 @@ namespace Symphonya_RedeSocial.Models
                     lnNewWidth = (int)lnTemp;
                 }
 
+                if(loBMP.Width == loBMP.Height)
+                {
+                    lnNewHeight = 180;
+                    lnNewWidth = 180;
+                }
+
                 bmpOut = new Bitmap(lnNewWidth, lnNewHeight);
                 Graphics g = Graphics.FromImage(bmpOut);
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;

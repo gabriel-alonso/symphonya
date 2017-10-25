@@ -239,7 +239,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                             else {
 
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 250, 250);
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
                                 string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
                                 arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
