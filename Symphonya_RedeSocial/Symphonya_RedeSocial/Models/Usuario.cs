@@ -26,7 +26,7 @@ namespace Symphonya_RedeSocial.Models
         public int DiaNascimento { get; set; }
         public int AnoNascimento { get; set; }
         public String Telefone { get; set; }
-        public string Descricao { get; internal set; }
+        public string Biografia { get; set; }
 
         public Usuario() { }
 
@@ -60,6 +60,7 @@ namespace Symphonya_RedeSocial.Models
             this.Avaliacao = (Int32)Leitor["Avaliacao"];
             this.Modo = (Boolean)Leitor["Modo"];
             this.Telefone = (String)Leitor["Telefone"];
+            this.Biografia = (String)Leitor["Biografia"];
 
             Conexao.Close();
         }
@@ -97,6 +98,7 @@ namespace Symphonya_RedeSocial.Models
             this.Avaliacao = (Int32)Leitor["Avaliacao"];
             this.Modo = (Boolean)Leitor["Modo"];
             this.Telefone = (String)Leitor["Telefone"];
+            this.Biografia = (String)Leitor["Biografia"];
 
 
             Conexao.Close();
@@ -110,8 +112,8 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Imagem_Capa, Sexo, Modo, Avaliacao, Telefone)"
-              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Imagem_Capa, @Sexo, @Modo, @Avaliacao, @Telefone);";
+            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Imagem_Capa, Sexo, Modo, Avaliacao, Telefone, Biografia)"
+              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Imagem_Capa, @Sexo, @Modo, @Avaliacao, @Telefone, @Biografia);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
             Comando.Parameters.AddWithValue("@DiaNascimento", this.DiaNascimento);
@@ -127,26 +129,31 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Imagem_Perfil", "imagemPadrao.png");
             Comando.Parameters.AddWithValue("@Imagem_Capa", "fundoPerfil.jpg");
             Comando.Parameters.AddWithValue("@Telefone", this.Telefone);
-           
+            Comando.Parameters.AddWithValue("@Biografia", "Conte-nos algo sobre você!");
+
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();
 
             return Resultado > 0 ? true : false;
         }
-        public Boolean NovaBio()
+        public Boolean Alterar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["KatiauBD"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
-
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "UPDATE Usuario SET BioU = @Bio , NickU = @Nick, ImagemU = @Imagem WHERE ID = @ID;";
+            Comando.CommandText = "UPDATE Usuario SET Biografia = @Biografia, Nome = @Nome, Sobrenome = @Sobrenome, Cidade = @Cidade, Estado = @Estado, Telefone = @Telefone, Imagem_Capa = @ImagemCapa, Imagem_Perfil = @ImagemPerfil WHERE ID = @ID;";
             Comando.Parameters.AddWithValue("@ID", this.ID);
-            //Comando.Parameters.AddWithValue("@Nick", this.Nick);
-            //.Parameters.AddWithValue("@Bio", this.Bio);
-            //.Parameters.AddWithValue("@Imagem", this.ImagemPerfil);
+            Comando.Parameters.AddWithValue("@Nome", this.Nome);
+            Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
+            Comando.Parameters.AddWithValue("@Cidade", this.Cidade);
+            Comando.Parameters.AddWithValue("@Estado", this.Estado);
+            Comando.Parameters.AddWithValue("@Telefone", this.Telefone);
+            Comando.Parameters.AddWithValue("@ImagemPerfil", this.Imagem_Perfil);
+            Comando.Parameters.AddWithValue("@ImagemCapa", this.Imagem_Capa);
+            Comando.Parameters.AddWithValue("@Biografia", this.Biografia);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
@@ -214,6 +221,7 @@ namespace Symphonya_RedeSocial.Models
                 U.Avaliacao = (Int32)Leitor["Avaliacao"];
                 U.Modo = (Boolean)Leitor["Modo"];
                 U.Telefone = (String)Leitor["Telefone"];
+                U.Biografia = (String)Leitor["Biografia"];
 
                 Users.Add(U);
             }

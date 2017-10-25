@@ -183,7 +183,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <h3>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h3>
                         </div>
                          <!--/profile-inner-->
-                        <form action="/Menu/EditarPerfil" method="post">
+                        <form action="/Menu/EditarPerfil" method="post" enctype="multipart/form-data">
                             <h3 class="inner-tittle-biografia">Imagens</h3>
                             <div class="main-grid3-imagens">
                                 <div class="form-group"> 
@@ -203,12 +203,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <h3 class="inner-tittle">Informações Pessoais </h3>
                                     <div class="EP-principais-info">
                                         <div class="p-20">
-                                            <strong>Nome Completo</strong>
+                                            <strong>Nome</strong>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-drivers-license"></i>
                                                 </span>
-                                                <input class="form-control1 icon" placeholder="@ViewBag.User.Nome @ViewBag.User.Sobrenome" type="text">
+                                                <input id="NovoNome" name="NovoNome" class="form-control1 icon" placeholder="@ViewBag.User.Nome" type="text">
+                                            </div>
+                                            <strong>Sobrenome</strong>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-drivers-license"></i>
+                                                </span>
+                                                <input id="NovoSobrenome" name="NovoSobrenome" class="form-control1 icon" placeholder="@ViewBag.User.Sobrenome" type="text">
                                             </div>
                                             <div class="about-info-p">
                                                 <strong>Celular/Telefone</strong>
@@ -216,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-mobile"></i>
                                                     </span>
-                                                    <input class="form-control1 icon" placeholder="CELULAR AQUI" type="text">
+                                                    <input id="NovoCelular" name="NovoCelular" class="form-control1 icon" placeholder="CELULAR AQUI" type="text">
                                                 </div>
                                             </div>
                                             <div class="about-info-p">
@@ -225,15 +232,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-envelope-o"></i>
                                                     </span>
-                                                    <input class="form-control1 icon" placeholder="@ViewBag.User.Email" type="text">
+                                                    <input id="NovoEmail" name="NovoEmail" class="form-control1 icon" placeholder="@ViewBag.User.Email" type="text">
                                                 </div>
                                                 <div class="about-info-p m-b-0">
-                                                    <strong>Local</strong>
+                                                    <strong>Cidade</strong>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="fa fa-map"></i>
                                                         </span>
-                                                        <input class="form-control1 icon" placeholder="@ViewBag.User.Cidade @ViewBag.User.Estado" type="text">
+                                                        <input id="NovaCidade" name="NovaCidade" class="form-control1 icon" placeholder="@ViewBag.User.Cidade" type="text">
+                                                    </div>
+                                                    <strong>Estado</strong>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-map"></i>
+                                                        </span>
+                                                        <input id="NovoEstado" name="NovoEstado" class="form-control1 icon" placeholder="@ViewBag.User.Estado" type="text">
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,10 +289,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"></div>
                                 <h3 class="inner-tittle-biografia">Biografia </h3>
                                 <div class="main-grid3-biografia">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p class="para">But also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                    <p>@ViewBag.User.Biografia</p>
                                 </div>
+                                <div class="BTNeditarPerfil"><input type="submit" onclick="myFunction()" value="Alterar Dados"></div>
                             </div>
                             <!--/map-->
                         </form>

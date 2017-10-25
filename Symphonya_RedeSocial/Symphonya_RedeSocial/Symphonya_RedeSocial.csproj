@@ -278,6 +278,7 @@
     </Compile>
     <Compile Include="Models\Bandas.cs" />
     <Compile Include="Models\Generos.cs" />
+    <Compile Include="Models\Imagem.cs" />
     <Compile Include="Models\Seguidores.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
