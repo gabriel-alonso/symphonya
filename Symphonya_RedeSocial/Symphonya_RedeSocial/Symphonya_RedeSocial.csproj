@@ -317,6 +317,7 @@
     <Content Include="Views\Menu\CadastroBanda.cshtml" />
     <Content Include="Views\Menu\VerSeguidores.cshtml" />
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
+    <Content Include="Views\Menu\Agenda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -327,7 +328,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Fonts\Calendario\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

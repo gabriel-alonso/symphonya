@@ -237,27 +237,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                             <div class="form-group">
                                 <label for="txtarea1" class="col-sm-2 control-label">Genero</label>
-                                <div class="col-sm-8"><div class="div-generos"></div></div>                     
-                            </div>
-                          
-                            <div class="form-group">
-                                <div id="main-content" class="col-sm-8">
-                                    <select id="demonstration" name="demonstration" style="width: 250px" multiple="multiple" required>
+                                <div class="col-sm-8">
+                                    <!--<div class="div-generos">-->
+                                    <div class="form-group">
+                                        <select id="demonstration" name="demonstration" style="width: 250px" multiple="multiple" required>
 
-                                        @if (ViewBag.Generos == null)
-                                        {
-                                            <option value="">Erro!</option>
-                                        }
-                                        else
-                                        {
-                                            foreach (var G in ViewBag.Generos)
+                                            @if (ViewBag.Generos == null)
                                             {
-                                                <option value="@(G.ID)">@(G.Nome)</option>
+                                                <option value="">Erro!</option>
                                             }
-                                        }
+                                            else
+                                            {
+                                                foreach (var G in ViewBag.Generos)
+                                                {
+                                                    <option value="@(G.ID)">@(G.Nome)</option>
+                                                }
+                                            }
 
-                                    </select>
-                                </div>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>  
+                                              
                             </div>
                             <script type="text/javascript">
                                                 $(function () {

@@ -100,6 +100,42 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
+        public ActionResult Agenda()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
+
+                if (Seguidores.ListarSeguidores(User.ID) != null)
+                {
+                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(User.ID);
+                    ViewBag.Seguidores = seguidores;
+                }
+                else
+                {
+                    ViewBag.Erro = "Não foram encontrados seguidores!";
+                }
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+
+            return View();
+        }
+
         public ActionResult VerUsuario()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
