@@ -263,7 +263,7 @@
                 .insertBefore(this.$originalElement);
 
             // add selected items display container
-            this.$showSelectionContainer = $('<div class="div-generos"/>');
+            this.$showSelectionContainer = $('<div class="div-generos" style="min-height: 100px;"/>');
             if (this.config.showSelectionBelowList) {
                 this.$showSelectionContainer.insertAfter(this.$innerContainer);
             } else {
