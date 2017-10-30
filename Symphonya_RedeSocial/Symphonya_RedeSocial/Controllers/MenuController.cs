@@ -187,72 +187,120 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
-                                        
+                    String NovaImagemPerfil = Request.Form["NovaImagemPerfil"];
+                    String NovaImagemCapa = Request.Form["NovaImagemCapa"];
+
                     Usuario EditarUsuario = new Usuario();
 
                     EditarUsuario = (Usuario)Session["Usuario"];
 
+                    //CASO O CAMPO DE NOME SEJA DIFERENTE DE NULO
                     if (NovoNome != "")
                     {
                         EditarUsuario.Nome = NovoNome;
                     }
+
+                    //CASO O CAMPO DE SOBRENOME SEJA DIFERENTE DE NULO
                     if (NovoSobrenome != "")
                     {
                         EditarUsuario.Sobrenome = NovoSobrenome;
                     }
+
+                    //CASO O CAMPO DE EMAIL SEJA DIFERENTE DE NULO
                     if (NovoEmail != "")
                     {
                         EditarUsuario.Email = NovoEmail;
                     }
+
+                    //CASO O CAMPO DE CIDADE SEJA DIFERENTE DE NULO
                     if (NovaCidade != "")
                     {
                         EditarUsuario.Cidade = NovaCidade;
                     }
+
+                    //CASO O CAMPO DE ESTADO SEJA DIFERENTE DE NULO
                     if (NovoEstado != "")
                     {
                         EditarUsuario.Estado = NovoEstado;
                     }
+
+                    //CASO O CAMPO DE TELEFONE SEJA DIFERENTE DE NULO
                     if (NovoTelefone != "")
                     {
                         EditarUsuario.Telefone = NovoTelefone;
                     }
 
                     int ID = EditarUsuario.ID;
-     
-                    foreach (string fileName in Request.Files)
+
+                    //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
+                    if (NovaImagemPerfil != "")
                     {
-                        HttpPostedFileBase postedFile = Request.Files[fileName];
-                        int contentLength = postedFile.ContentLength;
-                        string contentType = postedFile.ContentType;
-                        string nome = postedFile.FileName;
-                        Imagem img = new Imagem();
-
-                        if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
                         {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
 
-                            if (contentType.IndexOf("jpeg") == 1 || contentType.IndexOf("png") == 1 || contentType.IndexOf("jpg") == 1)
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
                             {
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
-                                string nomeArquivoUpload = "imagemCapa" + ID + ".png";
-                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
-                                EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
-                            }
-
-                            else {
-
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
                                 Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
+
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
                                 string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
+
+                                //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
                                 arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
+                               }
+
+                            }
+                       }
+
+                    //CASO O CAMPO DE IMAGEM DE CAPA SEJA DIFERENTE DE NULO
+                    if(NovaImagemCapa != "")
+                    {
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
+                        {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
+
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                            {
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
+
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
+                                string nomeArquivoUpload = "imagemCapa" + ID + ".png";
+
+                                //SALVA O ARQUIVO
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE CAPA DO USUARIO
+                                EditarUsuario.Imagem_Capa = nomeArquivoUpload;
                             }
 
                         }
                     }
-
-                    //EditarUsuario.Imagem_Perfil = "imagemPerfil" + ID + ".png";
-                    //EditarUsuario.Imagem_Capa = "imagemCapa" + ID + ".png";
 
                     if (EditarUsuario.Alterar())
                     {
