@@ -91,10 +91,7 @@
 .sol-caret-container .sol-caret {
     position: relative;
     display: inline-block;
-
     left: 10px;
-    top: 15px;
-
     width: 0;
     height: 0;
     vertical-align: middle;
@@ -222,20 +219,23 @@
     padding: 5px 10px;
     display: block;
 }
-
+.sol-option:hover{
+    background:#FC3158;
+}
 .sol-label {
     display: block;
     position: relative;
 }
-
+.sol-label:hover{
+    color:#fff;
+}
 .sol-label-text {
     padding-left: 20px;
     line-height: 1.2em;
 }
-
 .sol-selection:not(.sol-keyboard-navigation) .sol-option:hover, .sol-option.keyboard-selection {
-    background: #0088CC;
-    color: #fff;
+    background: #FC3158;
+    color: #FFF;
 }
 
 .sol-optiongroup {
@@ -272,26 +272,26 @@
 
 .sol-selected-display-item {
     display: inline-table;
-    border: 1px solid #ccc;
-    background: #f7f7f9;
-    font-size: 0.9em;
+    border: 1px solid #FFF;
+    background: #FC3158;
+    font-size: 1em;
     margin-right: 5px;
     margin-bottom: 5px;
     border-collapse: separate;
-
+    color:#FFF;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    border-radius: 4px;
+    border-radius: 10%;
 }
 
 .sol-selected-display-item-text {
-    padding: 3px 5px;
+    padding: 10px;
     display: table-cell;
     vertical-align: top;
 }
 
 .sol-quick-delete {
-    color: #777;
+    color: #FFF;
     display: table-cell;
     font-weight: bold;
     text-align: center;

@@ -2039,6 +2039,7 @@ h2.inner-tittle,h3.inner-tittle {
     color: #FC3158;
     margin-bottom:0.7em;
     text-align: left;
+    margin-top: 0.6em;
 }
 h3.inner-tittle-biografia{
     font-size: 2em;
@@ -2046,6 +2047,7 @@ h3.inner-tittle-biografia{
     color: #FC3158;
     margin-bottom:0.7em;
     text-align: left;
+    margin-top: 0.6em;
 }
 h3.inner-tittle-instrumentos{
     font-size: 2em;
@@ -4016,6 +4018,7 @@ button.btn.btn-default.tip {
     color: #FC3158;
     font-weight: normal;
     padding-right:8%;
+    font-size: 25px;
 }
 .profile-widget h3{
     margin: 7px 0;

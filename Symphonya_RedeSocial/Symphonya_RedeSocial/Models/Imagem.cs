@@ -26,25 +26,20 @@ namespace Symphonya_RedeSocial.Models
                 int lnNewWidth = 0;
                 int lnNewHeight = 0;
 
-                //*** If the image is smaller than a thumbnail just return it
-                if (loBMP.Width < lnWidth && loBMP.Height < lnHeight)
-                {
-                    return loBMP;
-                }
+                //if (loBMP.Width < lnWidth && loBMP.Height < lnHeight)
+                //{
+                //    return loBMP;
+                //}
 
                 if (loBMP.Width > loBMP.Height)
                 {
-                    lnRatio = (decimal)lnWidth / loBMP.Width;
-                    lnNewWidth = lnWidth;
-                    decimal lnTemp = loBMP.Height * lnRatio;
-                    lnNewHeight = (int)lnTemp;
+                    lnNewHeight = (int)height;
+                    lnNewWidth = (int)width;
                 }
                 else
                 {
-                    lnRatio = (decimal)lnHeight / loBMP.Height;
-                    lnNewHeight = lnHeight;
-                    decimal lnTemp = loBMP.Width * lnRatio;
-                    lnNewWidth = (int)lnTemp;
+                    lnNewHeight = (int)height;
+                    lnNewWidth = (int)width;
                 }
 
                 if(loBMP.Width == loBMP.Height)

@@ -187,8 +187,9 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
-                    String NovaImagemPerfil = Request.Form["NovaImagemPerfil"];
-                    String NovaImagemCapa = Request.Form["NovaImagemCapa"];
+
+                    HttpPostedFileBase NovaImagemPerfil = Request.Files["NovaImagemPerfil"];
+                    HttpPostedFileBase NovaImagemCapa = Request.Files["NovaImagemCapa"];
 
                     Usuario EditarUsuario = new Usuario();
 
@@ -233,7 +234,7 @@ namespace Symphonya_RedeSocial.Controllers
                     int ID = EditarUsuario.ID;
 
                     //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
-                    if (NovaImagemPerfil != "")
+                    if (NovaImagemPerfil.FileName != "")
                     {
                         //PERCORRE OS FILES NO INPUT
                         foreach (string fileName in Request.Files)
@@ -251,7 +252,7 @@ namespace Symphonya_RedeSocial.Controllers
                             if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
                             {
                                 //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1800, 1080);
 
                                 //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
                                 string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
@@ -268,7 +269,7 @@ namespace Symphonya_RedeSocial.Controllers
                        }
 
                     //CASO O CAMPO DE IMAGEM DE CAPA SEJA DIFERENTE DE NULO
-                    if(NovaImagemCapa != "")
+                    if(NovaImagemCapa.FileName != "")
                     {
                         //PERCORRE OS FILES NO INPUT
                         foreach (string fileName in Request.Files)
