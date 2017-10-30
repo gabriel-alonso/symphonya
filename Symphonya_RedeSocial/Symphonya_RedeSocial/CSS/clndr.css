@@ -18,11 +18,11 @@
     font-size: 1em;
 }
 .cal1 .clndr .clndr-controls {
-        display: inline-block;
+    display: inline-block;
     width: 100%;
     position: relative;
     padding: 1em;
-    background-color: #052963;
+    background-color: #FC3158;
     margin: 0;
 }
 .cal1 .clndr .clndr-controls .month {
@@ -53,7 +53,7 @@
   /* IE10+ */
 }
 .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button:hover {
- color: #00C6D7;
+ color: #D3D3D3;
 }
 .cal1 .clndr .clndr-controls .clndr-control-button .clndr-next-button.inactive {
   opacity: 0.5;
@@ -72,7 +72,7 @@
   /* IE10+ */
 }
 .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button:hover {
-      color: #00C6D7;
+      color: #D3D3D3;
 }
 .cal1 .clndr .clndr-controls .clndr-control-button .clndr-previous-button.inactive {
   opacity: 0.5;
@@ -88,14 +88,14 @@
 .cal1 .clndr .clndr-table .header-days {
        height: 60px;
     font-size: 1em;
-        background-color: #052963;
+        background-color: #FC3158;
 }
 .cal1 .clndr .clndr-table .header-days .header-day {
   vertical-align: middle;
   text-align: center;
   border-left: 1px solid #D8D8D8;
   border-top: 1px solid #D8D8D8;
-  color:#00C6D7;
+  color:#D3D3D3;
 }
 .cal1 .clndr .clndr-table .header-days .header-day:last-child {
   border-right: 1px solid #D8D8D8;
@@ -117,12 +117,12 @@
 }
 .cal1 .clndr .clndr-table tr .day.today,
 .cal1 .clndr .clndr-table tr .day.my-today {
-     background: rgb(0, 198, 215);
+     background: #696969;
     color: #fff;
 }
 .cal1 .clndr .clndr-table tr .day.today:hover,
 .cal1 .clndr .clndr-table tr .day.my-today:hover {
- background: #ea4c89;
+ background: #FC3158;
 }
 .cal1 .clndr .clndr-table tr .day.today.event,
 .cal1 .clndr .clndr-table tr .day.my-today.event {
@@ -130,7 +130,7 @@
 }
 .cal1 .clndr .clndr-table tr .day.event,
 .cal1 .clndr .clndr-table tr .day.my-event {
-	color: #00C6D7;
+	color: #FC3158;
     font-weight: 400;
 }
 .cal1 .clndr .clndr-table tr .day.event:hover,
@@ -246,10 +246,10 @@
   background-color: #B4E09F;
 }
 .cal2 .clndr .clndr-grid .day.today {
-  background-color: #E3C57F;
+  background-color: #FC3158;
 }
 .cal2 .clndr .clndr-grid .day.selected {
-  background-color: #E37FD6;
+  background-color: #FC3158;
 }
 .cal2 .clndr .clndr-grid .day.inactive {
   color: gray;
