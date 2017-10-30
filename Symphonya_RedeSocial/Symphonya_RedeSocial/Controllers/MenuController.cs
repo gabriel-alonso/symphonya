@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.HtmlControls;
@@ -23,12 +24,12 @@ namespace Symphonya_RedeSocial.Controllers
                 ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                    if (Request.HttpMethod == "POST")
-                    {
+                if (Request.HttpMethod == "POST")
+                {
                     String busca = Request.Form["busca"].ToString();
                     Response.Redirect("/Menu/Pesquisar/" + busca);
-                    }
                 }
+            }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
             {
@@ -49,7 +50,7 @@ namespace Symphonya_RedeSocial.Controllers
                 Usuario User = (Usuario)Session["Usuario"];
                 ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
                 ViewBag.User = User;
-                
+
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
@@ -96,7 +97,7 @@ namespace Symphonya_RedeSocial.Controllers
             else
             {
                 Response.Redirect("/Acesso/Login");
-            
+
             }
             return View();
         }
@@ -166,10 +167,10 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
-        
+
         public ActionResult EditarPerfil()
         {
-            if(Session["Usuario"] != null)
+            if (Session["Usuario"] != null)
             {
                 //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
                 ViewBag.Logado = Session["Usuario"];
@@ -187,7 +188,7 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
-                                        
+
                     Usuario EditarUsuario = new Usuario();
 
                     EditarUsuario = (Usuario)Session["Usuario"];
@@ -218,7 +219,7 @@ namespace Symphonya_RedeSocial.Controllers
                     }
 
                     int ID = EditarUsuario.ID;
-     
+
                     foreach (string fileName in Request.Files)
                     {
                         HttpPostedFileBase postedFile = Request.Files[fileName];
@@ -275,7 +276,7 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult Pesquisar(String busca)
         {
-            if(busca == null)
+            if (busca == null)
             {
                 Response.Redirect("/Menu/Feed");
             }
@@ -293,7 +294,7 @@ namespace Symphonya_RedeSocial.Controllers
                     List<Usuario> Usuarios = Usuario.Listar(busca);
                     ViewBag.Usuarios = Usuarios;
                 }
-                if(Bandas.Listar(busca) != null)
+                if (Bandas.Listar(busca) != null)
                 {
                     List<Bandas> Bands = Bandas.Listar(busca);
                     ViewBag.Bandas = Bands;
@@ -435,5 +436,58 @@ namespace Symphonya_RedeSocial.Controllers
 
             return RedirectToAction("VerSeguidos", "Menu");
         }
+        public ActionResult Email()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
+
+                //ENVIO DE EMAIL
+                if (Request.HttpMethod.Equals("POST"))
+                {
+                    
+                    //Usuario Us = Usuario.Recuperar(Request.Form["matricula"].ToString(), novasenha);
+
+
+                    /**Parte de enviar o email**/
+                    MailMessage msg = new MailMessage();
+                    SmtpClient smtp = new SmtpClient("smtp.office365.com");
+                    msg.From = new MailAddress("contato12345123451@outlook.com");
+                    msg.To.Add(Request.Form["email"].ToString());
+                    msg.Subject = "Recuperação de Senha";
+                    //msg.Body = "sua nova senha é: " + Convert.ToString(novasenha);
+
+                    /**contato616516@outlook.com**/
+                    smtp.Port = 587;
+                    smtp.Credentials = new System.Net.NetworkCredential("contato12345123451@outlook.com", "senai1234");
+                    smtp.EnableSsl = true;
+
+                    smtp.Send(msg);
+                    Console.WriteLine("Deu certo!");
+                    /**Final**/
+                }
+
+                    //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                    if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+            return View();
+        }
+        }
     }
-}
+

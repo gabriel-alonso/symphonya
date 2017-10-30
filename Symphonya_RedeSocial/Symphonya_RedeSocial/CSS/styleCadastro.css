@@ -89,12 +89,20 @@ a.read.fourth {
 
 
 
-
-
-
+footer {
+    background: #A9A9A9;
+    padding: 12px;
+    width: 100%;
+    border-top: 1px solid #A9A9A9;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
+
 }
 
 ol, ul {

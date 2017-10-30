@@ -321,6 +321,7 @@
     <Content Include="Views\Menu\VerSeguidores.cshtml" />
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <Content Include="Views\Menu\Agenda.cshtml" />
+    <Content Include="Views\Menu\Email.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
