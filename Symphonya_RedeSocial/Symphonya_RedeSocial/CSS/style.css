@@ -109,7 +109,7 @@ a:hover { transition: all 200ms ease-in-out; }
 .page-container.sidebar-collapsed .left-content {
 
    float: right;
-   width: 97%;
+   width: 96%;
 }
 .page-container.sidebar-collapsed-back {
     transition: all 100ms linear;
@@ -482,7 +482,7 @@ cursor: pointer;
     top: -10px;
     border-left: 12px solid rgba(0, 0, 0, 0);
     border-right: 12px solid rgba(0, 0, 0, 0);
-    border-bottom: 12px solid #002561;
+    border-bottom: 12px solid #FC3158;
 }
 .main-search form{
 	position:relative;
@@ -5858,7 +5858,7 @@ footer  p a:hover ,.footer p a:hover{
 		top: -10px;
 		border-left: 12px solid rgba(0, 0, 0, 0);
 		border-right: 12px solid rgba(0, 0, 0, 0);
-		border-bottom: 12px solid #002561;
+		border-bottom: 12px solid #FC3158;
 	}
 	.chrt h2, h3.sub-tittle {
       font-size: 1.8em;
