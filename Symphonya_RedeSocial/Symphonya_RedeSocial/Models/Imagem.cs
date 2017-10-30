@@ -10,8 +10,6 @@ namespace Symphonya_RedeSocial.Models
 {
     public class Imagem
     {
-        //public Imagem() { }
-
         public Bitmap ResizeImage(Stream stream, int? width, int? height)
         {
             System.Drawing.Bitmap bmpOut = null;
@@ -51,8 +49,8 @@ namespace Symphonya_RedeSocial.Models
 
                 if(loBMP.Width == loBMP.Height)
                 {
-                    lnNewHeight = 180;
-                    lnNewWidth = 180;
+                    lnNewHeight = (int)height;
+                    lnNewWidth = (int)width;
                 }
 
                 bmpOut = new Bitmap(lnNewWidth, lnNewHeight);

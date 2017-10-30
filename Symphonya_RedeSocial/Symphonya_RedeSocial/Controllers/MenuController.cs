@@ -46,8 +46,9 @@ namespace Symphonya_RedeSocial.Controllers
                 //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
                 ViewBag.Logado = Session["Usuario"];
                 //CRIA SESSÃO DO USUARIO
-                 Usuario User = (Usuario)Session["Usuario"];
-                 ViewBag.User = User;
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
                 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -174,6 +175,7 @@ namespace Symphonya_RedeSocial.Controllers
                 ViewBag.Logado = Session["Usuario"];
                 //CRIA SESSÃO DO USUARIO
                 Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
                 ViewBag.User = User;
 
                 if (Request.HttpMethod == "POST")

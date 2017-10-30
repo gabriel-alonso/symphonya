@@ -27,6 +27,7 @@ namespace Symphonya_RedeSocial.Models
         public int AnoNascimento { get; set; }
         public String Telefone { get; set; }
         public string Biografia { get; set; }
+        public Int32 Nivel { get; set; }
 
         public Usuario() { }
 
@@ -61,6 +62,7 @@ namespace Symphonya_RedeSocial.Models
             this.Modo = (Boolean)Leitor["Modo"];
             this.Telefone = (String)Leitor["Telefone"];
             this.Biografia = (String)Leitor["Biografia"];
+            this.Nivel = (Int32)Leitor["Nivel"];
 
             Conexao.Close();
         }
@@ -99,6 +101,7 @@ namespace Symphonya_RedeSocial.Models
             this.Modo = (Boolean)Leitor["Modo"];
             this.Telefone = (String)Leitor["Telefone"];
             this.Biografia = (String)Leitor["Biografia"];
+            this.Nivel = (Int32)Leitor["Nivel"];
 
 
             Conexao.Close();
@@ -112,8 +115,8 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Imagem_Capa, Sexo, Modo, Avaliacao, Telefone, Biografia)"
-              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Imagem_Capa, @Sexo, @Modo, @Avaliacao, @Telefone, @Biografia);";
+            Comando.CommandText = "INSERT INTO Usuario ( Nome , Sobrenome, DiaNascimento , MesNascimento , AnoNascimento , Email, Senha, Cidade, Estado, Imagem_Perfil, Imagem_Capa, Sexo, Modo, Avaliacao, Telefone, Biografia, Nivel)"
+              + "VALUES ( @Nome , @Sobrenome, @DiaNascimento, @MesNascimento, @AnoNascimento, @Email, @Senha, @Cidade, @Estado, @Imagem_Perfil, @Imagem_Capa, @Sexo, @Modo, @Avaliacao, @Telefone, @Biografia, @Nivel);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
             Comando.Parameters.AddWithValue("@DiaNascimento", this.DiaNascimento);
@@ -130,6 +133,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Imagem_Capa", "fundoPerfil.jpg");
             Comando.Parameters.AddWithValue("@Telefone", this.Telefone);
             Comando.Parameters.AddWithValue("@Biografia", "Conte-nos algo sobre você!");
+            Comando.Parameters.AddWithValue("@Nivel", 0);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 

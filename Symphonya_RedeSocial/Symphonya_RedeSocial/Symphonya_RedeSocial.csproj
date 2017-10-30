@@ -179,6 +179,7 @@
     <Content Include="Imagens\IconesInstrumentos\UkuleleIcon.png" />
     <Content Include="Imagens\IconesInstrumentos\ViolaoIcon.jpg" />
     <Content Include="Imagens\IconesInstrumentos\ViolinoIcon.png" />
+    <Content Include="Imagens\ImagensUsuarioimagemPerfil11.png" />
     <Content Include="Imagens\ImagensUsuario\fundoPerfil.jpg" />
     <Content Include="Imagens\fundo_cadastro.jpg" />
     <Content Include="Imagens\fundo_login.jpg" />
@@ -280,6 +281,7 @@
     <Compile Include="Models\Bandas.cs" />
     <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\Imagem.cs" />
+    <Compile Include="Models\Instrumentos.cs" />
     <Compile Include="Models\Seguidores.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

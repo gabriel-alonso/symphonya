@@ -220,30 +220,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <h3 class="inner-tittle two">Instrumentos </h3>
                                 <div class="main-grid3">
-                                    <div class="bar">
-                                        <p>UI/UX</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill1" style="width:100%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>HTML / CSS3 / SASS</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill2" style="width:90%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>Javascript</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill3" style="width:75%"> </div>
-                                    </div>
-                                    <div class="bar">
-                                        <p>Wordpress</p>
-                                    </div>
-                                    <div class="skills">
-                                        <div class="skill4" style="width:85%"> </div>
-                                    </div>
+
+                                @if (ViewBag.Instrumentos != null)
+                                {
+                                    foreach (var I in ViewBag.Instrumentos)
+                                    {
+                                        <div class="barra-instrumento">
+                                            <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
+                                        </div>
+                                        <div class="skills">
+                                                <div class="skill1" style="width:@I.Maestria%"> </div>
+                                            </div>
+                                            }
+                                            }
+                                else
+                                {
+                                    <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
+                                }
                                 </div>
                             </div>
                             <div class="col-md-6 profile-info two">
@@ -362,13 +355,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"></div>
     </div>
-    </div>
     <script>
 							var toggle = true;
 
 							$(".sidebar-icon").click(function() {
-							  if (toggle)
-							  {
+                                                if (toggle)
+                                                {
 								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
 								$("#menu span").css({"position":"absolute"});
 							  }
