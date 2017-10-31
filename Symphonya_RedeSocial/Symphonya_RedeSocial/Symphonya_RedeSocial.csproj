@@ -125,11 +125,14 @@
     <Content Include="CSS\clndr.css" />
     <Content Include="CSS\fabochart.css" />
     <Content Include="CSS\font-awesome.css" />
+    <Content Include="CSS\font-awesome.min.css" />
+    <Content Include="CSS\font-awesome2.min.css" />
     <Content Include="CSS\icon-font.min.css" />
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="CSS\jqvmap.css" />
     <Content Include="CSS\popuo-box.css" />
     <Content Include="CSS\sol.css" />
+    <Content Include="CSS\style-arquivo.css" />
     <Content Include="CSS\style.css" />
     <Content Include="CSS\styleCadastro.css" />
     <Content Include="CSS\styleGenero.css" />
@@ -154,11 +157,13 @@
     <Content Include="Imagens\admin2.jpg" />
     <Content Include="Imagens\alarm.png" />
     <Content Include="Imagens\b.png" />
+    <Content Include="Imagens\banner.jpg" />
     <Content Include="Imagens\bg.jpg" />
     <Content Include="Imagens\business-1031754_640.jpg" />
     <Content Include="Imagens\check.png" />
     <Content Include="Imagens\clockface.png" />
     <Content Include="Imagens\closew.gif" />
+    <Content Include="Imagens\content.jpg" />
     <Content Include="Imagens\cross.png" />
     <Content Include="Imagens\fb.png" />
     <Content Include="Imagens\icone.png" />
@@ -201,6 +206,7 @@
     <Content Include="Imagens\in9.jpg" />
     <Content Include="Imagens\leftw.gif" />
     <Content Include="Imagens\minhand.png" />
+    <Content Include="Imagens\music-player%281%29.png" />
     <Content Include="Imagens\p1.jpg" />
     <Content Include="Imagens\p2.jpg" />
     <Content Include="Imagens\p3.jpg" />
@@ -322,6 +328,8 @@
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <Content Include="Views\Menu\Agenda.cshtml" />
     <Content Include="Views\Menu\Email.cshtml" />
+    <Content Include="Views\Menu\Arquivo.cshtml" />
+    <Content Include="Fonts\fontawesome-webfont.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -332,6 +340,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Fonts\Calendario\" />
+    <Folder Include="Views\Email\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

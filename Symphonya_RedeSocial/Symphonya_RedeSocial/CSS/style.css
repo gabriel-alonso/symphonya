@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5 {
     	font-family: 'Roboto', sans-serif;
 }
 a {
-  color: #008DE7;
+  color:#FC3158;
   font-weight:400;
 }
 a:hover { transition: all 200ms ease-in-out; }
@@ -372,7 +372,7 @@ span.name-caret {
 }
 
 .down{
-	padding: 26px 0 30px;
+	padding: 26px 0 45px;
     text-align: center;
       background: #D3D3D3;
 }
@@ -4171,7 +4171,7 @@ i.fa.fa-picture-o {
     margin: 1em 0 2em 0;
 }
 th {
-   color: #00C6D7!important;
+   color: #FC3158!important;
    font-weight: 400;
 }
 .graph-visual.tables-main {
@@ -4650,7 +4650,7 @@ p.four {
   z-index:4;
 }
 .inner-toggle {
-    text-align: center;
+   text-align: inherit;
 }
 .post-file i {
     color: #fc3158;
