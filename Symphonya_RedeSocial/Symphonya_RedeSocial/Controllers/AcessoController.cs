@@ -10,7 +10,8 @@ namespace Symphonya_RedeSocial.Controllers
 {
     public class AcessoController : Controller
     {
-        // GET: Acesso
+        
+        //METODO DE LOGIN
         public ActionResult Login()
         {
 
@@ -38,6 +39,7 @@ namespace Symphonya_RedeSocial.Controllers
                 return View();
             }
 
+        //METODO DE CADASTRO
         public ActionResult Cadastro()
         {
             if (Request.HttpMethod == "POST")
@@ -68,6 +70,7 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
+        //METODO PARA FAZER LOGOFF
         public void Sair()
         {
             Session.Abandon();
