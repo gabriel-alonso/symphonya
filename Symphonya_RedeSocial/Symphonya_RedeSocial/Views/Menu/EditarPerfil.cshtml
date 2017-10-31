@@ -196,14 +196,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <label for="NovaImagemPerfil">
                                                     <strong>Imagem de Perfil</strong>
                                                 </label>
-                                                <input id="NovaImagemPerfil" name="NovaImagemPerfil" type="file" />
+                                                <input id="NovaImagemPerfil" name="NovaImagemPerfil" type="file"/>
                                                 <p class="help-block">
                                                     <strong>Nota:</strong> As imagens de <strong>PERFIL</strong> tendem a ser de dimensão 1:1, caso sua imagem não siga esse padrao haverá deformação da mesma.
                                                 </p>
                                             </div>
                                             <div class="form-group">
                                                 <label for="NovaImagemCapa"><strong>Imagem de Capa</strong></label>
-                                                <input id="NovaImagemCapa" type="file" />
+                                                <input id="NovaImagemCapa" name="NovaImagemCapa" type="file" />
                                                 <p class="help-block"><strong>Nota:</strong> As imagens de <strong>CAPA</strong> tendem a ser de dimensão 2:1, caso sua imagem não siga esse padrao haverá deformação da mesma.</p>
                                             </div>
                                         </div>
@@ -285,6 +285,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <p>Você ainda não possui instrumentos cadastrados! Para cadastra-los clique em Editar Perfil</p>
                                                 }
                                             </div>
+                                            <div class="clearfix"></div>
+                                            <div class=""
                                         </div>
                                         <div class="clearfix"></div>
                                         <h3 class="inner-tittle-biografia">Biografia </h3>
@@ -324,7 +326,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
-                <p>System Administrator in Company</p>
                 <ul>
                     <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                 </ul>

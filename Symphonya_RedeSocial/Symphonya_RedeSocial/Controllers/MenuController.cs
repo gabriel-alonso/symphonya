@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.HtmlControls;
@@ -24,12 +23,12 @@ namespace Symphonya_RedeSocial.Controllers
                 ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                if (Request.HttpMethod == "POST")
-                {
+                    if (Request.HttpMethod == "POST")
+                    {
                     String busca = Request.Form["busca"].ToString();
                     Response.Redirect("/Menu/Pesquisar/" + busca);
+                    }
                 }
-            }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
             {
@@ -50,7 +49,7 @@ namespace Symphonya_RedeSocial.Controllers
                 Usuario User = (Usuario)Session["Usuario"];
                 ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
                 ViewBag.User = User;
-
+                
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
@@ -97,7 +96,7 @@ namespace Symphonya_RedeSocial.Controllers
             else
             {
                 Response.Redirect("/Acesso/Login");
-
+            
             }
             return View();
         }
@@ -167,10 +166,10 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
-
+        
         public ActionResult EditarPerfil()
         {
-            if (Session["Usuario"] != null)
+            if(Session["Usuario"] != null)
             {
                 //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
                 ViewBag.Logado = Session["Usuario"];
@@ -189,30 +188,44 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
 
+                    HttpPostedFileBase NovaImagemPerfil = Request.Files["NovaImagemPerfil"];
+                    HttpPostedFileBase NovaImagemCapa = Request.Files["NovaImagemCapa"];
+
                     Usuario EditarUsuario = new Usuario();
 
                     EditarUsuario = (Usuario)Session["Usuario"];
 
+                    //CASO O CAMPO DE NOME SEJA DIFERENTE DE NULO
                     if (NovoNome != "")
                     {
                         EditarUsuario.Nome = NovoNome;
                     }
+
+                    //CASO O CAMPO DE SOBRENOME SEJA DIFERENTE DE NULO
                     if (NovoSobrenome != "")
                     {
                         EditarUsuario.Sobrenome = NovoSobrenome;
                     }
+
+                    //CASO O CAMPO DE EMAIL SEJA DIFERENTE DE NULO
                     if (NovoEmail != "")
                     {
                         EditarUsuario.Email = NovoEmail;
                     }
+
+                    //CASO O CAMPO DE CIDADE SEJA DIFERENTE DE NULO
                     if (NovaCidade != "")
                     {
                         EditarUsuario.Cidade = NovaCidade;
                     }
+
+                    //CASO O CAMPO DE ESTADO SEJA DIFERENTE DE NULO
                     if (NovoEstado != "")
                     {
                         EditarUsuario.Estado = NovoEstado;
                     }
+
+                    //CASO O CAMPO DE TELEFONE SEJA DIFERENTE DE NULO
                     if (NovoTelefone != "")
                     {
                         EditarUsuario.Telefone = NovoTelefone;
@@ -220,40 +233,75 @@ namespace Symphonya_RedeSocial.Controllers
 
                     int ID = EditarUsuario.ID;
 
-                    foreach (string fileName in Request.Files)
+                    //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
+                    if (NovaImagemPerfil.FileName != "")
                     {
-                        HttpPostedFileBase postedFile = Request.Files[fileName];
-                        int contentLength = postedFile.ContentLength;
-                        string contentType = postedFile.ContentType;
-                        string nome = postedFile.FileName;
-                        Imagem img = new Imagem();
-
-                        if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
                         {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
 
-                            if (contentType.IndexOf("jpeg") == 1 || contentType.IndexOf("png") == 1 || contentType.IndexOf("jpg") == 1)
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
                             {
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
-                                string nomeArquivoUpload = "imagemCapa" + ID + ".png";
-                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
-                                EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
-                            }
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1800, 1080);
 
-                            else {
-
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
                                 string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
+
+                                //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
                                 arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
+                               }
+
+                            }
+                       }
+
+                    //CASO O CAMPO DE IMAGEM DE CAPA SEJA DIFERENTE DE NULO
+                    if(NovaImagemCapa.FileName != "")
+                    {
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
+                        {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
+
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                            {
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
+
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
+                                string nomeArquivoUpload = "imagemCapa" + ID + ".png";
+
+                                //SALVA O ARQUIVO
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE CAPA DO USUARIO
+                                EditarUsuario.Imagem_Capa = nomeArquivoUpload;
                             }
 
                         }
                     }
-
-                    //EditarUsuario.Imagem_Perfil = "imagemPerfil" + ID + ".png";
-                    //EditarUsuario.Imagem_Capa = "imagemCapa" + ID + ".png";
 
                     if (EditarUsuario.Alterar())
                     {
@@ -276,7 +324,7 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult Pesquisar(String busca)
         {
-            if (busca == null)
+            if(busca == null)
             {
                 Response.Redirect("/Menu/Feed");
             }
@@ -294,7 +342,7 @@ namespace Symphonya_RedeSocial.Controllers
                     List<Usuario> Usuarios = Usuario.Listar(busca);
                     ViewBag.Usuarios = Usuarios;
                 }
-                if (Bandas.Listar(busca) != null)
+                if(Bandas.Listar(busca) != null)
                 {
                     List<Bandas> Bands = Bandas.Listar(busca);
                     ViewBag.Bandas = Bands;
@@ -436,58 +484,5 @@ namespace Symphonya_RedeSocial.Controllers
 
             return RedirectToAction("VerSeguidos", "Menu");
         }
-        public ActionResult Email()
-        {
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null)
-            {
-                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
-                ViewBag.Logado = Session["Usuario"];
-                //CRIA SESSÃO DO USUARIO
-                Usuario User = (Usuario)Session["Usuario"];
-                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
-                ViewBag.User = User;
-
-                //ENVIO DE EMAIL
-                if (Request.HttpMethod.Equals("POST"))
-                {
-                    
-                    //Usuario Us = Usuario.Recuperar(Request.Form["matricula"].ToString(), novasenha);
-
-
-                    /**Parte de enviar o email**/
-                    MailMessage msg = new MailMessage();
-                    SmtpClient smtp = new SmtpClient("smtp.office365.com");
-                    msg.From = new MailAddress("contato12345123451@outlook.com");
-                    msg.To.Add(Request.Form["email"].ToString());
-                    msg.Subject = "Recuperação de Senha";
-                    //msg.Body = "sua nova senha é: " + Convert.ToString(novasenha);
-
-                    /**contato616516@outlook.com**/
-                    smtp.Port = 587;
-                    smtp.Credentials = new System.Net.NetworkCredential("contato12345123451@outlook.com", "senai1234");
-                    smtp.EnableSsl = true;
-
-                    smtp.Send(msg);
-                    Console.WriteLine("Deu certo!");
-                    /**Final**/
-                }
-
-                    //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                    if (Request.HttpMethod == "POST")
-                {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
-                }
-
-            }
-            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
-            else
-            {
-                Response.Redirect("/Acesso/Login");
-            }
-            return View();
-        }
-        }
     }
-
+}
