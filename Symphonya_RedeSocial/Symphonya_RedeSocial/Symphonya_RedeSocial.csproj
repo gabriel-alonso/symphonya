@@ -326,7 +326,11 @@
     <Content Include="Views\Menu\VerSeguidores.cshtml" />
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <Content Include="Views\Menu\Agenda.cshtml" />
+    <None Include="Properties\PublishProfiles\Symphonya - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Symphonya - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\Symphonya - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\Symphonya - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
