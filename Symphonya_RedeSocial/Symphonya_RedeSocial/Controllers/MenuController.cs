@@ -252,7 +252,7 @@ namespace Symphonya_RedeSocial.Controllers
                             if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
                             {
                                 //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
-                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1800, 1080);
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
 
                                 //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
                                 string nomeArquivoUpload = "imagemPerfil" + ID + ".png";
@@ -469,6 +469,7 @@ namespace Symphonya_RedeSocial.Controllers
 
             return View();
         }
+
         public ActionResult Unfollow(Int32 ID)
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
