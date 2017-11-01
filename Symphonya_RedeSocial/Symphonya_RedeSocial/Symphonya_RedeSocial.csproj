@@ -229,6 +229,7 @@
     <Content Include="Imagens\timer.png" />
     <Content Include="Imagens\tw.png" />
     <Content Include="Imagens\watch.png" />
+    <Content Include="JS\accordion.js" />
     <Content Include="JS\amcharts.js" />
     <Content Include="JS\arbor.js" />
     <Content Include="JS\atlas.js" />

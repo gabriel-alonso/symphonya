@@ -470,6 +470,7 @@ namespace Symphonya_RedeSocial.Controllers
 
             return View();
         }
+
         public ActionResult Unfollow(Int32 ID)
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
