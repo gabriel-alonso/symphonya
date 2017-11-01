@@ -133,6 +133,7 @@
     <Content Include="CSS\popuo-box.css" />
     <Content Include="CSS\sol.css" />
     <Content Include="CSS\style-arquivo.css" />
+    <Content Include="CSS\style-upload.css" />
     <Content Include="CSS\style.css" />
     <Content Include="CSS\styleCadastro.css" />
     <Content Include="CSS\styleGenero.css" />
@@ -243,6 +244,7 @@
     <Content Include="JS\datamaps-all.js" />
     <Content Include="JS\dygraph-combined.js" />
     <Content Include="JS\fabochart.js" />
+    <Content Include="JS\filedrag.js" />
     <Content Include="JS\jquery-1.10.2.min.js" />
     <Content Include="JS\jquery-2.1.4.min.js" />
     <Content Include="JS\jquery-2.2.3.min.js" />
@@ -333,6 +335,8 @@
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <Content Include="Views\Menu\Agenda.cshtml" />
     <Content Include="Views\Menu\Email.cshtml" />
+    <Content Include="Views\Menu\VerBandas.cshtml" />
+    <Content Include="Views\Menu\Arquivo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

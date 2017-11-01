@@ -29,8 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- /js -->
     <script src="~/JS/jquery-1.10.2.min.js"></script>
     <!-- //js-->
-
     <link href="~/CSS/styleCadastro.css" rel='stylesheet' type='text/css' />
+
 </head>
 <body>
     <div class="page-container">
@@ -168,41 +168,129 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sub-heard-part">
                         <ol class="breadcrumb m-b-0">
                             <li><a href="~/Menu/Feed">Início</a></li>
-                            <li class="active">Perfil</li>
+                            <li class="active">Ver Bandas</li>
                         </ol>
                     </div>
                     <!--//sub-heard-part-->
                     <!--/profile-->
-                    <h3 class="sub-tittle pro">Seguidores</h3>
-                    <p class="sub-tittle-desc">Veja quem você segue.</p>
-                    <table class="table">
-                        <tbody>
-                            @if (ViewBag.Seguidos == null)
-                            {
-<p>Você ainda não possui seguidores!</p>
-                            }
-                            else {
-                                foreach (var S in ViewBag.Seguidos)
-                                {
-<tr class="table-row">
-                                    <td class="table-text">
-                                        <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                        <p>@(S.Email)</p>
-                                    </td>
-                                    <td>
-                                        <span class="fam">Usuário</span>
-                                    </td>
-                                    <td>
-                                        <img href="~/Menu/Unfollow/@S.ID" class="status" src="~/Imagens/icone.png"
-                                             onmouseover="this.src='/Imagens/iconeHover.png'"
-                                             onmouseout="this.src = '/Imagens/icone.png'" />
+                    <h3 class="sub-tittle pro">Ver Bandas</h3>
+                    <div class="btn-editarperfil">
+                        <a href="~/Menu/EditarPerfil" class="btn btn-default dropdown-toggle"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                    </div>
+                    @if (ViewBag.Logado == null)
+                    {
 
-                                    </td>
-                                </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
+                    }
+                    else {
+                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
+                            <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
+                            <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
+                        </div>
+                    <!--/profile-inner-->
+                        <div class="profile-section-inner">
+                            <div class="col-md-6 profile-info">
+                                <h3 class="inner-tittle">Informações Pessoais </h3>
+                                <div class="main-grid3">
+                                    <div class="p-20">
+                                        <div class="about-info-p">
+                                            <strong>Nome Completo</strong>
+                                            <br>
+                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
+                                        </div>
+                                        <div class="about-info-p">
+                                            <strong>Mobile</strong>
+                                            <br>
+                                            <p class="text-muted">(123) 123 1234</p>
+                                        </div>
+                                        <div class="about-info-p">
+                                            <strong>E-mail</strong>
+                                            <br>
+                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
+                                        </div>
+                                        <div class="about-info-p m-b-0">
+                                            <strong>Local</strong>
+                                            <br>
+                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="inner-tittle">Biografia </h3>
+                                <div class="main-grid3 p-skill">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    <p class="para">But also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                                <h3 class="inner-tittle two">Instrumentos </h3>
+                                <div class="main-grid3">
+
+                                    @if (ViewBag.Instrumentos != null)
+                                    {
+                                        foreach (var I in ViewBag.Instrumentos)
+                                        {
+                                            <div class="barra-instrumento">
+                                                <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
+                                            </div>
+                                            <div class="skills">
+                                                <div class="skill1" style="width:@I.Maestria%"> </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6 profile-info two">
+                                <h3 class="inner-tittle">Músicas </h3>
+                                <div class="main-grid3 p-skill">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p class="time">5 Minutes ago</p>
+                                                    <p>Uploaded 2 new Photos</p>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <!--/map-->
+                            <div class="col-md-6 profile-info two">
+                                <h3 class="inner-tittle">Atividade Recente </h3>
+                                <div class="main-grid3 p-skill">
+                                    <ul class="timeline">
+                                        <li>
+                                            <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
+                                            <div class="timeline-panel">
+                                                <div class="timeline-heading">
+                                                    <h4 class="timeline-title"><a href="profile.html">@ViewBag.User.Nome @ViewBag.User.Sobrenome</a></h4>
+                                                </div>
+                                                <div class="timeline-body">
+                                                    <p class="time">5 Minutes ago</p>
+                                                    <p>Uploaded 2 new Photos</p>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    <!--//profile-inner-->
+                    <!--//profile--> }
 
                 </div>
                 <!--//outer-wp-->
@@ -227,9 +315,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="down">
                 @if (ViewBag.Logado == null) { }
                 else {
-                    <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
+                    <a><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
+                <p>System Administrator in Company</p>
                 <ul>
                     <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                 </ul>
@@ -268,13 +357,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"></div>
     </div>
-    </div>
     <script>
 							var toggle = true;
 
 							$(".sidebar-icon").click(function() {
-							  if (toggle)
-							  {
+                                                if (toggle)
+                                                {
 								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
 								$("#menu span").css({"position":"absolute"});
 							  }
@@ -301,3 +389,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/JS/bootstrap.min.js"></script>
 </body>
 </html>
+
+@{
+    ViewBag.Title = "VerBandas";
+}
+
+<h2>VerBandas</h2>
+

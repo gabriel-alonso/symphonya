@@ -558,5 +558,32 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
+        public ActionResult VerBandas()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+            return View();
+        }
     }
 }
