@@ -2715,14 +2715,14 @@ label.control-label {
 }
 .btn-primary {
     color: #fff;
-     background-color: #042252;
+     background-color: #FC3158;
     border-color: #052963;
 	outline: none;
 }
 .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
       color: #fff;
-    background-color:#00C6D7;
-    border-color:#00C6D7;
+    background-color:#FC3158;
+    border-color:#FC3158;
     outline: none;
 }
 label.check {
