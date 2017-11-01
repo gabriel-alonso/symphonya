@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.HtmlControls;
@@ -259,7 +260,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128565\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
@@ -484,6 +485,79 @@ namespace Symphonya_RedeSocial.Controllers
             }
 
             return RedirectToAction("VerSeguidos", "Menu");
+        }
+        public ActionResult Email()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
+
+
+
+                if (Request.HttpMethod == "POST")
+                {
+           
+                    /**Parte de enviar o email**/
+                    MailMessage msg = new MailMessage();
+                    SmtpClient smtp = new SmtpClient("smtp.office365.com");
+                    msg.From = new MailAddress("contato12345123451@outlook.com");
+                    msg.To.Add(Request.Form["email"].ToString());
+                    msg.Subject = "Recuperação de Senha";
+                    msg.Body = "sua nova senha é: ";
+
+                    /**contato616516@outlook.com**/
+                    smtp.Port = 587;
+                    smtp.Credentials = new System.Net.NetworkCredential("contato12345123451@outlook.com", "senai1234");
+                    smtp.EnableSsl = true;
+                }
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+            return View();
+        }
+        public ActionResult Arquivo()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+            return View();
         }
     }
 }
