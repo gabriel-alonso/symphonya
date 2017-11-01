@@ -167,6 +167,23 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
+
+        public ActionResult EditarInstrumento()
+        {
+            if (Session["Usuario"] != null)
+            {
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
+
+                if (Request.HttpMethod == "POST")
+                {
+                }
+            }
+          }
         
         public ActionResult EditarPerfil()
         {
@@ -189,10 +206,13 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
 
+                    Int32 NovaMaestria = Int32.Parse(Request.Form["NovaMaestria"]);
+
                     HttpPostedFileBase NovaImagemPerfil = Request.Files["NovaImagemPerfil"];
                     HttpPostedFileBase NovaImagemCapa = Request.Files["NovaImagemCapa"];
 
                     Usuario EditarUsuario = new Usuario();
+                    Instrumentos EditarInstrumento = new Instrumentos();
 
                     EditarUsuario = (Usuario)Session["Usuario"];
 
@@ -232,6 +252,10 @@ namespace Symphonya_RedeSocial.Controllers
                         EditarUsuario.Telefone = NovoTelefone;
                     }
 
+                    if(NovaMaestria != 0)
+                    {
+                        EditarInstrumento.Maestria = NovaMaestria;
+                    }
                     int ID = EditarUsuario.ID;
 
                     //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
