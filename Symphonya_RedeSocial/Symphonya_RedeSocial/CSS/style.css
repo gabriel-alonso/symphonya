@@ -3947,11 +3947,14 @@ button.instrumentos.active, button.instrumentos:hover {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 div.panel {
-    padding: 0 18px;
+    padding: 18px;
     display: none;
     background-color: #fff;
 }
 .panel strong{
+    color:#FC3158;
+}
+.panel select{
     color:#FC3158;
 }
 .barra-instrumento o{
