@@ -565,5 +565,27 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
+
+        //METODO DE SALVAR ARQUIVOS
+        public ActionResult Arquivos()
+        {
+            if (Request.HttpMethod == "POST")
+            {
+
+                Arquivos Ar = new Arquivos();
+
+                Ar.Tipo = Request.Form["Tipo"].ToString();
+                Ar.Nome = Request.Form["Nome"].ToString();
+               
+               
+                Ar.NovoArquivo();
+
+                Response.Redirect("/Menu/Feed");
+
+            }
+
+            return View();
+        }
+
     }
 }

@@ -248,8 +248,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
                                             <div class="agileinfo">
                                                 @*<input type="submit" class="choose" value="Selecionar Arquivo">*@
-
-                                                <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+                                                <input type="file" id="fileselect" name="fileselect[]"  accept=".mp3" multiple="multiple" />
                                                 <div id="filedrag">Arraste seu arquivo aqui</div>
                                             </div>
 
@@ -258,7 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <span class="glyphicon">&#xe173;</span>*@
 
                                             </div>
-                                        
+                                            <input type="submit" onclick="myFunction()" value="Salvar">
                                             <button type="button" class="btn btn-primary" onclick="ResetarForm()">Reset</button>
                                         </form>
 
@@ -303,13 +302,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-                        <h3 class="inner-tittle two">Lista de Arquivos </h3>
+                        @*<h3 class="inner-tittle two">Lista de Arquivos </h3>
                         <div class="graph">
                             <div class="tables">
                                 <table class="table"> <thead> <tr> <th>ID</th> <th>Nome</th> <th>Tipo</th> <th>Descrição</th> </tr> </thead> <tbody> <tr class="active"> <th scope="row">1</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr> <th scope="row">2</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr class="success"> <th scope="row">3</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr> <th scope="row">4</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr class="info"> <th scope="row">5</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr> <th scope="row">6</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr class="warning"> <th scope="row">7</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr> <th scope="row">8</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> <tr class="danger"> <th scope="row">9</th> <td>Column content</td> <td>Column content</td> <td>Column content</td> </tr> </tbody> </table>
                             </div>
 
-                        </div>
+                        </div>*@
                         <div class="clearfix"> </div>
                     </div>
                    
