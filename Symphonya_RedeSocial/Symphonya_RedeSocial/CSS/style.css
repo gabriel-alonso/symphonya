@@ -3941,17 +3941,38 @@ button.instrumentos {
     font-size: 15px;
     transition: 0.4s;
 }
+
 button.instrumentos.active, button.instrumentos:hover {
     background-color: #D3D3D3;
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
 div.panel {
     padding: 18px;
     display: none;
     background-color: #fff;
 }
+
+.panel a{
+    color:#000;
+    text-align:center;
+    text-decoration:wavy;
+    font-size: 18px;
+}
+
+.panel a:hover{
+    color:#FFF;
+    background:#FC3158;
+    border: 1PX solid #FC3158;
+    padding: 2px;
+    border-radius: 12px;
+}
 .panel strong{
     color:#FC3158;
+    font-size: 18px;
+}
+.panel strong:hover{
+    color:#FFF;
 }
 .panel select{
     color:#FC3158;

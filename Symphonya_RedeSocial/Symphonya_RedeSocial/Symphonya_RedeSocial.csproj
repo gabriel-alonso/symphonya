@@ -339,6 +339,8 @@
     <Content Include="Views\Menu\Email.cshtml" />
     <Content Include="Views\Menu\VerBandas.cshtml" />
     <Content Include="Views\Menu\Arquivo.cshtml" />
+    <Content Include="Views\Menu\EditarInstrumento.cshtml" />
+    <None Include="Properties\PublishProfiles\Symphonya.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

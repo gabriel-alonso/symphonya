@@ -229,6 +229,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
+                @if (ViewBag.User.Nivel != 0)
+                {
+                    <p><strong>Administrador</strong></p>
+                }
                 <ul>
                     <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                 </ul>
@@ -236,6 +240,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--//down-->
             <div class="menu">
                 <ul id="menu">
+                    @if (ViewBag.Logado == null) { }
+                    else {
+                        if (ViewBag.User.Nivel != 0)
+                        {
+                            <li id="menu-academico">
+                                <a href="#"><i class="fa fa-area-chart"></i> <span> Administração</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                                <ul id="menu-academico-sub">
+                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Arquivos">Arquivos</a></li>
+                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Bandas">Bandas</a></li>
+                                    <li id="menu-academico-boletim"><a href="~/Administracao/Usuarios">Usuários</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
                     <li id="menu-academico">
                         <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
                         <ul id="menu-academico-sub">
