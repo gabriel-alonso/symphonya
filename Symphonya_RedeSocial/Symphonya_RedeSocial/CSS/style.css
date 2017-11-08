@@ -2708,21 +2708,20 @@ button, input, select, textarea {
     min-height: 100px;
 }
 label.control-label {
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .form-group.button-2 {
     margin-top: 1em;
 }
 .btn-primary {
     color: #fff;
-     background-color: #042252;
-    border-color: #052963;
+     background-color: #FC3158;
 	outline: none;
 }
 .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
       color: #fff;
-    background-color:#00C6D7;
-    border-color:#00C6D7;
+    background-color:#FC3158;
+    border-color:#FC3158;
     outline: none;
 }
 label.check {
@@ -2901,7 +2900,7 @@ ul#menu-comunicacao-sub {
 }
 .error-top {
     text-align: center;
-    margin: 7em auto;
+    margin: 28em auto;
     background: #fff;
     padding: 2em 2em;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -2912,7 +2911,7 @@ ul#menu-comunicacao-sub {
     padding: 2em 2em;
 	position: absolute;
     left: 19%;
-    top: 13%;
+    top: -75%;
     right: 19%;
     bottom: auto;
 }
@@ -2927,8 +2926,8 @@ ul#menu-comunicacao-sub {
     color: #00c6d7;
 }
 .error-top span {
-  font-size: 0.8em;
-  color:#333;
+  font-size: 1.0em;
+  color:#777;
 }
 .error-top p{
     font-size: 0.95em;

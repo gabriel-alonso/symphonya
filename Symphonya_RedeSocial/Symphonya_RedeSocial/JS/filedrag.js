@@ -46,14 +46,17 @@ Developed by Craig Buckler (@craigbuckler) of OptimalWorks.net
 	// output file information
 	function ParseFile(file) {
 
-		Output(
+	    Output(
 			"<p>Nome do Arquivo: <strong>" + file.name +
 			"</strong> Tipo: <strong>" + file.type +
 			"</strong> Tamanho: <strong>" + file.size +
-			"</strong> bytes</p>"
+			"</strong> bytes</p>" +
+            "<p style='color: #FC3158;'>Arquivos Carregados</p>"+
+            "<span class='glyphicon'>&#xe173;</span>"
 		);
 
 	}
+
 
 
 	// initialize

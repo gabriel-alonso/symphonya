@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using System.Web.UI.HtmlControls;
 
 namespace Symphonya_RedeSocial.Controllers
@@ -17,23 +16,12 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Feed()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if(Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                     if (Request.HttpMethod == "POST")
@@ -54,26 +42,14 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Perfil()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, false);
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, false);
-                    ViewBag.User = User;
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
                 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -93,24 +69,13 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult CadastroBanda()
         {
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
                 //RETORNA OS USUARIOS, CASO HAJA RESULTADO
                 if (Genero.Listar() != null)
@@ -140,32 +105,16 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Agenda()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO 
-                Int32 IDUsuario;
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
-                if (Session["Administrador"] != null)
+                if (Seguidores.ListarSeguidores(User.ID) != null)
                 {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                if (Seguidores.ListarSeguidores(IDUsuario) != null)
-                {
-                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
+                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(User.ID);
                     ViewBag.Seguidores = seguidores;
                 }
                 else
@@ -192,24 +141,13 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult VerUsuario()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
-
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
                 if (TempData["Usuario"] != null)
                 {
                     ViewBag.Visualizacao = (Usuario)TempData["Usuario"];
@@ -230,85 +168,33 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
-        public ActionResult EditarInstrumento(Int32 IDInstrumento)
+        public ActionResult EditarInstrumento()
         {
-            //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
-            Int32 IDUsuario;
-
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, false);
-                }
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, false);
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
 
                 if (Request.HttpMethod == "POST")
                 {
-                    Int32 NovaMaestria = Int32.Parse(Request.Form["NovaMaestria"].ToString());
-
-                    Instrumentos i = new Instrumentos(IDInstrumento, IDUsuario);
-
-                    if(NovaMaestria != i.Maestria)
-                    {
-
-                        i.Maestria = NovaMaestria;
-                        i.Alterar(IDUsuario);
-                        Response.Redirect("/Menu/EditarPerfil");
-
-                    }
-
-
                 }
             }
-            else
-            {
-                Response.Redirect("/Acesso/Login");
-            }
-
-            return View();
           }
         
         public ActionResult EditarPerfil()
         {
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if(Session["Usuario"] != null)
             {
-                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
-                Int32 IDUsuario;
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, true);
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, true);
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
 
                 if (Request.HttpMethod == "POST")
                 {
@@ -320,20 +206,15 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
 
+                    Int32 NovaMaestria = Int32.Parse(Request.Form["NovaMaestria"]);
+
                     HttpPostedFileBase NovaImagemPerfil = Request.Files["NovaImagemPerfil"];
                     HttpPostedFileBase NovaImagemCapa = Request.Files["NovaImagemCapa"];
 
                     Usuario EditarUsuario = new Usuario();
                     Instrumentos EditarInstrumento = new Instrumentos();
 
-                    if (Session["Administrador"] != null)
-                    {
-                        EditarUsuario = (Usuario)Session["Administrador"];
-                    }
-                    else
-                    {
-                        EditarUsuario = (Usuario)Session["Usuario"];
-                    }
+                    EditarUsuario = (Usuario)Session["Usuario"];
 
                     //CASO O CAMPO DE NOME SEJA DIFERENTE DE NULO
                     if (NovoNome != "")
@@ -371,6 +252,12 @@ namespace Symphonya_RedeSocial.Controllers
                         EditarUsuario.Telefone = NovoTelefone;
                     }
 
+                    if(NovaMaestria != 0)
+                    {
+                        EditarInstrumento.Maestria = NovaMaestria;
+                    }
+                    int ID = EditarUsuario.ID;
+
                     //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
                     if (NovaImagemPerfil.FileName != "")
                     {
@@ -382,7 +269,6 @@ namespace Symphonya_RedeSocial.Controllers
                             int contentLength = postedFile.ContentLength;
                             string contentType = postedFile.ContentType;
                             string nome = postedFile.FileName;
-                            int ID = IDUsuario;
 
                             //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
                             Imagem img = new Imagem();
@@ -398,7 +284,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
+                                arquivoConvertido.Save(@"C:\Users\16128565\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarUsuario.Imagem_Perfil = nomeArquivoUpload;
@@ -418,7 +304,6 @@ namespace Symphonya_RedeSocial.Controllers
                             int contentLength = postedFile.ContentLength;
                             string contentType = postedFile.ContentType;
                             string nome = postedFile.FileName;
-                            int ID = IDUsuario;
 
                             //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
                             Imagem img = new Imagem();
@@ -446,16 +331,8 @@ namespace Symphonya_RedeSocial.Controllers
                     if (EditarUsuario.Alterar())
                     {
                         ViewBag.Mensagem = "Perfil alterado com sucesso!";
-
-                        if (Session["Administrador"] != null)
-                        {
-                            Session["Administrador"] = EditarUsuario;
-                            ViewBag.Usuario = (Usuario)Session["Administrador"];
-                        }
-                        else {
-                            Session["Usuario"] = EditarUsuario;
-                            ViewBag.Usuario = (Usuario)Session["Usuario"];
-                        }
+                        Session["Usuario"] = EditarUsuario;
+                        ViewBag.Usuario = (Usuario)Session["Usuario"];
                         Response.Redirect("~/Menu/Perfil", false);
                     }
                     else
@@ -477,23 +354,12 @@ namespace Symphonya_RedeSocial.Controllers
                 Response.Redirect("/Menu/Feed");
             }
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
                 //RETORNA OS USUARIOS, CASO HAJA RESULTADO
                 if (Usuario.Listar(busca) != null)
@@ -534,23 +400,12 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Livestream()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -571,32 +426,16 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult VerSeguidores()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
-                Int32 IDUsuario;
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
-                if (Session["Administrador"] != null)
+                if (Seguidores.ListarSeguidores(User.ID) != null)
                 {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                if (Seguidores.ListarSeguidores(IDUsuario) != null)
-                {
-                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
+                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(User.ID);
                     ViewBag.Seguidores = seguidores;
                 }
                 else
@@ -623,32 +462,16 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult VerSeguidos()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
-                Int32 IDUsuario;
+                //CRIA SESSÃO DO USUARIO
+                ViewBag.Logado = Session["Usuario"];
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.User = User;
 
-                if (Session["Administrador"] != null)
+                if (Seguidores.ListarSeguidos(User.ID) != null)
                 {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                    IDUsuario = User.ID;
-                }
-
-                if (Seguidores.ListarSeguidos(IDUsuario) != null)
-                {
-                    List<Seguidores> seguidos = Seguidores.ListarSeguidos(IDUsuario);
+                    List<Seguidores> seguidos = Seguidores.ListarSeguidos(User.ID);
                     ViewBag.Seguidos = seguidos;
                 }
                 else
@@ -675,24 +498,8 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Unfollow(Int32 ID)
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
-
                 Seguidores.Unfollow(ID);
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
@@ -703,79 +510,18 @@ namespace Symphonya_RedeSocial.Controllers
 
             return RedirectToAction("VerSeguidos", "Menu");
         }
-        public ActionResult Email()
-        {
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
-            {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
-
-                if (Request.HttpMethod == "POST")
-                {
-           
-                    /**Parte de enviar o email**/
-                    MailMessage msg = new MailMessage();
-                    SmtpClient smtp = new SmtpClient("smtp.office365.com");
-                    msg.From = new MailAddress("contato12345123451@outlook.com");
-                    msg.To.Add(Request.Form["email"].ToString());
-                    msg.Subject = "Recuperação de Senha";
-                    msg.Body = "sua nova senha é: ";
-
-                    /**contato616516@outlook.com**/
-                    smtp.Port = 587;
-                    smtp.Credentials = new System.Net.NetworkCredential("contato12345123451@outlook.com", "senai1234");
-                    smtp.EnableSsl = true;
-                }
-
-                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                if (Request.HttpMethod == "POST")
-                {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
-                }
-
-            }
-            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
-            else
-            {
-                Response.Redirect("/Acesso/Login");
-            }
-            return View();
-        }
+     
         public ActionResult Arquivo()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -795,23 +541,14 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult VerBandas()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            if (Session["Usuario"] != null)
             {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
+                //CRIA VIEWBAG CASO USUARIO ESTEJA LOGADO
+                ViewBag.Logado = Session["Usuario"];
+                //CRIA SESSÃO DO USUARIO
+                Usuario User = (Usuario)Session["Usuario"];
+                ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID);
+                ViewBag.User = User;
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
