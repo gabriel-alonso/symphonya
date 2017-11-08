@@ -20,6 +20,29 @@ namespace Symphonya_RedeSocial.Models
 
         }
 
+        public Instrumentos(Int32 IDInstrumento, Int32 IDUsuario)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT Instrumento.Nome, Instrumento.Icone, Nivel FROM Instrumento, Usuario_Has_Instrumentos WHERE Instrumento.ID = @IDInstrumento AND UsuarioID = @IDUsuario;";
+            Comando.Parameters.AddWithValue("@IDInstrumento", IDInstrumento);
+            Comando.Parameters.AddWithValue("@IDUsuario", IDUsuario);
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            Leitor.Read();
+
+            this.ID = (Int32)Leitor["ID"];
+            this.Nome = (String)Leitor["Nome"];
+            this.Classificacao = (String)Leitor["Classificacao"];
+            this.Icone = (String)Leitor["Icone"];
+
+            Conexao.Close();
+        }
+
         public Instrumentos(String Nome)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
@@ -76,14 +99,18 @@ namespace Symphonya_RedeSocial.Models
             return Instrumentos;
         }
 
-        public static List<Instrumentos> ListarEspecifico(Int32 ID)
+        public static List<Instrumentos> ListarEspecifico(Int32 ID, bool limite)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "	SELECT ID,Instrumento.Nome, Instrumento.Icone, Nivel FROM Instrumento, Usuario_Has_Instrumentos WHERE Instrumento.ID = InstrumentoID AND UsuarioID = @ID;";
+            if(limite)
+                Comando.CommandText = "	SELECT TOP 3 ID,Instrumento.Nome, Instrumento.Icone, Nivel FROM Instrumento, Usuario_Has_Instrumentos WHERE Instrumento.ID = InstrumentoID AND UsuarioID = @ID;";
+            else
+                Comando.CommandText = "	SELECT ID,Instrumento.Nome, Instrumento.Icone, Nivel FROM Instrumento, Usuario_Has_Instrumentos WHERE Instrumento.ID = InstrumentoID AND UsuarioID = @ID;";
+
             Comando.Parameters.AddWithValue("@ID", ID);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
@@ -117,6 +144,28 @@ namespace Symphonya_RedeSocial.Models
             Conexao.Close();
 
             return Instrumentos;
+        }
+
+        public Boolean Alterar(Int32 IDUsuario)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "UPDATE Usuario_Has_Instrumentos SET ID = @ID, Nome = @Nome, Icone = @Icone, Classificacao = @Classificacao, Nivel = @Nivel WHERE IDInstrumento = @ID AND IDUsuario = @IDUsuario;";
+            Comando.Parameters.AddWithValue("@ID", this.ID);
+            Comando.Parameters.AddWithValue("@Nome", this.Nome);
+            Comando.Parameters.AddWithValue("@Icone", this.Icone);
+            Comando.Parameters.AddWithValue("@Classificacao", this.Classificacao);
+            Comando.Parameters.AddWithValue("@Nivel", this.Maestria);
+            Comando.Parameters.AddWithValue("@IDUsuario", IDUsuario);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
         }
     }
 }

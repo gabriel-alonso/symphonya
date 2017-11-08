@@ -27,8 +27,18 @@ namespace Symphonya_RedeSocial.Controllers
                 if (Usuario.Autenticar(Email, SenhaEncriptada))
                 {
                     Usuario Usuario = new Usuario(Email, SenhaEncriptada);
-                    Session["Usuario"] = Usuario;
-                    Response.Redirect("/Menu/Feed");
+
+                    //VERIFICA SE O USUARIO É UM ADM
+                    if(Usuario.Nivel != 0)
+                    {
+                        Session["Administrador"] = Usuario;
+                    }
+                    else
+                    {
+                        Session["Usuario"] = Usuario;
+                    }
+
+                    Response.Redirect("~/Menu/Feed");
                 }
 
                     //CASO INFORMACOES DIGITADAS SEJAM INVALIDAS
