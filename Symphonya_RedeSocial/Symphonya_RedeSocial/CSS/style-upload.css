@@ -46,7 +46,7 @@ h1{
 	margin-top:50px;
 }
 .agile-its{
-	width:50%;
+	width:70%;
 	margin:0px auto;
 	background:#fff;
     border:1px solid #E7E7E8;
@@ -98,7 +98,7 @@ h3{
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
     cursor: default;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #filedrag.hover
@@ -115,7 +115,7 @@ h3{
 }
 #messages p {
     color: #555;
-    font-size: 14px;
+    font-size: 19px;
 	font-weight:700;
 }
 input[type="submit"]{
@@ -124,7 +124,7 @@ input[type="submit"]{
     border: none;
     padding: 10px 0;
     color: #fff;
-	font-size:14px;
+	font-size:19px;
 	cursor:pointer;
 	margin-left:0%;
 }

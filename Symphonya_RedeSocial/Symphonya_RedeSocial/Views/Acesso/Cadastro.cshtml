@@ -11,6 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!doctype html>
 <html>
 <head>
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
     <title>Symphonya</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,311 +27,358 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- JavaScript -->
     <script src="~/JS/jquery-2.2.3.min.js"></script>
     <script src="~/JS/mascaras.js"></script>
+
+
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="~/CSS/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="~/CSS/style.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="~/CSS/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="~/CSS/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+<script src="~/JS/jquery-1.10.2.min.js"></script>
+<!--clock init-->
+<script src="~/JS/css3clock.js"></script>
+<!--Easy Pie Chart-->
+<!--skycons-icons-->
+<script src="~/JS/skycons.js"></script>
     
 </head>
 <body>
 
     <!--/register-->
 
-    <div class="error_page">
-        <!--/register-top-->
-
-        <div class="error-top">
-          
-            <div class="login">
-                <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
-                
-                <div class="login-direita" style="\.graph-form\ \{\ padding: 2em 2em;background-color: #fff;box-shadow: 0 1px 1px rgba(0,0,0,.05);-o-box-shadow: 0 1px 1px rgba(0,0,0,.05);-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);-moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);border: 1px solid #E7E7E8;">
-
-                    <div class="content1-agile">
-                        <div class="form_w3layouts">
-                            <!-- CASO O CADASTRO FALHE-->
-                            @if (ViewBag.MsgErro != null)
-                            {
-                                <div class="alert alert-danger">
-                                    <strong>Erro!</strong> Campos incorretos!
-                                </div>
-                            }
-                            <form action="~/Acesso/Cadastro" method="post" class="agile_form">
-
-                                <div class="agileits-left">
-                                    
-                                    <input type="text" name="Nome" id="Nome" class="username" placeholder="Nome" required="">
-                                </div>
-                                <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Sobrenome" id="Sobrenome" class="username" placeholder="Sobrenome" required="">
-                                </div>
-                                <div class="clear"></div>
-                                <h2 style="font-size: 15px;font-family: 'Roboto', sans-serif;">Data de Nascimento*</h2>
-                                <div class="section_class_agileits" style="width: 8%" ;>
-                                    <select required style="width: 65px;" id="DiaNascimento" name="DiaNascimento">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                    </select>
-                                </div>
-                                <div class="section_class_agileits">
-                                    <select required style="width: 130px;" id="MesNascimento" name="MesNascimento">
-                                        <option value="1">Janeiro</option>
-                                        <option value="2">Fevereiro</option>
-                                        <option value="3">Março</option>
-                                        <option value="4">Abril</option>
-                                        <option value="5">Maio</option>
-                                        <option value="6">Junho</option>
-                                        <option value="7">Julho</option>
-                                        <option value="8">Agosto</option>
-                                        <option value="9">Setembro</option>
-                                        <option value="10">Outubro</option>
-                                        <option value="11">Novembro</option>
-                                        <option value="12">Dezembro</option>
-
-                                    </select>
-                                </div>
-                                <div class="section_class_agileits" style="width: 20%;">
-                                    <select required style="width: 100px;" id="AnoNascimento" name="AnoNascimento">
-
-                                        <option value="1999">1999</option>
-                                        <option value="1998">1998</option>
-                                        <option value="1997">1997</option>
-                                        <option value="1996">1996</option>
-                                        <option value="1995">1995</option>
-                                        <option value="1994">1994</option>
-                                        <option value="1993">1993</option>
-                                        <option value="1992">1992</option>
-                                        <option value="1991">1991</option>
-                                        <option value="1990">1990</option>
-                                        <option value="1989">1989</option>
-                                        <option value="1988">1988</option>
-                                        <option value="1987">1987</option>
-                                        <option value="1986">1986</option>
-                                        <option value="1985">1985</option>
-                                        <option value="1984">1984</option>
-                                        <option value="1983">1983</option>
-                                        <option value="1982">1982</option>
-                                        <option value="1981">1981</option>
-                                        <option value="1980">1980</option>
-                                        <option value="1979">1979</option>
-                                        <option value="1978">1978</option>
-                                        <option value="1977">1977</option>
-                                        <option value="1976">1976</option>
-                                        <option value="1975">1975</option>
-                                        <option value="1974">1974</option>
-                                        <option value="1973">1973</option>
-                                        <option value="1972">1972</option>
-                                        <option value="1971">1971</option>
-                                        <option value="1970">1970</option>
-                                        <option value="1969">1969</option>
-                                        <option value="1968">1968</option>
-                                        <option value="1967">1967</option>
-                                        <option value="1966">1966</option>
-                                        <option value="1965">1965</option>
-                                        <option value="1964">1964</option>
-                                        <option value="1963">1963</option>
-                                        <option value="1962">1962</option>
-                                        <option value="1961">1961</option>
-                                        <option value="1960">1960</option>
-                                        <option value="1959">1959</option>
-                                        <option value="1958">1958</option>
-                                        <option value="1957">1957</option>
-                                        <option value="1956">1956</option>
-                                        <option value="1955">1955</option>
-                                        <option value="1954">1954</option>
-                                        <option value="1953">1953</option>
-                                        <option value="1952">1952</option>
-                                        <option value="1951">1951</option>
-                                        <option value="1950">1950</option>
-                                        <option value="1949">1949</option>
-                                        <option value="1948">1948</option>
-                                        <option value="1947">1947</option>
-                                        <option value="1946">1946</option>
-                                        <option value="1945">1945</option>
-                                        <option value="1944">1944</option>
-                                        <option value="1943">1943</option>
-                                        <option value="1942">1942</option>
-                                        <option value="1941">1941</option>
-                                        <option value="1940">1940</option>
-                                        <option value="1939">1939</option>
-                                        <option value="1938">1938</option>
-                                        <option value="1937">1937</option>
-                                        <option value="1936">1936</option>
-                                        <option value="1935">1935</option>
-                                        <option value="1934">1934</option>
-                                        <option value="1933">1933</option>
-                                        <option value="1932">1932</option>
-                                        <option value="1931">1931</option>
-                                        <option value="1930">1930</option>
-                                        <option value="1929">1929</option>
-                                        <option value="1928">1928</option>
-                                        <option value="1927">1927</option>
-                                        <option value="1926">1926</option>
-                                        <option value="1925">1925</option>
-                                        <option value="1924">1924</option>
-                                        <option value="1923">1923</option>
-                                        <option value="1922">1922</option>
-                                        <option value="1921">1921</option>
-                                        <option value="1920">1920</option>
-                                        <option value="1919">1919</option>
-                                        <option value="1918">1918</option>
-                                        <option value="1917">1917</option>
-                                        <option value="1916">1916</option>
-                                        <option value="1915">1915</option>
-                                        <option value="1914">1914</option>
-                                        <option value="1913">1913</option>
-                                        <option value="1912">1912</option>
-                                        <option value="1911">1911</option>
-                                        <option value="1910">1910</option>
-                                        <option value="1909">1909</option>
-                                        <option value="1908">1908</option>
-                                        <option value="1907">1907</option>
-                                        <option value="1906">1906</option>
-                                        <option value="1905">1905</option>
-                                        <option value="1904">1904</option>
-                                        <option value="1903">1903</option>
-                                        <option value="1902">1902</option>
-                                        <option value="1901">1901</option>
-
-                                    </select>
-                                </div>
-
-                                <div class="agileits-left s2-w3ls" style="width: 59%;">
-                                    <input class="" value="true" name="Sexo" type="radio" style="float: left;" id="Sexo">
-                                    <span class="">Masculino</span>
-                                </div>
-
-                                <div class="agileits-left s2-w3ls">
-                                    <input class="" value="false" name="Sexo" type="radio" style="float:left;" id="Sexo">
-                                    <span class="">Feminino</span>
-                                </div>
-
-                                <div class="clear"></div>
-                                <div class="agileits-left">
-                                    <input type="email" name="Email" class="username" id="Email" placeholder="Email" required="">
-                                </div>
-
-                                <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Telefone" id="Telefone" class="username" placeholder="Telefone" required="" onkeyup="formataTelefone(this, event)"  onkeypress="return OnlyNumbers(event)" size="20" maxlength="15">
-                                    <script>
-
-                                        function OnlyNumbers(e) {
-                                            var tecla = new Number();
-                                            if (window.event) {
-                                                tecla = e.keyCode;
-                                            }
-                                            else if (e.which) {
-                                                tecla = e.which;
-                                            }
-                                            else {
-                                                return true;
-                                            }
-                                            if ((tecla >= "97") && (tecla <= "122")) {
-                                                return false;
-                                            }
-                                        }
-
-                                    </script>
+        <div class="error_page" style="background: url(&quot;../Imagens/fundo_login.jpg&quot;) no-repeat;">
+            <!--/register-top-->
+            <div class="error-top">
+                <!-- INICIO TELA CADASTRO-->
+                <div class="set-1">
+                    <div class="graph-2 general">
+                        <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
+                        <div class="grid-1">
+                            <div class="form-body">
+                                <form action="~/Acesso/Cadastro" method="post" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="focusedinput" class="col-sm-2 control-label">Nome</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="Nome" id="Nome" class="form-control1" placeholder="Nome" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="disabledinput" class="col-sm-2 control-label">Sobrenome</label>
+                                        <div class="col-sm-8" style="margin-bottom: -1%;">
+                                            <input type="text" name="Sobrenome" id="Sobrenome" class="form-control1" placeholder="Sobrenome" required="">
+                                        </div>
                                     </div>
 
 
-                                @*<div class="section_class_agileits">
-                            <select required>
-                                <option value="1">Celular</option>
-                                <option value="2">Residencial</option>
-                                <option value="3">Trabalho</option>
 
+                                    <div class="form-group">
+                                        <label for="focusedinput" class="col-sm-2 control-label" style="margin-top: 24px;">Data de Nascimento</label>
 
-                            </select>
-                        </div>*@
-                                <div class="agileits-left s2-w3ls">
-                                    <input type="text" name="Cidade" class="username" placeholder="Cidade" required="" id="Cidade" onkeypress="return Onlychars(event)">
-                                    <script>
+                                        <div class="col-sm-8">
+                                            <div class="section_class_agileits" style="width: 14%;" ;="">
+                                                <select required="" style="width: 75px;float: left;" id="DiaNascimento" name="DiaNascimento">
 
-                                        function Onlychars(e) {
-                                            var tecla = new Number();
-                                            if (window.event) {
-                                                tecla = e.keyCode;
-                                            }
-                                            else if (e.which) {
-                                                tecla = e.which;
-                                            }
-                                            else {
-                                                return true;
-                                            }
-                                            if ((tecla >= "48") && (tecla <= "57")) {
-                                                return false;
-                                            }
-                                        }
-                                    </script>
-                                </div>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="section_class_agileits" style="width: 18%;">
+                                                <select required style="width: 130px;" id="MesNascimento" name="MesNascimento">
+                                                    <option value="1">Janeiro</option>
+                                                    <option value="2">Fevereiro</option>
+                                                    <option value="3">Março</option>
+                                                    <option value="4">Abril</option>
+                                                    <option value="5">Maio</option>
+                                                    <option value="6">Junho</option>
+                                                    <option value="7">Julho</option>
+                                                    <option value="8">Agosto</option>
+                                                    <option value="9">Setembro</option>
+                                                    <option value="10">Outubro</option>
+                                                    <option value="11">Novembro</option>
+                                                    <option value="12">Dezembro</option>
 
-                                <div class="section_class_agileits">
-                                    <select required id="Estado" name="Estado">
-                                        <option value="">Estado</option>
-                                        <option value="Acre">AC</option>
-                                        <option value="Alagoas">AL</option>
-                                        <option value="Amapa">AP</option>
-                                        <option value="Amazonas">AM</option>
-                                        <option value="Bahia">BA</option>
-                                        <option value="Ceara">CE</option>
-                                        <option value="Distrito Federal">DF</option>
-                                        <option value="Espirito Santo">ES</option>
-                                        <option value="Goias">GO</option>
-                                        <option value="Maranhao">MA</option>
-                                        <option value="Mato Grosso">MT</option>
-                                        <option value="Mato Grosso do Sul">MS</option>
-                                        <option value="Minas Gerais">MG</option>
-                                        <option value="Para">PA</option>
-                                        <option value="Paraiba">PB</option>
-                                        <option value="Parana">PR</option>
-                                        <option value="Pernambuco">PE</option>
-                                        <option value="Piaui">PI</option>
-                                        <option value="Rio de Janeiro">RJ</option>
-                                        <option value="Rio Grande do Norte">RN</option>
-                                        <option value="Rio Grande do Sul">RS</option>
-                                        <option value="Rondônia">RO</option>
-                                        <option value="Roraima">RR</option>
-                                        <option value="Santa Catarina">SC</option>
-                                        <option value="São Paulo">SP</option>
-                                        <option value="Sergipe">SE</option>
-                                        <option value="Tocantins">TO</option>
-                                    </select>
-                                </div>
-                               
-                                    <div class="agileits-left s2-w3ls">
-                                        <h2 style="font-size: 15px;font-family: 'Roboto', sans-serif;">Imagem de Perfil*</h2>
-                                        <input id="files" type="file" value="Foto de Perfil" name="Imagem_Perfil">
+                                                </select>
+                                            </div>
+                                            <div class="section_class_agileits" style="width: 20%;">
+                                                <select required style="width: 100px;" id="AnoNascimento" name="AnoNascimento">
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                    <option value="1969">1969</option>
+                                                    <option value="1968">1968</option>
+                                                    <option value="1967">1967</option>
+                                                    <option value="1966">1966</option>
+                                                    <option value="1965">1965</option>
+                                                    <option value="1964">1964</option>
+                                                    <option value="1963">1963</option>
+                                                    <option value="1962">1962</option>
+                                                    <option value="1961">1961</option>
+                                                    <option value="1960">1960</option>
+                                                    <option value="1959">1959</option>
+                                                    <option value="1958">1958</option>
+                                                    <option value="1957">1957</option>
+                                                    <option value="1956">1956</option>
+                                                    <option value="1955">1955</option>
+                                                    <option value="1954">1954</option>
+                                                    <option value="1953">1953</option>
+                                                    <option value="1952">1952</option>
+                                                    <option value="1951">1951</option>
+                                                    <option value="1950">1950</option>
+                                                    <option value="1949">1949</option>
+                                                    <option value="1948">1948</option>
+                                                    <option value="1947">1947</option>
+                                                    <option value="1946">1946</option>
+                                                    <option value="1945">1945</option>
+                                                    <option value="1944">1944</option>
+                                                    <option value="1943">1943</option>
+                                                    <option value="1942">1942</option>
+                                                    <option value="1941">1941</option>
+                                                    <option value="1940">1940</option>
+                                                    <option value="1939">1939</option>
+                                                    <option value="1938">1938</option>
+                                                    <option value="1937">1937</option>
+                                                    <option value="1936">1936</option>
+                                                    <option value="1935">1935</option>
+                                                    <option value="1934">1934</option>
+                                                    <option value="1933">1933</option>
+                                                    <option value="1932">1932</option>
+                                                    <option value="1931">1931</option>
+                                                    <option value="1930">1930</option>
+                                                    <option value="1929">1929</option>
+                                                    <option value="1928">1928</option>
+                                                    <option value="1927">1927</option>
+                                                    <option value="1926">1926</option>
+                                                    <option value="1925">1925</option>
+                                                    <option value="1924">1924</option>
+                                                    <option value="1923">1923</option>
+                                                    <option value="1922">1922</option>
+                                                    <option value="1921">1921</option>
+                                                    <option value="1920">1920</option>
+                                                    <option value="1919">1919</option>
+                                                    <option value="1918">1918</option>
+                                                    <option value="1917">1917</option>
+                                                    <option value="1916">1916</option>
+                                                    <option value="1915">1915</option>
+                                                    <option value="1914">1914</option>
+                                                    <option value="1913">1913</option>
+                                                    <option value="1912">1912</option>
+                                                    <option value="1911">1911</option>
+                                                    <option value="1910">1910</option>
+                                                    <option value="1909">1909</option>
+                                                    <option value="1908">1908</option>
+                                                    <option value="1907">1907</option>
+                                                    <option value="1906">1906</option>
+                                                    <option value="1905">1905</option>
+                                                    <option value="1904">1904</option>
+                                                    <option value="1903">1903</option>
+                                                    <option value="1902">1902</option>
+                                                    <option value="1901">1901</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="radio" class="col-sm-2 control-label">Gênero</label>
+                                        <div class="col-sm-8" style="width: 59%;">
+                                            <div class="radio-inline">
+                                                <label>
+                                                    <input class="" value="true" name="Sexo" type="radio" style="float: left;" id="Sexo">
+                                                    <span class="">Masculino</span>
+                                                </label>
+                                            </div>
+
+                                            <div class="radio-inline">
+                                                <label>
+                                                    <input class="" value="false" name="Sexo" type="radio" style="float:left;" id="Sexo">
+                                                    <span class="">Feminino</span>
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="smallinput" class="col-sm-2 control-label label-input-sm">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" name="Email" class="form-control1 input-sm" id="Email" placeholder="Email" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mediuminput" class="col-sm-2 control-label">Telefone</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="Telefone" id="Telefone" class="form-control1" placeholder="Telefone" required="" onkeyup="formataTelefone(this, event)" onkeypress="return OnlyNumbers(event)" size="20" maxlength="15">
+                                            <script>
+
+                                                function OnlyNumbers(e) {
+                                                    var tecla = new Number();
+                                                    if (window.event) {
+                                                        tecla = e.keyCode;
+                                                    }
+                                                    else if (e.which) {
+                                                        tecla = e.which;
+                                                    }
+                                                    else {
+                                                        return true;
+                                                    }
+                                                    if ((tecla >= "97") && (tecla <= "122")) {
+                                                        return false;
+                                                    }
+                                                }
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-n">
+                                        <label for="largeinput" class="col-sm-2 control-label label-input-lg">Cidade</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="Cidade" class="form-control1 input-lg" placeholder="Cidade" required="" id="Cidade" onkeypress="return Onlychars(event)">
+                                            <script>
+
+                                                function Onlychars(e) {
+                                                    var tecla = new Number();
+                                                    if (window.event) {
+                                                        tecla = e.keyCode;
+                                                    }
+                                                    else if (e.which) {
+                                                        tecla = e.which;
+                                                    }
+                                                    else {
+                                                        return true;
+                                                    }
+                                                    if ((tecla >= "48") && (tecla <= "57")) {
+                                                        return false;
+                                                    }
+                                                }
+                                            </script>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="largeinput" class="col-sm-2 control-label label-input-lg" style="margin-top: 6px;">Estado</label>
+                                        <div class="col-sm-8" style="margin-bottom: 1%;margin-top: -1%;">
+                                            <div class="section_class_agileits" style="width: 16%;" ;="">
+                                                <select required id="Estado" name="Estado">
+                                                    <option value="">Estado</option>
+                                                    <option value="Acre">AC</option>
+                                                    <option value="Alagoas">AL</option>
+                                                    <option value="Amapa">AP</option>
+                                                    <option value="Amazonas">AM</option>
+                                                    <option value="Bahia">BA</option>
+                                                    <option value="Ceara">CE</option>
+                                                    <option value="Distrito Federal">DF</option>
+                                                    <option value="Espirito Santo">ES</option>
+                                                    <option value="Goias">GO</option>
+                                                    <option value="Maranhao">MA</option>
+                                                    <option value="Mato Grosso">MT</option>
+                                                    <option value="Mato Grosso do Sul">MS</option>
+                                                    <option value="Minas Gerais">MG</option>
+                                                    <option value="Para">PA</option>
+                                                    <option value="Paraiba">PB</option>
+                                                    <option value="Parana">PR</option>
+                                                    <option value="Pernambuco">PE</option>
+                                                    <option value="Piaui">PI</option>
+                                                    <option value="Rio de Janeiro">RJ</option>
+                                                    <option value="Rio Grande do Norte">RN</option>
+                                                    <option value="Rio Grande do Sul">RS</option>
+                                                    <option value="Rondônia">RO</option>
+                                                    <option value="Roraima">RR</option>
+                                                    <option value="Santa Catarina">SC</option>
+                                                    <option value="São Paulo">SP</option>
+                                                    <option value="Sergipe">SE</option>
+                                                    <option value="Tocantins">TO</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
                                     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
                                     <script src="https://gumroad.com/js/gumroad.js"></script>
+
 
                                     <script>
                                         var file,
@@ -389,51 +437,62 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                     </script>
 
-                                    <div class="agileits-left s2-w3ls">
-                                        <input type="password" name="Senha" class="username" placeholder="Senha" required="" id="Senha">
-                                        <span style="color: crimson;background-color: rgba(0, 0, 0, 0.15);padding: 2.9%;border-bottom: 1px solid rgb(165, 165, 165);">
-                                            <i id="showPassword" style="font-size:15px;cursor: pointer;float: inline-end;" class="fa"></i>
+                                    <div class="form-group" style="margin-top: 2%;">
+                                        <label class="col-md-2 control-label">Senha</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+
+                                                    <i id="showPassword" style="font-size:15px;cursor: pointer;float: inline-end;" class="fa">&#xf06e;</i>
+                                                    <script>
+
+                                                        $(document).ready(function () {
+                                                            $('#showPassword').on('click', function () {
+
+                                                                var passwordField = $('#Senha');
+                                                                var passwordFieldType = passwordField.attr('type');
+                                                                if (passwordFieldType == 'password') {
+                                                                    passwordField.attr('type', 'text');
+                                                                    $(this).val('Ocultar');
+                                                                } else {
+                                                                    passwordField.attr('type', 'password');
+                                                                    $(this).val('Mostrar');
+                                                                }
+                                                            });
+                                                        });
+
+
+                                                    </script>
+                                                </span>
+                                                <input type="password" name="Senha" class="form-control1 icon" placeholder="Senha" required="" id="Senha">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Confirmar Senha</label>
+                                        <div class="col-sm-8">
+                                            @*<span class="input-group-addon">
+
+                                            </span>*@
+                                            <input type="password" name="confirm_password" class="form-control1" placeholder="Confirmar Senha" required="" id="confirm_password">
                                             <script>
+                                                var Senha = document.getElementById("Senha")
+                                                    , confirm_password = document.getElementById("confirm_password");
 
-                                                $(document).ready(function () {
-                                                    $('#showPassword').on('click', function () {
-
-                                                        var passwordField = $('#Senha');
-                                                        var passwordFieldType = passwordField.attr('type');
-                                                        if (passwordFieldType == 'password') {
-                                                            passwordField.attr('type', 'text');
-                                                            $(this).val('Ocultar');
-                                                        } else {
-                                                            passwordField.attr('type', 'password');
-                                                            $(this).val('Mostrar');
-                                                        }
-                                                    });
-                                                });
-
-
-                                            </script>
-                                        </span>
-                                       
-                                    </div>
-                                    <div class="agileits-left s2-w3ls">
-                                        <input type="password" name="confirm_password" class="username" placeholder="Confirmar Senha" required="" id="confirm_password">
-                                        <script>
-                                            var Senha = document.getElementById("Senha")
-                                                , confirm_password = document.getElementById("confirm_password");
-
-                                            function validatePassword() {
-                                                if (Senha.value != confirm_password.value) {
-                                                    confirm_password.setCustomValidity("Senhas diferentes!");
-                                                } else {
-                                                    confirm_password.setCustomValidity('');
+                                                function validatePassword() {
+                                                    if (Senha.value != confirm_password.value) {
+                                                        confirm_password.setCustomValidity("Senhas diferentes!");
+                                                    } else {
+                                                        confirm_password.setCustomValidity('');
+                                                    }
                                                 }
-                                            }
 
-                                            Senha.onchange = validatePassword;
-                                            confirm_password.onkeyup = validatePassword;
-                                        </script>
+                                                Senha.onchange = validatePassword;
+                                                confirm_password.onkeyup = validatePassword;
+                                            </script>
+                                        </div>
                                     </div>
-
 
                                     <div class="clear"></div>
                                     <div class="clear"></div>
@@ -443,22 +502,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                         <input type="submit" onclick="myFunction()" value="Cadastrar">
                                     </div>
-                                <p class="fk-copy">Já possui uma conta? <a href="~/Acesso/Login">Iniciar sessão</a>.</p>
-</form>
-                        </div>
+                                    <p class="fk-copy">Já possui uma conta? <a href="~/Acesso/Login">Iniciar sessão</a>.</p>
 
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+                <!-- FIM TELA CADASTRO-->
 
-                </div>
             </div>
-
-
         </div>
 
-
         <!--//register-top-->
-    </div>
+   
     
     <p class="copyright-agileits">&copy 2017 Symphonya . Todos os direitos reservados.</p>
     <!--start-date-piker-->
