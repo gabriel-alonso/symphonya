@@ -6230,7 +6230,7 @@ button.close {
 }
 
     .modal-footer .btn + .btn {
-        margin-bottom: 0;
+        margin-bottom: 9px;
         margin-left: 5px;
     }
 

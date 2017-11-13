@@ -129,10 +129,12 @@
     <Content Include="CSS\font-awesome2.min.css" />
     <Content Include="CSS\icon-font.min.css" />
     <Content Include="CSS\jquery-ui.css" />
+    <Content Include="CSS\jquery-ui22.css" />
     <Content Include="CSS\jqvmap.css" />
     <Content Include="CSS\popuo-box.css" />
     <Content Include="CSS\sol.css" />
     <Content Include="CSS\style-arquivo.css" />
+    <Content Include="CSS\style-evento.css" />
     <Content Include="CSS\style-upload.css" />
     <Content Include="CSS\style.css" />
     <Content Include="CSS\styleCadastro.css" />
@@ -246,10 +248,13 @@
     <Content Include="JS\dygraph-combined.js" />
     <Content Include="JS\fabochart.js" />
     <Content Include="JS\filedrag.js" />
+    <Content Include="JS\filedrag22.js" />
     <Content Include="JS\jquery-1.10.2.min.js" />
+    <Content Include="JS\jquery-1.12.0.min.js" />
     <Content Include="JS\jquery-2.1.4.min.js" />
     <Content Include="JS\jquery-2.2.3.min.js" />
     <Content Include="JS\jquery-ui.js" />
+    <Content Include="JS\jquery-ui22.js" />
     <Content Include="JS\jquery.chocolat.js" />
     <Content Include="JS\jquery.mask.js" />
     <Content Include="JS\jquery.min.js" />
@@ -288,6 +293,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Arquivos.cs" />
     <Compile Include="Models\Bandas.cs" />
     <Compile Include="Models\Generos.cs" />
@@ -351,6 +357,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Fonts\Calendario\" />
+    <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>
   <PropertyGroup>

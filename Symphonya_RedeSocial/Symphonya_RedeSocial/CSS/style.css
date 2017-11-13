@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5 {
     	font-family: 'Roboto', sans-serif;
 }
 a {
-  color:#FC3158;
+  color:#fff;
   font-weight:400;
 }
 a:hover { transition: all 200ms ease-in-out; }
@@ -2666,7 +2666,7 @@ label {
     color: #777;
 }
 button.btn.btn-default {
-    background: #00C6D7;
+    background: #FC3158;
     color: #fff;
     font-size: 1em;
 	outline:none;
