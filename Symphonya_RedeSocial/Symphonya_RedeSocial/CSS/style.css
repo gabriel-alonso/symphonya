@@ -2708,21 +2708,20 @@ button, input, select, textarea {
     min-height: 100px;
 }
 label.control-label {
-    margin-top: 10px;
+    margin-top: 7px;
 }
 .form-group.button-2 {
     margin-top: 1em;
 }
 .btn-primary {
     color: #fff;
-     background-color: #042252;
-    border-color: #052963;
+     background-color: #FC3158;
 	outline: none;
 }
 .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
       color: #fff;
-    background-color:#00C6D7;
-    border-color:#00C6D7;
+    background-color:#FC3158;
+    border-color:#FC3158;
     outline: none;
 }
 label.check {
@@ -2901,7 +2900,7 @@ ul#menu-comunicacao-sub {
 }
 .error-top {
     text-align: center;
-    margin: 7em auto;
+    margin: 28em auto;
     background: #fff;
     padding: 2em 2em;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -2912,7 +2911,7 @@ ul#menu-comunicacao-sub {
     padding: 2em 2em;
 	position: absolute;
     left: 19%;
-    top: 13%;
+    top: -75%;
     right: 19%;
     bottom: auto;
 }
@@ -2927,8 +2926,8 @@ ul#menu-comunicacao-sub {
     color: #00c6d7;
 }
 .error-top span {
-  font-size: 0.8em;
-  color:#333;
+  font-size: 1.0em;
+  color:#777;
 }
 .error-top p{
     font-size: 0.95em;
@@ -3929,6 +3928,58 @@ button.btn.btn-default.tip {
 .accordion {
     margin-bottom: 2em;
 }
+button.instrumentos {
+    background-color: #FFFFFF;
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    color: #fc3158;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.instrumentos.active, button.instrumentos:hover {
+    background-color: #D3D3D3;
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+div.panel {
+    padding: 18px;
+    display: none;
+    background-color: #fff;
+}
+
+.panel a{
+    color:#000;
+    text-align:center;
+    text-decoration:wavy;
+    font-size: 18px;
+}
+
+.panel a:hover{
+    color:#FFF;
+    background:#FC3158;
+    border: 1PX solid #FC3158;
+    padding: 2px;
+    border-radius: 12px;
+}
+.panel strong{
+    color:#FC3158;
+    font-size: 18px;
+}
+.panel strong:hover{
+    color:#FFF;
+}
+.panel select{
+    color:#FC3158;
+}
+.barra-instrumento o{
+    float:right;
+}
 /*--/widgets--*/
 .header-top.weather2 {
     background: #052963;
@@ -4034,7 +4085,7 @@ button.btn.btn-default.tip {
 	width:88%;
     margin: 0 0 15px 0;
     height: 10px;
-	    background: #D3D3D3;
+	background: #fee6eb;
 }
 .profile-info {
  float: left;
@@ -4285,6 +4336,7 @@ th {
     text-decoration: none;
     padding: 10px 20px;
     font-size: 17px;
+    margin-top: 2%;
 	}
 .inner-grid-button {
     padding: 0;

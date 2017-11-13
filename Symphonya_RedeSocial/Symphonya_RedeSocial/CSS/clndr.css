@@ -95,7 +95,7 @@
   text-align: center;
   border-left: 1px solid #D8D8D8;
   border-top: 1px solid #D8D8D8;
-  color:#D3D3D3;
+  color:#fff;
 }
 .cal1 .clndr .clndr-table .header-days .header-day:last-child {
   border-right: 1px solid #D8D8D8;

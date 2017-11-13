@@ -7,9 +7,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
     <title>Symphonya</title>
     <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
     <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,9 +46,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="~/CSS/icon-font.min.css" type='text/css' />
     <!-- /js -->
     <script src="~/JS/jquery-1.10.2.min.js"></script>
+    <script src="~/JS/accordion.js"></script>
     <!-- //js-->
 
     <link href="~/CSS/styleCadastro.css" rel='stylesheet' type='text/css' />
+
+    <script>
+        $(document).ready(function () {
+            $(".various").fancybox({
+                maxWidth: 600,
+                maxHeight: 300,
+                fitToView: false,
+                width: '70%',
+                height: '70%',
+                autoSize: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+        });
+
+        $(document).ready(function () {
+            $(".fancybox").fancybox();
+        });
+    </script>
 
 </head>
 <body>
@@ -272,12 +311,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 {
                                                     foreach (var I in ViewBag.Instrumentos)
                                                     {
-                                                        <div class="barra-instrumento">
-                                                            <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
+                                                        <button class="instrumentos" type="button">
+                                                            <div class="barra-instrumento">
+                                                                <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong id="NomeInstrumento">@I.Nome</strong>
+                                                                <o class="fa fa-edit"></o>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <div class="skills">
+                                                                <div class="skill1" style="width:@I.Maestria%"> </div>
+                                                            </div>
+                                                        </button>
+                                                        <div class="panel">
+                                                            <a class="fancybox" href="~/Menu/EditarInstrumento/@I.ID"><strong><o class="fa fa-edit"></o> Editar Informações.</strong></a>
                                                         </div>
-                                                        <div class="skills">
-                                                            <div class="skill1" style="width:@I.Maestria%"> </div>
-                                                        </div>
+
+                                                        <script language="Javascript">
+
+                                                            var acc = document.getElementsByClassName("instrumentos");
+                                                            var i;
+
+                                                            for (i = 0; i < acc.length; i++) {
+                                                                acc[i].onclick = function () {
+                                                                    /* Toggle between adding and removing the "active" class,
+                                                                    to highlight the button that controls the panel */
+                                                                    this.classList.toggle("active");
+
+                                                                    /* Toggle between hiding and showing the active panel */
+                                                                    var panel = this.nextElementSibling;
+                                                                    if (panel.style.display === "block") {
+                                                                        panel.style.display = "none";
+                                                                    } else {
+                                                                        panel.style.display = "block";
+                                                                    }
+                                                                }
+                                                            }
+                                                        </script>
                                                     }
                                                 }
                                                 else
@@ -286,7 +354,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 }
                                             </div>
                                             <div class="clearfix"></div>
-                                            <div class=""
                                         </div>
                                         <div class="clearfix"></div>
                                         <h3 class="inner-tittle-biografia">Biografia </h3>
@@ -326,6 +393,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
+                @if (ViewBag.User.Nivel != 0)
+                {
+                    <p><strong>Administrador</strong></p>
+                }
                 <ul>
                     <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
                 </ul>
@@ -333,6 +404,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--//down-->
             <div class="menu">
                 <ul id="menu">
+                    @if (ViewBag.Logado == null) { }
+                    else {
+                        if (ViewBag.User.Nivel != 0)
+                        {
+                            <li id="menu-academico">
+                                <a href="#"><i class="fa fa-area-chart"></i> <span> Administração</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                                <ul id="menu-academico-sub">
+                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Arquivos">Arquivos</a></li>
+                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Bandas">Bandas</a></li>
+                                    <li id="menu-academico-boletim"><a href="~/Administracao/Usuarios">Usuários</a></li>
+                                </ul>
+                            </li>
+                        }
+                    }
                     <li id="menu-academico">
                         <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
                         <ul id="menu-academico-sub">
@@ -346,7 +431,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="#"><i class="fa fa-group"></i> <span>Bandas</span> <span class="fa fa-angle-right" style="padding-left: 53%;"></span></a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes"><a href="~/Menu/CadastroBanda">Nova Banda</a></li>
-                            <li id="menu-academico-boletim"><a href="register.html">Ver Bandas</a></li>
+                            <li id="menu-academico-boletim"><a href="~/Menu/VerBandas">Ver Bandas</a></li>
                         </ul>
                     </li>
                     <li id="menu-academico">
@@ -385,6 +470,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											toggle = !toggle;
 										});
     </script>
+    
     <!--js -->
     <link rel="stylesheet" href="~/CSS/vroom.css">
     <script type="text/javascript" src="~/JS/vroom.js"></script>

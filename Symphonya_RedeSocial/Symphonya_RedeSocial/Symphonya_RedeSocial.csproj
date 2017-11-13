@@ -133,6 +133,7 @@
     <Content Include="CSS\popuo-box.css" />
     <Content Include="CSS\sol.css" />
     <Content Include="CSS\style-arquivo.css" />
+    <Content Include="CSS\style-upload.css" />
     <Content Include="CSS\style.css" />
     <Content Include="CSS\styleCadastro.css" />
     <Content Include="CSS\styleGenero.css" />
@@ -228,6 +229,7 @@
     <Content Include="Imagens\timer.png" />
     <Content Include="Imagens\tw.png" />
     <Content Include="Imagens\watch.png" />
+    <Content Include="JS\accordion.js" />
     <Content Include="JS\amcharts.js" />
     <Content Include="JS\arbor.js" />
     <Content Include="JS\atlas.js" />
@@ -243,6 +245,7 @@
     <Content Include="JS\datamaps-all.js" />
     <Content Include="JS\dygraph-combined.js" />
     <Content Include="JS\fabochart.js" />
+    <Content Include="JS\filedrag.js" />
     <Content Include="JS\jquery-1.10.2.min.js" />
     <Content Include="JS\jquery-2.1.4.min.js" />
     <Content Include="JS\jquery-2.2.3.min.js" />
@@ -285,6 +288,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Arquivos.cs" />
     <Compile Include="Models\Bandas.cs" />
     <Compile Include="Models\Generos.cs" />
     <Compile Include="Models\Imagem.cs" />
@@ -333,12 +337,10 @@
     <Content Include="Views\Menu\EditarPerfil.cshtml" />
     <Content Include="Views\Menu\Agenda.cshtml" />
     <Content Include="Views\Menu\Email.cshtml" />
-    <None Include="Properties\PublishProfiles\Symphonya - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - FTP %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy.pubxml" />
+    <Content Include="Views\Menu\VerBandas.cshtml" />
+    <Content Include="Views\Menu\Arquivo.cshtml" />
+    <Content Include="Views\Menu\EditarInstrumento.cshtml" />
+    <None Include="Properties\PublishProfiles\Symphonya.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
