@@ -360,18 +360,38 @@ $(function () {
                                             </div>
                                             <div class="modal-body">
                                                
-                                                 <h2>Data</h2>   
-                                                <input class="date" id="datepicker" name="Data" type="text" value="dd-mm-yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd-mm-yyyy';}" required="" style="padding: 12px; border: 2px solid #f2f2f2;background: none;color: #212121;width: 92%;margin-bottom: 1.5em;font-size: 13px;outline: none;">                                                                                                           
+                                                 <h2>Data:</h2>   
+                                                <input class="date" id="datepicker" name="Data" type="text" placeholder="Data" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" style="padding: 12px; border: 2px solid #f2f2f2;background: none;color: #212121;width: 92%;margin-bottom: 1.5em;font-size: 13px;outline: none;">                                                                                                           
                                                 <script>
 			                                            $(function() {
 			                                            $( "#datepicker" ).datepicker();
 			                                            });
                                                 </script> 
-                                                <h2>Hora</h2>
+                                                <h2>Hora:</h2>
                                                 <input name="Hora" id="Hora" placeholder="Hora" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">                                       
-                                                <h2>Titulo</h2>
-                                                <input name="Titulo" id="Titulo" placeholder="Titulo" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
-                                                <h2>Descrição</h2>
+                                                <script>
+                                                    function Hora(campo, evt) {
+                                                        //HH:mm
+                                                        xPos = PosicaoCursor(campo);
+                                                        evt = getEvent(evt);
+                                                        var tecla = getKeyCode(evt);
+                                                        if (!teclaValida(tecla))
+                                                            return;
+
+                                                        vr = campo.value = filtraNumeros(filtraCampo(campo));
+
+                                                        if (tam == 2)
+                                                            campo.value = vr.substr(0, 2) + ':';
+                                                        if (tam > 2 && tam < 5)
+                                                            campo.value = vr.substr(0, 2) + ':' + vr.substr(2);
+                                                        //    if(xPos == 2)
+                                                        //        xPos = xPos + 1;
+                                                        MovimentaCursor(campo, xPos);
+                                                    }
+                                                </script>
+                                                <h2>Título:</h2>
+                                                <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
+                                                <h2>Descrição:</h2>
                                                 <textarea name="Descricao" id="Descricao" placeholder="Escreva aqui a descrição..." required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;border-top-color: rgb(242, 242, 242);border-right-color: rgb(242, 242, 242);border-bottom-color: rgb(242, 242, 242);border-left-color: rgb(242, 242, 242);background: none;width: 92%;margin-bottom: 1.5em;min-height: 73px;resize: none;"></textarea>
                                                
                                             </div>

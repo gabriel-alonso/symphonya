@@ -338,7 +338,6 @@ input.username, .checkin, .checkout {
 }
 
 .date {
-    background: rgba(0, 0, 0, 0.15) !important;
     cursor: pointer;
 }
 

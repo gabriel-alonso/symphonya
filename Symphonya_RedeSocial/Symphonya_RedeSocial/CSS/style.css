@@ -2855,11 +2855,11 @@ form.com-mail {
     color: #6F6F6F;
 }
 input[type="submit"] {
-    font-size: 0.9em;
+    font-size: 1.0em;
     background-color:#FC3158;
     border: 1px solid #fff;
     color: #FFFFFF;
-    padding: 0.4em 1em;
+    padding: 0.8em 2em;
     margin-top: 1em;
 }
 .BTNeditarPerfil{
