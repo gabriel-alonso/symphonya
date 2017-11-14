@@ -13,7 +13,7 @@ namespace Symphonya_RedeSocial.Models
         public String Nome { get; set; }
 
         public Arquivos() { }
-        public Boolean NovoArquivo()
+        public static Boolean NovoArquivo(String tipo, String Nome, Int32 ID)
 
         {
 
@@ -23,11 +23,11 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Arquivos ( Tipo , Nome)"
-              + "VALUES ( @Tipo , @Nome);";
-            Comando.Parameters.AddWithValue("@Tipo", this.Tipo);
-            Comando.Parameters.AddWithValue("@Nome", this.Nome);
-          
+            Comando.CommandText = "INSERT INTO Arquivos ( Tipo , Nome, Usuario_ID)"
+              + "VALUES ( @Tipo , @Nome, @ID);";
+            Comando.Parameters.AddWithValue("@Tipo", tipo);
+            Comando.Parameters.AddWithValue("@Nome", Nome);
+            Comando.Parameters.AddWithValue("@ID", ID);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 

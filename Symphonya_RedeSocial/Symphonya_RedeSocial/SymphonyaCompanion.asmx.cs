@@ -29,13 +29,16 @@ namespace Symphonya_RedeSocial
             String SenhaEncriptada = FormsAuthentication.HashPasswordForStoringInConfigFile(senha, "SHA1");
 
             //VERIFICA SE INFORMACOES COLOCADAS PELO USUARIO BATEM COM INFORMACOES NO BANCO
-            Usuario.Autenticar(email, SenhaEncriptada);
+            if (Usuario.Autenticar(email, SenhaEncriptada))
+            {
+                //CRIA NOVO USUARIO COM INFORMACOES DO BANCO
+                Usuario User = new Usuario(email, SenhaEncriptada);
 
-            //CRIA NOVO USUARIO COM INFORMACOES DO BANCO
-            Usuario User = new Usuario(email,SenhaEncriptada);
-
-            //RETORNA OS RESULTADOS
-            return User;
+                //RETORNA O USUARIO
+                return User;
+            }
+                //RETORNA NULO
+                return null;
         }
 
         //WEBMETHOD PARA RETORNAR QUEM SEGUE O USUARIO
