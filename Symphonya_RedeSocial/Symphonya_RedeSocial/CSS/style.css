@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5 {
     	font-family: 'Roboto', sans-serif;
 }
 a {
-  color:#FC3158;
+  color:#fff;
   font-weight:400;
 }
 a:hover { transition: all 200ms ease-in-out; }
@@ -2666,7 +2666,7 @@ label {
     color: #777;
 }
 button.btn.btn-default {
-    background: #00C6D7;
+    background: #FC3158;
     color: #fff;
     font-size: 1em;
 	outline:none;
@@ -2855,11 +2855,11 @@ form.com-mail {
     color: #6F6F6F;
 }
 input[type="submit"] {
-    font-size: 0.9em;
+    font-size: 1.0em;
     background-color:#FC3158;
     border: 1px solid #fff;
     color: #FFFFFF;
-    padding: 0.4em 1em;
+    padding: 0.8em 2em;
     margin-top: 1em;
 }
 .BTNeditarPerfil{
