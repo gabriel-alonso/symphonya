@@ -838,12 +838,14 @@ namespace Symphonya_RedeSocial.Controllers
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
+                Int32 IDUsuario;
                 if (Session["Administrador"] != null)
                 {
                     //CRIA SESSÃO DO Administrador
                     ViewBag.Logado = Session["Administrador"];
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
                 else
@@ -852,13 +854,30 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Logado = Session["Usuario"];
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
-                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                    foreach (string fileName in Request.Files)
+                    {
+                        HttpPostedFileBase postedFile = Request.Files[fileName];
+                        int contentLength = postedFile.ContentLength;
+                        string contentType = postedFile.ContentType;
+                        string nome = postedFile.FileName;
+
+                        if (contentType.IndexOf("mp3") > 0 || contentType.IndexOf("audio") > 0 || contentType.IndexOf("mpeg") > 0 || contentType.IndexOf("wav") > 0) 
+                        { 
+                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "\\Arquivos" + nome + IDUsuario + ".mp3");
+                            //postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\img_users\" + "imagemPerfil" + ID + ".jpg");
+                           //Arquivos.NovoArquivo();
+                        }
+                        // else
+                        //  postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\" + Request.Form["Desc"] + ".txt");
+
+                    }
+
+
                 }
 
             }
@@ -918,7 +937,7 @@ namespace Symphonya_RedeSocial.Controllers
                 Ar.Nome = Request.Form["Nome"].ToString();
                
                
-                Ar.NovoArquivo();
+                //Ar.NovoArquivo();
 
                 Response.Redirect("/Menu/Feed");
 
