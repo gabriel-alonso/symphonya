@@ -270,78 +270,6 @@ $(function () {
                     <!--/Accordion-->
                     <div class="accordion">
                         <h3 class="inner-tittle two">Criar Eventos</h3>
-                        @*<div class="panel-group tool-tips graph-form" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-                                            Product 1
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                            Product 2
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="true">
-                                    <div class="panel-body">
-                                        Eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Anim pariatur cliche reprehenderit, enim  Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Product 3
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
-                                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.  apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-default">
-                                <div class="panel-heading" role="tab" id="headingFour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            Product 4
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
-                                        Cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-default">
-                                <div class="panel-heading" role="tab" id="headingFive">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                            Product 5
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive" aria-expanded="false" style="height: 0px;">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. apiente ea proident. Ad vegan excepteur butcher vice lomo.  labore sustainable VHS.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
                         <form  method="post" action="~/Menu/Agenda">
                         <div class="grid_3 grid_5">
 
@@ -368,27 +296,7 @@ $(function () {
 			                                            });
                                                 </script> 
                                                 <h2>Hora:</h2>
-                                                <input name="Hora" id="Hora" placeholder="Hora" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">                                       
-                                                <script>
-                                                    function Hora(campo, evt) {
-                                                        //HH:mm
-                                                        xPos = PosicaoCursor(campo);
-                                                        evt = getEvent(evt);
-                                                        var tecla = getKeyCode(evt);
-                                                        if (!teclaValida(tecla))
-                                                            return;
-
-                                                        vr = campo.value = filtraNumeros(filtraCampo(campo));
-
-                                                        if (tam == 2)
-                                                            campo.value = vr.substr(0, 2) + ':';
-                                                        if (tam > 2 && tam < 5)
-                                                            campo.value = vr.substr(0, 2) + ':' + vr.substr(2);
-                                                        //    if(xPos == 2)
-                                                        //        xPos = xPos + 1;
-                                                        MovimentaCursor(campo, xPos);
-                                                    }
-                                                </script>
+                                                <input name="Hora" id="Hora" placeholder="Hora"  onkeyup="formataHora(this, event)" maxlength="5" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">                                                                              
                                                 <h2>Título:</h2>
                                                 <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
                                                 <h2>Descrição:</h2>

@@ -13,6 +13,7 @@ namespace Symphonya_RedeSocial.Controllers
 {
     public class MenuController : Controller
     {
+
         // GET: Menu
         public ActionResult Feed()
         {
@@ -139,7 +140,8 @@ namespace Symphonya_RedeSocial.Controllers
         }
 
         public ActionResult Agenda()
-        {
+        {       
+
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
@@ -179,6 +181,17 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     String busca = Request.Form["busca"].ToString();
                     Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+                if (Request.HttpMethod == "POST")
+                {
+                    Show sh = new Show();
+
+                    sh.Titulo = Request.Form["Titulo"].ToString();
+                    sh.Descricao = Request.Form["Descricao"].ToString();
+                    sh.Hora = Request.Form["Hora"].ToString();
+                    sh.Data = Request.Form["Data"].ToString();
+                    sh.NovoEvento();
+
                 }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
@@ -224,26 +237,24 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     ViewBag.Erro = "Não foram encontrados seguidores!";
                 }
-
+              
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
                     String busca = Request.Form["busca"].ToString();
                     Response.Redirect("/Menu/Pesquisar/" + busca);
                 }
-            }
-            if (Request.HttpMethod == "POST")
-            {
+                if (Request.HttpMethod == "POST")
+                {
+                    Show sh = new Show();
 
-                Show sh = new Show();
+                    sh.Titulo = Request.Form["Titulo"].ToString();
+                    sh.Descricao = Request.Form["Descricao"].ToString();
+                    sh.Hora = Request.Form["Hora"].ToString();
+                    sh.Data = Request.Form["Data"].ToString();
+                    sh.NovoEvento();
 
-                sh.Titulo = Request.Form["Titulo"].ToString();
-                sh.Descricao = Request.Form["Descricao"].ToString();              
-                sh.Hora = Convert.ToDateTime(Request.Form["Hora"]);
-                sh.Data = Convert.ToDateTime(Request.Form["Data"]);
-                
-                sh.NovoEvento();
-
+                }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
@@ -253,6 +264,7 @@ namespace Symphonya_RedeSocial.Controllers
 
             return View();
         }
+
 
         public ActionResult VerUsuario()
         {
