@@ -294,6 +294,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Arquivos.cs" />
     <Compile Include="Models\Bandas.cs" />

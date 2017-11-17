@@ -4331,10 +4331,10 @@ th {
 }
 .btn {
     cursor: pointer;
-    margin: 10px;
+    margin: 17px;
     border-radius: 0;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 11px 30px;
     font-size: 17px;
     margin-top: 2%;
 	}
