@@ -12,6 +12,9 @@ namespace Symphonya_RedeSocial.Models
     {
         public Int32 ID { get; set; }
         public String Data { get; set; }
+        public String Hora { get; set; }
+        public String Titulo { get; set; }
+        public String Descricao { get; set; }
 
         public Agenda() { }
 
@@ -34,30 +37,41 @@ namespace Symphonya_RedeSocial.Models
 
             Conexao.Close();
         }
-        public Boolean NovaAgenda()
+        public static List<Agenda> ListarAgenda(Int32 ID)
         {
-
-            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
-            //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Agenda (Data)"
-              + "VALUES (@Data);";
+            Comando.CommandText = "SELECT Show.ID, Show.Hora, Show.Data, Show.Titulo, Show.Descricao, Show.UsuarioID, Show.AgendaID FROM Show,Agenda WHERE IDUsuario LIKE @ID AND IDUsuario2 LIKE Usuario.ID;";
+            Comando.Parameters.AddWithValue("@ID", ID);
 
-            DateTime datahora = DateTime.Now;
-            String Data = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
+            SqlDataReader Leitor = Comando.ExecuteReader();
 
-            Comando.Parameters.AddWithValue("@Data", this.Data); 
+            List<Agenda> Seguidos = new List<Agenda>();
+            while (Leitor.Read())
+            {
+                Agenda A = new Agenda();
+                A.ID = (Int32)Leitor["ID"];
+                A.Hora = (String)Leitor["Hora"];
+                A.Data = (String)Leitor["Data"];
+                A.Titulo = (String)Leitor["Titulo"];
+                A.Descricao = (String)Leitor["Descricao"];
 
-            Int32 Resultado = Comando.ExecuteNonQuery();
+                Seguidos.Add(A);
+            }
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
 
             Conexao.Close();
 
-            return Resultado > 0 ? true : false;
+            return Seguidos;
         }
-
 
     }
 }

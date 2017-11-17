@@ -175,6 +175,23 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     ViewBag.Erro = "Não foram encontrados seguidores!";
                 }
+                if (Request.HttpMethod == "POST")
+                {
+                    Show sh = new Show();
+
+                   sh.Titulo = Request.Form["Titulo"].ToString();
+                   sh.Descricao = Request.Form["Descricao"].ToString();
+                   sh.Hora = Request.Form["Hora"].ToString();
+                   sh.Data = Request.Form["Data"].ToString();
+                   sh.UsuarioID = ViewBag.User.ID;
+                   sh.AgendaID = ViewBag.User.ID;
+                   //if (sh.AgendaID != null)
+                   // {
+
+                   // }
+                   sh.NovoEvento();
+
+                }
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -182,17 +199,7 @@ namespace Symphonya_RedeSocial.Controllers
                     String busca = Request.Form["busca"].ToString();
                     Response.Redirect("/Menu/Pesquisar/" + busca);
                 }
-                if (Request.HttpMethod == "POST")
-                {
-                    Show sh = new Show();
-
-                    sh.Titulo = Request.Form["Titulo"].ToString();
-                    sh.Descricao = Request.Form["Descricao"].ToString();
-                    sh.Hora = Request.Form["Hora"].ToString();
-                    sh.Data = Request.Form["Data"].ToString();
-                    sh.NovoEvento();
-
-                }
+                
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
@@ -237,7 +244,72 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     ViewBag.Erro = "Não foram encontrados seguidores!";
                 }
-              
+                if (Request.HttpMethod == "POST")
+                {
+                    Show sh = new Show();
+
+                    sh.Titulo = Request.Form["Titulo"].ToString();
+                    sh.Descricao = Request.Form["Descricao"].ToString();
+                    sh.Hora = Request.Form["Hora"].ToString();
+                    sh.Data = Request.Form["Data"].ToString();
+                    sh.UsuarioID = ViewBag.User.ID;
+                    sh.NovoEvento();
+
+                }
+
+                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
+                if (Request.HttpMethod == "POST")
+                {
+                    String busca = Request.Form["busca"].ToString();
+                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                }
+               
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+
+            return View();
+        }
+
+        public ActionResult NovaAgenda()
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            {
+                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO 
+                Int32 IDUsuario;
+
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                if (Seguidores.ListarSeguidores(IDUsuario) != null)
+                {
+                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
+                    ViewBag.Seguidores = seguidores;
+                }
+                else
+                {
+                    ViewBag.Erro = "Não foram encontrados seguidores!";
+                }
+
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
