@@ -289,6 +289,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AcessoController.cs" />
+    <Compile Include="Controllers\AdministracaoController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -358,6 +359,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Arquivos\" />
     <Folder Include="Fonts\Calendario\" />
+    <Folder Include="Views\Administracao\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>
