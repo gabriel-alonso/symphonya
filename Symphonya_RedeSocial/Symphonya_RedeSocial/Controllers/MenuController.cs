@@ -76,6 +76,8 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                 }
 
+                ViewBag.Arquivos = Arquivos.
+
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
@@ -936,13 +938,25 @@ namespace Symphonya_RedeSocial.Controllers
                         HttpPostedFileBase postedFile = Request.Files[fileName];
                         int contentLength = postedFile.ContentLength;
                         string contentType = postedFile.ContentType;
-                        string nome = postedFile.FileName;
+
+                        String nome = postedFile.FileName;
+                        String nomeArquivo = null;
+
+                        Arquivos arquivo = new Arquivos();
+
+                        for(int i=0; i <= nome.Length; i++)
+                        {
+                            if(i == nome.IndexOf('.'))
+                            {
+                                //REMOVE OS CARACTERES APOS O PONTO(EXTENSAO DO ARQUIVO)
+                                nomeArquivo = nome.Substring(0, nome.IndexOf('.')) + "#" + IDUsuario + ".mp3";
+                            }
+                        }
 
                         if (contentType.IndexOf("mp3") > 0 || contentType.IndexOf("audio") > 0 || contentType.IndexOf("mpeg") > 0 || contentType.IndexOf("wav") > 0) 
                         { 
-                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "\\Arquivos" + nome + IDUsuario + ".mp3");
-                            //postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\img_users\" + "imagemPerfil" + ID + ".jpg");
-                           //Arquivos.NovoArquivo();
+                            postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "//Arquivos//" + nomeArquivo);
+                            arquivo.NovoArquivo(contentType, nomeArquivo, Int32.Parse(nomeArquivo.Substring(nomeArquivo.IndexOf('#'))));
                         }
                         // else
                         //  postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\" + Request.Form["Desc"] + ".txt");
