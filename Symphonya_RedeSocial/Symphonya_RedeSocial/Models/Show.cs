@@ -17,9 +17,7 @@ namespace Symphonya_RedeSocial.Models
         public String Titulo { get; set; }
         public String Descricao { get; set; }
 
-        public Show()
-        {
-        }
+        public Show() { }                
 
         public Show(Int32 ID)
         {
@@ -45,6 +43,33 @@ namespace Symphonya_RedeSocial.Models
 
             Conexao.Close();
         }
+        public Show(Int32 AgendaID, Int32 UsuarioID)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            //CRIACAO DO COMANDO SQL
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT * FROM Show WHERE AgendaID=@AgendaID AND UsuarioID=@UsuarioID;";
+            Comando.Parameters.AddWithValue("@AgendaID", AgendaID);
+            Comando.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            //LEITURA DO RESULTADO DO COMANDO
+            Leitor.Read();
+
+            //COLETA DE DADOS -> USUARIO
+            this.ID = (Int32)Leitor["ID"];
+            this.AgendaID = (Int32)Leitor["AgendaID"];
+            this.UsuarioID = (Int32)Leitor["UsuarioID"];
+
+
+            Conexao.Close();
+        }
+
+
         public static List<Agenda> ListarAgenda(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
@@ -82,7 +107,7 @@ namespace Symphonya_RedeSocial.Models
         }
 
 
-        public Boolean NovoEvento()
+        public Boolean NovoEvento(Int32 UsuarioID, Int32 AgendaID)
         {
 
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");

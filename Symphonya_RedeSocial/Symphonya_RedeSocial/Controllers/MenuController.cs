@@ -187,10 +187,11 @@ namespace Symphonya_RedeSocial.Controllers
                    sh.Data = Request.Form["Data"].ToString();
                    sh.UsuarioID = ViewBag.User.ID;
                    sh.AgendaID = ViewBag.User.ID;
-                   //if (sh.AgendaID != null)
-                   // {
+                   // if (sh.AgendaID != null)
+                   //{
 
                    // }
+
                    sh.NovoEvento();
 
                 }
