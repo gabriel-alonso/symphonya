@@ -190,60 +190,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
-                                <h3 class="inner-tittle">Informações Pessoais </h3>
+                                <h3 class="inner-tittle">Descrição </h3>
                                 <div class="main-grid3">
                                     <div class="p-20">
                                         <div class="about-info-p">
-                                            <strong>Nome Completo</strong>
+                                            <strong>Descrição da Banda</strong>
                                             <br>
-                                            <p class="text-muted">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
+                                            @*<p class="text-muted">@ViewBag.User.Descricao</p>*@
                                         </div>
-                                        <div class="about-info-p">
-                                            <strong>Mobile</strong>
-                                            <br>
-                                            <p class="text-muted">(123) 123 1234</p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>E-mail</strong>
-                                            <br>
-                                            <p class="text-muted"><a href="@ViewBag.User.Email">@ViewBag.User.Email</a></p>
-                                        </div>
-                                        <div class="about-info-p m-b-0">
-                                            <strong>Local</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.User.Cidade, @ViewBag.User.Estado</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class="inner-tittle">Biografia </h3>
-                                <div class="main-grid3 p-skill">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p class="para">But also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-                                </div>
-                                <h3 class="inner-tittle two">Instrumentos </h3>
-                                <div class="main-grid3">
 
-                                    @if (ViewBag.Instrumentos != null)
-                                    {
-                                        foreach (var I in ViewBag.Instrumentos)
-                                        {
-                                            <div class="barra-instrumento">
-                                                <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
-                                            </div>
-                                            <div class="skills">
-                                                <div class="skill1" style="width:@I.Maestria%"> </div>
-                                            </div>
-                                        }
-                                    }
-                                    else
-                                    {
-                                        <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
-                                    }
-                                </div>
+                                    </div>
+                                </div>                               
                             </div>
+
                             <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Músicas </h3>
+                                <h3 class="inner-tittle">Integrantes </h3>
                                 <div class="main-grid3 p-skill">
                                     <ul class="timeline">
                                         <li>
@@ -264,29 +225,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
-                            <!--/map-->
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Atividade Recente </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a href="profile.html">@ViewBag.User.Nome @ViewBag.User.Sobrenome</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
+
+                            <div class="bs-example2 bs-example-padded-bottom">
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    + Adicionar
+                                </button>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2 class="modal-title">Adicionar Banda</h2>
                                             </div>
-                                        </li>
+                                            <div class="modal-body">
 
+                                                <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
+                                                <table class="table">
+                                                    <tbody>
+                                                        @if (ViewBag.Bandas == null)
+                                                        {
+                                                            <p>Você ainda não adicionou os integrantes!</p>
+                                                        }
+                                                        else {
+                                                            foreach (var B in ViewBag.Bandas)
+                                                            {
+                                                                <tr class="table-row">
+                                                                    <td class="table-text">
+                                                                        <h6><a href="/Menu/MostrarUsuario/@B.ID">@(B.Nome) @(B.Descricao)</a></h6>
+                                                                        <p>@(B.Lider)</p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span class="fam">Usuário</span>
+                                                                    </td>
+                                                                    <td>
+                                                                        <img class="status" src="~/Imagens/icone.png" />
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        }
+                                                    </tbody>
+                                                </table>
 
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                                                <input type="submit" onclick="myFunction()" value="Salvar">
+
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
                                 </div>
                             </div>
+                            <!--/map-->                          
                             <div class="clearfix"></div>
                         </div>
 

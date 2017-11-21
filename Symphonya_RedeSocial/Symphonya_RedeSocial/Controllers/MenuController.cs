@@ -128,6 +128,7 @@ namespace Symphonya_RedeSocial.Controllers
                     Bandas ba = new Bandas();
                     ba.Nome = Request.Form["Nome"].ToString();
                     ba.Descricao = Request.Form["Descricao"].ToString();
+                    ba.Lider = Request.Form["Lider"].ToString();
                     ba.NovaBanda();
                     Response.Redirect("/Menu/Feed");
                 }
