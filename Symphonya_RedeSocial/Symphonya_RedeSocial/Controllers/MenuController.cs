@@ -198,7 +198,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                    // }
 
-                   sh.NovoEvento();
+                   //sh.NovoEvento();
 
                 }
 
@@ -262,7 +262,7 @@ namespace Symphonya_RedeSocial.Controllers
                     sh.Hora = Request.Form["Hora"].ToString();
                     sh.Data = Request.Form["Data"].ToString();
                     sh.UsuarioID = ViewBag.User.ID;
-                    sh.NovoEvento();
+                    //sh.NovoEvento();
 
                 }
 
@@ -333,7 +333,7 @@ namespace Symphonya_RedeSocial.Controllers
                     sh.Descricao = Request.Form["Descricao"].ToString();
                     sh.Hora = Request.Form["Hora"].ToString();
                     sh.Data = Request.Form["Data"].ToString();
-                    sh.NovoEvento();
+                    //sh.NovoEvento();
 
                 }
             }
@@ -659,10 +659,10 @@ namespace Symphonya_RedeSocial.Controllers
                     List<Usuario> Usuarios = Usuario.Listar(busca);
                     ViewBag.Usuarios = Usuarios;
                 }
-                if (Bandas.ListarBandas(busca) != null)
+                //if (Bandas.ListarBandas(busca) != null)
                 {
-                    List<Bandas> Bands = Bandas.ListarBandas(busca);
-                    ViewBag.Bandas = Bands;
+                   // List<Bandas> Bands = Bandas.ListarBandas(busca);
+                    //ViewBag.Bandas = Bands;
                 }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN

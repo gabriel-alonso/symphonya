@@ -45,9 +45,11 @@ namespace Symphonya_RedeSocial.Models
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
             if (limite)
-                Comando.CommandText = "	SELECT TOP 3 Usuario.Nome, Usuario.Sobrenome, Arquivos.Nome FROM Usuario,Arquivos WHERE Usuario_ID LIKE @ID;";
+                //Comando.CommandText = "	SELECT TOP 3 Usuario.Nome, Usuario.Sobrenome, Arquivos.Nome FROM Usuario,Arquivos WHERE Usuario_ID LIKE @ID;";
+                Comando.CommandText = "	SELECT TOP 3 Nome FROM Arquivos WHERE Usuario_ID LIKE @ID;";
             else
-                Comando.CommandText = "	SELECT Usuario.Nome, Usuario.Sobrenome, Arquivos.Nome FROM Usuario,Arquivos WHERE Usuario_ID LIKE @ID;";
+                //Comando.CommandText = "	SELECT Usuario.Nome, Usuario.Sobrenome, Arquivos.Nome FROM Usuario,Arquivos WHERE Usuario_ID LIKE @ID;";
+                Comando.CommandText = "	SELECT Nome FROM Arquivos WHERE Usuario_ID LIKE @ID;";
 
             Comando.Parameters.AddWithValue("@ID", ID);
 
@@ -57,9 +59,7 @@ namespace Symphonya_RedeSocial.Models
             while (Leitor.Read())
             {
                 Arquivos A = new Arquivos();
-                A.ID = (Int32)Leitor["ID"];
                 A.Nome = (String)Leitor["Nome"];
-
                 Arcs.Add(A);
             }
 

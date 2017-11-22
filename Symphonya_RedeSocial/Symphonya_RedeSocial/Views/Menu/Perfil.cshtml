@@ -243,18 +243,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <h3 class="inner-tittle">Músicas </h3>
                                 <div class="main-grid3 p-skill">
                                     <ul class="timeline">
+                            @foreach (var A in ViewBag.Arquivos)
+                            {
                                         <li>
                                             <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                             <div class="timeline-panel">
                                                 <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
+                                                    <h4 class="nome-musica"><strong>@A.Nome</strong></h4>
                                                 </div>
                                                 <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
+                                                    <p class="time">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
                                                     <p>Uploaded 2 new Photos</p>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li>}
                                     </ul>
 
                                     <div class="bs-example2 bs-example-padded-bottom">
@@ -270,18 +272,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <div class="modal-body">
 
                                                         <ul class="timeline">
+                                                            @foreach (var A in ViewBag.Arquivos) {
                                                             <li>
                                                                 <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                                                 <div class="timeline-panel">
                                                                     <div class="timeline-heading">
-                                                                        <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
+                                                                        <h4 class="nome-musica"><strong>@A.Nome</strong></h4>
                                                                     </div>
                                                                     <div class="timeline-body">
-                                                                        <p class="time">5 Minutes ago</p>
+                                                                        <p class="nome-musico">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
                                                                         <p>Uploaded 2 new Photos</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
+                                                            }
                                                         </ul>
 
                                                     </div>
