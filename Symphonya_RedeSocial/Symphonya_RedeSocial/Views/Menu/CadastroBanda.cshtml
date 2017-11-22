@@ -226,9 +226,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="col-sm-8" style="margin: 0px 0px 0px -16px;">
                                     <input class="form-control1" id="Nome" name="Nome" placeholder="Nome" type="text">
                                 </div>
-                                
+
                             </div>
-                       
+
                             <div class="form-group">
                                 <label for="txtarea1" class="col-sm-2 control-label">Descrição</label>
                                 <div class="col-sm-8" style="margin: 0px 0px 0px -16px;"><textarea name="Descricao" id="Descricao" placeholder="Descrição" cols="50" rows="4" class="form-control1"></textarea></div>
@@ -255,55 +255,62 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                         </select>
                                     </div>
-                                    </div>
-                                </div>  
-                                              
-                            </div>
-                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#demonstration').searchableOptionList({ maxHeight: '300px', showSelectAll: true });
-
-                                                    $('.basicSelect').searchableOptionList();
-
-
-                                                    $('#my-verylong-select').searchableOptionList({ maxHeight: '250px' });
-                                                    $('#my-multiselect-all').searchableOptionList({ showSelectAll: true });
-                                                    $('#null-allowed-select').searchableOptionList({ allowNullSelection: true });
-                                                    $('#default-texts').searchableOptionList({ showSelectAll: true });
-                                                    $('#custom-texts').searchableOptionList({
-                                                        showSelectAll: true,
-                                                        texts: {
-                                                            noItemsAvailable: 'Go on, nothing to see here',
-                                                            selectAll: 'none',
-                                                            selectNone: 'none',
-                                                            quickDelete: 'Kick',
-                                                            searchplaceholder: 'Giggity giggity...'
-                                                        }
-                                                    });
-
-                                                    $('#positionshowcase select:first').searchableOptionList({
-                                                        texts: {
-                                                            searchplaceholder: 'Not fixed'
-                                                        },
-                                                        events: {
-                                                            onScroll: function () { }
-                                                        }
-                                                    });
-                                                    $('#positionshowcase select:not(:first)').searchableOptionList({
-                                                        texts: {
-                                                            searchplaceholder: 'Fixed'
-                                                        }
-                                                    });
-                                                });
-                            </script>
-
-                            <div class="submit" style="text-align: center;">
-
-                                <input type="submit" onclick="myFunction()" value="Cadastrar">
+                                </div>
                             </div>
 
-                           
-                        </form>
+                            <div class="form-group">
+                                <label for="focusedinput" class="col-sm-2 control-label">Líder</label>
+                                <div class="col-sm-8" style="margin: 0px 0px 0px -16px;">
+                                    <input class="form-control1" id="Lider" name="Lider" placeholder="Lider" type="text">
+                                </div>
+                            </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#demonstration').searchableOptionList({ maxHeight: '300px', showSelectAll: true });
+
+                                        $('.basicSelect').searchableOptionList();
+
+
+                                        $('#my-verylong-select').searchableOptionList({ maxHeight: '250px' });
+                                        $('#my-multiselect-all').searchableOptionList({ showSelectAll: true });
+                                        $('#null-allowed-select').searchableOptionList({ allowNullSelection: true });
+                                        $('#default-texts').searchableOptionList({ showSelectAll: true });
+                                        $('#custom-texts').searchableOptionList({
+                                            showSelectAll: true,
+                                            texts: {
+                                                noItemsAvailable: 'Go on, nothing to see here',
+                                                selectAll: 'none',
+                                                selectNone: 'none',
+                                                quickDelete: 'Kick',
+                                                searchplaceholder: 'Giggity giggity...'
+                                            }
+                                        });
+
+                                        $('#positionshowcase select:first').searchableOptionList({
+                                            texts: {
+                                                searchplaceholder: 'Not fixed'
+                                            },
+                                            events: {
+                                                onScroll: function () { }
+                                            }
+                                        });
+                                        $('#positionshowcase select:not(:first)').searchableOptionList({
+                                            texts: {
+                                                searchplaceholder: 'Fixed'
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                                <div class="submit" style="text-align: center;">
+
+                                    <input type="submit" onclick="myFunction()" value="Cadastrar">
+                                </div>
+
+
+</form>
+                    </div>
+
                     </div>
                 </div>
             </div>
