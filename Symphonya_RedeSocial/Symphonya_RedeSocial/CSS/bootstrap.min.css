@@ -2902,7 +2902,7 @@ input[type=search] {
 }
 
 input[type=checkbox], input[type=radio] {
-    margin: 4px 0 0;
+    margin: 4px 80px 0;
     margin-top: 1px \9;
     line-height: normal;
 }

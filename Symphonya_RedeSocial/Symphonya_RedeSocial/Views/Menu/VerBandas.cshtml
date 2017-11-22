@@ -227,45 +227,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
 
                             <div class="bs-example2 bs-example-padded-bottom">
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    + Adicionar
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> 
+                                    <a href="~/Menu/VerIntegrantes"><i class="fa fa-address-book"></i> <span> + Adicionar Integrante</span></a>
                                 </button>
+
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h2 class="modal-title">Adicionar Banda</h2>
+                                                <h2 class="modal-title">Adicionar Integrante</h2>
                                             </div>
-                                            <div class="modal-body">
-
-                                                <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
-                                                <table class="table">
-                                                    <tbody>
-                                                        @if (ViewBag.Bandas == null)
+                                                <div class="modal-body">
+                                                    <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
+    
+                                                </div>
+                                            @*<div class="col-md-6 page_1">
+                                                <div class="list-group list-group-alternate">
+                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox"/></span> <i class="ti ti-email"></i> </a>
+                                                    <a href="#" class="list-group-item"><span class="badge badge-primary"><input type="checkbox" /></span> <i class="ti ti-eye"></i> Profile visits </a>
+                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-headphone-alt"></i> Call </a>
+                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-comments"></i> Messages </a>
+                                                    <a href="#" class="list-group-item"><span class="badge badge-warning"><input type="checkbox" /></span> <i class="ti ti-bookmark"></i> Bookmarks </a>
+                                                    <a href="#" class="list-group-item"><span class="badge badge-danger"><input type="checkbox" /></span> <i class="ti ti-bell"></i> Notifications </a>
+                                                </div>
+                                            </div>*@
+                                            <table class="table">
+                                                <tbody>
+                                                    @if (ViewBag.Seguidores == null)
+                                                    {
+                                                        <p>Você ainda não possui seguidores!</p>
+                                                    }
+                                                    else {
+                                                        foreach (var S in ViewBag.Seguidores)
                                                         {
-                                                            <p>Você ainda não adicionou os integrantes!</p>
+                                                            <tr class="table-row">
+                                                                <td class="table-text">
+                                                                    <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
+                                                                    <p>@(S.Email)</p>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="fam">Usuário</span>
+                                                                </td>
+                                                                <td>
+                                                                    <img class="status" src="~/Imagens/icone.png" />
+                                                                </td>
+                                                            </tr>
                                                         }
-                                                        else {
-                                                            foreach (var B in ViewBag.Bandas)
-                                                            {
-                                                                <tr class="table-row">
-                                                                    <td class="table-text">
-                                                                        <h6><a href="/Menu/MostrarUsuario/@B.ID">@(B.Nome) @(B.Descricao)</a></h6>
-                                                                        <p>@(B.Lider)</p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <span class="fam">Usuário</span>
-                                                                    </td>
-                                                                    <td>
-                                                                        <img class="status" src="~/Imagens/icone.png" />
-                                                                    </td>
-                                                                </tr>
-                                                            }
-                                                        }
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
+                                                    }
+                                                </tbody>
+                                            </table>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 
