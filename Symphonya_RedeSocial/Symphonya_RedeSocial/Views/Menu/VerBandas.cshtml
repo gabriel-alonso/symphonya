@@ -227,9 +227,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
 
                             <div class="bs-example2 bs-example-padded-bottom">
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> 
-                                    <a href="~/Menu/VerIntegrantes"><i class="fa fa-address-book"></i> <span> + Adicionar Integrante</span></a>
-                                </button>
+                                @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> 
+                                   + Adicionar Integrante
+                                </button>*@
+                                <div class="submit" style="text-align: center;">
+                                    <input type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal" value="+ Adicionar Integrante">
+                                </div>
 
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
@@ -253,17 +256,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </div>*@
                                             <table class="table">
                                                 <tbody>
-                                                    @if (ViewBag.Seguidores == null)
+                                                    @if (ViewBag.Integrantes == null)
                                                     {
-                                                        <p>Você ainda não possui seguidores!</p>
+                                                        <p>Não há Integrantes!</p>
                                                     }
                                                     else {
-                                                        foreach (var S in ViewBag.Seguidores)
+                                                        foreach (var I in ViewBag.Integrantes)
                                                         {
                                                             <tr class="table-row">
                                                                 <td class="table-text">
-                                                                    <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                                                    <p>@(S.Email)</p>
+                                                                    <h6><a href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
+                                                                    <p>@(I.Email)</p>
                                                                 </td>
                                                                 <td>
                                                                     <span class="fam">Usuário</span>

@@ -29,6 +29,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.CommandText = "SELECT * FROM Integrantes WHERE BandasID LIKE @ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
+
             SqlDataReader Leitor = Comando.ExecuteReader();
 
             //LISTA COM ID DOS INTEGRANTES
