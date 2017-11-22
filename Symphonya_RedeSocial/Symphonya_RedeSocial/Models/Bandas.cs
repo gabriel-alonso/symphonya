@@ -38,29 +38,25 @@ namespace Symphonya_RedeSocial.Models
             Conexao.Close();
         }
 
-        public static List<Bandas> ListarBandas(Int32 ID)
+        public static Bandas MostrarBanda(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Bandas.Lider FROM Bandas,Usuario_Has_Bandas WHERE BandasID LIKE @ID AND UsuarioID LIKE Bandas.ID;";
+            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Bandas.LiderID FROM Bandas,Usuario_Has_Bandas WHERE UsuarioID LIKE @ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
-            List<Bandas> Bandas = new List<Bandas>();
-            while (Leitor.Read())
-            {
-                Bandas B = new Bandas();
-                B.ID = (Int32)Leitor["ID"];
-                B.Nome = ((String)Leitor["Nome"]);
-                B.Descricao = (String)Leitor["Descricao"];
-                B.Lider = (String)Leitor["Lider"];
 
-                Bandas.Add(B);
-            }
+            Bandas Bandas = new Bandas();
+            Bandas.ID = (Int32)Leitor["ID"];
+            Bandas.Nome = ((String)Leitor["Nome"]);
+            Bandas.Descricao = (String)Leitor["Descricao"];
+            Bandas.Lider = (String)Leitor["LiderID"];
+
 
             if (!Leitor.HasRows)
             {
