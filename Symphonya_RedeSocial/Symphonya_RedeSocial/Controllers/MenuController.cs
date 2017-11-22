@@ -54,6 +54,9 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult Perfil()
         {
+            //CRIA VARIAVEL GLOBAL DO ID DO USUARIO 
+            Int32 IDUsuario;
+
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
@@ -63,8 +66,9 @@ namespace Symphonya_RedeSocial.Controllers
                     //CRIA SESSÃO DO Administrador
                     ViewBag.Logado = Session["Administrador"];
                     Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, false);
+                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, true);
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
                 else
@@ -72,11 +76,12 @@ namespace Symphonya_RedeSocial.Controllers
                     //CRIA SESSÃO DO USUARIO
                     ViewBag.Logado = Session["Usuario"];
                     Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, false);
+                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(User.ID, true);
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
-
-                ViewBag.Arquivos = Arquivos.
+                
+                ViewBag.Arquivos = Models.Arquivos.ListarArquivoUsuario(IDUsuario, true);
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -1010,7 +1015,7 @@ namespace Symphonya_RedeSocial.Controllers
                         if (contentType.IndexOf("mp3") > 0 || contentType.IndexOf("audio") > 0 || contentType.IndexOf("mpeg") > 0 || contentType.IndexOf("wav") > 0) 
                         { 
                             postedFile.SaveAs(HttpRuntime.AppDomainAppPath + "//Arquivos//" + nomeArquivo);
-                            arquivo.NovoArquivo(contentType, nomeArquivo, Int32.Parse(nomeArquivo.Substring(nomeArquivo.IndexOf('#'))));
+                            arquivo.NovoArquivo(contentType, nomeArquivo, IDUsuario);
                         }
                         // else
                         //  postedFile.SaveAs(@"C:\Users\16128604\Source\Repos\lpw-2017-3infb-g4\Katiau\WebSite\images\" + Request.Form["Desc"] + ".txt");

@@ -4338,6 +4338,29 @@ th {
     font-size: 17px;
     margin-top: 2%;
 	}
+
+.btnVerMais{
+background: #FC3158;
+border: 1px solid #FC3158;
+padding: 10px 12px;
+color: #fff;
+font-size: 19px;
+cursor: pointer;
+margin-left: 45%;
+margin-top:2%;
+}
+
+.btnVerMais:hover{
+background: #FFF;
+border: 1px solid #FC3158;
+padding: 10px 12px;
+color: #FC3158;
+font-size: 19px;
+cursor: pointer;
+margin-left: 45%;
+margin-top:2%;
+}
+
 .inner-grid-button {
     padding: 0;
 }
