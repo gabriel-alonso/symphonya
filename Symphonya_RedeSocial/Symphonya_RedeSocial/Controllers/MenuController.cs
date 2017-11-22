@@ -688,7 +688,7 @@ namespace Symphonya_RedeSocial.Controllers
                 return RedirectToAction("Pesquisar", "Menu");
             }
         }
-
+       
         public ActionResult Livestream()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
@@ -830,7 +830,7 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
-        public ActionResult VerIntegrantes()
+        public ActionResult VerBandas()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
@@ -856,14 +856,14 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
-                if (Seguidores.ListarSeguidores(IDUsuario) != null)
+                if (Integrantes.ListarIntegrantes(IDUsuario) != null)
                 {
-                    List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
-                    ViewBag.Seguidores = seguidores;
+                    List<Integrantes> integrantes = Integrantes.ListarIntegrantes(IDUsuario);
+                    ViewBag.Inetgrantes = integrantes;
                 }
                 else
                 {
-                    ViewBag.Erro = "Não foram encontrados seguidores!";
+                    ViewBag.Erro = "Não foram encontrados os INTEGRANTES!";
                 }
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
@@ -1033,42 +1033,7 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
-        public ActionResult VerBandas()
-        {
-            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
-            if (Session["Usuario"] != null || Session["Administrador"] != null)
-            {
-                if (Session["Administrador"] != null)
-                {
-                    //CRIA SESSÃO DO Administrador
-                    ViewBag.Logado = Session["Administrador"];
-                    Usuario User = (Usuario)Session["Administrador"];
-                    ViewBag.User = User;
-                }
-
-                else
-                {
-                    //CRIA SESSÃO DO USUARIO
-                    ViewBag.Logado = Session["Usuario"];
-                    Usuario User = (Usuario)Session["Usuario"];
-                    ViewBag.User = User;
-                }
-
-                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                if (Request.HttpMethod == "POST")
-                {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
-                }
-
-            }
-            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
-            else
-            {
-                Response.Redirect("/Acesso/Login");
-            }
-            return View();
-        }
+       
 
         //METODO DE SALVAR ARQUIVOS
         public ActionResult Arquivos()

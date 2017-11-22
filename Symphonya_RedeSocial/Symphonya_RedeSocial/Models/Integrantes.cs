@@ -29,6 +29,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario,Usuario_Has_Usuario WHERE IDUsuario LIKE @ID AND IDUsuario2 LIKE Usuario.ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
+
             SqlDataReader Leitor = Comando.ExecuteReader();
 
             List<Integrantes> Integrantes = new List<Integrantes>();
