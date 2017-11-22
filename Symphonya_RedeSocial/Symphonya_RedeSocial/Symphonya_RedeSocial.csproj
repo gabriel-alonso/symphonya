@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site.css" />
     <Content Include="CSS\atlas.css" />
     <Content Include="CSS\bars.css" />
     <Content Include="CSS\bootstrap-markdown.min.css" />
@@ -295,6 +296,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Integrantes.cs" />
     <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Arquivos.cs" />
     <Compile Include="Models\Bandas.cs" />
@@ -349,6 +351,7 @@
     <Content Include="Views\Menu\Arquivo.cshtml" />
     <Content Include="Views\Menu\EditarInstrumento.cshtml" />
     <None Include="Properties\PublishProfiles\Symphonya.pubxml" />
+    <Content Include="Views\Menu\VerIntegrantes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
