@@ -180,13 +180,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     @if (ViewBag.Logado == null)
                     {
-
                     }
                     else {
                         <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                        <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                        <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
-                    </div>
+                            <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
+                            <h2>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h2>
+                        </div>
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
@@ -232,8 +231,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="skills">
                                                 <div class="skill1" style="width:@I.Maestria%"> </div>
                                             </div>
-                                            }
-                                            }
+                                    }
+                                }
                                 else
                                 {
                                     <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
@@ -256,42 +255,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </div>
                                             </div>
                                         </li>
-
-
                                     </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <!--/map-->
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Atividade Recente </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a href="profile.html">@ViewBag.User.Nome @ViewBag.User.Sobrenome</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
+
+                                    <div class="bs-example2 bs-example-padded-bottom">
+                                        <button type="button" class="btnVerMais" data-toggle="modal" data-target="#myModal">Ver Mais</button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close second" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        <h2 class="modal-title">Modal title</h2>
+                                                    </div>
+                                                    <div class="modal-body">
+
+                                                        <ul class="timeline">
+                                                            <li>
+                                                                <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
+                                                                <div class="timeline-panel">
+                                                                    <div class="timeline-heading">
+                                                                        <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
+                                                                    </div>
+                                                                    <div class="timeline-body">
+                                                                        <p class="time">5 Minutes ago</p>
+                                                                        <p>Uploaded 2 new Photos</p>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                        <button type="button" class="btn btn-primary">Salvar</button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div>
+                                    </div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        </div>
+                                        <!--/map-->
+                                        <div class="col-md-6 profile-info two">
+                                            <h3 class="inner-tittle">Atividade Recente </h3>
+                                            <div class="main-grid3 p-skill">
+                                                <ul class="timeline">
+                                                    <li>
+                                                        <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
+                                                        <div class="timeline-panel">
+                                                            <div class="timeline-heading">
+                                                                <h4 class="timeline-title"><a href="profile.html">@ViewBag.User.Nome @ViewBag.User.Sobrenome</a></h4>
+                                                            </div>
+                                                            <div class="timeline-body">
+                                                                <p class="time">5 Minutes ago</p>
+                                                                <p>Uploaded 2 new Photos</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+
+                                                </ul>
+                                                <div class="clearfix"></div>
                                             </div>
-                                        </li>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                    }
+                                        <!--//profile-inner-->
+                                        <!--//profile-->
 
-
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                    <!--//profile-inner-->
-                    <!--//profile--> }
-                    
-                </div>
+                                    </div>
                 <!--//outer-wp-->
                 <!--footer section start-->
                 <footer>
@@ -299,7 +335,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </footer>
                 <!--//footer section end-->
             </div>
-        </div>
+          </div>
+              
         <!--//content-inner-->
         <!--/sidebar-menu-->
         <div class="sidebar-menu">
@@ -311,12 +348,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </header>
             <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
             <!--/down-->
-            <div class="down">
-                @if (ViewBag.Logado == null) { }
+            @if (ViewBag.Logado == null) { }
                 else {
+            <div class="down">
                     <a><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
-                }
+                
                 @if (ViewBag.User.Nivel != 0)
                 {
                     <p><strong>Administrador</strong></p>
@@ -370,6 +407,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                    
                 </ul>
             </div>
+            }
         </div>
         <div class="clearfix"></div>
     </div>
