@@ -832,6 +832,7 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult VerBandas()
         {
+
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
@@ -875,6 +876,37 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Erro = "Não foram encontrados os INTEGRANTES!";
                 }
 
+                // VERIFICA SE O USUARIO SEGUE ALGUEM PARA ADICIONAR INTEGRANTE
+                if (Seguidores.ListarSeguidos(IDUsuario) != null)
+                {
+                    List<Seguidores> seguidos = Seguidores.ListarSeguidos(IDUsuario);
+                    ViewBag.Seguidos = seguidos;
+                }
+                else
+                {
+                    ViewBag.Erro = "Não foram encontrados seguidores!";
+                }
+
+                Bandas bandas = new Bandas();
+                bandas = Bandas.MostrarBanda(IDUsuario);
+
+
+                // VERIFICA SE EXISTE ALGUMA BANDA
+                if (Bandas.MostrarBanda(IDUsuario) != null)
+                {
+                   
+                    // VERIFICAÇÃO
+                    if (Bandas.ListarBandas(IDUsuario) != null)
+                    {
+                        List<Bandas> banda = Bandas.ListarBandas(IDUsuario);
+                        ViewBag.Bandas = banda;
+                    }
+                    else
+                    {
+                        ViewBag.Erro = "Não foram encontrados as bandas!";
+                    }
+                }
+                
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {

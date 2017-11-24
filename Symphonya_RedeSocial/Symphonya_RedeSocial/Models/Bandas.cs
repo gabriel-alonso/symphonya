@@ -106,6 +106,40 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
 
         }
+        public static List<Bandas> ListarBandas(Int32 ID)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao FROM Bandas;";
+            Comando.Parameters.AddWithValue("@ID", ID);
+
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            //LISTA COM ID DAS BANDAS
+            List<Bandas> Bandas = new List<Bandas>();
+            while (Leitor.Read())
+            {
+                Bandas B = new Bandas();
+                B.ID = (Int32)Leitor["ID"];
+                B.Nome = (String)Leitor["Nome"];
+                B.Descricao = (String)Leitor["Descricao"];
+                Bandas.Add(B);
+            }
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            Conexao.Close();
+
+            return Bandas;
+        }
 
         internal void NovaBanda()
         {

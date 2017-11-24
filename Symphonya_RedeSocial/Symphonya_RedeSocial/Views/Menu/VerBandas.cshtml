@@ -197,6 +197,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <strong>Descrição da Banda</strong>
                                             <br>
                                             @*<p class="text-muted">@ViewBag.User.Descricao</p>*@
+                                            <table class="table">
+                                                <tbody>
+                                                    @if (ViewBag.Bandas == null)
+                                                    {
+                                                        <p>Não há Bandas!</p>
+                                                    }
+                                                    else {
+                                                        foreach (var B in ViewBag.Bandas)
+                                                        {
+                                                            <tr class="about-info-p">
+                                                                <td class="text-muted">
+                                                                    <h6><a href="/Menu/MostrarUsuario/@B.ID">@(B.Nome) @(B.Descricao)</a></h6>
+                                                                   
+                                                                </td>
+                                                                <td>
+                                                                    <span class="fam">Usuário</span>
+                                                                </td>
+                                                                <td>
+                                                                    <img class="status" src="~/Imagens/icone.png" />
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
                                         </div>
 
                                     </div>
@@ -250,13 +275,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <div class="modal-header">
                                                 <h2 class="modal-title">Adicionar Integrante</h2>
                                             </div>
-                                                <div class="modal-body">
+                                                @*<div class="modal-body">
                                                     <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
     
-                                                </div>
+                                                </div>*@
+                                        
+
+                                            <!--//ADICIONAR INTEGRANTES PARA A BANDA-->
                                             @*<div class="col-md-6 page_1">
                                                 <div class="list-group list-group-alternate">
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox"/></span> <i class="ti ti-email"></i> </a>
+                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox"/></span> <i class="ti ti-email"></i> Profile visits</a>
                                                     <a href="#" class="list-group-item"><span class="badge badge-primary"><input type="checkbox" /></span> <i class="ti ti-eye"></i> Profile visits </a>
                                                     <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-headphone-alt"></i> Call </a>
                                                     <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-comments"></i> Messages </a>
@@ -266,29 +294,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </div>*@
                                             <table class="table">
                                                 <tbody>
-                                                    @if (ViewBag.Integrantes == null)
+                                                    @if (ViewBag.Seguidos == null)
                                                     {
-                                                        <p>Não há Integrantes!</p>
+                                                        <p>Você não segue ninguem!</p>
                                                     }
                                                     else {
-                                                        foreach (var I in ViewBag.Integrantes)
+                                                        foreach (var S in ViewBag.Seguidos)
                                                         {
                                                             <tr class="table-row">
-                                                                <td class="table-text">
-                                                                    <h6><a href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
-                                                                    <p>@(I.Email)</p>
+                                                                <td class="table-text">                               
+                                                                    <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
+                                                                    <p>@(S.Email)</p>
                                                                 </td>
                                                                 <td>
+                                                                   
                                                                     <span class="fam">Usuário</span>
                                                                 </td>
+                                                               
                                                                 <td>
-                                                                    <img class="status" src="~/Imagens/icone.png" />
+                                                                    <img href="~/Menu/Unfollow/@S.ID" class="status" src="~/Imagens/icone.png"
+                                                                         onmouseover="this.src='/Imagens/iconeHover.png'"
+                                                                         onmouseout="this.src = '/Imagens/icone.png'" />
                                                                 </td>
+                                                                <td>
+                                                                    <input type="checkbox" id="chckHead" />
+                                                                </td>
+                                                                
                                                             </tr>
                                                         }
                                                     }
                                                 </tbody>
                                             </table>
+
+
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 
