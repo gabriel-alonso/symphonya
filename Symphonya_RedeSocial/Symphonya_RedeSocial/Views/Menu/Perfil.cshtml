@@ -243,21 +243,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <h3 class="inner-tittle">Músicas </h3>
                                 <div class="main-grid3 p-skill">
                                     <ul class="timeline">
-                            @foreach (var A in ViewBag.Arquivos)
-                            {
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
+                                             @foreach (var A in ViewBag.Arquivos)
+                                                             {
+                                                      <li>
+                                              <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
+                                                <div class="timeline-panel">
+                                                 <div class="timeline-heading">
                                                     <h4 class="nome-musica"><strong>@A.Nome</strong></h4>
-                                                </div>
-                                                <div class="timeline-body">
+                                                 </div>
+                                                 <div class="timeline-body">
                                                     <p class="time">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
                                                     <p>Uploaded 2 new Photos</p>
-                                                </div>
-                                            </div>
-                                        </li>}
-                                    </ul>
+                                                  </div>
+                                             </div>
+                                                </li>
+                                                             }
+                                       </ul>
+                                 
 
                                     <div class="bs-example2 bs-example-padded-bottom">
                                         <button type="button" class="btnVerMais" data-toggle="modal" data-target="#myModal">Ver Mais</button>
@@ -299,8 +301,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
 
                                             <div class="clearfix"></div>
-                                        </div>
-                                        </div>
+                                  </div>
+                          </div>
                                         <!--/map-->
                                         <div class="col-md-6 profile-info two">
                                             <h3 class="inner-tittle">Atividade Recente </h3>
@@ -325,7 +327,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </div>
                                         </div>
                                         <div class="clearfix"></div>
-                                    </div>
+                                   </div>
                     }
                                         <!--//profile-inner-->
                                         <!--//profile-->

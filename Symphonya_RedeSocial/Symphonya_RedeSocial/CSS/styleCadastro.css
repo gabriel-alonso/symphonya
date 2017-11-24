@@ -268,7 +268,7 @@ h2.wthree {
 }
 
 option {
-    background: #fff;
+    background: #FC3158;
 }
 
 input.email {
@@ -283,10 +283,10 @@ input.username, .checkin, .checkout {
     border: none;
     outline: none;
     font-size: 1em;
-    background: rgba(0, 0, 0, 0.15);
+    background: #FC3158;
     border-bottom: 1px solid rgb(165, 165, 165);
-    padding: 0.6em 1em;
-    color: #777 !important;
+    padding: 0.4em 1em;
+    color: #fff;
     -webkit-appearance: none;
     width: 100%;
     font-family: 'Lato', sans-serif;

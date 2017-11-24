@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5 {
     	font-family: 'Roboto', sans-serif;
 }
 a {
-  color:#fff;
+  color:#FC3158;
   font-weight:400;
 }
 a:hover { transition: all 200ms ease-in-out; }
@@ -3164,9 +3164,9 @@ a.read.fourth:hover{
 h2.inner-tittle.page {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     position: absolute;
-    top: -29%;
-    left: 40%;
-    font-size: 3em;
+    top: -35%;
+    left: 35%;
+    font-size: 4em;
     color: #FC3158;
 }
 	p.sign.up {
