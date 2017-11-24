@@ -194,6 +194,79 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
         }
 
+        public static Int32 Contar()
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT COUNT (*) FROM Usuario;";
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+            Leitor.Read();
+
+            Int32 Contador = (Int32)Leitor[""];
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return 0;
+            }
+
+            Conexao.Close();
+
+            return Contador;
+        }
+
+        public static List<Usuario> Listar()
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT * FROM Usuario ORDER BY Nome;";
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            List<Usuario> Users = new List<Usuario>();
+            while (Leitor.Read())
+            {
+                Usuario U = new Usuario();
+                U.ID = (Int32)Leitor["ID"];
+                U.Nome = ((String)Leitor["Nome"]);
+                U.Sobrenome = (String)Leitor["Sobrenome"];
+                U.MesNascimento = (Int32)Leitor["MesNascimento"];
+                U.DiaNascimento = (Int32)Leitor["DiaNascimento"];
+                U.AnoNascimento = (Int32)Leitor["AnoNascimento"];
+                U.Sexo = (Boolean)Leitor["Sexo"];
+                U.Imagem_Perfil = (String)Leitor["Imagem_Perfil"];
+                U.Imagem_Capa = (String)Leitor["Imagem_Capa"];
+                U.Email = (String)Leitor["Email"];
+                U.Senha = (String)Leitor["Senha"];
+                U.Cidade = (String)Leitor["Cidade"];
+                U.Estado = (String)Leitor["Estado"];
+                U.Avaliacao = (Int32)Leitor["Avaliacao"];
+                U.Modo = (Boolean)Leitor["Modo"];
+                U.Telefone = (String)Leitor["Telefone"];
+                U.Biografia = (String)Leitor["Biografia"];
+                U.Nivel = (Int32)Leitor["Nivel"];
+
+                Users.Add(U);
+            }
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            Conexao.Close();
+
+            return Users;
+        }
+
         public static List<Usuario> Listar(String pesquisa)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
@@ -226,6 +299,7 @@ namespace Symphonya_RedeSocial.Models
                 U.Modo = (Boolean)Leitor["Modo"];
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
+                U.Nivel = (Int32)Leitor["Nivel"];
 
                 Users.Add(U);
             }
@@ -242,7 +316,7 @@ namespace Symphonya_RedeSocial.Models
         }
 
 
-        public Boolean Apagar()
+        public static Boolean Apagar(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
@@ -250,7 +324,7 @@ namespace Symphonya_RedeSocial.Models
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
             Comando.CommandText = "DELETE FROM Usuario WHERE ID = @ID;";
-            Comando.Parameters.AddWithValue("@ID", this.ID);
+            Comando.Parameters.AddWithValue("@ID", ID);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
