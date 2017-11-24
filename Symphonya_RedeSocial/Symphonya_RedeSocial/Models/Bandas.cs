@@ -45,28 +45,29 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Bandas.LiderID FROM Bandas,Usuario_Has_Bandas WHERE UsuarioID LIKE @ID;";
+            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Usuario.Nome AS NomeUsuario, Usuario.Sobrenome FROM Bandas,Usuario WHERE LiderID LIKE @ID AND Usuario.ID = @ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
-
-
-            Bandas Bandas = new Bandas();
-            Bandas.ID = (Int32)Leitor["ID"];
-            Bandas.Nome = ((String)Leitor["Nome"]);
-            Bandas.Descricao = (String)Leitor["Descricao"];
-            Bandas.Lider = (String)Leitor["LiderID"];
-
+            Bandas Banda = new Bandas();
+            Leitor.Read();
 
             if (!Leitor.HasRows)
             {
                 Conexao.Close();
                 return null;
             }
+            else
+            {
+                Banda.ID = (Int32)Leitor["ID"];
+                Banda.Nome = (String)Leitor["Nome"];
+                Banda.Descricao = (String)Leitor["Descricao"];
+                Banda.Lider = (String)Leitor["NomeUsuario"] + (String)Leitor["Sobrenome"];
+            }
 
             Conexao.Close();
 
-            return Bandas;
+            return Banda;
         }
         public Boolean NovaBanda(Int32 IDU)
         {

@@ -26,7 +26,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT * FROM Integrantes WHERE BandasID LIKE @ID;";
+            Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario_Has_Bandas, Usuario WHERE BandasID = @ID AND UsuarioID = Usuario.ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
 
@@ -38,6 +38,9 @@ namespace Symphonya_RedeSocial.Models
             {
                 Integrantes I = new Integrantes();
                 I.ID = (Int32)Leitor["ID"];
+                I.Nome = (String)Leitor["Nome"];
+                I.Sobrenome = (String)Leitor["Sobrenome"];
+                I.Email = (String)Leitor["Email"];
                 Integrantes.Add(I);
             }
 
