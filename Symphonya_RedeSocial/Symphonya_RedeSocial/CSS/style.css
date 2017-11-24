@@ -66,6 +66,41 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
     color: #FC3158;
     background: #FC3158;
 	text-decoration:none;
+    font-style: strong;
+}
+.nomeUserTabela{
+    color:#FC3158;
+    background:transparent;
+    font-size:20px;
+}
+.nomeUserTabela:hover{
+    font-weight: bold;
+    background: transparent;
+    color: #FC3158;
+}
+.iconeTabelaAdm{
+    color: #FC3158;
+    background:transparent;
+    font-size:16px;
+    position:fixed;
+}
+.iconeTabelaAdm:hover{
+    font-weight:bold;
+    color:#FC3158;
+    background:transparent;
+    position:fixed;
+}
+.iconeTabelaAdm i{
+    color: #FC3158;
+    background:transparent;
+    font-size:16px;
+    position:fixed;
+}
+.iconeTabelaAdm i:hover{
+    font-weight:bold;
+    color:#FC3158;
+    background:transparent;
+    position:fixed;
 }
 
 .logo a:focus, a:active, a:hover, a.dropdown-toggle{
@@ -1262,7 +1297,7 @@ ul.dropdown {
 .stats-left {
        float: left;
     width: 70%;
-    background-color: #052963;
+    background-color: #FC3158;
     text-align: center;
     padding: 0.58em;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -1302,11 +1337,12 @@ ul.dropdown {
     padding: 1.54em 1em;
     background-color: #eee;
     border: none;
-       border-right: 2px solid #052963;
+       border-right: 2px solid #FC3158;
 	    box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -o-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    margin-bottom:10%;
 }
 .stats-left h5 {
     color: #fff;
@@ -5135,10 +5171,10 @@ form.text-sub {
 }
 /* Common style */
 .grid figure {
-       position: relative;
+    position: relative;
     float: left;
     overflow: hidden;
-       background: rgb(2, 31, 78);
+    background: #FC3158;
     text-align: center;
     cursor: pointer;
 }
@@ -5157,6 +5193,10 @@ form.text-sub {
 	font-size: 1.25em;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+}
+
+.TituloPostagem{
+    
 }
 
 .grid figure figcaption::before,
