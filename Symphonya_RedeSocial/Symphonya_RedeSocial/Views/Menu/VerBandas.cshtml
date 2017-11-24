@@ -206,22 +206,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="col-md-6 profile-info two">
                                 <h3 class="inner-tittle">Integrantes </h3>
                                 <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a>@ViewBag.User.Nome @ViewBag.User.Sobrenome - NOME MÚSICA</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
-                                            </div>
-                                        </li>
+                                    <table class="table">
+                                        <tbody>
+                                            @if (ViewBag.Integrantes == null)
+                                            {
+                                                <p>Não há Integrantes!</p>
+                                            }
+                                            else {
+                                                foreach (var I in ViewBag.Integrantes)
+                                                {
+                                                    <tr class="table-row">
+                                                        <td class="table-text">
+                                                            <h6><a href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
+                                                            <p>@(I.Email)</p>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fam">Usuário</span>
+                                                        </td>
+                                                        <td>
+                                                            <img class="status" src="~/Imagens/icone.png" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
 
-
-                                    </ul>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>

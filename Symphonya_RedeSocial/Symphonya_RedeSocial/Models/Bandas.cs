@@ -38,39 +38,36 @@ namespace Symphonya_RedeSocial.Models
             Conexao.Close();
         }
 
-        public static List<Bandas> ListarBandas(Int32 ID)
+        public static Bandas MostrarBanda(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Bandas.Lider FROM Bandas,Usuario_Has_Bandas WHERE BandasID LIKE @ID AND UsuarioID LIKE Bandas.ID;";
+            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Usuario.Nome AS NomeUsuario, Usuario.Sobrenome FROM Bandas,Usuario WHERE LiderID LIKE @ID AND Usuario.ID = @ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
-
-            List<Bandas> Bandas = new List<Bandas>();
-            while (Leitor.Read())
-            {
-                Bandas B = new Bandas();
-                B.ID = (Int32)Leitor["ID"];
-                B.Nome = ((String)Leitor["Nome"]);
-                B.Descricao = (String)Leitor["Descricao"];
-                B.Lider = (String)Leitor["Lider"];
-
-                Bandas.Add(B);
-            }
+            Bandas Banda = new Bandas();
+            Leitor.Read();
 
             if (!Leitor.HasRows)
             {
                 Conexao.Close();
                 return null;
             }
+            else
+            {
+                Banda.ID = (Int32)Leitor["ID"];
+                Banda.Nome = (String)Leitor["Nome"];
+                Banda.Descricao = (String)Leitor["Descricao"];
+                Banda.Lider = (String)Leitor["NomeUsuario"] + (String)Leitor["Sobrenome"];
+            }
 
             Conexao.Close();
 
-            return Bandas;
+            return Banda;
         }
         public Boolean NovaBanda(Int32 IDU)
         {

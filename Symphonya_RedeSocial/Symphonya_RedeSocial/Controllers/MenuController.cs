@@ -854,12 +854,21 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                }
+                }                
 
-                if (Integrantes.ListarIntegrantes(IDUsuario) != null)
+                if (Bandas.MostrarBanda(IDUsuario) != null)
                 {
-                    List<Integrantes> integrantes = Integrantes.ListarIntegrantes(IDUsuario);
-                    ViewBag.Inetgrantes = integrantes;
+                    //CRIA UMA BANDA CASO O USUARIO FAÇA PARTE DE UMA
+                    Bandas banda = new Bandas();
+                    banda = Bandas.MostrarBanda(IDUsuario);
+
+                    //VERIFICA SE A BANDA POSSUI INTEGRANTES
+                    if (Integrantes.ListarIntegrantes(banda.ID) != null)
+                    {
+                        //CASO O USUARIO POSSUA UMA BANDA, SERA FEITA UMA BUSCA DOS INTEGRATENS DA MESMA
+                        List<Integrantes> integrantes = Integrantes.ListarIntegrantes(banda.ID);
+                        ViewBag.Integrantes = integrantes;
+                    }
                 }
                 else
                 {
@@ -881,6 +890,8 @@ namespace Symphonya_RedeSocial.Controllers
 
             return View();
         }
+
+
 
         public ActionResult Unfollow(Int32 ID)
         {

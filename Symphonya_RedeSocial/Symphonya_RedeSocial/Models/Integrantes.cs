@@ -26,12 +26,13 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario,Usuario_Has_Usuario WHERE IDUsuario LIKE @ID AND IDUsuario2 LIKE Usuario.ID;";
+            Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario_Has_Bandas, Usuario WHERE BandasID = @ID AND UsuarioID = Usuario.ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
+            //LISTA COM ID DOS INTEGRANTES
             List<Integrantes> Integrantes = new List<Integrantes>();
             while (Leitor.Read())
             {
@@ -40,7 +41,6 @@ namespace Symphonya_RedeSocial.Models
                 I.Nome = (String)Leitor["Nome"];
                 I.Sobrenome = (String)Leitor["Sobrenome"];
                 I.Email = (String)Leitor["Email"];
-
                 Integrantes.Add(I);
             }
 
