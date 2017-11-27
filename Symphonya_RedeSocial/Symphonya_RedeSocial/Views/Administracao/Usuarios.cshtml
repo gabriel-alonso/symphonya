@@ -224,45 +224,93 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 {
                     <table class="table">
                         <tbody>
+
                             @foreach (var U in ViewBag.Usuarios)
                             {
+                                <!-- CASO USUARIO NAO ESTEJA DESATIVADO-->
+                                if (U.Modo == false)
+                                {
+
                                 <tr class="table-row">
                                     <td class="table-img">
                                         <img src="~/Imagens/ImagensUsuario/@(U.Imagem_Perfil)" alt="" />
                                     </td>
-                                    <td class="table-text">
+                                    <td class="nomeUserTable">
                                         <a class="nomeUserTabela" href="~/Administracao/VerUsuarioADM/@U.ID">@(U.Nome) @(U.Sobrenome)</a>
                                         <p>@(U.Email)</p>
                                     </td>
-                                    <td>
+                                    <td class="opcaoTabela">
                                        @if (U.Nivel == 1)
                                        {
                                         <span class="fam">Administrador</span>
                                        }
                                        else {
-                                        <span class="fam">Usuário</span>
+                                           <span class="fam">Usuário</span>
                                        }
                                     </td>
-                                    <td>
+                                    <td class="opcaoTabela">
                                         <i class="fa fa-edit"><a class="iconeTabelaAdm" href="/adsad"> Editar</a></i>
                                     </td>
-                                    <td>
+                                    <td class="opcaoTabela">
                                         <a class="iconeTabelaAdm" href="~/Administracao/VerUsuarioADM/@U.ID"><i class="fa fa-eye"> Visualizar</i></a>
                                     </td>
-                                    <td>
+                                    <td class="opcaoTabela">
                                         @if (U.Nivel == 1)
                                         {
                                         }
                                         else {
-                                            <i class="fa fa-close"><a class="iconeTabelaAdm" href="~/Administracao/ExcluirUsuarioADM/@U.ID"> Excluir</a></i>
+                                            <i class="fa fa-close"><a class="iconeTabelaAdm" href="~/Administracao/DesativarUsuarioADM/@U.ID"> Desativar</a></i>
                                         }
                                     </td>
                                 </tr>
+
+                                }
+
+                                else
+                                {
+
+                                    <tr class="table-row" style="background: #EEE;">
+                                        <td class="table-img">
+                                            <img src="~/Imagens/ImagensUsuario/@(U.Imagem_Perfil)" alt="" />
+                                        </td>
+                                        <td class="nomeUserTable">
+                                            <a class="nomeUserTabela" href="~/Administracao/VerUsuarioADM/@U.ID">@(U.Nome) @(U.Sobrenome)</a>
+                                            <p>@(U.Email)</p>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            @if (U.Nivel == 1)
+                                            {
+                                                <span class="fam">Administrador</span>
+                                            }
+                                            else {
+                                                <span class="fam">DESATIVADO</span>
+                                            }
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            <i class="fa fa-edit"><a class="iconeTabelaAdm" href="/adsad"> Editar</a></i>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            <a class="iconeTabelaAdm" href="~/Administracao/VerUsuarioADM/@U.ID"><i class="fa fa-eye"> Visualizar</i></a>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            @if (U.Nivel == 1)
+                                            {
+                                            }
+                                            else {
+                                                <i class="fa fa-close"><a class="iconeTabelaAdm" href="~/Administracao/AtivarUsuarioADM/@U.ID"> Ativar</a></i>
+                                            }
+                                        </td>
+                                    </tr>
+
+                                }
+
                             }
                         </tbody>
                     </table>
                 }
-                else { 
+                else
+                {
+                                    <!-- CASO VIEWBAG USUARIO SEJA NULA NAO EXIBE NENHUM RESULTADO-->
                 }
 
                 </div>

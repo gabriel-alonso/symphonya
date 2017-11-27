@@ -38,17 +38,30 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
-        public void ExcluirUsuarioADM(Int32 ID)
+        public void DesativarUsuarioADM(Int32 ID)
         {
-            if(Usuario.Apagar(ID))
+            if(Usuario.Desativar(ID))
                 Response.Redirect("~/Administracao/Usuarios");
             else
             {
                 Response.Redirect("~/Administracao/Usuarios");
-                ViewBag.Erro = "Erro ao excluir usuário!";
+                ViewBag.Erro = "Erro ao desativar usuário!";
 
             }
                 
+        }
+
+        public void AtivarUsuarioADM(Int32 ID)
+        {
+            if (Usuario.Ativar(ID))
+                Response.Redirect("~/Administracao/Usuarios");
+            else
+            {
+                Response.Redirect("~/Administracao/Usuarios");
+                ViewBag.Erro = "Erro ao ativar usuário!";
+
+            }
+
         }
     }
 }

@@ -243,8 +243,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <h3 class="inner-tittle">Músicas </h3>
                                 <div class="main-grid3 p-skill">
                                     <ul class="timeline">
-                                             @foreach (var A in ViewBag.Arquivos)
-                                                             {
+                                       @if (ViewBag.Arquivos != null)
+                                       {
+                                             foreach (var A in ViewBag.Arquivos)
+                                             {
                                                       <li>
                                               <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                                 <div class="timeline-panel">
@@ -253,11 +255,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                  </div>
                                                  <div class="timeline-body">
                                                     <p class="time">@ViewBag.User.Nome @ViewBag.User.Sobrenome</p>
-                                                    <p>Uploaded 2 new Photos</p>
+                                                     <audio controls>
+                                                         <source src="~/Arquivos/@A.Nome" type="audio/mpeg">
+                                                         Seu navegador não suporta esse player.
+                                                     </audio>
                                                   </div>
                                              </div>
                                                 </li>
-                                                             }
+                                             }
+                                       }
+                                       else
+                                       {
+                                        <li>Você ainda não possui arquivos carregados!</li>       
+                                       }
                                        </ul>
                                  
 
@@ -274,7 +284,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <div class="modal-body">
 
                                                         <ul class="timeline">
-                                                            @foreach (var A in ViewBag.Arquivos) {
+                                                         @if (ViewBag.Arquivos != null)
+                                                         {
+                                                            foreach (var A in ViewBag.Arquivos)
+                                                            {
                                                             <li>
                                                                 <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                                                 <div class="timeline-panel">
@@ -288,6 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                 </div>
                                                             </li>
                                                             }
+                                                         }
                                                         </ul>
 
                                                     </div>
