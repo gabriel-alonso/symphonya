@@ -72,7 +72,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT * FROM Instrumentos";
+            Comando.CommandText = "SELECT * FROM Instrumento";
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
