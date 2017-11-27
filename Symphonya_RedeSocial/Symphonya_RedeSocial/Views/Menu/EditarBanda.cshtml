@@ -215,14 +215,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Editar Banda</h3>
                 </div>
-              @if (ViewBag.Logado == null)
-              {
+                @if (ViewBag.Logado == null)
+                {
 
-              }
-              else {
-                <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                    <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                    <h3>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h3>
+                }
+                else {
+                    <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
+                        <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
+                        <h3>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h3>
                     </div>
 
                     <!--/profile-inner-->
@@ -254,12 +254,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-drivers-license"></i>
-                                            </span>              
-                                                @foreach (var B in ViewBag.Bandas)
-                                                {
-                                            <input id="NovoNome" name="NovoNome" class="form-control1 icon" placeholder="@(B.Nome)" type="text">
-                                                }
-                                            
+                                            </span>
+                                            @foreach (var B in ViewBag.Bandas)
+                                            {
+                                                <input id="NovoNome" name="NovoNome" class="form-control1 icon" placeholder="@(B.Nome)" type="text">
+                                            }
+
                                         </div>
                                         <strong>Sobrenome</strong>
                                         <div class="input-group">
@@ -269,13 +269,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             @foreach (var B in ViewBag.Bandas)
                                             {
                                                 <input id="NovaDescricao" name="NovaDescricao" class="form-control1 icon" placeholder="@(B.Descricao)" type="text">
-                                            }  
-                                           </div>
-                                    
+                                            }
+                                        </div>
+
                                         <div class="about-info-p">
-                                            <strong>E-Mail</strong>                                         
+                                            <strong>E-Mail</strong>
                                             <div class="about-info-p m-b-0">
-                                             
+
                                             </div>
                                         </div>
                                     </div>
@@ -306,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     <a class="fancybox" href="~/Menu/EditarInstrumento/@I.ID"><strong><o class="fa fa-edit"></o> Editar Informações.</strong></a>
                                                 </div>
 
-                                                        <script language="Javascript">
+                                                <script language="Javascript">
 
                                                             var acc = document.getElementsByClassName("instrumentos");
                                                             var i;
@@ -326,7 +326,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                     }
                                                                 }
                                                             }
-                                                        </script>
+                                                </script>
                                             }
                                         }
                                         else
@@ -348,7 +348,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--/map-->
                     <!--//profile-inner-->
                     <!--//profile--> }
-                </div>
+            </div>
             <!--//outer-wp-->
             <!--footer section start-->
             <footer>

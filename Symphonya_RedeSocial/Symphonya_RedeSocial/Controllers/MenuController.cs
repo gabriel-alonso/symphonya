@@ -148,7 +148,7 @@ namespace Symphonya_RedeSocial.Controllers
         }
 
         public ActionResult Agenda()
-        {       
+        {
 
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
@@ -187,35 +187,24 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     Show sh = new Show();
 
-                   sh.Titulo = Request.Form["Titulo"].ToString();
-                   sh.Descricao = Request.Form["Descricao"].ToString();
-                   sh.Hora = Request.Form["Hora"].ToString();
-                   sh.Data = Request.Form["Data"].ToString();
-                   sh.UsuarioID = ViewBag.User.ID;
-                   sh.AgendaID = ViewBag.User.ID;
-                   // if (sh.AgendaID != null)
-                   //{
-
-                   // }
-
-                   //sh.NovoEvento();
+                    sh.Titulo = Request.Form["Titulo"].ToString();
+                    sh.Descricao = Request.Form["Descricao"].ToString();
+                    sh.Hora = Request.Form["Hora"].ToString();
+                    sh.Data = Request.Form["Data"].ToString();
+                    sh.UsuarioID = ViewBag.User.ID;
+                    sh.AgendaID = ViewBag.User.ID;
+                    sh.NovoEvento();
+                    Response.Redirect("/Menu/Feed");
 
                 }
 
-                //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
-                if (Request.HttpMethod == "POST")
-                {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
-                }
-                
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
             else
             {
                 Response.Redirect("/Acesso/Login");
-            }
 
+            }
             return View();
         }
         public ActionResult NovoEvento()
@@ -262,6 +251,7 @@ namespace Symphonya_RedeSocial.Controllers
                     sh.Hora = Request.Form["Hora"].ToString();
                     sh.Data = Request.Form["Data"].ToString();
                     sh.UsuarioID = ViewBag.User.ID;
+                    sh.AgendaID = ViewBag.User.ID;
                     //sh.NovoEvento();
 
                 }
@@ -644,7 +634,7 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                    ViewBag. Bandas = Bandas.ListarBandas(IDUsuario, false);
+                    ViewBag.Bandas = Bandas.ListarBandas(IDUsuario, false);
                 }
 
                 else
@@ -666,8 +656,8 @@ namespace Symphonya_RedeSocial.Controllers
                     HttpPostedFileBase NovaImagemCapaBanda = Request.Files["NovaImagemCapaBanda"];
 
                     Usuario EditarUsuario = new Usuario();
-                    Bandas EditarBandas = new Bandas(IDBanda,IDUsuario);
-                    
+                    Bandas EditarBandas = new Bandas(IDBanda, IDUsuario);
+
                     if (Session["Administrador"] != null)
                     {
                         EditarUsuario = (Usuario)Session["Administrador"];
@@ -688,7 +678,7 @@ namespace Symphonya_RedeSocial.Controllers
                     {
                         EditarBandas.Descricao = NovaDescricao;
                     }
-                  
+
                     //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
                     if (NovaImagemPerfilBanda.FileName != "")
                     {
@@ -716,7 +706,7 @@ namespace Symphonya_RedeSocial.Controllers
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensBandas\\" + nomeArquivoUpload);
-                             // arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
+                                // arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarBandas.Imagem_Perfil_Banda = nomeArquivoUpload;
@@ -760,7 +750,6 @@ namespace Symphonya_RedeSocial.Controllers
 
                         }
                     }
-
                 }
                 return View();
             }
@@ -768,6 +757,7 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
 
         }
+
 
         public ActionResult Pesquisar(String busca)
         {
