@@ -37,6 +37,7 @@ namespace Symphonya_RedeSocial.Models
 
             Conexao.Close();
         }
+
         public static List<Agenda> ListarAgenda(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
@@ -49,7 +50,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
-            List<Agenda> Seguidos = new List<Agenda>();
+            List<Agenda> Agendas = new List<Agenda>();
             while (Leitor.Read())
             {
                 Agenda A = new Agenda();
@@ -59,7 +60,7 @@ namespace Symphonya_RedeSocial.Models
                 A.Titulo = (String)Leitor["Titulo"];
                 A.Descricao = (String)Leitor["Descricao"];
 
-                Seguidos.Add(A);
+                Agendas.Add(A);
             }
 
             if (!Leitor.HasRows)
@@ -70,7 +71,36 @@ namespace Symphonya_RedeSocial.Models
 
             Conexao.Close();
 
-            return Seguidos;
+            return Agendas;
+        }
+        public Boolean NovoEvento(Int32 IDU)
+        {
+
+            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            Conexao.Open();
+
+            //CRIACAO DO COMANDO SQL
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDU)"
+              + "VALUES (@Hora,@Data,@Titulo,@Descricao,@UsuarioID,@AgendaID);";
+
+            DateTime datahora = DateTime.Now;
+            //String Hora = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
+            //String Data = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
+
+            Comando.Parameters.AddWithValue("@Hora", this.Hora);
+            Comando.Parameters.AddWithValue("@Data", this.Data);
+            Comando.Parameters.AddWithValue("@Titulo", this.Titulo);
+            Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
+            Comando.Parameters.AddWithValue("@UsuarioID", UsuarioID);
+            Comando.Parameters.AddWithValue("@AgendaID", AgendaID);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
         }
 
     }
