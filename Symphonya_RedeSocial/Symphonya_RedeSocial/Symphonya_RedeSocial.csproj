@@ -353,6 +353,7 @@
     <None Include="Properties\PublishProfiles\Symphonya.pubxml" />
     <Content Include="Views\Menu\VerIntegrantes.cshtml" />
     <Content Include="Views\Administracao\Usuarios.cshtml" />
+    <Content Include="Views\Menu\EditarBanda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -364,6 +365,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Arquivos\" />
     <Folder Include="Fonts\Calendario\" />
+    <Folder Include="Imagens\ImagensBandas\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>

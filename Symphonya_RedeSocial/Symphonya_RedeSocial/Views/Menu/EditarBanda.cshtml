@@ -7,10 +7,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" />
     <title>Symphonya</title>
     <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
     <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.7"></script>
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+    <link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,8 +46,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="~/CSS/icon-font.min.css" type='text/css' />
     <!-- /js -->
     <script src="~/JS/jquery-1.10.2.min.js"></script>
+    <script src="~/JS/accordion.js"></script>
     <!-- //js-->
+
     <link href="~/CSS/styleCadastro.css" rel='stylesheet' type='text/css' />
+
+    <script>
+        $(document).ready(function () {
+            $(".various").fancybox({
+                maxWidth: 600,
+                maxHeight: 300,
+                fitToView: false,
+                width: '70%',
+                height: '70%',
+                autoSize: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+        });
+
+        $(document).ready(function () {
+            $(".fancybox").fancybox();
+        });
+    </script>
 
 </head>
 <body>
@@ -54,48 +93,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li class="dropdown note dra-down">
                                     <script type="text/javascript">
 
-																	function DropDown(el) {
-																		this.dd = el;
-																		this.placeholder = this.dd.children('span');
-																		this.opts = this.dd.find('ul.dropdown > li');
-																		this.val = '';
-																		this.index = -1;
-																		this.initEvents();
-																	}
-																	DropDown.prototype = {
-																		initEvents : function() {
-																			var obj = this;
+                            function DropDown(el) {
+                                this.dd = el;
+                                this.placeholder = this.dd.children('span');
+                                this.opts = this.dd.find('ul.dropdown > li');
+                                this.val = '';
+                                this.index = -1;
+                                this.initEvents();
+                            }
+                            DropDown.prototype = {
+                                initEvents: function () {
+                                    var obj = this;
 
-																			obj.dd.on('click', function(event){
-																				$(this).toggleClass('active');
-																				return false;
-																			});
+                                    obj.dd.on('click', function (event) {
+                                        $(this).toggleClass('active');
+                                        return false;
+                                    });
 
-																			obj.opts.on('click',function(){
-																				var opt = $(this);
-																				obj.val = opt.text();
-																				obj.index = opt.index();
-																				obj.placeholder.text(obj.val);
-																			});
-																		},
-																		getValue : function() {
-																			return this.val;
-																		},
-																		getIndex : function() {
-																			return this.index;
-																		}
-																	}
+                                    obj.opts.on('click', function () {
+                                        var opt = $(this);
+                                        obj.val = opt.text();
+                                        obj.index = opt.index();
+                                        obj.placeholder.text(obj.val);
+                                    });
+                                },
+                                getValue: function () {
+                                    return this.val;
+                                },
+                                getIndex: function () {
+                                    return this.index;
+                                }
+                            }
 
-																	$(function() {
+                            $(function () {
 
-																		var dd = new DropDown( $('#dd') );
+                                var dd = new DropDown($('#dd'));
 
-																		$(document).click(function() {
-																			// all dropdowns
-																			$('.wrapper-dropdown-3').removeClass('active');
-																		});
+                                $(document).click(function () {
+                                    // all dropdowns
+                                    $('.wrapper-dropdown-3').removeClass('active');
+                                });
 
-																	});
+                            });
 
                                     </script>
                                 </li>
@@ -169,185 +208,155 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sub-heard-part">
                         <ol class="breadcrumb m-b-0">
                             <li><a href="~/Menu/Feed">Início</a></li>
-                            <li class="active">Ver Bandas</li>
+                            <li class="active">Perfil</li>
                         </ol>
                     </div>
                     <!--//sub-heard-part-->
                     <!--/profile-->
-                    <h3 class="sub-tittle pro">Ver Bandas</h3>
-                    <div class="btn-editarperfil">
-                        <a href="~/Menu/EditarBanda" class="btn btn-default dropdown-toggle"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                    <h3 class="sub-tittle pro">Editar Banda</h3>
+                </div>
+              @if (ViewBag.Logado == null)
+              {
+
+              }
+              else {
+                <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
+                    <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
+                    <h3>@ViewBag.User.Nome @ViewBag.User.Sobrenome</h3>
                     </div>
-                    @if (ViewBag.Bandas == null)
-                    {
-                        <p>Não há Bandas!</p>
-                    }
-                    else {
-                        foreach (var B in ViewBag.Bandas)
-                        { 
-                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                            <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                            <h2>@(B.Nome)</h2>
-                        </div>
-                    }
+
                     <!--/profile-inner-->
-                        <div class="profile-section-inner">
+                    <div class="profile-section-inner">
+                        <form action="/Menu/EditarBanda" method="post" enctype="multipart/form-data" id="alterarDados">
                             <div class="col-md-6 profile-info">
-                                <h3 class="inner-tittle">Descrição </h3>
-                                <div class="main-grid3">
-                                    <div class="p-20">
-                                        <div class="about-info-p">
-                                            <strong>Descrição da Banda</strong>
-                                            <br>
-                                            @*<p class="text-muted">@ViewBag.User.Descricao</p>*@
-                                            <table class="table">
-                                                <tbody>
-                                                    @if (ViewBag.Bandas == null)
-                                                    {
-                                                        <p>Não há Bandas!</p>
-                                                    }
-                                                    else {
-                                                        foreach (var B in ViewBag.Bandas)
-                                                        {
-                                                            <tr class="about-info-p">
-                                                                <td class="text-muted">
-                                                                 <h6><a>@(B.Descricao)</a></h6>
-                                                                </td>
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-
+                                <h3 class="inner-tittle">Imagens</h3>
+                                <div class="main-grid3-imagens">
+                                    <div class="form-group">
+                                        **As imagens devem possuir,<strong> OBRIGATORIAMENTE</strong>, os formatos: <strong>PNG, JPG OU JPEG</strong>.<br><br />
+                                        <label for="NovaImagemPerfilBanda">
+                                            <strong>Imagem de Perfil da Banda</strong>
+                                        </label>
+                                        <input id="NovaImagemPerfilBanda" name="NovaImagemPerfilBanda" type="file" />
+                                        <p class="help-block">
+                                            <strong>Nota:</strong> As imagens de <strong>PERFIL</strong> tendem a ser de dimensão 1:1, caso sua imagem não siga esse padrao haverá deformação da mesma.
+                                        </p>
                                     </div>
-                                </div>                               
-                            </div>
-
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Integrantes </h3>
-                                <div class="main-grid3 p-skill">
-                                    <table class="table">
-                                        <tbody>
-                                            @if (ViewBag.Integrantes == null)
-                                            {
-                                                <p>Não há Integrantes!</p>
-                                            }
-                                            else {
-                                                foreach (var I in ViewBag.Integrantes)
+                                    <div class="form-group">
+                                        <label for="NovaImagemCapaBanda"><strong>Imagem de Capa da Banda</strong></label>
+                                        <input id="NovaImagemCapaBanda" name="NovaImagemCapaBanda" type="file" />
+                                        <p class="help-block"><strong>Nota:</strong> As imagens de <strong>CAPA</strong> tendem a ser de dimensão 2:1, caso sua imagem não siga esse padrao haverá deformação da mesma.</p>
+                                    </div>
+                                </div>
+                                <h3 class="inner-tittle">Informações da Banda </h3>
+                                <div class="EP-principais-info">
+                                    <div class="p-20">
+                                        <strong>Nome</strong>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-drivers-license"></i>
+                                            </span>              
+                                                @foreach (var B in ViewBag.Bandas)
                                                 {
-                                                    <tr class="table-row">
-                                                        <td class="table-text">
-                                                            <h6><a href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
-                                                            <p>@(I.Email)</p>
-                                                        </td>
-                                                        <td>
-                                                            <span class="fam">Usuário</span>
-                                                        </td>
-                                                        <td>
-                                                            <img class="status" src="~/Imagens/icone.png" />
-                                                        </td>
-                                                    </tr>
+                                            <input id="NovoNome" name="NovoNome" class="form-control1 icon" placeholder="@(B.Nome)" type="text">
                                                 }
+                                            
+                                        </div>
+                                        <strong>Sobrenome</strong>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-drivers-license"></i>
+                                            </span>
+                                            @foreach (var B in ViewBag.Bandas)
+                                            {
+                                                <input id="NovaDescricao" name="NovaDescricao" class="form-control1 icon" placeholder="@(B.Descricao)" type="text">
+                                            }  
+                                           </div>
+                                    
+                                        <div class="about-info-p">
+                                            <strong>E-Mail</strong>                                         
+                                            <div class="about-info-p m-b-0">
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--/map-->
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 profile-info two">
+                                <h3 class="inner-tittle-instrumentos">Instrumentos </h3>
+                                <div class="main-grid3">
+                                    <div class="bar">
+                                        @if (ViewBag.Instrumentos != null)
+                                        {
+                                            foreach (var I in ViewBag.Instrumentos)
+                                            {
+                                                <button class="instrumentos" type="button">
+                                                    <div class="barra-instrumento">
+                                                        <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong id="NomeInstrumento">@I.Nome</strong>
+                                                        <o class="fa fa-edit"></o>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <div class="skills">
+                                                        <div class="skill1" style="width:@I.Maestria%"> </div>
+                                                    </div>
+                                                </button>
+                                                <div class="panel">
+                                                    <a class="fancybox" href="~/Menu/EditarInstrumento/@I.ID"><strong><o class="fa fa-edit"></o> Editar Informações.</strong></a>
+                                                </div>
+
+                                                        <script language="Javascript">
+
+                                                            var acc = document.getElementsByClassName("instrumentos");
+                                                            var i;
+
+                                                            for (i = 0; i < acc.length; i++) {
+                                                                acc[i].onclick = function () {
+                                                                    /* Toggle between adding and removing the "active" class,
+                                                                    to highlight the button that controls the panel */
+                                                                    this.classList.toggle("active");
+
+                                                                    /* Toggle between hiding and showing the active panel */
+                                                                    var panel = this.nextElementSibling;
+                                                                    if (panel.style.display === "block") {
+                                                                        panel.style.display = "none";
+                                                                    } else {
+                                                                        panel.style.display = "block";
+                                                                    }
+                                                                }
+                                                            }
+                                                        </script>
                                             }
-                                        </tbody>
-                                    </table>
-                                    <div class="submit" style="text-align: center;">
-                                        <input type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal" value="+ Adicionar Integrante">
+                                        }
+                                        else
+                                        {
+                                            <p>Você ainda não possui instrumentos cadastrados! Para cadastra-los clique em Editar Perfil</p>
+                                        }
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            </div>
-
-                            <div class="bs-example2 bs-example-padded-bottom">
-                                @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> 
-                                   + Adicionar Integrante
-                                </button>*@
-
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h2 class="modal-title">Adicionar Integrante</h2>
-                                            </div>
-                                                @*<div class="modal-body">
-                                                    <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
-    
-                                                </div>*@
-                                        
-
-                                            <!--//ADICIONAR INTEGRANTES PARA A BANDA-->
-                                            @*<div class="col-md-6 page_1">
-                                                <div class="list-group list-group-alternate">
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox"/></span> <i class="ti ti-email"></i> Profile visits</a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-primary"><input type="checkbox" /></span> <i class="ti ti-eye"></i> Profile visits </a>
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-headphone-alt"></i> Call </a>
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-comments"></i> Messages </a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-warning"><input type="checkbox" /></span> <i class="ti ti-bookmark"></i> Bookmarks </a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-danger"><input type="checkbox" /></span> <i class="ti ti-bell"></i> Notifications </a>
-                                                </div>
-                                            </div>*@
-                                            <table class="table">
-                                                <tbody>
-                                                    @if (ViewBag.Seguidos == null)
-                                                    {
-                                                        <p>Você não segue ninguem!</p>
-                                                    }
-                                                    else {
-                                                        foreach (var S in ViewBag.Seguidos)
-                                                        {
-                                                            <tr class="table-row">
-                                                                <td class="table-text">                               
-                                                                    <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                                                    <p>@(S.Email)</p>
-                                                                </td>
-                                                                <td>
-                                                                   
-                                                                    <span class="fam">Usuário</span>
-                                                                </td>
-                                                               
-                                                                <td>
-                                                                    <img href="~/Menu/Unfollow/@S.ID" class="status" src="~/Imagens/icone.png"
-                                                                         onmouseover="this.src='/Imagens/iconeHover.png'"
-                                                                         onmouseout="this.src = '/Imagens/icone.png'" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="checkbox" id="chckHead" />
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-
-                                                <input type="submit" onclick="myFunction()" value="Salvar">
-
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
+                                <div class="clearfix"></div>
+                                <h3 class="inner-tittle-biografia">Biografia </h3>
+                                <div class="main-grid3-biografia">
+                                    <textarea form="alterarDados" placeholder="@ViewBag.User.Biografia" maxlength="250" wrap="hard"></textarea>
                                 </div>
+                                <div class="BTNeditarPerfil"><input type="submit" onclick="myFunction()" value="Alterar Dados"></div>
                             </div>
-                            <!--/map-->                          
-                            <div class="clearfix"></div>
-                        </div>
-
+                        </form>
+                    </div>
+                    <!--/map-->
                     <!--//profile-inner-->
                     <!--//profile--> }
-
                 </div>
-                <!--//outer-wp-->
-                <!--footer section start-->
-                <footer>
-                    <p>© 2017 Symphonya . Todos os direitos reservados.</p>
-                </footer>
-                <!--//footer section end-->
-            </div>
+            <!--//outer-wp-->
+            <!--footer section start-->
+            <footer>
+                <p>© 2017 Symphonya . Todos os direitos reservados.</p>
+            </footer>
+            <!--//footer section end-->
         </div>
+
         <!--//content-inner-->
         <!--/sidebar-menu-->
         <div class="sidebar-menu">
@@ -421,12 +430,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"></div>
     </div>
+
     <script>
 							var toggle = true;
 
 							$(".sidebar-icon").click(function() {
-                                                if (toggle)
-                                                {
+							  if (toggle)
+							  {
 								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
 								$("#menu span").css({"position":"absolute"});
 							  }
@@ -441,6 +451,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											toggle = !toggle;
 										});
     </script>
+
     <!--js -->
     <link rel="stylesheet" href="~/CSS/vroom.css">
     <script type="text/javascript" src="~/JS/vroom.js"></script>
@@ -454,9 +465,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </body>
 </html>
 
-@{
-    ViewBag.Title = "VerBandas";
-}
-
-<h2>VerBandas</h2>
 

@@ -14,10 +14,12 @@ namespace Symphonya_RedeSocial.Models
         public String Nome { get; set; }
         public String Descricao { get; set; }
         public String Lider { get; set; }
+        public String Imagem_Perfil_Banda { get; set; }
+        public String Imagem_Capa_Banda { get; set; }
 
         public Bandas() { }
 
-        public Bandas(Int32 ID)
+        public Bandas(Int32 ID, Int32 IDUsuario)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
@@ -26,6 +28,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.Connection = Conexao;
             Comando.CommandText = "SELECT * FROM Bandas WHERE ID=@ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
+            Comando.Parameters.AddWithValue("@IDUsuario", IDUsuario);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
@@ -141,7 +144,32 @@ namespace Symphonya_RedeSocial.Models
             return Bandas;
         }
 
+        public Boolean AlterarBanda(Int32 IDUsuario)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "UPDATE Usuario_Has_Bandas SET ID = @ID, Nome = @Nome, Descricao = @Descricao WHERE IDBandas = @ID AND IDUsuario = @IDUsuario;";
+            Comando.Parameters.AddWithValue("@ID", this.ID);
+            Comando.Parameters.AddWithValue("@Nome", this.Nome);
+            Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
+            Comando.Parameters.AddWithValue("@IDUsuario", IDUsuario);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
+        }
+
         internal void NovaBanda()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static dynamic ListarBandas(int iDUsuario, bool v)
         {
             throw new NotImplementedException();
         }

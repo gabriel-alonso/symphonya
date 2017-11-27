@@ -628,6 +628,145 @@ namespace Symphonya_RedeSocial.Controllers
 
         }
 
+        public ActionResult EditarBanda(Int32 IDBanda)
+        {
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            {
+                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
+                Int32 IDUsuario;
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                    ViewBag. Bandas = Bandas.ListarBandas(IDUsuario, false);
+                }
+
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                    ViewBag.Bandas = Bandas.ListarBandas(IDUsuario, false);
+                }
+
+                if (Request.HttpMethod == "POST")
+                {
+
+                    String NovoNome = Request.Form["NovoNome"];
+                    String NovaDescricao = Request.Form["NovaDescricao"];
+                    HttpPostedFileBase NovaImagemPerfilBanda = Request.Files["NovaImagemPerfilBanda"];
+                    HttpPostedFileBase NovaImagemCapaBanda = Request.Files["NovaImagemCapaBanda"];
+
+                    Usuario EditarUsuario = new Usuario();
+                    Bandas EditarBandas = new Bandas(IDBanda,IDUsuario);
+                    
+                    if (Session["Administrador"] != null)
+                    {
+                        EditarUsuario = (Usuario)Session["Administrador"];
+                    }
+                    else
+                    {
+                        EditarUsuario = (Usuario)Session["Usuario"];
+                    }
+
+                    //CASO O CAMPO DE NOME SEJA DIFERENTE DE NULO
+                    if (NovoNome != "")
+                    {
+                        EditarBandas.Nome = NovoNome;
+                    }
+
+                    //CASO O CAMPO DE DESCRIÇÃO SEJA DIFERENTE DE NULO
+                    if (NovaDescricao != "")
+                    {
+                        EditarBandas.Descricao = NovaDescricao;
+                    }
+                  
+                    //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
+                    if (NovaImagemPerfilBanda.FileName != "")
+                    {
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
+                        {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
+                            int ID = IDUsuario;
+
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                            {
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
+
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
+                                string nomeArquivoUpload = "imagemPerfilBanda" + ID + ".png";
+
+                                //SALVA O ARQUIVO
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensBandas\\" + nomeArquivoUpload);
+                             // arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE PERFIL DO USUARIO
+                                EditarBandas.Imagem_Perfil_Banda = nomeArquivoUpload;
+                            }
+
+                        }
+                    }
+
+                    //CASO O CAMPO DE IMAGEM DE CAPA SEJA DIFERENTE DE NULO
+                    if (NovaImagemCapaBanda.FileName != "")
+                    {
+                        //PERCORRE OS FILES NO INPUT
+                        foreach (string fileName in Request.Files)
+                        {
+                            //RECOLHE DADOS DO FILE QUE ESTA NO INPUT
+                            HttpPostedFileBase postedFile = Request.Files[fileName];
+                            int contentLength = postedFile.ContentLength;
+                            string contentType = postedFile.ContentType;
+                            string nome = postedFile.FileName;
+                            int ID = IDUsuario;
+
+                            //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
+                            Imagem img = new Imagem();
+
+                            //CASO O FILE POSSUA UMA EXTENSAO IGUAL A JPEG OU PNG OU JPG
+                            if (contentType.IndexOf("jpeg") > 0 || contentType.IndexOf("png") > 0 || contentType.IndexOf("jpg") > 0)
+                            {
+                                //FORNECE AS DIMENSOES PARA O REDIMENSIONAMENTO
+                                Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
+
+                                //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
+                                string nomeArquivoUpload = "imagemCapaBanda" + ID + ".png";
+
+                                //SALVA O ARQUIVO
+                                arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensBandas\\" + nomeArquivoUpload);
+                                //arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
+
+                                //SETA A IMAGEM DE CAPA DO USUARIO
+                                EditarBandas.Imagem_Capa_Banda = nomeArquivoUpload;
+                            }
+
+                        }
+                    }
+
+                }
+                return View();
+            }
+            Response.Redirect("~/Acesso/Login", false);
+            return View();
+
+        }
+
         public ActionResult Pesquisar(String busca)
         {
             if (busca == null)
