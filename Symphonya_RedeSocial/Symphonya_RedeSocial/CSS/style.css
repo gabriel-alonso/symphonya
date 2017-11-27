@@ -78,29 +78,49 @@ a:focus, a:active, a:hover ,a.dropdown-toggle{
     background: transparent;
     color: #FC3158;
 }
+
+.nomeUserTabela:active{
+        background: transparent;
+    color: #FC3158;
+}
+
+td.table-img{
+    width:10%;
+}
+
+.nivelUserTabela{
+    width:10%;
+}
+
+.nomeUserTable{
+    width:35%;
+}
+
 .iconeTabelaAdm{
     color: #FC3158;
     background:transparent;
     font-size:16px;
-    position:fixed;
 }
-.iconeTabelaAdm:hover{
+
+.iconeTabelaAdm:hover, .iconeTabelaAdm:active, .iconeTabelaAdm:focus{
     font-weight:bold;
     color:#FC3158;
     background:transparent;
-    position:fixed;
 }
+
+.opcaoTabela{
+    width:10%;
+}
+
 .iconeTabelaAdm i{
     color: #FC3158;
     background:transparent;
     font-size:16px;
-    position:fixed;
 }
 .iconeTabelaAdm i:hover{
     font-weight:bold;
     color:#FC3158;
     background:transparent;
-    position:fixed;
 }
 
 .logo a:focus, a:active, a:hover, a.dropdown-toggle{
@@ -2616,7 +2636,7 @@ td span.fam,span.mar,span.ur,span.work {
 }
 .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 15px !important;
-    font-size: 0.85em;
+    font-size: 1em;
     color: #777;
     border-top: none !important;
 }
@@ -2823,7 +2843,7 @@ div#home {
 }
 .table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
     padding: 15px !important;
-    font-size: 0.85em;
+    font-size: 1em;
     color: #999;
     border-top: none !important;
 }
@@ -7121,7 +7141,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 		padding: 10px 5px !important;
-		font-size: 0.8em;
+		font-size: 1em;
 		color: #999;
 		border-top: none !important;
 	}
@@ -7728,7 +7748,7 @@ footer  p a:hover ,.footer p a:hover{
 	}
 	.table td, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 		padding: 10px 3px !important;
-		font-size: 0.7em;
+		font-size: 1em;
 		color: #999;
 		border-top: none !important;
 	}

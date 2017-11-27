@@ -1180,7 +1180,9 @@ namespace Symphonya_RedeSocial.Controllers
                             if(i == nome.IndexOf('.'))
                             {
                                 //REMOVE OS CARACTERES APOS O PONTO(EXTENSAO DO ARQUIVO)
-                                nomeArquivo = nome.Substring(0, nome.IndexOf('.')) + "#" + IDUsuario + ".mp3";
+                                DateTime data = DateTime.Now;
+
+                                nomeArquivo = data.Hour + data.Minute + data.Second + data.Millisecond + "_" + nome.Substring(0, nome.IndexOf('.'))+ ".mp3";
                             }
                         }
 

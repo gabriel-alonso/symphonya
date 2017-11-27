@@ -316,19 +316,32 @@ namespace Symphonya_RedeSocial.Models
         }
 
 
-        public static Boolean Apagar(Int32 ID)
+        public static Boolean Desativar(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "DELETE FROM Usuario WHERE ID = @ID;";
+            Comando.CommandText = "UPDATE Usuario SET Modo = 1 WHERE Usuario.ID = @ID";
             Comando.Parameters.AddWithValue("@ID", ID);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
+            return Resultado > 0 ? true : false;
+        }
 
+        public static Boolean Ativar(Int32 ID)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "UPDATE Usuario SET Modo = 0 WHERE Usuario.ID = @ID";
+            Comando.Parameters.AddWithValue("@ID", ID);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
 
             return Resultado > 0 ? true : false;
         }
