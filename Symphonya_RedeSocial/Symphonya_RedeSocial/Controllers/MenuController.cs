@@ -468,6 +468,8 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, true);
                 }
 
+                ViewBag.Instrumento = Instrumentos.Listar();
+
                 if (Request.HttpMethod == "POST")
                 {
 

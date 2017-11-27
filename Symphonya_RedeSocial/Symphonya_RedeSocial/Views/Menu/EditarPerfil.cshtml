@@ -350,7 +350,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 }
                                                 else
                                                 {
-                                                    <p>Você ainda não possui instrumentos cadastrados! Para cadastra-los clique em Editar Perfil</p>
+                                                    <p>Você ainda não possui instrumentos cadastrados! Cadastre-os clicando no botão abaixo.</p>
+                                                    <div class="bs-example2 bs-example-padded-bottom">
+                                                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                                            Adicionar Instrumentos
+                                                        </button>
+                                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h2 class="modal-title">Novo Instrumento</h2>
+                                                                    </div>
+                                                                    <div class="modal-body">
+
+                                                                        <h2>Instrumento:</h2>
+                                                                        <select required="" id="NovoInstrumento" name="NovoInstrumento">
+                                                                            @if (ViewBag.OpcaoInstrumento != null)
+                                                                            {
+                                                                                foreach (var Instrumento in ViewBag.Instrumento)
+                                                                                {
+                                                                                <option value="@Instrumento.ID">@Instrumento.Nome</option>
+                                                                                }
+                                                                            }
+                                                                            </select>
+                                                                            <h2>Hora:</h2>
+                                                                            <input name="Hora" id="Hora" placeholder="Hora" onkeyup="formataHora(this, event)" maxlength="5" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
+                                                                            <h2>Título:</h2>
+                                                                            <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
+                                                                            <h2>Descrição:</h2>
+                                                                            <textarea name="Descricao" id="Descricao" placeholder="Escreva aqui a descrição..." required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;border-top-color: rgb(242, 242, 242);border-right-color: rgb(242, 242, 242);border-bottom-color: rgb(242, 242, 242);border-left-color: rgb(242, 242, 242);background: none;width: 92%;margin-bottom: 1.5em;min-height: 73px;resize: none;"></textarea>
+
+</div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                                                                        <input type="submit" onclick="myFunction()" value="Salvar">
+
+                                                                    </div>
+                                                                </div><!-- /.modal-content -->
+                                                            </div><!-- /.modal-dialog -->
+                                                        </div>
+                                                    </div>
+
                                                 }
                                             </div>
                                             <div class="clearfix"></div>
