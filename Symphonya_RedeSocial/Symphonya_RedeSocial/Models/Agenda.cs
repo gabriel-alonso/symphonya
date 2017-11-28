@@ -49,6 +49,7 @@ namespace Symphonya_RedeSocial.Models
             Comando.Connection = Conexao;
             Comando.CommandText = "SELECT Show.ID, Show.Hora, Show.Data, Show.Titulo, Show.Descricao, Show.UsuarioID, Show.AgendaID FROM Show,Agenda WHERE IDUsuario LIKE @ID AND IDUsuario2 LIKE Usuario.ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
+            
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
@@ -75,39 +76,6 @@ namespace Symphonya_RedeSocial.Models
 
             return Agendas;
         }
-        public Boolean NovoEvento(Int32 IDU)
-        {
 
-            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
-            Conexao.Open();
-
-            //CRIACAO DO COMANDO SQL
-            SqlCommand Comando = new SqlCommand();
-            Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDU)"
-              + "VALUES (@Hora,@Data,@Titulo,@Descricao,@UsuarioID,@AgendaID);";
-
-            DateTime datahora = DateTime.Now;
-            //String Hora = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
-            //String Data = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
-
-            Comando.Parameters.AddWithValue("@Hora", this.Hora);
-            Comando.Parameters.AddWithValue("@Data", this.Data);
-            Comando.Parameters.AddWithValue("@Titulo", this.Titulo);
-            Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
-            Comando.Parameters.AddWithValue("@UsuarioID", UsuarioID);
-            Comando.Parameters.AddWithValue("@AgendaID", AgendaID);
-
-            Int32 Resultado = Comando.ExecuteNonQuery();
-
-            Conexao.Close();
-
-            return Resultado > 0 ? true : false;
-        }
-
-        internal void NovoEvento()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

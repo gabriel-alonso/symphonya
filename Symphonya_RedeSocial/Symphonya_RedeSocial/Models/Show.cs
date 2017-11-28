@@ -19,7 +19,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Show() { }                
 
-        public Show(Int32 ID)
+        public Show(Int32 ID )
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
@@ -106,8 +106,7 @@ namespace Symphonya_RedeSocial.Models
             return Seguidos;
         }
 
-
-        public Boolean NovoEvento(Int32 IDU)
+        public Boolean NovoEvento(Int32 IDEvento)
         {
 
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
@@ -116,7 +115,7 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDU)"
+            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDEvento)"
               + "VALUES (@Hora,@Data,@Titulo,@Descricao,@UsuarioID,@AgendaID);";
 
             DateTime datahora = DateTime.Now;
