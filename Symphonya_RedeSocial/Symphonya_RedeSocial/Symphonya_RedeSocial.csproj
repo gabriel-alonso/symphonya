@@ -187,6 +187,7 @@
     <Content Include="Imagens\IconesInstrumentos\UkuleleIcon.png" />
     <Content Include="Imagens\IconesInstrumentos\ViolaoIcon.jpg" />
     <Content Include="Imagens\IconesInstrumentos\ViolinoIcon.png" />
+    <Content Include="Imagens\ImagensBandas\imagemPadraoBanda.jpg" />
     <Content Include="Imagens\ImagensUsuarioimagemPerfil11.png" />
     <Content Include="Imagens\ImagensUsuario\fundoPerfil.jpg" />
     <Content Include="Imagens\fundo_cadastro.jpg" />
@@ -353,6 +354,7 @@
     <Content Include="Views\Menu\VerIntegrantes.cshtml" />
     <Content Include="Views\Administracao\Usuarios.cshtml" />
     <Content Include="Views\Menu\EditarBanda.cshtml" />
+    <Content Include="Views\Administracao\Bandas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -364,7 +366,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Arquivos\" />
     <Folder Include="Fonts\Calendario\" />
-    <Folder Include="Imagens\ImagensBandas\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>

@@ -88,7 +88,7 @@ namespace Symphonya_RedeSocial.Models
                 Agenda A = new Agenda();
                 A.ID = (Int32)Leitor["ID"];
                 A.Hora = (String)Leitor["Hora"];
-                A.Data = (String)Leitor["Data"];
+                A.Data = (DateTime)Leitor["Data"];
                 A.Titulo = (String)Leitor["Titulo"];
                 A.Descricao = (String)Leitor["Descricao"];
 
@@ -107,7 +107,7 @@ namespace Symphonya_RedeSocial.Models
         }
 
 
-        public Boolean NovoEvento(Int32 IDU)
+        public Boolean NovoEvento(Int32 IDUsuario, Int32 IDAgenda)
         {
 
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
@@ -116,8 +116,8 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDU)"
-              + "VALUES (@Hora,@Data,@Titulo,@Descricao,@UsuarioID,@AgendaID);";
+            Comando.CommandText = "INSERT INTO Show (Hora, Data, Titulo, Descricao, UsuarioID, AgendaID)"
+              + "VALUES (@Hora, @Data, @Titulo, @Descricao, @UsuarioID, @AgendaID);";
 
             DateTime datahora = DateTime.Now;
             //String Hora = datahora.Day + "/" + datahora.Month + "/" + datahora.Year;
@@ -127,19 +127,14 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Data", this.Data);
             Comando.Parameters.AddWithValue("@Titulo", this.Titulo);
             Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
-            Comando.Parameters.AddWithValue("@UsuarioID", UsuarioID);
-            Comando.Parameters.AddWithValue("@AgendaID", AgendaID);
+            Comando.Parameters.AddWithValue("@UsuarioID", IDUsuario);
+            Comando.Parameters.AddWithValue("@AgendaID", IDAgenda);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
             Conexao.Close();
 
             return Resultado > 0 ? true : false;
-        }
-
-        internal void NovoEvento()
-        {
-            throw new NotImplementedException();
         }
     }
 }

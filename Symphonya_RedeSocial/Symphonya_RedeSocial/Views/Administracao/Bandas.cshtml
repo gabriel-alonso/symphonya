@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" />
     <title>Symphonya</title>
     <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
     <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
@@ -27,11 +27,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
     <!-- lined-icons -->
     <link rel="stylesheet" href="~/CSS/icon-font.min.css" type='text/css' />
-    <!-- /js -->
+    <!-- //lined-icons -->
     <script src="~/JS/jquery-1.10.2.min.js"></script>
-    <!-- //js-->
+    <script src="~/JS/amcharts.js"></script>
+    <script src="~/JS/serial.js"></script>
+    <script src="~/JS/light.js"></script>
+    <script src="~/JS/radar.js"></script>
+    <link href="~/CSS/barChart.css" rel='stylesheet' type='text/css' />
+    <link href="~/CSS/fabochart.css" rel='stylesheet' type='text/css' />
+    <link href="~/CSS/styleCadastro.css" rel="stylesheet" type='text/CSS' media="all" />
+    <!--clock init-->
+    <script src="~/JS/css3clock.js"></script>
+    <!--Easy Pie Chart-->
+    <!--skycons-icons-->
+    <script src="~/JS/skycons.js"></script>
 
-    <link href="~/CSS/styleCadastro.css" rel='stylesheet' type='text/css' />
+    <script src="~/JS/jquery.easydropdown.js"></script>
+    <script src="~/JS/jquery-2.2.3.min.js"></script>
+    <script src="~/JS/mascaras.js"></script>
+    <!--//skycons-icons-->
 </head>
 <body>
     <div class="page-container">
@@ -48,6 +62,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <input type="submit" value="">
                             </form>
                         </div>
+                        @*<script type="text/javascript">
+                                             $('.main-search').hide();
+                                             $('button').click(function () {
+                                                 $('.main-search').fadein("slow");
+                                                 $('.main-search text').focus();
+                                            }
+                                            );
+                                                 $('.close').click(function () {
+                                                     $('.main-search').hide();
+                                                 });
+                            </script>*@
                         <!--/profile_details-->
                         <div class="profile_details_left">
                             <ul class="nofitications-dropdown">
@@ -153,142 +178,155 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </li>
                                     </ul>
                                 </li>
+
                                 <div class="clearfix"></div>
+
                             </ul>
                         </div>
                         <div class="clearfix"></div>
                         <!--//profile_details-->
                     </div>
                     <!--//menu-right-->
-                    <div class="clearfix"></div>
+                    <!--footer section start-->
+                    <footer>
+                        <p>© 2017 Symphonya . Todos os direitos reservados.</p>
+                    </footer>
+                    <!--footer section end-->
                 </div>
-                <!-- //header-ends -->
-                <!--outter-wp-->
-                <div class="outter-wp">
-                    <!--sub-heard-part-->
-                    <div class="sub-heard-part">
-                        <ol class="breadcrumb m-b-0">
-                            <li><a href="~/Menu/Feed">Início</a></li>
-                            <li class="active">Perfil</li>
-                        </ol>
+            </div>
+            <div class="outter-wp">
+                <!--custom-widgets-->
+                <div class="custom-widgets">
+                    <div class="row-one">
+                        <div class="col-md-3 widget">
+                            <div class="stats-left ">
+                                <h5>Total</h5>
+                                <h4> Usuários</h4>
+                            </div>
+                            <div class="stats-right">
+                                <label>@ViewBag.ContagemBandas</label>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <!--//sub-heard-part-->
-                    <!--/profile-->
-                    <h3 class="sub-tittle pro">Seguidores</h3>
-                    <p class="sub-tittle-desc">Veja quem você segue.</p>
+                </div>
+
+                <div class="clearfix"></div>
+                @if (ViewBag.Erro != null)
+                {
+                    <div class="alert alert-danger">
+                        <strong>@ViewBag.Erro</strong>
+                    </div>
+                }
+
+                @if (ViewBag.Bandas != null)
+                {
                     <table class="table">
                         <tbody>
-                            @if (ViewBag.Seguidos == null)
+
+                            @foreach (var B in ViewBag.Bandas)
                             {
-                                <p>Você ainda não segue ninguem!</p>
-                            }
-                            else {
-                                foreach (var S in ViewBag.Seguidos)
-                                {
-                                   <tr class="table-row">
-                                    <td class="table-text">
-                                        <h6><a class="nomeUserTabela" href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                        <p>@(S.Email)</p>
-                                    </td>
-                                    <td>
-                                        <span class="fam">Usuário</span>
-                                    </td>
-                                       <td>
-                                           <a class="btnSeguir" href="~/Menu/Unfollow/@S.ID">
-                                               <img href="~/Menu/Unfollow/@S.ID" class="status" src="~/Imagens/icone.png"
-                                                    onmouseover="this.src='/Imagens/iconeHover.png'"
-                                                    onmouseout="this.src = '/Imagens/icone.png'" />
-                                               Unfollow
-                                           </a>
-                                       </td>
-                                </tr>
-                                }
+                                    <tr class="table-row">
+                                        <td class="table-img">
+                                            <img src="~/Imagens/ImagensBandas/@B.Imagem_Perfil_Banda" alt="" />
+                                        </td>
+                                        <td class="nomeUserTable">
+                                            <a class="nomeUserTabela" href="~/Administracao/VerUsuarioADM/@B.ID">@(B.Nome)</a>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                                <span class="fam">Banda</span>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            <i class="fa fa-edit"><a class="iconeTabelaAdm" href="/adsad"> Editar</a></i>
+                                        </td>
+                                        <td class="opcaoTabela">
+                                            <a class="iconeTabelaAdm" href="~/Administracao/VerUsuarioADM/@B.ID"><i class="fa fa-eye"> Visualizar</i></a>
+                                        </td>
+                                    </tr>
                             }
                         </tbody>
                     </table>
-
-                </div>
-                <!--//outer-wp-->
-                <!--footer section start-->
-                <footer>
-                    <p>© 2017 Symphonya . Todos os direitos reservados.</p>
-                </footer>
-                <!--//footer section end-->
-            </div>
-        </div>
-        <!--//content-inner-->
-        <!--/sidebar-menu-->
-        <div class="sidebar-menu">
-            <header class="logo">
-                <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="~/Menu/Feed">
-                    <span id="logo"> <h1 style="font: inherit;font-size: 180%;">Symphonya</h1></span>
-                    <!--<img id="logo" src="" alt="Logo"/>-->
-                </a>
-            </header>
-            <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
-            <!--/down-->
-            <div class="down">
-                @if (ViewBag.Logado == null) { }
-                else {
-                    <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
-                    <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
-                @if (ViewBag.User.Nivel != 0)
+                else
                 {
-                    <p><strong>Administrador</strong></p>
+                                    <!-- CASO VIEWBAG USUARIO SEJA NULA NAO EXIBE NENHUM RESULTADO-->
                 }
-                <ul>
-                    <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
-                </ul>
+
             </div>
-            <!--//down-->
-            <div class="menu">
-                <ul id="menu">
+
+            <!--//content-inner-->
+            <!--/sidebar-menu-->
+            <div class="sidebar-menu">
+                <header class="logo">
+                    <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="~/Menu/Feed">
+                        <span id="logo"> <h1 style="font: inherit;font-size: 180%;">Symphonya</h1></span>
+                        <!--<img id="logo" src="" alt="Logo"/>-->
+                    </a>
+                </header>
+                <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+                <!--/down-->
+                <div class="down">
                     @if (ViewBag.Logado == null) { }
                     else {
+                        <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
+                            <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                         if (ViewBag.User.Nivel != 0)
                         {
-                            <li id="menu-academico">
-                                <a href="#"><i class="fa fa-area-chart"></i> <span> Administração</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
-                                <ul id="menu-academico-sub">
-                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Arquivos">Arquivos</a></li>
-                                    <li id="menu-academico-avaliacoes"><a href="~/Administracao/Bandas">Bandas</a></li>
-                                    <li id="menu-academico-boletim"><a href="~/Administracao/Usuarios">Usuários</a></li>
-                                </ul>
-                            </li>
+                            <p><strong>Administrador</strong></p>
                         }
                     }
-                    <li id="menu-academico">
-                        <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
-                        <ul id="menu-academico-sub">
-                            <li id="menu-academico-boletim"><a href="~/Menu/Agenda">Agenda</a></li>
-                            <li id="menu-academico-avaliacoes"><a href="calender.html">Horários</a></li>
+                    <ul>
+                        <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+                    </ul>
+                </div>
+                <!--//down-->
+                <div class="menu">
+                    <ul id="menu">
+                        @if (ViewBag.Logado == null) { }
+                        else {
+                            if (ViewBag.User.Nivel != 0)
+                            {
+                                <li id="menu-academico">
+                                    <a href="#"><i class="fa fa-area-chart"></i> <span> Administração</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                                    <ul id="menu-academico-sub">
+                                        <li id="menu-academico-avaliacoes"><a href="~/Administracao/Arquivos">Arquivos</a></li>
+                                        <li id="menu-academico-avaliacoes"><a href="~/Administracao/Bandas">Bandas</a></li>
+                                        <li id="menu-academico-boletim"><a href="~/Administracao/Usuarios">Usuários</a></li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        <li id="menu-academico">
+                            <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                            <ul id="menu-academico-sub">
+                                <li id="menu-academico-boletim"><a href="~/Menu/Agenda">Agenda</a></li>
+                                <li id="menu-academico-avaliacoes"><a href="calender.html">Horários</a></li>
 
-                        </ul>
-                    </li>
-                    <li><a href="~/Menu/Arquivo"><i class="fa fa-file"></i> <span>Arquivos</span></a></li>
-                    <li id="menu-academico">
-                        <a href="#"><i class="fa fa-group"></i> <span>Bandas</span> <span class="fa fa-angle-right" style="padding-left: 53%;"></span></a>
-                        <ul id="menu-academico-sub">
-                            <li id="menu-academico-avaliacoes"><a href="~/Menu/CadastroBanda">Nova Banda</a></li>
-                            <li id="menu-academico-boletim"><a href="~/Menu/VerBandas">Ver Bandas</a></li>
-                        </ul>
-                    </li>
-                    <li id="menu-academico">
-                        <a href="~/Menu/VerSeguidores"><i class="fa fa-address-book"></i> <span>Seguidores</span></a>
-                    </li>
-                    <li>
-                        <a href="~/Menu/VerSeguidos"><i class="fa fa-address-book-o"></i> <span>Seguindo</span></a>
-                    </li>
-                    <li>
-                        <a href="~/Menu/Livestream"><i class="fa fa-twitch"></i> <span>Livestream</span></a>
-                    </li>
-
-                </ul>
+                            </ul>
+                        </li>
+                        <li><a href="~/Menu/Arquivo"><i class="fa fa-file"></i> <span>Arquivos</span></a></li>
+                        <li id="menu-academico">
+                            <a href="#"><i class="fa fa-group"></i> <span>Bandas</span> <span class="fa fa-angle-right" style="padding-left: 53%;"></span></a>
+                            <ul id="menu-academico-sub">
+                                <li id="menu-academico-avaliacoes"><a href="~/Menu/CadastroBanda">Nova Banda</a></li>
+                                <li id="menu-academico-boletim"><a href="~/Menu/VerBandas">Ver Bandas</a></li>
+                            </ul>
+                        </li>
+                        <li id="menu-academico">
+                            <a href="~/Menu/VerSeguidores"><i class="fa fa-address-book"></i> <span>Seguidores</span></a>
+                        </li>
+                        <li>
+                            <a href="~/Menu/VerSeguidos"><i class="fa fa-address-book-o"></i> <span>Seguindo</span></a>
+                        </li>
+                        <li>
+                            <a href="~/Menu/Livestream"><i class="fa fa-twitch"></i> <span>Livestream</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
-    </div>
     </div>
     <script>
 							var toggle = true;

@@ -29,6 +29,25 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
+        public ActionResult Bandas()
+        {
+            if (Session["Administrador"] != null)
+            {
+                //CRIA SESSÃO DO Administrador
+                ViewBag.Logado = Session["Administrador"];
+                Usuario User = (Usuario)Session["Administrador"];
+                ViewBag.User = User;
+
+                ViewBag.ContagemBandas = Models.Bandas.Contar();
+                ViewBag.Bandas = Models.Bandas.Listar();
+            }
+            else {
+                Response.Redirect("/Menu/Feed/");
+            }
+
+            return View();
+        }
+
         public ActionResult VerUsuarioADM(Int32 ID)
         {
             Usuario user = new Usuario(ID);

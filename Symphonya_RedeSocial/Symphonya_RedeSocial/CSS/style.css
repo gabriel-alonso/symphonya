@@ -129,6 +129,24 @@ td.table-img{
 a {
     background-color:none;
 }
+
+.btnSeguir{
+    background:transparent;
+    color: black;
+    position:absolute;
+    font-size:16px;
+}
+
+.btnSeguir:hover{
+    background:transparent;
+    color: #FC3158;
+    border: 1px solid #FC3158;
+    border-radius: 5%;
+    font-weight: bold;
+
+    position: absolute;
+}
+
 body p{
   font-family: 'Roboto', sans-serif;
 }
@@ -169,6 +187,17 @@ a:hover { transition: all 200ms ease-in-out; }
 .page-container.sidebar-collapsed-back {
     transition: all 100ms linear;
 }
+
+.instrumentoSelect{
+    background:white;
+    color: #FC3158;
+}
+
+.instrumentoSelect option{
+    background:white;
+    color: #FC3158;
+}
+
 .page-container.sidebar-collapsed-back .left-content {
   transition: all 100ms linear;
   -webkit-transition: all 0.3s ease;
@@ -211,6 +240,11 @@ a:hover { transition: all 200ms ease-in-out; }
   transition: all 100ms ease-in-out;
   transition-delay: 300ms;
     
+}
+.extraInfo:hover{
+    color:white;
+    font-weight:bold;
+    border-radius:5%;
 }
 
 .page-container.sidebar-collapsed-back .logo {
