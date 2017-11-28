@@ -332,9 +332,9 @@ namespace Symphonya_RedeSocial.Models
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
                 U.Nivel = (Int32)Leitor["Nivel"];
-                U.Youtube = (String)Leitor["Youtube"];
-                U.Facebook = (String)Leitor["Facebook"];
-                U.Twitch = (String)Leitor["Twitch"];
+                U.Youtube = Leitor["Youtube"].ToString();
+                U.Facebook = Leitor["Facebook"].ToString();
+                U.Twitch = Leitor["Twitch"].ToString();
 
                 Users.Add(U);
             }
