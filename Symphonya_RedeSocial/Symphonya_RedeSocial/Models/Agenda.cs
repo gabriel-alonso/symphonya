@@ -15,6 +15,8 @@ namespace Symphonya_RedeSocial.Models
         public String Hora { get; set; }
         public String Titulo { get; set; }
         public String Descricao { get; set; }
+        public Int32 AgendaID { get; set; }
+        public Int32 UsuarioID { get; set; }
 
         public Agenda() { }
 
@@ -150,5 +152,9 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
         }
 
+        internal void NovoEvento()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
