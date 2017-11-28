@@ -175,16 +175,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Ver Bandas</h3>
-                    <div class="btn-editarperfil">
-                        <a href="~/Menu/EditarBanda" class="btn btn-default dropdown-toggle"><i class="fa fa-pencil-square-o"></i> Editar</a>
-                    </div>
                     @if (ViewBag.Bandas == null)
                     {
                         <p>Não há Bandas!</p>
                     }
                     else {
                         foreach (var B in ViewBag.Bandas)
-                        { 
+                        {
+                            <div class="btn-editarperfil">
+                                <a href="~/Menu/EditarBanda" class="btn btn-default dropdown-toggle"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                            </div>
                         <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
                             <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
                             <h2>@(B.Nome)</h2>

@@ -246,6 +246,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <p class="help-block"><strong>Nota:</strong> As imagens de <strong>CAPA</strong> tendem a ser de dimensão 2:1, caso sua imagem não siga esse padrao haverá deformação da mesma.</p>
                                             </div>
                                         </div>
+
                                         <h3 class="inner-tittle">Informações Pessoais </h3>
                                         <div class="EP-principais-info">
                                             <div class="p-20">
@@ -270,6 +271,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                             <i class="fa fa-mobile"></i>
                                                         </span>
                                                         <input id="NovoCelular" name="NovoCelular" class="form-control1 icon" placeholder="CELULAR AQUI" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="about-info-p">
+                                                    <strong>Canal Twitch®</strong>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-twitch"></i>
+                                                        </span>
+                                                        <input id="NovoCanalTwitch" name="NovoCanalTwitch" class="form-control1 icon" placeholder="Cole a URL do seu canal aqui." type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="about-info-p">
+                                                    <strong>Canal Youtube®</strong>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-youtube"></i>
+                                                        </span>
+                                                        <input id="NovoCanalTwitch" name="NovoCanalTwitch" class="form-control1 icon" placeholder="Cole a URL do seu canal aqui." type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="about-info-p">
+                                                    <strong>Facebook</strong>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-facebook"></i>
+                                                        </span>
+                                                        <input id="NovoCanalTwitch" name="NovoCanalTwitch" class="form-control1 icon" placeholder="Cole a URL do seu perfil aqui." type="text">
                                                     </div>
                                                 </div>
                                                 <div class="about-info-p">
@@ -364,22 +392,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                     <div class="modal-body">
 
                                                                         <h2>Instrumento:</h2>
-                                                                        <select required="" id="NovoInstrumento" name="NovoInstrumento">
-                                                                            @if (ViewBag.OpcaoInstrumento != null)
+                                                                        <select class="instrumentoSelect"required="" id="NovoInstrumento" name="NovoInstrumento">
+                                                                            @if (ViewBag.Instruments != null)
                                                                             {
-                                                                                foreach (var Instrumento in ViewBag.Instrumento)
+                                                                                foreach (var Instrumento in ViewBag.Instruments)
                                                                                 {
-                                                                                <option value="@Instrumento.ID">@Instrumento.Nome</option>
+                                                                                <option value="@Instrumento.ID"><span src="~/Imagens/IconesInstrumentos/@Instrumento.Nome">@Instrumento.Nome </span></option>
                                                                                 }
                                                                             }
                                                                             </select>
-                                                                            <h2>Hora:</h2>
-                                                                            <input name="Hora" id="Hora" placeholder="Hora" onkeyup="formataHora(this, event)" maxlength="5" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
-                                                                            <h2>Título:</h2>
-                                                                            <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
-                                                                            <h2>Descrição:</h2>
-                                                                            <textarea name="Descricao" id="Descricao" placeholder="Escreva aqui a descrição..." required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;border-top-color: rgb(242, 242, 242);border-right-color: rgb(242, 242, 242);border-bottom-color: rgb(242, 242, 242);border-left-color: rgb(242, 242, 242);background: none;width: 92%;margin-bottom: 1.5em;min-height: 73px;resize: none;"></textarea>
-
+                                                                            <h2>Maestria:</h2>
+                                                                        <select class="instrumentoSelect" required="" id="NovoInstrumento" name="NovoInstrumento">
+                                                                            <option value="1">Iniciante</option>
+                                                                            <option value="2">Intermediário</option>
+                                                                            <option value="3">Adepto</option>
+                                                                            <option value="4">Mestre</option>
+                                                                            </select>
 </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

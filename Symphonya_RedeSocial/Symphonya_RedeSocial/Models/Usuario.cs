@@ -28,6 +28,9 @@ namespace Symphonya_RedeSocial.Models
         public String Telefone { get; set; }
         public string Biografia { get; set; }
         public Int32 Nivel { get; set; }
+        public String Youtube { get; set; }
+        public String Facebook { get; set; }
+        public String Twitch { get; set; }
 
         public Usuario() { }
 
@@ -63,6 +66,18 @@ namespace Symphonya_RedeSocial.Models
             this.Telefone = (String)Leitor["Telefone"];
             this.Biografia = (String)Leitor["Biografia"];
             this.Nivel = (Int32)Leitor["Nivel"];
+            if (Leitor["Youtube"] != null)
+            {
+                this.Youtube = (String)Leitor["Youtube"];
+            }
+            if (Leitor["Facebook"] != null)
+            {
+                this.Facebook = (String)Leitor["Facebook"];
+            }
+            if (Leitor["Twitch"] != null)
+            {
+                this.Twitch = (String)Leitor["Twitch"];
+            }
 
             Conexao.Close();
         }
@@ -103,12 +118,23 @@ namespace Symphonya_RedeSocial.Models
             this.Biografia = (String)Leitor["Biografia"];
             this.Nivel = (Int32)Leitor["Nivel"];
 
+            if(Leitor["Youtube"] != null)
+            {
+                this.Youtube = Leitor["Youtube"].ToString();
+            }
+            if (Leitor["Facebook"] != null)
+            {
+                this.Facebook = (String)Leitor["Facebook"].ToString();
+            }
+            if (Leitor["Twitch"] != null)
+            {
+                this.Twitch = (String)Leitor["Twitch"].ToString();
+            }
 
             Conexao.Close();
         }
         public Boolean NovoUser()
         {
-
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
             Conexao.Open();
 
@@ -148,7 +174,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "UPDATE Usuario SET Biografia = @Biografia, Nome = @Nome, Sobrenome = @Sobrenome, Cidade = @Cidade, Estado = @Estado, Telefone = @Telefone, Imagem_Capa = @ImagemCapa, Imagem_Perfil = @ImagemPerfil WHERE ID = @ID;";
+            Comando.CommandText = "UPDATE Usuario SET Biografia = @Biografia, Nome = @Nome, Sobrenome = @Sobrenome, Cidade = @Cidade, Estado = @Estado, Telefone = @Telefone, Imagem_Capa = @ImagemCapa, Imagem_Perfil = @ImagemPerfil, Youtube = @Youtube, Facebook = @Facebook, Twitch = @Twitch WHERE ID = @ID;";
             Comando.Parameters.AddWithValue("@ID", this.ID);
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
@@ -158,6 +184,9 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@ImagemPerfil", this.Imagem_Perfil);
             Comando.Parameters.AddWithValue("@ImagemCapa", this.Imagem_Capa);
             Comando.Parameters.AddWithValue("@Biografia", this.Biografia);
+            Comando.Parameters.AddWithValue("@Youtube", this.Youtube);
+            Comando.Parameters.AddWithValue("@Facebook", this.Facebook);
+            Comando.Parameters.AddWithValue("@Twitch", this.Twitch);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
@@ -252,6 +281,9 @@ namespace Symphonya_RedeSocial.Models
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
                 U.Nivel = (Int32)Leitor["Nivel"];
+                U.Youtube = (String)Leitor["Youtube"];
+                U.Facebook = (String)Leitor["Facebook"];
+                U.Twitch = (String)Leitor["Twitch"];
 
                 Users.Add(U);
             }
@@ -300,6 +332,9 @@ namespace Symphonya_RedeSocial.Models
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
                 U.Nivel = (Int32)Leitor["Nivel"];
+                U.Youtube = (String)Leitor["Youtube"];
+                U.Facebook = (String)Leitor["Facebook"];
+                U.Twitch = (String)Leitor["Twitch"];
 
                 Users.Add(U);
             }

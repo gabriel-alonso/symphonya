@@ -35,6 +35,24 @@ namespace Symphonya_RedeSocial.Models
 
         }
 
+        public static Boolean Follow(Int32 ID, Int32 ID2)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "INSERT INTO Usuario_Has_Usuario VALUES (@ID, @ID2)";
+            Comando.Parameters.AddWithValue("@ID", ID);
+            Comando.Parameters.AddWithValue("@ID2", ID2);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+            return Resultado > 0 ? true : false;
+
+        }
+
         public static List<Seguidores> ListarSeguidos(Int32 ID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);

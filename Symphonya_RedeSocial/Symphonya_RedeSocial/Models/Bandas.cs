@@ -164,6 +164,67 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
         }
 
+        public static Int32 Contar()
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT COUNT (*) FROM Bandas;";
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+            Leitor.Read();
+
+            Int32 Contador = (Int32)Leitor[""];
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return 0;
+            }
+
+            Conexao.Close();
+
+            return Contador;
+        }
+
+        public static List<Bandas> Listar()
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT Bandas.Nome, Bandas.Descricao, Bandas.ID, Usuario.Nome AS 'NomeUsuario', Usuario.Sobrenome, Bandas.Imagem_Perfil_Banda, Bandas.Imagem_Capa_Banda FROM Bandas, Usuario WHERE LiderID = Usuario.ID ORDER BY Nome;";
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            List<Bandas> Bands = new List<Bandas>();
+            while (Leitor.Read())
+            {
+                Bandas B = new Bandas();
+                B.ID = (Int32)Leitor["ID"];
+                B.Nome = ((String)Leitor["Nome"]);
+                B.Descricao = (String)Leitor["Descricao"];
+                B.Lider = (String)Leitor["NomeUsuario"] + " " + (String)Leitor["Sobrenome"];
+                B.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
+                B.Imagem_Capa_Banda = (String)Leitor["Imagem_Capa_Banda"];
+
+                Bands.Add(B);
+            }
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            Conexao.Close();
+
+            return Bands;
+        }
+
         internal void NovaBanda()
         {
             throw new NotImplementedException();
