@@ -268,54 +268,52 @@ $(function () {
                     </div>
                     <!--/Tooltips-->
                     <!--/Accordion-->
+
                     <div class="accordion">
-                        <h3 class="inner-tittle two">Criar Eventos</h3>
-
                         <!-- ABRINDO O FORM-->
-                        <form  method="post" action="~/Menu/Agenda">
-                        <div class="grid_3 grid_5">
+                        <form method="post" action="~/Menu/Agenda">
+                            <h3 class="inner-tittle two">Criar Eventos</h3>
+                            <div class="grid_3 grid_5">
+                                <div class="bs-example2">
+                                </div>
+                                <div class="bs-example2 bs-example-padded-bottom">
+                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                        + Criar...
+                                    </button>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title">Criar Evento</h2>
+                                                </div>
+                                                <div class="modal-body">
 
-                            <div class="bs-example2">
-                                
-                            </div>
-                            <div class="bs-example2 bs-example-padded-bottom">
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                                    + Criar...
-                                </button>
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">     
-                                                <h2 class="modal-title">Criar Evento</h2>
-                                            </div>
-                                            <div class="modal-body">
-                                               
-                                                 <h2>Data:</h2>   
-                                                <input class="date" id="Data" name="Data" type="text" placeholder="Data" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" style="padding: 12px; border: 2px solid #f2f2f2;background: none;color: #212121;width: 92%;margin-bottom: 1.5em;font-size: 13px;outline: none;">                                                                                                           
-                                                <script>
-			                                            $(function() {
-			                                            $( "#Data" ).datepicker();
-			                                            });
-                                                </script> 
-                                                <h2>Hora:</h2>
-                                                <input name="Hora" id="Hora" placeholder="Hora"  onkeyup="formataHora(this, event)" maxlength="5" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">                                                                              
-                                                <h2>Título:</h2>
-                                                <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
-                                                <h2>Descrição:</h2>
-                                                <textarea name="Descricao" id="Descricao" placeholder="Escreva aqui a descrição..." required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;border-top-color: rgb(242, 242, 242);border-right-color: rgb(242, 242, 242);border-bottom-color: rgb(242, 242, 242);border-left-color: rgb(242, 242, 242);background: none;width: 92%;margin-bottom: 1.5em;min-height: 73px;resize: none;"></textarea>
-                                               
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                    <h2>Data:</h2>
+                                                    <input class="date" id="Data" name="Data" type="text" placeholder="Data" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" style="padding: 12px; border: 2px solid #f2f2f2;background: none;color: #212121;width: 92%;margin-bottom: 1.5em;font-size: 13px;outline: none;">
+                                                    <script>
+                                                        $(function () {
+                                                            $("#Data").datepicker();
+                                                        });
+                                                    </script>
+                                                    <h2>Hora:</h2>
+                                                    <input name="Hora" id="Hora" placeholder="Hora" onkeyup="formataHora(this, event)" maxlength="5" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
+                                                    <h2>Título:</h2>
+                                                    <input name="Titulo" id="Titulo" placeholder="Título" required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;background: none;width: 92%;margin-bottom: 1.5em;" type="text">
+                                                    <h2>Descrição:</h2>
+                                                    <textarea name="Descricao" id="Descricao" placeholder="Escreva aqui a descrição..." required="" style="outline: none;padding: 12px;color: #212121;font-size: 13px;border: 2px solid #f2f2f2;border-top-color: rgb(242, 242, 242);border-right-color: rgb(242, 242, 242);border-bottom-color: rgb(242, 242, 242);border-left-color: rgb(242, 242, 242);background: none;width: 92%;margin-bottom: 1.5em;min-height: 73px;resize: none;"></textarea>
 
-                                                <input type="submit" onclick="myFunction()" value="Salvar">
-                                                
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                                                    <input type="submit" onclick="myFunction()" value="Salvar">
+
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </form>
                         <!-- FECHANDO O FORM-->
                     </div>
