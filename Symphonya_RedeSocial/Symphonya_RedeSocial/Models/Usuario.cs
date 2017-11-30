@@ -68,15 +68,15 @@ namespace Symphonya_RedeSocial.Models
             this.Nivel = (Int32)Leitor["Nivel"];
             if (Leitor["Youtube"] != null)
             {
-                this.Youtube = (String)Leitor["Youtube"];
+                this.Youtube = Leitor["Youtube"].ToString() ;
             }
             if (Leitor["Facebook"] != null)
             {
-                this.Facebook = (String)Leitor["Facebook"];
+                this.Facebook = Leitor["Facebook"].ToString();
             }
             if (Leitor["Twitch"] != null)
             {
-                this.Twitch = (String)Leitor["Twitch"];
+                this.Twitch = Leitor["Twitch"].ToString();
             }
 
             Conexao.Close();
@@ -281,9 +281,9 @@ namespace Symphonya_RedeSocial.Models
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
                 U.Nivel = (Int32)Leitor["Nivel"];
-                U.Youtube = (String)Leitor["Youtube"];
-                U.Facebook = (String)Leitor["Facebook"];
-                U.Twitch = (String)Leitor["Twitch"];
+                U.Youtube = Leitor["Youtube"].ToString();
+                U.Facebook = Leitor["Facebook"].ToString();
+                U.Twitch = Leitor["Twitch"].ToString();
 
                 Users.Add(U);
             }
