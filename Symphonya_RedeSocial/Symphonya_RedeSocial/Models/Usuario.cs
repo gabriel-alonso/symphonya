@@ -195,34 +195,6 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
         }
 
-        public Boolean Novo()
-        {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["KatiauBD"].ConnectionString);
-            Conexao.Open();
-
-            SqlCommand Comando = new SqlCommand();
-            Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Usuario (EmailU, NickU, NomeU, SobrenomeU, SenhaU, NascimentoU, BioU, ImagemU, Administrador)"
-              + "VALUES (@Email, @NickU, @Nome, @Sobrenome, @Senha, @Nascimento, @Bio, @ImagemPerfil, @Adm);";
-            Comando.Parameters.AddWithValue("@Email", this.Email);
-           // Comando.Parameters.AddWithValue("@NickU", this.Nick);
-            Comando.Parameters.AddWithValue("@Nome", this.Nome);
-            Comando.Parameters.AddWithValue("@Sobrenome", this.Sobrenome);
-            Comando.Parameters.AddWithValue("@Senha", this.Senha);
-            Comando.Parameters.AddWithValue("@Nascimento", this.MesNascimento);
-            Comando.Parameters.AddWithValue("@Bio", "Biografia");
-            Comando.Parameters.AddWithValue("@ImagemPerfil", "tr4.jpg");
-            Comando.Parameters.AddWithValue("@Adm", 0);
-
-
-
-            Int32 Resultado = Comando.ExecuteNonQuery();
-
-            Conexao.Close();
-
-            return Resultado > 0 ? true : false;
-        }
-
         public static Int32 Contar()
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
@@ -281,9 +253,9 @@ namespace Symphonya_RedeSocial.Models
                 U.Telefone = (String)Leitor["Telefone"];
                 U.Biografia = (String)Leitor["Biografia"];
                 U.Nivel = (Int32)Leitor["Nivel"];
-                U.Youtube = (String)Leitor["Youtube"];
-                U.Facebook = (String)Leitor["Facebook"];
-                U.Twitch = (String)Leitor["Twitch"];
+                U.Youtube = Leitor["Youtube"].ToString();
+                U.Facebook = Leitor["Facebook"].ToString();
+                U.Twitch = Leitor["Twitch"].ToString();
 
                 Users.Add(U);
             }
