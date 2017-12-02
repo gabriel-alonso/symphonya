@@ -16,6 +16,7 @@ namespace Symphonya_RedeSocial.Models
         public String Lider { get; set; }
         public String Imagem_Perfil_Banda { get; set; }
         public String Imagem_Capa_Banda { get; set; }
+        public Int32 LiderID { get; set; }
 
         public Bandas() { }
 
@@ -48,7 +49,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Usuario.Nome AS NomeUsuario, Usuario.Sobrenome FROM Bandas,Usuario WHERE LiderID LIKE @ID AND Usuario.ID = @ID;";
+            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao, Bandas.LiderID, Usuario.Nome AS NomeUsuario, Usuario.Sobrenome FROM Bandas,Usuario,Usuario_Has_Bandas WHERE Usuario.ID = Bandas.LiderID AND UsuarioID = @ID OR LiderID LIKE @ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
@@ -66,13 +67,14 @@ namespace Symphonya_RedeSocial.Models
                 Banda.Nome = (String)Leitor["Nome"];
                 Banda.Descricao = (String)Leitor["Descricao"];
                 Banda.Lider = (String)Leitor["NomeUsuario"] + (String)Leitor["Sobrenome"];
+                Banda.LiderID = (Int32)Leitor["LiderID"];
             }
 
             Conexao.Close();
 
             return Banda;
         }
-        public Boolean NovaBanda(Int32 IDU)
+        public Boolean NovaBanda(Int32 IDLider)
         {
 
             SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
@@ -81,11 +83,11 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Bandas ( Nome , Descricao, Lider, IDU)"
+            Comando.CommandText = "INSERT INTO Bandas ( Nome , Descricao, LiderID)"
               + "VALUES ( @Nome , @Descricao, @Lider);";
             Comando.Parameters.AddWithValue("@Nome", this.Nome);
             Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
-            Comando.Parameters.AddWithValue("@Lider", this.Lider);
+            Comando.Parameters.AddWithValue("@Lider", IDLider);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
@@ -109,16 +111,80 @@ namespace Symphonya_RedeSocial.Models
             return Resultado > 0 ? true : false;
 
         }
-        public static List<Bandas> ListarBandas(Int32 ID)
+        public static Bandas ListarBanda(Int32 BandaID)
         {
             SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Bandas.ID, Bandas.Nome, Bandas.Descricao FROM Bandas;";
-            Comando.Parameters.AddWithValue("@ID", ID);
+            Comando.CommandText = "SELECT * FROM Bandas WHERE ID = @ID";
+            Comando.Parameters.AddWithValue("@ID", BandaID);
 
+            SqlDataReader Leitor = Comando.ExecuteReader();
+            Leitor.Read();
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            //LISTA COM ID DAS BANDAS
+            Bandas Bandas = new Bandas();
+            Bandas.ID = (Int32)Leitor["ID"];
+            Bandas.Nome = (String)Leitor["Nome"];
+            Bandas.Descricao = (String)Leitor["Descricao"];
+            Bandas.LiderID = (Int32)Leitor["LiderID"];
+            Bandas.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
+            Bandas.Imagem_Capa_Banda = (String)Leitor["Imagem_Capa_Banda"];
+
+            Conexao.Close();
+
+            return Bandas;
+        }
+
+        public static Bandas VisualizarBanda(Int32 LiderID)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT * FROM Bandas WHERE LiderID = @ID";
+            Comando.Parameters.AddWithValue("@ID", LiderID);
+
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            //LISTA COM ID DAS BANDAS
+            Bandas Bandas = new Bandas();
+            Bandas.ID = (Int32)Leitor["ID"];
+            Bandas.Nome = (String)Leitor["Nome"];
+            Bandas.Descricao = (String)Leitor["Descricao"];
+            Bandas.LiderID = (Int32)Leitor["LiderID"];
+            Bandas.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
+            Bandas.Imagem_Capa_Banda = (String)Leitor["Imagem_Capa_Banda"];
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            Conexao.Close();
+
+            return Bandas;
+        }
+
+        public static List<Bandas> ListarBandas(String pesquisa)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT * FROM Bandas WHERE Nome LIKE '" + @pesquisa + "%';";
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 
@@ -130,6 +196,7 @@ namespace Symphonya_RedeSocial.Models
                 B.ID = (Int32)Leitor["ID"];
                 B.Nome = (String)Leitor["Nome"];
                 B.Descricao = (String)Leitor["Descricao"];
+                B.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
                 Bandas.Add(B);
             }
 
@@ -223,16 +290,6 @@ namespace Symphonya_RedeSocial.Models
             Conexao.Close();
 
             return Bands;
-        }
-
-        internal void NovaBanda()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static dynamic ListarBandas(int iDUsuario, bool v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

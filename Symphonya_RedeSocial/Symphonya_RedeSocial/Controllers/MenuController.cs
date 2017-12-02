@@ -102,6 +102,7 @@ namespace Symphonya_RedeSocial.Controllers
 
         public ActionResult CadastroBanda()
         {
+            Int32 IDUsuario;
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
@@ -111,6 +112,7 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Logado = Session["Administrador"];
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
                 else
@@ -119,6 +121,7 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Logado = Session["Usuario"];
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
                 //RETORNA OS USUARIOS, CASO HAJA RESULTADO
@@ -133,8 +136,7 @@ namespace Symphonya_RedeSocial.Controllers
                     Bandas ba = new Bandas();
                     ba.Nome = Request.Form["Nome"].ToString();
                     ba.Descricao = Request.Form["Descricao"].ToString();
-                    ba.Lider = Request.Form["Lider"].ToString();
-                    ba.NovaBanda();
+                    ba.NovaBanda(IDUsuario);
                     Response.Redirect("/Menu/Feed");
                 }
             }
@@ -373,7 +375,12 @@ namespace Symphonya_RedeSocial.Controllers
 
                 if (TempData["Usuario"] != null)
                 {
+                    Usuario user = new Usuario();
+                    user = (Usuario)TempData["Usuario"];
+
                     ViewBag.Visualizacao = (Usuario)TempData["Usuario"];
+                    ViewBag.ArquivosVisualizacao = Models.Arquivos.ListarArquivoUsuario(user.ID,true);
+                    ViewBag.InstrumentosVisualizacao = Instrumentos.ListarEspecifico(user.ID, true);
                 }
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -391,7 +398,7 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
-        public ActionResult EditarInstrumento(Int32 IDInstrumento)
+        public ActionResult ExcluirInstrumento(int id)
         {
             //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
             Int32 IDUsuario;
@@ -406,7 +413,6 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, false);
                 }
                 else
                 {
@@ -415,33 +421,17 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                    ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, false);
                 }
 
-                if (Request.HttpMethod == "POST")
-                {
-                    Int32 NovaMaestria = Int32.Parse(Request.Form["NovaMaestria"].ToString());
-
-                    Instrumentos i = new Instrumentos(IDInstrumento, IDUsuario);
-
-                    if (NovaMaestria != i.Maestria)
-                    {
-
-                        i.Maestria = NovaMaestria;
-                        i.Alterar(IDUsuario);
-                        Response.Redirect("/Menu/EditarPerfil");
-
-                    }
-
-
-                }
+                Instrumentos i = new Instrumentos(id, IDUsuario);
+                i.Excluir(IDUsuario);
             }
             else
             {
                 Response.Redirect("/Acesso/Login");
             }
 
-            return View();
+            return RedirectToAction("EditarPerfil", "Menu");
         }
 
         public ActionResult EditarPerfil()
@@ -459,6 +449,7 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                     ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, true);
+                    ViewBag.InstrumentosCompleto = Instrumentos.ListarEspecifico(IDUsuario, false);
                 }
 
                 else
@@ -469,6 +460,7 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                     ViewBag.Instrumentos = Instrumentos.ListarEspecifico(IDUsuario, true);
+                    ViewBag.InstrumentosCompleto = Instrumentos.ListarEspecifico(IDUsuario, false);
                 }
 
                 ViewBag.Instruments = Instrumentos.Listar();
@@ -482,6 +474,9 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
+
+                    Int32 NovoInstrumento = Convert.ToInt32(Request.Form["NovoInstrumento"]);
+                    Int32 NovaMaestria = Convert.ToInt32(Request.Form["NovaMaestria"]);
 
                     HttpPostedFileBase NovaImagemPerfil = Request.Files["NovaImagemPerfil"];
                     HttpPostedFileBase NovaImagemCapa = Request.Files["NovaImagemCapa"];
@@ -532,6 +527,14 @@ namespace Symphonya_RedeSocial.Controllers
                     if (NovoTelefone != "")
                     {
                         EditarUsuario.Telefone = NovoTelefone;
+                    }
+
+                    if(NovoInstrumento != 0 && NovaMaestria != 0)
+                    {
+                        EditarInstrumento.ID = NovoInstrumento;
+                        EditarInstrumento.Maestria = NovaMaestria;
+                        EditarInstrumento.Novo(EditarUsuario.ID);
+                        
                     }
 
                     //CASO O CAMPO DE IMAGEM DE PERFIL SEJA DIFERENTE DE NULO
@@ -647,7 +650,7 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                    ViewBag.Bandas = Bandas.ListarBandas(IDUsuario, false);
+                    ViewBag.Bandas = Bandas.VisualizarBanda(IDUsuario);
                 }
 
                 else
@@ -657,7 +660,7 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                    ViewBag.Bandas = Bandas.ListarBandas(IDUsuario, false);
+                    ViewBag.Bandas = Bandas.VisualizarBanda(IDUsuario);
                 }
 
                 if (Request.HttpMethod == "POST")
@@ -805,21 +808,22 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                         List<Usuario> Usuarios = Usuario.Listar(busca);
 
-                        //for(int i = 0; i <= Seguidos.Count; i++)
+                    for (int i = 0; i <= Usuarios.Count; i++)
+                    {
+                        //if (Usuarios[i].Modo == true)
                         //{
-                        //    if(Usuarios[i].ID == Seguidos[i].ID)
-                        //    {
-                        //        Usuarios.Remove(Usuarios[i]);
-                        //    }
+                        //    Usuarios.Remove(Usuarios[i]);
                         //}
+                    }
 
-                        ViewBag.Usuarios = Usuarios;
+                    ViewBag.Usuarios = Usuarios;
 
                 }
-                //if (Bandas.ListarBandas(busca) != null)
+
+                if (Bandas.ListarBandas(busca) != null)
                 {
-                   // List<Bandas> Bands = Bandas.ListarBandas(busca);
-                    //ViewBag.Bandas = Bands;
+                    List<Bandas> Bands = Bandas.ListarBandas(busca);
+                    ViewBag.Bandas = Bands;
                 }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
@@ -1053,9 +1057,10 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                    
                     // VERIFICAÇÃO
-                    if (Bandas.ListarBandas(IDUsuario) != null)
+                    if (Bandas.ListarBanda(bandas.ID) != null)
                     {
-                        List<Bandas> banda = Bandas.ListarBandas(IDUsuario);
+                        Bandas banda = new Bandas();
+                        banda = Bandas.ListarBanda(bandas.ID);
                         ViewBag.Bandas = banda;
                     }
                     else
@@ -1286,6 +1291,27 @@ namespace Symphonya_RedeSocial.Controllers
                 Ar.Nome = Request.Form["Nome"].ToString();
                
                
+                //Ar.NovoArquivo();
+
+                Response.Redirect("/Menu/Feed");
+
+            }
+
+            return View();
+        }
+
+        //METODO DE SALVAR ARQUIVOS
+        public ActionResult AdiconarIntegrante(Int32 IDBanda, Int32 IDIngtegrante)
+        {
+            if (Request.HttpMethod == "POST")
+            {
+
+                Arquivos Ar = new Arquivos();
+
+                Ar.Tipo = Request.Form["Tipo"].ToString();
+                Ar.Nome = Request.Form["Nome"].ToString();
+
+
                 //Ar.NovoArquivo();
 
                 Response.Redirect("/Menu/Feed");

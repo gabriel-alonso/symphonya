@@ -26,7 +26,7 @@ namespace Symphonya_RedeSocial.Models
 
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario_Has_Bandas, Usuario WHERE BandasID = @ID AND UsuarioID = Usuario.ID;";
+            Comando.CommandText = "SELECT Usuario.ID, Usuario.Nome, Usuario.Sobrenome, Usuario.Email FROM Usuario_Has_Bandas, Bandas, Usuario WHERE BandasID = @ID AND UsuarioID = Usuario.ID;";
             Comando.Parameters.AddWithValue("@ID", ID);
 
 

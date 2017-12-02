@@ -350,7 +350,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                             </div>
                                                         </button>
                                                         <div class="panel">
-                                                            <a class="fancybox" href="~/Menu/EditarInstrumento/@I.ID"><strong><o class="fa fa-edit"></o> Editar Informações.</strong></a>
+                                                            <a class="fancybox" href="~/Menu/ExcluirInstrumento/@I.ID"><strong><o class="fa fa-remove"></o> Excluir Instrumento</strong></a>
                                                         </div>
 
                                                         <script language="Javascript">
@@ -379,6 +379,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 else
                                                 {
                                                     <p>Você ainda não possui instrumentos cadastrados! Cadastre-os clicando no botão abaixo.</p>
+                                                }
                                                     <div class="bs-example2 bs-example-padded-bottom">
                                                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                                                             Adicionar Instrumentos
@@ -392,7 +393,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                     <div class="modal-body">
 
                                                                         <h2>Instrumento:</h2>
-                                                                        <select class="instrumentoSelect"required="" id="NovoInstrumento" name="NovoInstrumento">
+                                                                        <select class="instrumentoSelect" required id="NovoInstrumento" name="NovoInstrumento">
                                                                             @if (ViewBag.Instruments != null)
                                                                             {
                                                                                 foreach (var Instrumento in ViewBag.Instruments)
@@ -402,7 +403,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                             }
                                                                             </select>
                                                                             <h2>Maestria:</h2>
-                                                                        <select class="instrumentoSelect" required="" id="NovoInstrumento" name="NovoInstrumento">
+                                                                        <select class="instrumentoSelect" required="" id="NovaMaestria" name="NovaMaestria">
                                                                             <option value="1">Iniciante</option>
                                                                             <option value="2">Intermediário</option>
                                                                             <option value="3">Adepto</option>
@@ -418,9 +419,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                 </div><!-- /.modal-content -->
                                                             </div><!-- /.modal-dialog -->
                                                         </div>
-                                                    </div>
 
-                                                }
+                                                        <div class="bs-example2 bs-example-padded-bottom">
+                                                            <button type="button" class="btnVerMaisInstrumentos" data-toggle="modal" data-target="#myModalCompleto">
+                                                                Ver Mais
+                                                            </button>
+                                                            <div class="modal fade" id="myModalCompleto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h2 class="modal-title">Instrumentos</h2>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            @if (ViewBag.InstrumentosCompleto != null)
+                                                                            {
+                                                                                foreach (var instrumento in ViewBag.InstrumentosCompleto)
+                                                                                {
+                                                                                    <div class="barra-instrumento">
+                                                                                        <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(instrumento.Icone).png" /><strong id="NomeInstrumento">@instrumento.Nome</strong>
+                                                                                    </div>
+                                                                                        <div class="clearfix"></div>
+                                                                                        <div class="skills">
+                                                                                            <div class="skill1" style="width:@instrumento.Maestria%"> </div>
+                                                                                        </div>
+                                                                                }
+                                                                            }
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal-dialog -->
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -461,8 +494,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 else {
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
+
                     if (ViewBag.User.Nivel != 0)
-                {
+                    {
                         <p><strong>Administrador</strong></p>
                     }
                 }

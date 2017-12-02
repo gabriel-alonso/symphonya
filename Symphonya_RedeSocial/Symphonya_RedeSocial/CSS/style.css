@@ -2612,6 +2612,11 @@ td.table-text h6 {
        font-size: 1.3em;
     color: #333;
 }
+
+td.table-text-integrante {
+width:70%;
+}
+
 td.table-text p {
     font-size: 0.9em;
     line-height: 1.5em;
@@ -2813,6 +2818,21 @@ label.control-label {
      background-color: #FC3158;
 	outline: none;
 }
+
+.btnVerMaisInstrumentos{
+    color: #fff;
+    background-color: #FC3158;
+    border: 1px solid #FC3158;
+    padding:10px;
+    font-size: 16px;
+    margin-left:45%;
+}
+.btnVerMaisInstrumentos:hover{
+    color: #FC3158;
+    background-color:#FFFFFF;
+    border: 1px solid #FC3158;
+}
+
 .btn-primary.active, .btn-primary.focus, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .open>.dropdown-toggle.btn-primary {
       color: #fff;
     background-color:#FC3158;

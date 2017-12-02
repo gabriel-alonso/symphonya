@@ -365,8 +365,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Fonts\Calendario\" />
-    <Folder Include="Views\Agenda\" />
-    <Folder Include="Views\Email\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -180,16 +180,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p>Não há Bandas!</p>
                     }
                     else {
-                        foreach (var B in ViewBag.Bandas)
+                        if (ViewBag.User.ID == ViewBag.Bandas.LiderID)
                         {
+
                             <div class="btn-editarperfil">
                                 <a href="~/Menu/EditarBanda" class="btn btn-default dropdown-toggle"><i class="fa fa-pencil-square-o"></i> Editar</a>
                             </div>
-                        <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.User.Imagem_Capa);">
-                            <img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil" alt="" />
-                            <h2>@(B.Nome)</h2>
+
+                        }
+                        <div class="profile-widget" style="background: url(../Imagens/ImagensBandas/@ViewBag.Bandas.Imagem_Capa_Banda);">
+                            <img src="~/Imagens/ImagensBandas/@ViewBag.Bandas.Imagem_Perfil_Banda" alt="" />
+                            <h2>@ViewBag.Bandas.Nome</h2>
                         </div>
-                    }
                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
@@ -207,14 +209,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         <p>Não há Bandas!</p>
                                                     }
                                                     else {
-                                                        foreach (var B in ViewBag.Bandas)
-                                                        {
                                                             <tr class="about-info-p">
                                                                 <td class="text-muted">
-                                                                 <h6><a>@(B.Descricao)</a></h6>
+                                                                 <h6><a>@ViewBag.Bandas.Descricao</a></h6>
                                                                 </td>
                                                             </tr>
-                                                        }
                                                     }
                                                 </tbody>
                                             </table>
@@ -238,11 +237,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 {
                                                     <tr class="table-row">
                                                         <td class="table-text">
-                                                            <h6><a href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
+                                                            <h6><a class="nomeUserTabela" href="/Menu/MostrarUsuario/@I.ID">@(I.Nome) @(I.Sobrenome)</a></h6>
                                                             <p>@(I.Email)</p>
                                                         </td>
                                                         <td>
-                                                            <span class="fam">Usuário</span>
+                                                            @if (I.ID == ViewBag.Bandas.LiderID)
+                                                            {
+                                                                <span class="fam">Líder</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="fam">Integrante</span>
+                                                            }
+
                                                         </td>
                                                         <td>
                                                             <img class="status" src="~/Imagens/icone.png" />
@@ -252,9 +259,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             }
                                         </tbody>
                                     </table>
-                                    <div class="submit" style="text-align: center;">
-                                        <input type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal" value="+ Adicionar Integrante">
-                                    </div>
+                                    @if (ViewBag.User.ID == ViewBag.Bandas.LiderID)
+                                    {
+
+                                        <div class="submit" style="text-align: center;">
+                                            <input type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal" value="Adicionar Integrante">
+                                        </div>
+
+                                    }
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -297,24 +309,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                         foreach (var S in ViewBag.Seguidos)
                                                         {
                                                             <tr class="table-row">
-                                                                <td class="table-text">                               
+                                                                <td class="table-text-integrante">                               
                                                                     <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
                                                                     <p>@(S.Email)</p>
-                                                                </td>
+                                                                </td>                                                               
                                                                 <td>
-                                                                   
-                                                                    <span class="fam">Usuário</span>
-                                                                </td>
-                                                               
-                                                                <td>
-                                                                    <img href="~/Menu/Unfollow/@S.ID" class="status" src="~/Imagens/icone.png"
-                                                                         onmouseover="this.src='/Imagens/iconeHover.png'"
-                                                                         onmouseout="this.src = '/Imagens/icone.png'" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="checkbox" id="chckHead" />
-                                                                </td>
-                                                                
+                                                                    <a class="btnSeguir" href="~/Menu/AdicionarIntegrante/@ViewBag.Bandas.ID@S.ID">
+                                                                        <i class="fa fa-plus">Adicionar</i>
+                                                                    </a>
+                                                                </td>                                                                
                                                             </tr>
                                                         }
                                                     }
