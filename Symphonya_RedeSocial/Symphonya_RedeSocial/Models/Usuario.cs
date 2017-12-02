@@ -68,15 +68,15 @@ namespace Symphonya_RedeSocial.Models
             this.Nivel = (Int32)Leitor["Nivel"];
             if (Leitor["Youtube"] != null)
             {
-                this.Youtube = (String)Leitor["Youtube"];
+                this.Youtube = Leitor["Youtube"].ToString() ;
             }
             if (Leitor["Facebook"] != null)
             {
-                this.Facebook = (String)Leitor["Facebook"];
+                this.Facebook = Leitor["Facebook"].ToString();
             }
             if (Leitor["Twitch"] != null)
             {
-                this.Twitch = (String)Leitor["Twitch"];
+                this.Twitch = Leitor["Twitch"].ToString();
             }
 
             Conexao.Close();

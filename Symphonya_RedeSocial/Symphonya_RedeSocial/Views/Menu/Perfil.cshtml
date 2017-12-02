@@ -374,28 +374,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--//content-inner-->
         <!--/sidebar-menu-->
         <div class="sidebar-menu">
-            <header class="logo">
-                <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="~/Menu/Feed">
-                    <span id="logo"> <h1 style="font: inherit;font-size: 180%;">Symphonya</h1></span>
-                    <!--<img id="logo" src="" alt="Logo"/>-->
-                </a>
-            </header>
-            <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
-            <!--/down-->
-            @if (ViewBag.Logado == null) { }
-                else {
-            <div class="down">
-                    <a><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
-                    <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
-                
-                @if (ViewBag.User.Nivel != 0)
+    <header class="logo">
+        <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="~/Menu/Feed">
+            <span id="logo"> <h1 style="font: inherit;font-size: 180%;">Symphonya</h1></span>
+            <!--<img id="logo" src="" alt="Logo"/>-->
+        </a>
+    </header>
+    <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
+    <!--/down-->
+    @if (ViewBag.Logado == null) { }
+    else {
+        <div class="down">
+            <a><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
+            <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
+
+            @if (ViewBag.User.Nivel != 0)
                 {
-                    <p><strong>Administrador</strong></p>
-                }
-                <ul>
-                    <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
-                </ul>
-            </div>
+                <p><strong>Administrador</strong></p>
+            }
+            <ul>
+                <li><a class="tooltips" href="~/Acesso/Sair"><span>Log out</span><i class="lnr lnr-power-switch"></i></a></li>
+            </ul>
+        </div>
             <!--//down-->
             <div class="menu">
                 <ul id="menu">
@@ -414,7 +414,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         }
                     }
                     <li id="menu-academico">
-                        <a href="#"><i class="fa fa-calendar"></i> <span> Agenda &amp; Horários</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
+                        <a href="#"><i class="fa fa-calendar"></i> <span> Agenda & Eventos</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-boletim"><a href="~/Menu/Agenda">Agenda</a></li>
                             <li id="menu-academico-avaliacoes"><a href="calender.html">Horários</a></li>
@@ -438,10 +438,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <a href="~/Menu/Livestream"><i class="fa fa-twitch"></i> <span>Livestream</span></a>
                     </li>
-                   
                 </ul>
             </div>
-            }
         </div>
         <div class="clearfix"></div>
     </div>
