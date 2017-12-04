@@ -37,8 +37,8 @@ namespace Symphonya_RedeSocial.Models
             this.AgendaID = (Int32)Leitor["AgendaID"];
             this.UsuarioID = (Int32)Leitor["UsuarioID"];
             this.Titulo = (String)Leitor["Titulo"];
-            this.Hora = (String)Leitor["Hora"];
-            this.Data = (String)Leitor["Data"];
+            this.Hora = Leitor["Hora"].ToString();
+            this.Data = Leitor["Data"].ToString();
             this.Descricao = (String)Leitor["Descricao"];
 
             Conexao.Close();
@@ -106,6 +106,43 @@ namespace Symphonya_RedeSocial.Models
             return Seguidos;
         }
 
+        public static List<Show> Listar(Int32 IDUsuario)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT Show.ID, Show.Hora, Show.Data, Show.Titulo, Show.Descricao, Show.UsuarioID FROM Show WHERE Show.UsuarioID = @ID;";
+            Comando.Parameters.AddWithValue("@ID", IDUsuario);
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            List<Show> Shows = new List<Show>();
+
+            while (Leitor.Read())
+            {
+                Show S = new Show();
+                S.ID = (Int32)Leitor["ID"];
+                S.Hora = Leitor["Hora"].ToString();
+                S.Data = Leitor["Data"].ToString();
+                S.Titulo = (String)Leitor["Titulo"];
+                S.Descricao = (String)Leitor["Descricao"];
+
+                Shows.Add(S);
+            }
+
+            if (!Leitor.HasRows)
+            {
+                Conexao.Close();
+                return null;
+            }
+
+            Conexao.Close();
+
+            return Shows;
+        }
+
 
         public Boolean NovoEvento(Int32 IDUsuario, Int32 IDAgenda)
         {
@@ -129,6 +166,23 @@ namespace Symphonya_RedeSocial.Models
             Comando.Parameters.AddWithValue("@Descricao", this.Descricao);
             Comando.Parameters.AddWithValue("@UsuarioID", IDUsuario);
             Comando.Parameters.AddWithValue("@AgendaID", IDAgenda);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
+        }
+
+        public Boolean Excluir()
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "DELETE FROM Show WHERE ID = @ID";
+            Comando.Parameters.AddWithValue("@ID", this.ID);
 
             Int32 Resultado = Comando.ExecuteNonQuery();
 
