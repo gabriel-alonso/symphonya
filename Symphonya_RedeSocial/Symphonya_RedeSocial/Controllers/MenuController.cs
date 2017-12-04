@@ -564,7 +564,6 @@ namespace Symphonya_RedeSocial.Controllers
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarUsuario.Imagem_Perfil = nomeArquivoUpload;

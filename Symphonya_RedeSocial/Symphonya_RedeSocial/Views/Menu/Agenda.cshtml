@@ -264,6 +264,35 @@ $(function () {
 																	  $('[data-toggle="tooltip"]').tooltip()
 																	})</script>
                             </div>
+
+
+                            <!--tESTE-->
+                            <table class="table">
+                                <tbody>
+                                        @if (ViewBag.Show != null)
+                                        {
+                                            foreach (var S in ViewBag.Show)
+                                            {
+                                                <tr class="about-info-p">
+                                                    <td class="text-muted">
+                                                        <h6><a href="/Menu/MostrarEventos/@S.ID">@(S.Hora) @(S.Data)@(S.Titulo)@(S.Descricao)</a></h6>
+                                                             @*<h6><a>@ViewBag.Show.Hora</a></h6>
+                                                            <h6><a>@ViewBag.Show.Data</a></h6>
+                                                            <h6><a>@ViewBag.Show.Titulo</a></h6>
+                                                            <h6><a>@ViewBag.Show.Descricao</a></h6>*@
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+                                        else {
+                                                <p> Você ainda não possui eventos adicionados!</p>
+                                        }
+                                       
+                                    </tbody>
+                            </table>
+
+
                         </div>
                     </div>
                     <!--/Tooltips-->
