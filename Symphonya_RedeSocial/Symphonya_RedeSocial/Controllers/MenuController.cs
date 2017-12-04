@@ -131,6 +131,11 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Generos = generos;
                 }
 
+                if(Bandas.MostrarBanda(IDUsuario) != null)
+                {
+                    Response.Redirect("/Menu/VerBandas");
+                }
+
                 if (Request.HttpMethod == "POST")
                 {
                     Bandas ba = new Bandas();
@@ -174,6 +179,12 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
+                }
+
+                if(Show.Listar(IDUsuario) != null)
+                {
+                    List<Show> showsUsuario = Show.Listar(IDUsuario);
+                    ViewBag.Shows = showsUsuario;
                 }
 
                 if (Seguidores.ListarSeguidores(IDUsuario) != null)
@@ -432,6 +443,42 @@ namespace Symphonya_RedeSocial.Controllers
             }
 
             return RedirectToAction("EditarPerfil", "Menu");
+        }
+
+        public ActionResult ExcluirEvento(int id)
+        {
+            //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
+            Int32 IDUsuario;
+
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            {
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                Show s = new Show(id);
+                s.Excluir();
+            }
+            else
+            {
+                Response.Redirect("/Acesso/Login");
+            }
+
+            return RedirectToAction("Agenda", "Menu");
         }
 
         public ActionResult EditarPerfil()

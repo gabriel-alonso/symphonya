@@ -396,6 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                         <select class="instrumentoSelect" required id="NovoInstrumento" name="NovoInstrumento">
                                                                             @if (ViewBag.Instruments != null)
                                                                             {
+                                                                                <option value="0">SELECIONE</option>
                                                                                 foreach (var Instrumento in ViewBag.Instruments)
                                                                                 {
                                                                                 <option value="@Instrumento.ID"><span src="~/Imagens/IconesInstrumentos/@Instrumento.Nome">@Instrumento.Nome </span></option>
@@ -404,6 +405,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                                             </select>
                                                                             <h2>Maestria:</h2>
                                                                         <select class="instrumentoSelect" required="" id="NovaMaestria" name="NovaMaestria">
+                                                                            <option value="0">SELECIONE</option>
                                                                             <option value="1">Iniciante</option>
                                                                             <option value="2">Intermediário</option>
                                                                             <option value="3">Adepto</option>
@@ -495,9 +497,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
 
-                    if (ViewBag.User.Nivel != 0)
-                    {
+                    if (ViewBag.User.Nivel == 1)
+                {
                         <p><strong>Administrador</strong></p>
+                    }
+                    if (ViewBag.User.Nivel == 2)
+                {
+                        <p><strong>Desenvolvedor</strong></p>
                     }
                 }
                 <ul>
