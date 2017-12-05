@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" />
     <title>Symphonya</title>
     <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
     <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
@@ -30,6 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- /js -->
     <script src="~/JS/jquery-1.10.2.min.js"></script>
     <!-- //js-->
+    <link href="~/CSS/styleCadastro.css" rel='stylesheet' type='text/css' />
+
 </head>
 <body>
     <div class="page-container">
@@ -97,6 +99,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                     </script>
                                 </li>
+                                <li class="dropdown note">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitch"></i> <span class="badge">3</span></a>
+
+
+                                    <ul class="dropdown-menu two first">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>Fique Antenado</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">Veja Tudo</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown note">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o"></i> <span class="badge">5</span></a>
+
+                                    <ul class="dropdown-menu two">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>Voce tem 5 Notificações</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">Veja Tudo</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <div class="clearfix"></div>
                             </ul>
                         </div>
@@ -119,17 +175,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Perfil</h3>
-                    @if (ViewBag.Logado == null)
-                    {
+                   @if (ViewBag.Logado == null)
+                   {
 
-                    }
+                   }
                     @if (ViewBag.Visualizacao != null)
                     {
                         <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Capa);">
                             <img src="~/Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Perfil" alt="" />
                             <h3 class="titulo-verUser">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</h3>
                         </div>
-                    <!--/profile-inner-->
+
+                     <!--/profile-inner-->
                         <div class="profile-section-inner">
                             <div class="col-md-6 profile-info">
                                 <h3 class="inner-tittle">Informações Pessoais </h3>
@@ -178,19 +235,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <h3 class="inner-tittle two">Instrumentos </h3>
                                 <div class="main-grid3">
-                                @if (ViewBag.InstrumentosVisualizacao != null)
-                                {
-                                    foreach (var I in ViewBag.InstrumentosVisualizacao)
+                                    @if (ViewBag.InstrumentosVisualizacao != null)
                                     {
-                                        <div class="barra-instrumento">
-                                            <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
-                                        </div>
-                                                                        <div class="skills">
-                                                                            <div class="skill1" style="width:@I.Maestria%"> </div>
-                                                                        </div>
+                                        foreach (var I in ViewBag.InstrumentosVisualizacao)
+                                        {
+                                            <div class="barra-instrumento">
+                                                <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
+                                            </div>
+                                            <div class="skills">
+                                                <div class="skill1" style="width:@I.Maestria%"> </div>
+                                            </div>
+                                        }
                                     }
-                                }
-                                else
+                                    else
                                     {
                                         <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
                                     }
@@ -323,7 +380,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="#"><i class="fa fa-calendar"></i> <span> Agenda & Eventos</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-boletim"><a href="~/Menu/Agenda">Agenda</a></li>
-                            <li id="menu-academico-avaliacoes"><a href="calender.html">Horários</a></li>
 
                         </ul>
                     </li>
@@ -350,13 +406,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <div class="clearfix"></div>
     </div>
-    </div>
     <script>
 							var toggle = true;
 
 							$(".sidebar-icon").click(function() {
-							  if (toggle)
-							  {
+                                                if (toggle)
+                                                {
 								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
 								$("#menu span").css({"position":"absolute"});
 							  }
@@ -383,9 +438,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="~/JS/bootstrap.min.js"></script>
 </body>
 </html>
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
+@{
+    ViewBag.Title = "VerBandas";
+}
+
+<h2>VerBandas</h2>
+
