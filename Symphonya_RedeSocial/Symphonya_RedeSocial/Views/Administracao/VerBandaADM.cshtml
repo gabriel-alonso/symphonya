@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" />
     <title>Symphonya</title>
     <link rel="icon" href="~/Imagens/symphonyaIcon.png" type="image" />
     <link rel="shortcut icon" href="~/Imagens/symphonyaIcon.png" type="image" />
@@ -179,7 +179,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     {
                         <p>Não há Bandas!</p>
                     }
-                    else {
+                    else
+                    {
                         if (ViewBag.User.ID == ViewBag.Bandas.LiderID)
                         {
 
@@ -208,19 +209,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     {
                                                         <p>Não há Bandas!</p>
                                                     }
-                                                    else {
-                                                            <tr class="about-info-p">
-                                                                <td class="text-muted">
-                                                                 <h6><a>@ViewBag.Bandas.Descricao</a></h6>
-                                                                </td>
-                                                            </tr>
+                                                    else
+                                                    {
+                                                        <tr class="about-info-p">
+                                                            <td class="text-muted">
+                                                                <h6><a>@ViewBag.Bandas.Descricao</a></h6>
+                                                            </td>
+                                                        </tr>
                                                     }
                                                 </tbody>
                                             </table>
                                         </div>
 
                                     </div>
-                                </div>                               
+                                </div>
                             </div>
 
                             <div class="col-md-6 profile-info two">
@@ -232,7 +234,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             {
                                                 <p>Não há Integrantes!</p>
                                             }
-                                            else {
+                                            else
+                                            {
                                                 foreach (var I in ViewBag.Integrantes)
                                                 {
                                                     <tr class="table-row">
@@ -259,83 +262,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             }
                                         </tbody>
                                     </table>
-                                    @if (ViewBag.User.ID == ViewBag.Bandas.LiderID)
-                                    {
-
-                                        <div class="submit" style="text-align: center;">
-                                            <input type="submit" onclick="myFunction()" data-toggle="modal" data-target="#myModal" value="Adicionar Integrante">
-                                        </div>
-
-                                    }
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
 
                             <div class="bs-example2 bs-example-padded-bottom">
-                                @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> 
-                                   + Adicionar Integrante
-                                </button>*@
-
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h2 class="modal-title">Adicionar Integrante</h2>
-                                            </div>
-                                                @*<div class="modal-body">
-                                                    <p class="sub-tittle-desc">Veja quem são a opções dos integrantes.</p>
-    
-                                                </div>*@
-                                        
-
-                                            <!--//ADICIONAR INTEGRANTES PARA A BANDA-->
-                                            @*<div class="col-md-6 page_1">
-                                                <div class="list-group list-group-alternate">
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox"/></span> <i class="ti ti-email"></i> Profile visits</a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-primary"><input type="checkbox" /></span> <i class="ti ti-eye"></i> Profile visits </a>
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-headphone-alt"></i> Call </a>
-                                                    <a href="#" class="list-group-item"><span class="badge"><input type="checkbox" /></span> <i class="ti ti-comments"></i> Messages </a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-warning"><input type="checkbox" /></span> <i class="ti ti-bookmark"></i> Bookmarks </a>
-                                                    <a href="#" class="list-group-item"><span class="badge badge-danger"><input type="checkbox" /></span> <i class="ti ti-bell"></i> Notifications </a>
-                                                </div>
-                                            </div>*@
-                                            <table class="table">
-                                                <tbody>
-                                                    @if (ViewBag.Seguidos == null)
-                                                    {
-                                                        <p>Você não segue ninguem!</p>
-                                                    }
-                                                    else {
-                                                        foreach (var S in ViewBag.Seguidos)
-                                                        {
-                                                            <tr class="table-row">
-                                                                <td class="table-text-integrante">                               
-                                                                    <h6><a href="/Menu/MostrarUsuario/@S.ID">@(S.Nome) @(S.Sobrenome)</a></h6>
-                                                                    <p>@(S.Email)</p>
-                                                                </td>                                                               
-                                                                <td>
-                                                                    <a class="btnSeguir" href="~/Menu/AdicionarIntegrante/@S.ID">
-                                                                        <i class="fa fa-plus">Adicionar</i>
-                                                                    </a>
-                                                                </td>                                                                
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-
-                                                <input type="submit" onclick="myFunction()" value="Salvar">
-
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div>
+                                @*<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                       + Adicionar Integrante
+                                    </button>*@
                             </div>
-                            <!--/map-->                          
+                            <!--/map-->
                             <div class="clearfix"></div>
                         </div>
 
@@ -364,7 +300,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--/down-->
             <div class="down">
                 @if (ViewBag.Logado == null) { }
-                else {
+                else
+                {
                     <a href="~/Menu/Perfil"><img src="~/Imagens/ImagensUsuario/@ViewBag.User.Imagem_Perfil"></a>
                     <span class="name-caret">@ViewBag.User.Nome @ViewBag.User.Sobrenome</span>
                 }
@@ -384,7 +321,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="menu">
                 <ul id="menu">
                     @if (ViewBag.Logado == null) { }
-                    else {
+                    else
+                    {
                         if (ViewBag.User.Nivel != 0)
                         {
                             <li id="menu-academico">
@@ -401,7 +339,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="#"><i class="fa fa-calendar"></i> <span> Agenda & Eventos</span> <span class="fa fa-angle-right" style="padding-left: 17%;"></span></a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-boletim"><a href="~/Menu/Agenda">Agenda</a></li>
-                            
+
                         </ul>
                     </li>
                     <li><a href="~/Menu/Arquivo"><i class="fa fa-file"></i> <span>Arquivos</span></a></li>

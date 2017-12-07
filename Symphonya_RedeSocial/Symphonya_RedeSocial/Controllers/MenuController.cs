@@ -521,6 +521,9 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovaCidade = Request.Form["NovaCidade"];
                     String NovoEstado = Request.Form["NovoEstado"];
                     String NovoTelefone = Request.Form["NovoCelular"];
+                    String NovoTwitch = Request.Form["NovoCanalTwitch"];
+                    String NovoYoutube = Request.Form["NovoCanalYoutube"];
+                    String NovoFacebook = Request.Form["NovoCanalFacebook"];
 
                     Int32 NovoInstrumento = Convert.ToInt32(Request.Form["NovoInstrumento"]);
                     Int32 NovaMaestria = Convert.ToInt32(Request.Form["NovaMaestria"]);
@@ -576,7 +579,22 @@ namespace Symphonya_RedeSocial.Controllers
                         EditarUsuario.Telefone = NovoTelefone;
                     }
 
-                    if(NovoInstrumento != 0 && NovaMaestria != 0)
+                    if(NovoTwitch != "")
+                    {
+                        EditarUsuario.Twitch = NovoTwitch;
+                    }
+
+                    if (NovoYoutube != "")
+                    {
+                        EditarUsuario.Youtube = NovoYoutube;
+                    }
+
+                    if (NovoFacebook != "")
+                    {
+                        EditarUsuario.Facebook = NovoFacebook;
+                    }
+
+                    if (NovoInstrumento != 0 && NovaMaestria != 0)
                     {
                         EditarInstrumento.ID = NovoInstrumento;
                         EditarInstrumento.Maestria = NovaMaestria;
@@ -1131,7 +1149,78 @@ namespace Symphonya_RedeSocial.Controllers
             return View();
         }
 
+        public ActionResult AdicionarIntegrante(int ID)
+        {
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            {
+                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
+                Int32 IDUsuario;
 
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                if (Bandas.MostrarBanda(IDUsuario) != null)
+                {
+                    Bandas bandas = new Bandas();
+                    bandas = Bandas.MostrarBanda(IDUsuario);
+                    Usuario novoIntegrante = new Usuario(ID);
+                    bandas.AdicionarIntegrante(novoIntegrante.ID);
+                }
+
+            }
+            return RedirectToAction("VerBandas","Menu");
+        }
+
+        public ActionResult ExcluirIntegrante(int ID)
+        {
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
+            {
+                //CRIA VARIAVEL GLOBAL DO ID DO USUARIO
+                Int32 IDUsuario;
+
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                    IDUsuario = User.ID;
+                }
+
+                if (Bandas.MostrarBanda(IDUsuario) != null)
+                {
+                    Bandas bandas = new Bandas();
+                    bandas = Bandas.MostrarBanda(IDUsuario);
+                    bandas.RemoverIntegrante(ID);
+                }
+
+            }
+            return RedirectToAction("VerBandas", "Menu");
+        }
 
         public ActionResult Unfollow(Int32 ID)
         {

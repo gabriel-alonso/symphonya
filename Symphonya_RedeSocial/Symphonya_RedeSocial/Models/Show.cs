@@ -21,7 +21,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Show(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -45,7 +45,7 @@ namespace Symphonya_RedeSocial.Models
         }
         public Show(Int32 AgendaID, Int32 UsuarioID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             //CRIACAO DO COMANDO SQL
@@ -72,7 +72,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Agenda> ListarAgenda(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -108,7 +108,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Show> Listar(Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -147,7 +147,7 @@ namespace Symphonya_RedeSocial.Models
         public Boolean NovoEvento(Int32 IDUsuario, Int32 IDAgenda)
         {
 
-            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             //CRIACAO DO COMANDO SQL
@@ -176,7 +176,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Boolean Excluir()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();

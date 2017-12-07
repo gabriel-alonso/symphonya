@@ -21,7 +21,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Integrantes> ListarIntegrantes(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();

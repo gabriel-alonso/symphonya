@@ -82,5 +82,27 @@ namespace Symphonya_RedeSocial.Controllers
             }
 
         }
+
+        public ActionResult VerBandaADM(Int32 ID)
+        {
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+            }
+            else
+            {
+                Response.Redirect("~/Acesso/Login");
+            }
+
+                Bandas banda = new Bandas(ID);
+                List<Integrantes> integrantes = Integrantes.ListarIntegrantes(banda.ID);
+                ViewBag.Integrantes = integrantes;
+                ViewBag.Banda = banda;
+
+                return View();
+        }
     }
 }

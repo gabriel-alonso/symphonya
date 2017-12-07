@@ -36,7 +36,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Usuario(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -83,7 +83,7 @@ namespace Symphonya_RedeSocial.Models
         }
         public Usuario(String Email, String Senha)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             //CRIACAO DO COMANDO SQL
@@ -133,9 +133,10 @@ namespace Symphonya_RedeSocial.Models
 
             Conexao.Close();
         }
+
         public Boolean NovoUser()
         {
-            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             //CRIACAO DO COMANDO SQL
@@ -169,7 +170,7 @@ namespace Symphonya_RedeSocial.Models
         }
         public Boolean Alterar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -197,7 +198,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Int32 Contar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -222,7 +223,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Usuario> Listar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -273,7 +274,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Usuario> Listar(String pesquisa)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -325,7 +326,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Boolean Desativar(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -340,7 +341,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Boolean Ativar(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -355,7 +356,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Boolean Autenticar(String Email, String Senha)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
 
             Conexao.Open();
 
@@ -364,6 +365,34 @@ namespace Symphonya_RedeSocial.Models
             Comando.CommandText = "SELECT ID FROM Usuario WHERE Email=@Email AND Senha=@Senha;";
             Comando.Parameters.AddWithValue("@Email", Email);
             Comando.Parameters.AddWithValue("@Senha", Senha);
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            Leitor.Read();
+
+            //VERIFICA SE O LEITOR TROUXE RESULTADOS
+            if (!Leitor.HasRows)
+            {
+                //FECHA CONEXAO COM O BANCO
+                Conexao.Close();
+                return false;
+            }
+
+            //FECHA CONEXAO COM O BANCO
+            Conexao.Close();
+            return true;
+        }
+
+        public static Boolean VerificarEmail(String Email)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
+
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT ID FROM Usuario WHERE Email=@Email;";
+            Comando.Parameters.AddWithValue("@Email", Email);
 
             SqlDataReader Leitor = Comando.ExecuteReader();
 

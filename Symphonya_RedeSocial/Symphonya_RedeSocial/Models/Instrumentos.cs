@@ -22,7 +22,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Instrumentos(Int32 IDInstrumento, Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -46,7 +46,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Instrumentos(String Nome)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -68,7 +68,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Instrumentos> Listar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -102,7 +102,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Instrumentos> ListarEspecifico(Int32 ID, bool limite)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -149,7 +149,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Boolean Alterar(Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -171,7 +171,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Boolean Novo(Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -190,7 +190,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Boolean Excluir(Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();

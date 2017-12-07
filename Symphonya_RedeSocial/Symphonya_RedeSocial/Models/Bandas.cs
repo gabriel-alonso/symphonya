@@ -20,9 +20,33 @@ namespace Symphonya_RedeSocial.Models
 
         public Bandas() { }
 
+        public Bandas(Int32 ID)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "SELECT * FROM Bandas WHERE ID=@ID;";
+            Comando.Parameters.AddWithValue("@ID", ID);
+
+            SqlDataReader Leitor = Comando.ExecuteReader();
+
+            Leitor.Read();
+
+            this.ID = (Int32)Leitor["ID"];
+            this.Nome = (String)Leitor["Nome"];
+            this.Descricao = (String)Leitor["Descricao"];
+            this.LiderID = (Int32)Leitor["LiderID"];
+            this.Imagem_Capa_Banda = Leitor["Imagem_Capa_Banda"].ToString();
+            this.Imagem_Perfil_Banda = Leitor["Imagem_Perfil_Banda"].ToString();
+
+            Conexao.Close();
+        }
+
         public Bandas(Int32 ID, Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -44,7 +68,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Bandas MostrarBanda(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -77,7 +101,7 @@ namespace Symphonya_RedeSocial.Models
         public Boolean NovaBanda(Int32 IDLider)
         {
 
-            SqlConnection Conexao = new SqlConnection("Server=ESN509VMSSQL;Database=Symphonya;User Id=Aluno;Password=Senai1234;");
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             //CRIACAO DO COMANDO SQL
@@ -97,7 +121,7 @@ namespace Symphonya_RedeSocial.Models
         }
         public static Boolean excludeBand(Int32 ID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -113,7 +137,7 @@ namespace Symphonya_RedeSocial.Models
         }
         public static Bandas ListarBanda(Int32 BandaID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -136,8 +160,8 @@ namespace Symphonya_RedeSocial.Models
             Bandas.Nome = (String)Leitor["Nome"];
             Bandas.Descricao = (String)Leitor["Descricao"];
             Bandas.LiderID = (Int32)Leitor["LiderID"];
-            Bandas.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
-            Bandas.Imagem_Capa_Banda = (String)Leitor["Imagem_Capa_Banda"];
+            Bandas.Imagem_Perfil_Banda = Leitor["Imagem_Perfil_Banda"].ToString();
+            Bandas.Imagem_Capa_Banda = Leitor["Imagem_Capa_Banda"].ToString();
 
             Conexao.Close();
 
@@ -146,7 +170,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Bandas VisualizarBanda(Int32 LiderID)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -179,7 +203,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Bandas> ListarBandas(String pesquisa)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -213,7 +237,7 @@ namespace Symphonya_RedeSocial.Models
 
         public Boolean AlterarBanda(Int32 IDUsuario)
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -233,7 +257,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static Int32 Contar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -258,7 +282,7 @@ namespace Symphonya_RedeSocial.Models
 
         public static List<Bandas> Listar()
         {
-            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["Symphonya"].ConnectionString);
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
             Conexao.Open();
 
             SqlCommand Comando = new SqlCommand();
@@ -275,8 +299,8 @@ namespace Symphonya_RedeSocial.Models
                 B.Nome = ((String)Leitor["Nome"]);
                 B.Descricao = (String)Leitor["Descricao"];
                 B.Lider = (String)Leitor["NomeUsuario"] + " " + (String)Leitor["Sobrenome"];
-                B.Imagem_Perfil_Banda = (String)Leitor["Imagem_Perfil_Banda"];
-                B.Imagem_Capa_Banda = (String)Leitor["Imagem_Capa_Banda"];
+                B.Imagem_Perfil_Banda = Leitor["Imagem_Perfil_Banda"].ToString();
+                B.Imagem_Capa_Banda = Leitor["Imagem_Capa_Banda"].ToString();
 
                 Bands.Add(B);
             }
@@ -291,5 +315,42 @@ namespace Symphonya_RedeSocial.Models
 
             return Bands;
         }
+
+        public Boolean AdicionarIntegrante(Int32 IDIntegrante)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "INSERT INTO Usuario_Has_Bandas VALUES (@IDIntegrante, @IDBanda);";
+            Comando.Parameters.AddWithValue("@IDBanda", this.ID);
+            Comando.Parameters.AddWithValue("@IDIntegrante", IDIntegrante);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
+        }
+
+        public Boolean RemoverIntegrante(Int32 IDIntegrante)
+        {
+            SqlConnection Conexao = new SqlConnection(ConfigurationManager.ConnectionStrings["SymphonyaBCD"].ConnectionString);
+            Conexao.Open();
+
+            SqlCommand Comando = new SqlCommand();
+            Comando.Connection = Conexao;
+            Comando.CommandText = "DELETE FROM Usuario_Has_Bandas WHERE UsuarioID = @IDIntegrante AND BandasID = @IDBanda;";
+            Comando.Parameters.AddWithValue("@IDBanda", this.ID);
+            Comando.Parameters.AddWithValue("@IDIntegrante", IDIntegrante);
+
+            Int32 Resultado = Comando.ExecuteNonQuery();
+
+            Conexao.Close();
+
+            return Resultado > 0 ? true : false;
+        }
+
     }
 }

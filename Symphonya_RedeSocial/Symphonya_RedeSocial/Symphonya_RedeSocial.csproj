@@ -283,7 +283,9 @@
     <Content Include="JS\vix.js" />
     <Content Include="JS\vroom.js" />
     <Content Include="SymphonyaCompanion.asmx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Acesso\Cadastro.cshtml" />
     <Content Include="Views\Menu\Feed.cshtml" />
     <Content Include="Views\Menu\Perfil.cshtml" />
@@ -350,13 +352,13 @@
     <Content Include="Views\Menu\Email.cshtml" />
     <Content Include="Views\Menu\VerBandas.cshtml" />
     <Content Include="Views\Menu\Arquivo.cshtml" />
-    <None Include="Properties\PublishProfiles\Symphonya - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\Symphonya.pubxml" />
     <Content Include="Views\Menu\VerIntegrantes.cshtml" />
     <Content Include="Views\Administracao\Usuarios.cshtml" />
     <Content Include="Views\Menu\EditarBanda.cshtml" />
     <Content Include="Views\Administracao\Bandas.cshtml" />
+    <None Include="Properties\PublishProfiles\Symphonya - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Symphonya - Web Deploy.pubxml" />
+    <Content Include="Views\Administracao\VerBandaADM.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

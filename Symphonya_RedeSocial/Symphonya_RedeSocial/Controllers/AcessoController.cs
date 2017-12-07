@@ -28,22 +28,31 @@ namespace Symphonya_RedeSocial.Controllers
                 {
                     Usuario Usuario = new Usuario(Email, SenhaEncriptada);
 
-                    //VERIFICA SE O USUARIO É UM ADM
-                    if(Usuario.Nivel != 0)
+                    if (Usuario.Modo == true)
                     {
-                        Session["Administrador"] = Usuario;
+                        ViewBag.MsgErro = "Sua conta foi desativada!";
+                        return View();
                     }
                     else
                     {
-                        Session["Usuario"] = Usuario;
+                        //VERIFICA SE O USUARIO É UM ADM
+                        if (Usuario.Nivel != 0)
+                        {
+                            Session["Administrador"] = Usuario;
+                        }
+                        else
+                        {
+                            Session["Usuario"] = Usuario;
+                        }
+
+                        Response.Redirect("~/Menu/Feed");
                     }
-
-                    Response.Redirect("~/Menu/Feed");
                 }
-
+                else
+                {
                     //CASO INFORMACOES DIGITADAS SEJAM INVALIDAS
                     ViewBag.MsgErro = "Usuário e/ou Senha incorretos!";
-
+                }
                 }
                 
                 return View();
@@ -55,25 +64,35 @@ namespace Symphonya_RedeSocial.Controllers
             if (Request.HttpMethod == "POST")
             {
 
-                Usuario Us = new Usuario();
+                //VERIFICA SE JA EXISTE UM EMAIL CADASTRADO
+                if (Usuario.VerificarEmail(Request.Form["Email"].ToString()))
+                {
+                    ViewBag.MsgErro = "E-Mail já cadastrado!";
+                }
 
-                Us.Nome = Request.Form["Nome"].ToString();
-                Us.Sobrenome = Request.Form["Sobrenome"].ToString();
-                Us.MesNascimento = Convert.ToInt32(Request.Form["MesNascimento"]);
-                Us.DiaNascimento = Convert.ToInt32(Request.Form["DiaNascimento"]);
-                Us.AnoNascimento = Convert.ToInt32(Request.Form["AnoNascimento"]);
-                Us.Email = Request.Form["Email"].ToString();
-                Us.Senha = FormsAuthentication.HashPasswordForStoringInConfigFile(Request.Form["Senha"], "SHA1");
-                Us.Cidade = Request.Form["Cidade"].ToString();
-                Us.Estado = Request.Form["Estado"].ToString();
-                //Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
-                Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
-                //Us.Imagem_Perfil = Convert.ToString(Request.Form["Imagem_Perfil"]);
-                //Us.Imagem_Capa = Convert.ToString(Request.Form["Imagem_Capa"]);
-                Us.Telefone = Request.Form["Telefone"].ToString();
-                Us.NovoUser();
+                else
+                {
+                    Usuario Us = new Usuario();
 
-                Response.Redirect("/Menu/Feed");
+                    Us.Nome = Request.Form["Nome"].ToString();
+                    Us.Sobrenome = Request.Form["Sobrenome"].ToString();
+                    Us.MesNascimento = Convert.ToInt32(Request.Form["MesNascimento"]);
+                    Us.DiaNascimento = Convert.ToInt32(Request.Form["DiaNascimento"]);
+                    Us.AnoNascimento = Convert.ToInt32(Request.Form["AnoNascimento"]);
+                    Us.Email = Request.Form["Email"].ToString();
+                    Us.Senha = FormsAuthentication.HashPasswordForStoringInConfigFile(Request.Form["Senha"], "SHA1");
+                    Us.Cidade = Request.Form["Cidade"].ToString();
+                    Us.Estado = Request.Form["Estado"].ToString();
+                    //Us.Estado = Convert.ToInt32(Request.Form["Estado"]);
+                    Us.Sexo = Convert.ToBoolean(Request.Form["Sexo"]);
+                    //Us.Imagem_Perfil = Convert.ToString(Request.Form["Imagem_Perfil"]);
+                    //Us.Imagem_Capa = Convert.ToString(Request.Form["Imagem_Capa"]);
+                    Us.Telefone = Request.Form["Telefone"].ToString();
+                    Us.NovoUser();
+
+                    Session["Usuario"] = Us;
+                    Response.Redirect("/Menu/Feed");
+                }
 
             }
 

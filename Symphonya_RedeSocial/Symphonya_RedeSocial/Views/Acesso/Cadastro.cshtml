@@ -62,6 +62,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="graph-2 general">
                         <h3 class="inner-tittle t-inner" style="text-align: center;">Cadastrar</h3>
                         <div class="grid-1">
+                            @if (ViewBag.MsgErro != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong> @ViewBag.MsgErro
+                                </div>
+                            }
                             <div class="form-body">
                                 <form action="~/Acesso/Cadastro" method="post" class="form-horizontal">
                                     <div class="form-group">

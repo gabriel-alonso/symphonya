@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     @if (ViewBag.MsgErro != null)
                     {
                     <div class="alert alert-danger">
-                        <strong>Erro!</strong> Usuário e/ou Senha incorretos!
+                        <strong>Erro!</strong> @ViewBag.MsgErro
                     </div>
                     }
                     <form method="post" action="~/Acesso/Login">
