@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" /> 
+    <link rel="icon" href="~/Imagens/sympIcon.png" type="image/x-icon" />
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="error-top">
             <h2 class="inner-tittle page">Symphonya</h2>
             <div class="login">
-                <h3 class="inner-tittle t-inner">Entrar</h3>
+                <h3 class="inner-tittle t-inner">Recuperação de Senha</h3>
                 <div class="login-esquerda">
                     <h2 class="boasvindas-titulo">Bem-Vindo!</h2>
                     <p class="boasvindas-slogan"><b class="Symphonya-destaque">Symphonya</b>, desperte o artista que há em você.</p>
@@ -47,24 +47,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!-- CASO O LOGIN FALHE-->
                     @if (ViewBag.MsgErro != null)
                     {
-                    <div class="alert alert-danger">
-                        <strong>Erro!</strong> @ViewBag.MsgErro
-                    </div>
-                    }
-                    @if (ViewBag.MsgSucCadastro != null)
-                    {
-                        <div class="alert alert-success">
-                            <strong>Sucesso!</strong> @ViewBag.MsgErro
+                        <div class="alert alert-danger">
+                            <strong>Erro!</strong> @ViewBag.MsgErro
                         </div>
                     }
-                    <form method="post" action="~/Acesso/Login">
-                        <input type="text" class="text" value="E-Mail" id="email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
-                        <input type="password" value="senha" id="senha" name="senha" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-                        <div class="submit"><input type="submit" onclick="myFunction()" value="Login"></div>
+                    <form action="~/Acesso/Recuperar" method="post">
+                        <input type="text" class="text" value="E-Mail" id="Email" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}">
+                        <div class="submit"><input type="submit" onclick="myFunction()" value="Recuperar"></div>
                         <div class="clearfix"></div>
-
+                        <br />
+                        <br />
+                        <br />
                         <div class="new">
-                            <p class="signSenha">Esqueci minha senha ?<a class="signSenha" href="~/Acesso/RecuperarSenha"> Clique Aqui.</a></p>
+                            <p class="signSenha"><a class="signSenha" href="~/Acesso/Login">Cancelar</a></p>
                             <p class="sign">Não possui uma conta ? <a href="~/Acesso/Cadastro">Cadastre-se</a></p>
                             <div class="clearfix"></div>
                         </div>

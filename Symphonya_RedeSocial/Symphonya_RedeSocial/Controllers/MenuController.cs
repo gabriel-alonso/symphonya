@@ -20,12 +20,14 @@ namespace Symphonya_RedeSocial.Controllers
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
+                Int32 IDUsuario;
                 if (Session["Administrador"] != null)
                 {
                     //CRIA SESSÃO DO Administrador
                     ViewBag.Logado = Session["Administrador"];
                     Usuario User = (Usuario)Session["Administrador"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
 
                 else
@@ -34,13 +36,37 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Logado = Session["Usuario"];
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
+                    IDUsuario = User.ID;
                 }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
+                //VIEWBAG RELACIONADA AS POSTAGENS
+                ViewBag.Postagens = Postagem.ListarPostagem(IDUsuario);
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
-                    String busca = Request.Form["busca"].ToString();
-                    Response.Redirect("/Menu/Pesquisar/" + busca);
+                    //CASO O USUARIO TENHA PESQUISADO ALGO
+                    if (Request.Form["busca"] != null)
+                    {
+                        String busca = Request.Form["busca"].ToString();
+                        Response.Redirect("/Menu/Pesquisar/" + busca);
+                    }
+
+                    if(Request.Form["TxtAreaPostagem"] != null)
+                    {
+                        Postagem postagem = new Postagem();
+                        postagem.AutorID = IDUsuario;
+                        postagem.Texto = Request.Form["TxtAreaPostagem"].ToString();
+                        postagem.Data_Hora = DateTime.Now;
+                        postagem.Postar();
+                    }
                 }
             }
             //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
@@ -80,8 +106,17 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
-                
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
                 ViewBag.Arquivos = Models.Arquivos.ListarArquivoUsuario(IDUsuario, true);
+
+                //VIEWBAG RELACIONADA AS POSTAGENS DO USUARIO
+                ViewBag.Postagens = Postagem.ListarPostagem(IDUsuario);
 
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -124,6 +159,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 //RETORNA OS USUARIOS, CASO HAJA RESULTADO
                 if (Genero.Listar() != null)
                 {
@@ -141,7 +183,14 @@ namespace Symphonya_RedeSocial.Controllers
                     Bandas ba = new Bandas();
                     ba.Nome = Request.Form["Nome"].ToString();
                     ba.Descricao = Request.Form["Descricao"].ToString();
-                    ba.NovaBanda(IDUsuario);
+                    if (ba.NovaBanda(IDUsuario))
+                    {
+                        Bandas bandaAux = new Bandas();
+                        bandaAux = ba.VerificarBandas(IDUsuario);
+                        bandaAux.NovaBandaIntegrante(IDUsuario);
+
+                    }
+                    
                     Response.Redirect("/Menu/Feed");
                 }
             }
@@ -181,7 +230,14 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
-                if(Show.Listar(IDUsuario) != null)
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
+                if (Show.Listar(IDUsuario) != null)
                 {
                     List<Show> showsUsuario = Show.Listar(IDUsuario);
                     ViewBag.Shows = showsUsuario;
@@ -259,6 +315,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (Seguidores.ListarSeguidores(IDUsuario) != null)
                 {
                     List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
@@ -325,6 +388,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (Seguidores.ListarSeguidores(IDUsuario) != null)
                 {
                     List<Seguidores> seguidores = Seguidores.ListarSeguidores(IDUsuario);
@@ -384,6 +454,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (TempData["Usuario"] != null)
                 {
                     Usuario user = new Usuario();
@@ -392,6 +469,10 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Visualizacao = (Usuario)TempData["Usuario"];
                     ViewBag.ArquivosVisualizacao = Models.Arquivos.ListarArquivoUsuario(user.ID,true);
                     ViewBag.InstrumentosVisualizacao = Instrumentos.ListarEspecifico(user.ID, true);
+
+                    //VIEWBAG RELACIONADA AS POSTAGENS DO USUARIO
+                    ViewBag.PostagensUsuario = Postagem.ListarPostagem(user.ID);
+
                 }
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
@@ -434,6 +515,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 Instrumentos i = new Instrumentos(id, IDUsuario);
                 i.Excluir(IDUsuario);
             }
@@ -469,6 +557,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
 
                 Show s = new Show(id);
                 s.Excluir();
@@ -510,6 +605,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.InstrumentosCompleto = Instrumentos.ListarEspecifico(IDUsuario, false);
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 ViewBag.Instruments = Instrumentos.Listar();
 
                 if (Request.HttpMethod == "POST")
@@ -524,6 +626,7 @@ namespace Symphonya_RedeSocial.Controllers
                     String NovoTwitch = Request.Form["NovoCanalTwitch"];
                     String NovoYoutube = Request.Form["NovoCanalYoutube"];
                     String NovoFacebook = Request.Form["NovoCanalFacebook"];
+                    String NovaBio = Request.Form["NovaBio"];
 
                     Int32 NovoInstrumento = Convert.ToInt32(Request.Form["NovoInstrumento"]);
                     Int32 NovaMaestria = Convert.ToInt32(Request.Form["NovaMaestria"]);
@@ -571,6 +674,12 @@ namespace Symphonya_RedeSocial.Controllers
                     if (NovoEstado != "")
                     {
                         EditarUsuario.Estado = NovoEstado;
+                    }
+
+                    //CASO O CAMPO DE BIOGRAFIA SEJA DIFERENTE DE NULO
+                    if(NovaBio != "")
+                    {
+                        EditarUsuario.Biografia = NovaBio;
                     }
 
                     //CASO O CAMPO DE TELEFONE SEJA DIFERENTE DE NULO
@@ -664,7 +773,6 @@ namespace Symphonya_RedeSocial.Controllers
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensUsuario\\" + nomeArquivoUpload);
-                                arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensUsuario" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE CAPA DO USUARIO
                                 EditarUsuario.Imagem_Capa = nomeArquivoUpload;
@@ -700,7 +808,7 @@ namespace Symphonya_RedeSocial.Controllers
 
         }
 
-        public ActionResult EditarBanda(Int32 IDBanda)
+        public ActionResult EditarBanda()
         {
             //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
             if (Session["Usuario"] != null || Session["Administrador"] != null)
@@ -727,6 +835,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.Bandas = Bandas.VisualizarBanda(IDUsuario);
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (Request.HttpMethod == "POST")
                 {
 
@@ -736,7 +851,7 @@ namespace Symphonya_RedeSocial.Controllers
                     HttpPostedFileBase NovaImagemCapaBanda = Request.Files["NovaImagemCapaBanda"];
 
                     Usuario EditarUsuario = new Usuario();
-                    Bandas EditarBandas = new Bandas(IDBanda, IDUsuario);
+                    Bandas EditarBandas = new Bandas(ViewBag.Bandas.ID);
 
                     if (Session["Administrador"] != null)
                     {
@@ -770,8 +885,7 @@ namespace Symphonya_RedeSocial.Controllers
                             int contentLength = postedFile.ContentLength;
                             string contentType = postedFile.ContentType;
                             string nome = postedFile.FileName;
-                            int ID = IDUsuario;
-
+                            
                             //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
                             Imagem img = new Imagem();
 
@@ -782,11 +896,10 @@ namespace Symphonya_RedeSocial.Controllers
                                 Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 180, 180);
 
                                 //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
-                                string nomeArquivoUpload = "imagemPerfilBanda" + ID + ".png";
+                                string nomeArquivoUpload = "imagemPerfilBanda" + EditarBandas.ID + ".png";
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensBandas\\" + nomeArquivoUpload);
-                                // arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE PERFIL DO USUARIO
                                 EditarBandas.Imagem_Perfil_Banda = nomeArquivoUpload;
@@ -806,7 +919,6 @@ namespace Symphonya_RedeSocial.Controllers
                             int contentLength = postedFile.ContentLength;
                             string contentType = postedFile.ContentType;
                             string nome = postedFile.FileName;
-                            int ID = IDUsuario;
 
                             //CRIA UM OBJETO IMAGEM PARA REDIMENSIONAMENTO
                             Imagem img = new Imagem();
@@ -818,11 +930,10 @@ namespace Symphonya_RedeSocial.Controllers
                                 Bitmap arquivoConvertido = img.ResizeImage(postedFile.InputStream, 1920, 1080);
 
                                 //CRIA O NOME DO ARQUIVO, ESTE QUE TRAS O ID DO USUARIO
-                                string nomeArquivoUpload = "imagemCapaBanda" + ID + ".png";
+                                string nomeArquivoUpload = "imagemCapaBanda" + EditarBandas.ID + ".png";
 
                                 //SALVA O ARQUIVO
                                 arquivoConvertido.Save(HttpRuntime.AppDomainAppPath + "\\Imagens\\ImagensBandas\\" + nomeArquivoUpload);
-                                //arquivoConvertido.Save(@"C:\Users\16128604\Source\Repos\Symphonya_RedeSocial\Symphonya_RedeSocial\Symphonya_RedeSocial\Imagens\ImagensBandas" + nomeArquivoUpload);
 
                                 //SETA A IMAGEM DE CAPA DO USUARIO
                                 EditarBandas.Imagem_Capa_Banda = nomeArquivoUpload;
@@ -830,6 +941,8 @@ namespace Symphonya_RedeSocial.Controllers
 
                         }
                     }
+
+                    EditarBandas.Alterar();
                 }
                 return View();
             }
@@ -866,6 +979,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
 
                 //RETORNA OS USUARIOS, CASO HAJA RESULTADO
                 if (Usuario.Listar(busca) != null)
@@ -935,6 +1055,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 //METODO PARA BUSCA DE USUARIOS, MUSICAS, BANDAS
                 if (Request.HttpMethod == "POST")
                 {
@@ -967,7 +1094,6 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
-
                 else
                 {
                     //CRIA SESSÃO DO USUARIO
@@ -976,6 +1102,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
 
                 if (Seguidores.ListarSeguidores(IDUsuario) != null)
                 {
@@ -1029,6 +1162,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (Seguidores.ListarSeguidos(IDUsuario) != null)
                 {
                     List<Seguidores> seguidos = Seguidores.ListarSeguidos(IDUsuario);
@@ -1080,7 +1220,14 @@ namespace Symphonya_RedeSocial.Controllers
                     Usuario User = (Usuario)Session["Usuario"];
                     ViewBag.User = User;
                     IDUsuario = User.ID;
-                }                
+                }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
 
                 if (Bandas.MostrarBanda(IDUsuario) != null)
                 {
@@ -1173,6 +1320,13 @@ namespace Symphonya_RedeSocial.Controllers
                     ViewBag.User = User;
                     IDUsuario = User.ID;
                 }
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
 
                 if (Bandas.MostrarBanda(IDUsuario) != null)
                 {
@@ -1367,6 +1521,13 @@ namespace Symphonya_RedeSocial.Controllers
                     IDUsuario = User.ID;
                 }
 
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
+
                 if (Request.HttpMethod == "POST")
                 {
                     foreach (string fileName in Request.Files)
@@ -1412,48 +1573,37 @@ namespace Symphonya_RedeSocial.Controllers
             }
             return View();
         }
-       
 
-        //METODO DE SALVAR ARQUIVOS
-        public ActionResult Arquivos()
+        public ActionResult Avaliar(Int32 ID)
         {
-            if (Request.HttpMethod == "POST")
+            //VERIFICA SE EXISTE ALGUM DADO NA SESSÃO USUARIO
+            if (Session["Usuario"] != null || Session["Administrador"] != null)
             {
+                if (Session["Administrador"] != null)
+                {
+                    //CRIA SESSÃO DO Administrador
+                    ViewBag.Logado = Session["Administrador"];
+                    Usuario User = (Usuario)Session["Administrador"];
+                    ViewBag.User = User;
+                }
 
-                Arquivos Ar = new Arquivos();
+                else
+                {
+                    //CRIA SESSÃO DO USUARIO
+                    ViewBag.Logado = Session["Usuario"];
+                    Usuario User = (Usuario)Session["Usuario"];
+                    ViewBag.User = User;
+                }
 
-                Ar.Tipo = Request.Form["Tipo"].ToString();
-                Ar.Nome = Request.Form["Nome"].ToString();
-               
-               
-                //Ar.NovoArquivo();
-
-                Response.Redirect("/Menu/Feed");
-
+                Usuario.Avaliar(ID);
+            }
+            //CASO SESSAO SEJA NULA -> REDIRECIONAMENTO PARA PAGINA LOGIN
+            else
+            {
+                Response.Redirect("/Acesso/Login");
             }
 
-            return View();
-        }
-
-        //METODO DE SALVAR ARQUIVOS
-        public ActionResult AdiconarIntegrante(Int32 IDBanda, Int32 IDIngtegrante)
-        {
-            if (Request.HttpMethod == "POST")
-            {
-
-                Arquivos Ar = new Arquivos();
-
-                Ar.Tipo = Request.Form["Tipo"].ToString();
-                Ar.Nome = Request.Form["Nome"].ToString();
-
-
-                //Ar.NovoArquivo();
-
-                Response.Redirect("/Menu/Feed");
-
-            }
-
-            return View();
+            return RedirectToAction("VerUsuario", "Menu");
         }
 
     }

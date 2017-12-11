@@ -100,57 +100,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </script>
                                 </li>
                                 <li class="dropdown note">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitch"></i> <span class="badge">3</span></a>
-
-
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-diamond"></i></a>
                                     <ul class="dropdown-menu two first">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>Fique Antenado</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                    <p><span>1 hour ago</span></p>
+                                        @if (ViewBag.Ranking != null)
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Ranking</h3>
                                                 </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#">Veja Tudo</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            foreach (var R in ViewBag.Ranking)
+                                            {
+                                                <li>
+                                                    <a href="/Menu/MostrarUsuario/@R.ID">
+                                                        <div class="user_img"><img src="~/Imagens/ImagensUsuario/@R.Imagem_Perfil" alt=""></div>
+                                                        <div class="notification_desc">
+                                                            <p>@R.Nome @R.Sobrenome</p>
+                                                            <p><span>Músico</span></p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
                                     </ul>
                                 </li>
 
                                 <li class="dropdown note">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o"></i> <span class="badge">5</span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-universal-access"></i>
+                                        @if (ViewBag.QntADM != null)
+                                        {
+                                            <span class="badge">@ViewBag.QntADM</span>
+                                        }
+                                    </a>
 
                                     <ul class="dropdown-menu two">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>Voce tem 5 Notificações</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                    <p><span>1 hour ago</span></p>
+                                        @if (ViewBag.Administradores != null)
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Administradores</h3>
                                                 </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#">Veja Tudo</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            foreach (var A in ViewBag.Administradores)
+                                            {
+                                                <li>
+                                                    <a href="/Menu/MostrarUsuario/@A.ID">
+                                                        <div class="user_img"><img src="~/Imagens/ImagensUsuario/@A.Imagem_Perfil" alt=""></div>
+                                                        <div class="notification_desc">
+                                                            <p>@A.Nome @A.Sobrenome</p>
+                                                            <p><span>Administrador</span></p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Não Disponível</h3>
+                                                </div>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <div class="clearfix"></div>
@@ -175,6 +189,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!--//sub-heard-part-->
                     <!--/profile-->
                     <h3 class="sub-tittle pro">Perfil</h3>
+                        @if (ViewBag.Visualizacao != null)
+                        {
+                            <div class="btn-editarperfil">
+                            <a href="~/Menu/Avaliar/@ViewBag.Visualizacao.ID" class="btn btn-default dropdown-toggle"><i class="fa fa-thumbs-o-up"></i> Avaliar</a>
+                            </div>
+                        }
                    @if (ViewBag.Logado == null)
                    {
 
@@ -184,135 +204,169 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="profile-widget" style="background: url(../Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Capa);">
                             <img src="~/Imagens/ImagensUsuario/@ViewBag.Visualizacao.Imagem_Perfil" alt="" />
                             <h3 class="titulo-verUser">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</h3>
+                            <h4 class="subtitulo-verUser">@ViewBag.Visualizacao.Avaliacao Avaliações</h4>
                         </div>
 
                      <!--/profile-inner-->
                         <div class="profile-section-inner">
-                            <div class="col-md-6 profile-info">
-                                <h3 class="inner-tittle">Informações Pessoais </h3>
-                                <div class="main-grid3">
-                                    <div class="p-20">
-                                        <div class="about-info-p">
-                                            <strong>Nome Completo</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>Mobile</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.Visualizacao.Telefone</p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>Youtube</strong>
-                                            <br>
-                                            <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Youtube"><i class="fa fa-youtube"> Youtube</i></a></p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>Facebook</strong>
-                                            <br>
-                                            <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Facebook"><i class="fa fa-facebook"> Facebook</i></a></p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>Twitch</strong>
-                                            <br>
-                                            <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Twitch"><i class="fa fa-twitch"> Twitch</i></a></p>
-                                        </div>
-                                        <div class="about-info-p">
-                                            <strong>E-mail</strong>
-                                            <br>
-                                            <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Email">@ViewBag.User.Email</a></p>
-                                        </div>
-                                        <div class="about-info-p m-b-0">
-                                            <strong>Local</strong>
-                                            <br>
-                                            <p class="text-muted">@ViewBag.Visualizacao.Cidade, @ViewBag.Visualizacao.Estado</p>
+                            <div class="bs-example2 bs-example-padded-bottom">
+                                </div>
+                                <div class="col-md-6 profile-info">
+                                    <h3 class="inner-tittle">Informações Pessoais </h3>
+                                    <div class="main-grid3">
+                                        <div class="p-20">
+                                            <div class="about-info-p">
+                                                <strong>Nome Completo</strong>
+                                                <br>
+                                                <p class="text-muted">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
+                                            </div>
+                                            <div class="about-info-p">
+                                                <strong>Mobile</strong>
+                                                <br>
+                                                <p class="text-muted">@ViewBag.Visualizacao.Telefone</p>
+                                            </div>
+                                            <div class="about-info-p">
+                                                <strong>Youtube</strong>
+                                                <br>
+                                                <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Youtube"><i class="fa fa-youtube"> Youtube</i></a></p>
+                                            </div>
+                                            <div class="about-info-p">
+                                                <strong>Facebook</strong>
+                                                <br>
+                                                <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Facebook"><i class="fa fa-facebook"> Facebook</i></a></p>
+                                            </div>
+                                            <div class="about-info-p">
+                                                <strong>Twitch</strong>
+                                                <br>
+                                                <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Twitch"><i class="fa fa-twitch"> Twitch</i></a></p>
+                                            </div>
+                                            <div class="about-info-p">
+                                                <strong>E-mail</strong>
+                                                <br>
+                                                <p class="text-muted"><a class="extraInfo" href="@ViewBag.Visualizacao.Email">@ViewBag.Visualizacao.Email</a></p>
+                                            </div>
+                                            <div class="about-info-p m-b-0">
+                                                <strong>Local</strong>
+                                                <br>
+                                                <p class="text-muted">@ViewBag.Visualizacao.Cidade, @ViewBag.Visualizacao.Estado</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <h3 class="inner-tittle">Biografia </h3>
-                                <div class="main-grid3 p-skill">
-                                    <p>@ViewBag.Visualizacao.Biografia</p>
-                                </div>
-                                <h3 class="inner-tittle two">Instrumentos </h3>
-                                <div class="main-grid3">
-                                    @if (ViewBag.InstrumentosVisualizacao != null)
-                                    {
-                                        foreach (var I in ViewBag.InstrumentosVisualizacao)
+                                    <h3 class="inner-tittle">Biografia </h3>
+                                    <div class="main-grid3 p-skill">
+                                        <p>@ViewBag.Visualizacao.Biografia</p>
+                                    </div>
+                                    <h3 class="inner-tittle two">Instrumentos </h3>
+                                    <div class="main-grid3">
+                                        @if (ViewBag.InstrumentosVisualizacao != null)
                                         {
-                                            <div class="barra-instrumento">
-                                                <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
-                                            </div>
-                                            <div class="skills">
-                                                <div class="skill1" style="width:@I.Maestria%"> </div>
-                                            </div>
+                                            foreach (var I in ViewBag.InstrumentosVisualizacao)
+                                            {
+                                                <div class="barra-instrumento">
+                                                    <img class="icon-instrumento" src="~/Imagens/IconesInstrumentos/@(I.Icone).png" /><strong>@I.Nome</strong>
+                                                </div>
+                                                <div class="skills">
+                                                    <div class="skill1" style="width:@I.Maestria%"> </div>
+                                                </div>
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
-                                    }
-                                </div>
-                            </div>
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Músicas </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-
-                                        @if (ViewBag.ArquivosVisualizacao != null)
+                                        else
                                         {
-                                            foreach (var A in ViewBag.ArquivosVisualizacao)
+                                            <p>Você ainda não possui instrumentos cadastrados! Cadastre-os aqui!</p>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6 profile-info two">
+                                    <h3 class="inner-tittle">Músicas </h3>
+                                    <div class="main-grid3 p-skill">
+                                        <ul class="timeline">
+
+                                            @if (ViewBag.ArquivosVisualizacao != null)
+                                            {
+                                                foreach (var A in ViewBag.ArquivosVisualizacao)
+                                                {
+                                                    <li>
+                                                        <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
+                                                        <div class="timeline-panel">
+                                                            <div class="timeline-heading">
+                                                                <h4 class="nome-musica"><strong>@A.Nome</strong></h4>
+                                                            </div>
+                                                            <div class="timeline-body">
+                                                                <p class="time">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
+                                                                <audio controls>
+                                                                    <source src="~/Arquivos/@A.Nome" type="audio/mpeg">
+                                                                    Seu navegador não suporta esse player.
+                                                                </audio>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                            else
                                             {
                                                 <li>
                                                     <div class="timeline-badge info"><i class="fa fa-headphones"></i></div>
                                                     <div class="timeline-panel">
                                                         <div class="timeline-heading">
-                                                            <h4 class="nome-musica"><strong>@A.Nome</strong></h4>
+                                                            <h4 class="nome-musica"><strong>Alerta</strong></h4>
                                                         </div>
                                                         <div class="timeline-body">
-                                                            <p class="time">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</p>
-                                                            <audio controls>
-                                                                <source src="~/Arquivos/@A.Nome" type="audio/mpeg">
-                                                                Seu navegador não suporta esse player.
-                                                            </audio>
+                                                            <p class="time">Este usuário ainda não fez upload de nenhum arquivo! :c</p>
                                                         </div>
                                                     </div>
                                                 </li>
                                             }
-                                        }
-                                        else
-                                        {
-                                            <li>Este usuário não possui arquivos!</li>
-                                        }
 
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <!--/map-->
-                            <div class="col-md-6 profile-info two">
-                                <h3 class="inner-tittle">Atividade Recente </h3>
-                                <div class="main-grid3 p-skill">
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge info"><i class="fa fa-comment"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-heading">
-                                                    <h4 class="timeline-title"><a href="profile.html">@ViewBag.Visualizacao.Nome @ViewBag.Visualizacao.Sobrenome</a></h4>
-                                                </div>
-                                                <div class="timeline-body">
-                                                    <p class="time">5 Minutes ago</p>
-                                                    <p>Uploaded 2 new Photos</p>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                    </ul>
-                                    <div class="clearfix"></div>
+                                <!--/map-->
+                                <div class="col-md-6 profile-info two">
+                                    <h3 class="inner-tittle">Atividade Recente </h3>
+                                    <div class="main-grid3 p-skill">
+                                        <ul class="timeline">
+                                            @if (ViewBag.PostagensUsuario != null)
+                                            {
+                                                foreach (var P in ViewBag.PostagensUsuario)
+                                                {
+                                                    <li>
+                                                        <div class="timeline-badge info"><i class="fa fa-commenting"></i></div>
+                                                        <div class="timeline-panel">
+                                                            <div class="timeline-heading">
+                                                                <h4 class="timeline-title"><a class="tituloPost" href="/Menu/MostrarUsuario/@P.AutorID">@P.Autor</a></h4>
+                                                            </div>
+                                                            <div class="timeline-body">
+                                                                <p class="textoPostagem">@P.Texto</p>
+                                                                <br />
+                                                                <p class="timePostagem">@P.Data_Hora</p>
+                                                                <p class="timePostagem">Fez uma nova Postagem <i class="fa fa-commenting"></i></p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <div class="timeline-badge info"><i class="fa fa-commenting"></i></div>
+                                                    <div class="timeline-panel">
+                                                        <div class="timeline-heading">
+                                                            <h4 class="timeline-title"><a class="tituloPost" href="">Alerta</a></h4>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <p class="textoPostagem">Este usuário não possui atividade recente! :c</p>
+                                                            <br />
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                            </ul>
+                                            <div class="clearfix"></div>
+</div>
                                 </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                        </div>
 
                     <!--//profile-inner-->
                     <!--//profile-->

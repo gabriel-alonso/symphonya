@@ -100,57 +100,71 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </script>
                                 </li>
                                 <li class="dropdown note">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-twitch"></i> <span class="badge">3</span></a>
-
-
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-diamond"></i></a>
                                     <ul class="dropdown-menu two first">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>Fique Antenado</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                    <p><span>1 hour ago</span></p>
+                                        @if (ViewBag.Ranking != null)
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Ranking</h3>
                                                 </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#">Veja Tudo</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            foreach (var R in ViewBag.Ranking)
+                                            {
+                                                <li>
+                                                    <a href="/Menu/MostrarUsuario/@R.ID">
+                                                        <div class="user_img"><img src="~/Imagens/ImagensUsuario/@R.Imagem_Perfil" alt=""></div>
+                                                        <div class="notification_desc">
+                                                            <p>@R.Nome @R.Sobrenome</p>
+                                                            <p><span>Músico</span></p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
                                     </ul>
                                 </li>
 
                                 <li class="dropdown note">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o"></i> <span class="badge">5</span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-universal-access"></i>
+                                        @if (ViewBag.QntADM != null)
+                                        {
+                                            <span class="badge">@ViewBag.QntADM</span>
+                                        }
+                                    </a>
 
                                     <ul class="dropdown-menu two">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>Voce tem 5 Notificações</h3>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="user_img"><img src="~/Imagens/in.jpg" alt=""></div>
-                                                <div class="notification_desc">
-                                                    <p>Lorem ipsum dolor sit amet</p>
-                                                    <p><span>1 hour ago</span></p>
+                                        @if (ViewBag.Administradores != null)
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Administradores</h3>
                                                 </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="notification_bottom">
-                                                <a href="#">Veja Tudo</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                            foreach (var A in ViewBag.Administradores)
+                                            {
+                                                <li>
+                                                    <a href="/Menu/MostrarUsuario/@A.ID">
+                                                        <div class="user_img"><img src="~/Imagens/ImagensUsuario/@A.Imagem_Perfil" alt=""></div>
+                                                        <div class="notification_desc">
+                                                            <p>@A.Nome @A.Sobrenome</p>
+                                                            <p><span>Administrador</span></p>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Não Disponível</h3>
+                                                </div>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <div class="clearfix"></div>
@@ -177,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3 class="sub-tittle pro">Livestream</h3>
                                      
                     <iframe class="frame-livestream"
-                            src="http://player.twitch.tv/?channel=Tecnosh&muted=true"
+                            src="http://player.twitch.tv/?channel=@ViewBag.User.Twitch&muted=true"
                             height="720"
                             width="1280"
                             frameborder="0"

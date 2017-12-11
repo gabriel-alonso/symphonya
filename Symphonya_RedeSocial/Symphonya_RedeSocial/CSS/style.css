@@ -123,6 +123,12 @@ td.table-img{
     background:transparent;
 }
 
+.TxtAreaPostagem {
+    border: 1px solid #E7E7E8;
+    background: white;
+    color: black;
+}
+
 .logo a:focus, a:active, a:hover, a.dropdown-toggle{
     color:#FFF;
 }
@@ -1987,10 +1993,34 @@ h4.nome-musica:hover{
     padding: 0;
 	    color: #777;
 }
+
+p.textoPostagem {
+    font-size:18px;
+}
+
 .nome-musico{
     font-size:18px;
     margin:0%;
 }
+
+.tituloPost {
+    color: #FC3158;
+    font-size: 22px;
+    background: none;
+}
+
+.tituloPost:hover {
+        color: #FC3158;
+        font-size: 22px;
+        background: none;
+        font-weight: bold;
+}
+
+.timePostagem{
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .timeline > li > .timeline-panel:before {
   position: absolute;
   top: 18px;
@@ -3269,7 +3299,7 @@ a.read.fourth:hover{
             color: #FC3158;
         }
         .new p.sign a:hover{
-            background: transparent;0
+            background: transparent;
         }
 h2.inner-tittle.page {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
@@ -3406,6 +3436,21 @@ h3.inner-tittle.t-inner {
 .sign-up {
     margin-top:0.8em;
 }
+
+p.signSenha {
+    background: transparent;
+}
+
+a.signSenha {
+    background: transparent;
+}
+
+    a.signSenha:hover {
+        color: #FC3158;
+        font-weight: bold;
+        background: transparent;
+        background: none;
+    }
 /*--/tabs--*/
 .tabs {
 	position: relative;
@@ -4190,7 +4235,15 @@ div.panel {
     margin: 7px 0;
     color: #FC3158;
     font-size: 21px;
-    font-weight: normal;
+   font-weight: bold;
+   padding-right: 8%;
+}
+.profile-widget h4{
+    margin: 7px 0;
+    color: #FC3158;
+    font-size: 16px;
+   font-weight: normal;
+   padding-right: 8%;
 }
 .profile-widget p{
 	    font-size: 14px;

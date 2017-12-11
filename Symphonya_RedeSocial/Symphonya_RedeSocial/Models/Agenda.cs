@@ -112,7 +112,7 @@ namespace Symphonya_RedeSocial.Models
             //CRIACAO DO COMANDO SQL
             SqlCommand Comando = new SqlCommand();
             Comando.Connection = Conexao;
-            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID, IDU)"
+            Comando.CommandText = "INSERT INTO Show (Hora ,Data,Titulo,Descricao, UsuarioID, AgendaID)"
               + "VALUES (@Hora,@Data,@Titulo,@Descricao,@UsuarioID,@AgendaID);";
 
             DateTime datahora = DateTime.Now;

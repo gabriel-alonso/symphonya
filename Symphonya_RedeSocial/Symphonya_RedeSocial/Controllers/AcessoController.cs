@@ -15,6 +15,11 @@ namespace Symphonya_RedeSocial.Controllers
         public ActionResult Login()
         {
 
+            if(TempData["Sucesso"] != null)
+            {
+                ViewBag.MsgSucCadastro = TempData["Sucesso"];
+            }
+
                 if (Request.HttpMethod == "POST")
                 {
                     String Email = Request.Form["email"].ToString();
@@ -90,13 +95,44 @@ namespace Symphonya_RedeSocial.Controllers
                     Us.Telefone = Request.Form["Telefone"].ToString();
                     Us.NovoUser();
 
-                    Session["Usuario"] = Us;
-                    Response.Redirect("/Menu/Feed");
+                    Response.Redirect("/Acesso/Login");
+                    TempData["Sucesso"] = "Conta criada com sucesso!";
                 }
 
             }
 
             return View();
+        }
+
+        //RECUPERACAO DE SENHA
+        public ActionResult RecuperarSenha()
+        {
+            ViewBag.Recuperar = Session["Email"];
+            return View();
+        }
+
+        public void Recuperar()
+        {
+            if (Request.HttpMethod == "POST")
+            {
+                Email E = new Email();
+                Usuario U = new Usuario();
+
+                String Email = Request.Form["Email"];
+
+                if (U.Verificar(Email))
+                {
+                    E.EmailRecuperaracao(Email, U.Senha);
+                    Session["Email"] = "E-mail enviado com sucesso!";
+                    Response.Redirect("~/Acesso/Login");
+                }
+                else
+                {
+                    Session["Email"] = "E-mail não cadastrado!";
+                    Response.Redirect("~/Acesso/RecuperarSenha");
+                }
+
+            }
         }
 
         //METODO PARA FAZER LOGOFF

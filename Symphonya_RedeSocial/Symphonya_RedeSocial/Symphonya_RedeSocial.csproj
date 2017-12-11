@@ -299,7 +299,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Integrantes.cs" />
+    <Compile Include="Models\Postagem.cs" />
     <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Arquivos.cs" />
     <Compile Include="Models\Bandas.cs" />
@@ -359,6 +361,7 @@
     <None Include="Properties\PublishProfiles\Symphonya - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Symphonya - Web Deploy.pubxml" />
     <Content Include="Views\Administracao\VerBandaADM.cshtml" />
+    <Content Include="Views\Acesso\RecuperarSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

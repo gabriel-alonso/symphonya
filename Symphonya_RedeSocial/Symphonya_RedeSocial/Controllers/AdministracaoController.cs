@@ -21,6 +21,13 @@ namespace Symphonya_RedeSocial.Controllers
 
                 ViewBag.ContagemUsuarios = Usuario.Contar();
                 ViewBag.Usuarios = Usuario.Listar();
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
             }
             else {
                 Response.Redirect("/Menu/Feed/");
@@ -40,6 +47,13 @@ namespace Symphonya_RedeSocial.Controllers
 
                 ViewBag.ContagemBandas = Models.Bandas.Contar();
                 ViewBag.Bandas = Models.Bandas.Listar();
+
+                //VIEWBAG RELACIONADAS AO RANKING DE USUARIOS
+                ViewBag.Ranking = Usuario.Ranquear(true);
+
+                //VIEWBAGS RELACIONADAS AOS ADMINISTRADORES DO SITE
+                ViewBag.QntADM = Usuario.ContarADM();
+                ViewBag.Administradores = Usuario.ListarADM();
             }
             else {
                 Response.Redirect("/Menu/Feed/");
