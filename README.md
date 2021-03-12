@@ -1,4 +1,4 @@
-## Symphonya - Rede Social de Música
+# Symphonya - Rede Social de Música
 
 Symphonya é um Trabalho de Conclusão de Curso, desenvolvido com o objetivo de aproximar músicos e empresários, de forma a facilitar um maior reconhecimento do artista e seu trabalho. Basicamente é uma proposta aonde facilita o manuseamento no site de  todos os artistas que visam um meio para se interagir com outras pessoas que tenha interesse em sua área trabalhada. Além de diversas formas para divulgação de seus trabalhos, o site contará com a ajuda no auge do musico. 
 
