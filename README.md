@@ -18,3 +18,8 @@ Atualmente não existe esse tipo exclusivo de serviço, existem algumas redes so
 Nossa ideia foi para suprir essa ausência de outras redes sociais nesse meio que não tiveram sucesso, pois se preocuparam em agradar um certo público, não pensaram em trazer outro público-alvo, nosso sistema irá resolver esse problema, além de ficar apenas como objetivo de rede social mas sim obter adicionais para o software  ficar mais complexo e sim ter uma estratégias para as pessoas encontrar o que precisa através do sistema nesse meio da música. 
 
 Devido  a todas essas questões serem levadas, o projeto será uma evolução para esse tipo de serviço, portanto, a proposta de uma nova rede social de música terá algumas ideias mais inovadoras, buscando uma estrutura mais interessante para a pessoas.
+
+![1](https://user-images.githubusercontent.com/25436067/112567206-3442e000-8dbf-11eb-9b86-c200fd521010.PNG)
+![2](https://user-images.githubusercontent.com/25436067/112567259-4b81cd80-8dbf-11eb-92c7-c3c3cc8cc5cd.PNG)
+![3](https://user-images.githubusercontent.com/25436067/112567338-6fddaa00-8dbf-11eb-8efb-1e8e7ea5fe32.PNG)
+![4](https://user-images.githubusercontent.com/25436067/112567386-8421a700-8dbf-11eb-900f-90fd88700653.PNG)
