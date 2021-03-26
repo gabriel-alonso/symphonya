@@ -5,6 +5,11 @@ Symphonya é um Trabalho de Conclusão de Curso, desenvolvido com o objetivo de 
 ## Manual do Usuário
 https://1drv.ms/w/s!Al7AwsMIb_Rk4x3YvEFxm--yjG-W?e=IuizxO
 
+## Participantes
+1- Ana Carolina Novaes de Azevedo <br />
+2- Gabriel Aragão Alonso <br />
+3- Victor Luiz Rodrigues <br />
+
 ## Resumo
 O sistema Rede Social de Música está com a proposta de criar um software de interface Web e Banco de Dados em SQL SERVER, com a finalidade de desenvolver algo nesse meio para fornecer facilidade para muitas pessoas que gostam de música e ainda querem trabalhar com isso, para terem uma rede social para depositar seus trabalhos.  
 
