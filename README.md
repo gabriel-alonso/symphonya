@@ -19,6 +19,7 @@ Nossa ideia foi para suprir essa ausência de outras redes sociais nesse meio 
 
 Devido  a todas essas questões serem levadas, o projeto será uma evolução para esse tipo de serviço, portanto, a proposta de uma nova rede social de música terá algumas ideias mais inovadoras, buscando uma estrutura mais interessante para a pessoas.
 
+## Algumas imagens do projeto
 ![1](https://user-images.githubusercontent.com/25436067/112567206-3442e000-8dbf-11eb-9b86-c200fd521010.PNG)
 ![2](https://user-images.githubusercontent.com/25436067/112567259-4b81cd80-8dbf-11eb-92c7-c3c3cc8cc5cd.PNG)
 ![3](https://user-images.githubusercontent.com/25436067/112567338-6fddaa00-8dbf-11eb-8efb-1e8e7ea5fe32.PNG)
